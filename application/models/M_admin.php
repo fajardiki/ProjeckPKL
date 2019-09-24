@@ -25,7 +25,8 @@
 		}
 
 		public function selectallfost() {
- 			$hsl = $this->db->query('SELECT * FROM m_efos');
+ 			$hsl = $this->db->query('SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos GROUP BY WEEK(Journey_Date)');
+ 			return $hsl->result_array();
  		}
 	}
 ?>

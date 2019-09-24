@@ -23,7 +23,8 @@ class C_dasbord extends CI_Controller {
 
 	public function home() {
 		$data = array(
-			'side2' => 'V_home'
+			'side2' => 'V_home',
+			'plane' => $this->M_admin->selectallfost()
 		);
 		$this->load->view('V_dasbord',$data);
 	}
