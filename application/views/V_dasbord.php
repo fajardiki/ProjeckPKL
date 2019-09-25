@@ -20,15 +20,21 @@ body {
 <!-- Akhir -->
 
 <!-- Content -->
-<div class="container-fluid" style="margin-top: 15px;">
+<div class="container-fluid" style="margin-top: 15px; margin-bottom: 70px;">
 
 <?php if ($nama[0]['status']=='admin') {
   if (isset($side1)) {
     $this->load->view($side1);
   } elseif (isset($side2)) {
     $this->load->view($side2);
+  } else {
+    $this->load->view($side2);
   }
-} ?>
+} elseif ($nama[0]['status']=='sales') {
+  if (isset($laman1)) {
+    $this->load->view($laman1);
+  }
+}?>
 
 </div>
 

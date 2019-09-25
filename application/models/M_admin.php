@@ -28,5 +28,11 @@
  			$hsl = $this->db->query('SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos GROUP BY WEEK(Journey_Date)');
  			return $hsl->result_array();
  		}
+
+ 		public function selectalltime() {
+ 			$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(Time_in_Market) as TimeInMarket, AVG(Spent) as Spent, AVG(Time_Per_Outlet) as TimePerOutlet FROM m_efos GROUP BY WEEK(Journey_Date);");
+
+ 			return $hsl->result_array();
+ 		}
 	}
 ?>

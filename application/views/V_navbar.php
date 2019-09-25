@@ -42,11 +42,13 @@
 	        </ul>
 	      </div> 
 	    </nav>
+
 <?php } elseif ($nama[0]['status']=='sales') { ?>
+
 	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
 	<nav class="navbar navbar-expand-md bg-danger navbar-dark" id="navbar" style="border-radius: 4px;">
 	      <!-- Brand -->
-	      <a class="navbar-brand" align="" href="">Seles</a>
+	      <a class="navbar-brand" align="" href="C_dasbord/home">Seles</a>
 	      
 
 
@@ -59,37 +61,14 @@
 	      <div class="collapse navbar-collapse" id="collapsibleNavbar">
 	        <ul class="navbar-nav mr-auto">
 
-	       		<li class="nav-item"> 
+	       	<li class="nav-item"> 
 	            <a class="nav-link" href="">Home</a>
-	        	</li>
-
-	          <li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Pengajuan
-	            </a>
-	            <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdownMenuLink">
-	              <a class="dropdown-item" href="">Pengajuan Offline</a>
-	              <a class="dropdown-item" href=""> Pengajuan Online</a>
-	              <a class="dropdown-item" href="">Status Pengajuan</a>
-	            </div>
-	          </li>
-
-	          <li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	              Pengarsipan
-	            </a>
-	            <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdownMenuLink">
-	              <a class="dropdown-item" href="">Arsip Dokumentasi Kegiatan</a>
-	              <a class="dropdown-item" href="">Arsip Data Pengajuan</a>
-	              <a class="dropdown-item" href="">Arsip Surat Pengajuan</a>
-	              <a class="dropdown-item" href="">Backup dan Restore</a>
-	            </div>
-	          </li>
+	        </li>
 	          <li class="nav-item"> 
 	            <a class="nav-link" href="">Pengaturan</a>
 	          </li>
 	          <li class="nav-item"> 
-	            <a class="nav-link" href="">Data Warga</a>
+	            <a class="nav-link" href=""></a>
 	          </li>
 	        </ul>
 	        <ul class="navbar-nav">

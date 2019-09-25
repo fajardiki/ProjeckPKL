@@ -19,10 +19,8 @@ class M_user extends CI_Model {
 		return $hsl->result_array();
 	}
 
-	public function selectonefost($seles){
-		$sls = str_replace("'","",$seles);
-
-		$hsl = $this->db->query("SELECT * FROM efos_sept WHERE Salesman_Name='$sls'");
+	public function selectonefost($emp_code) {
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$emp_code' AND WEEK(Journey_Date) = 36");
 		return $hsl->result_array();
 	}
 }
