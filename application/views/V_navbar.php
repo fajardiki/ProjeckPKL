@@ -6,7 +6,7 @@
 
 	<nav class="navbar navbar-expand-md bg-danger navbar-dark" id="navbar" style="border-radius: 4px;">
 	      <!-- Brand -->
-	      <a class="navbar-brand" align="" href="<?php echo base_url().'C_dasbord/home'; ?>">Admin</a>
+	      <a class="navbar-brand" align="" href="#">Admin</a>
 	      
 	      <!-- Toggler/collapsibe Button -->
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -18,7 +18,7 @@
 	        <ul class="navbar-nav mr-auto">
 
 	       	<li class="nav-item"> 
-	            <a class="nav-link" href="">Home</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/home'; ?>">Home</a>
 	        </li>
 	         <li class="nav-item"> 
 	            <a class="nav-link" href="">Pengaturan</a>

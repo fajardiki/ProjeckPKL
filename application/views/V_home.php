@@ -21,8 +21,6 @@
 </div>
 	
 	<!-- Grafik Planed -->
-<div class="row">
-	<div class="col-sm-8">
 
 	<?php foreach ($plane as $p) {
 		$week[] = $p['Week'];
@@ -75,37 +73,10 @@
 	});
 	</script>
 
-	</div>
-
-	<div class="col-sm-4">
-		<table class="table" style="margin-top: 9px;">
-		  <thead>
-		    <tr>
-		      <th scope="col">Week</th>
-		      <th scope="col">Planned</th>
-		      <th scope="col">Productive</th>
-		      <th scope="col">Nosale</th>
-		    </tr>
-		  </thead>
-		  <?php foreach ($plane as $pl) { ?>
-		  <tbody>
-		    <tr>
-		      <th><?php echo $pl['Week']; ?></th>
-		      <td><?php echo $pl['Planned']; ?></td>
-		      <td><?php echo $pl['Productive']; ?></td>
-		      <td><?php echo $pl['Nosale']; ?></td>
-		    </tr>
-		  </tbody>
-		  <?php } ?>
-		</table>
-	</div>
-</div>
 	<!-- Akhir Grafik Planed -->
 
 
 	<!-- Grafik Time -->
-<div class="row" style="margin-top: 100px;">
-	<div class="col-sm-8">
 
 	<?php foreach ($timemarket as $tm) {
 		$week1[] = $tm['Week'];
@@ -143,6 +114,7 @@
 	    }, {
 	        type: 'column',
 	        name: 'Spent',
+	        lineColor: Highcharts.getOptions().colors[2],
 	        data: <?php echo json_encode($spent); ?>
 	    }, {
 	        type: 'spline',
@@ -156,8 +128,6 @@
 	    }]
 	});
 	</script>
-	</div>
-</div>
 	<!-- Akhir Grafik Time -->
 
 <!-- Akhir admin -->
