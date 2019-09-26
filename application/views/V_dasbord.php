@@ -16,7 +16,7 @@ body {
 <body>
 
 <!-- Navbar -->
-  <?php $this->load->view('V_navbar'); ?>
+<?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
 <!-- Content -->

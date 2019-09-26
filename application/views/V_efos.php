@@ -1,41 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
 
-<div class="container-fluid">
-	<h1 align="center">EFOS BRO</h1>
-	<div class="container-fluid" style="overflow: hidden;">
-		<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-		  <thead class="thead-dark">
-		    <tr>
-		      <th scope="col">Week</th>
-		      <th scope="col">PJB_Comply</th>
-		      <th scope="col">Produktive_Call</th>
-		      <th scope="col">Geo_Match</th>
-		      <th scope="col">Time_In_Market</th>
-		      <th scope="col">Spent_In_Market</th>
-		      <th scope="col">Time_Per_Outlet</th>
-		      <th scope="col">Outlet_Nosale</th>
-		      <th scope="col">%Outlet_Nosale</th>
-		      <th scope="col">Total_Penjualan</th>
-		      <th scope="col">PJB_Planed</th>
-		      <th scope="col">PJP_Unplaned</th>
-		      <th scope="col">Productive_Call</th>
-		    </tr>
-		  </thead>
-		  <?php foreach ($efosall as $ea) { ?>
-		  <tbody>
-		    <tr>
-		      <th class="table-dark"><?php echo $ea['Week']; ?></th>
-		      <td><?php echo intval($ea['PJP_COMPLY']).'%'; ?></td>
-		      <td><?php echo intval($ea['PRODUCTIVE_CALL']).'%'; ?></td>
-		      <td><?php echo intval($ea['GEOMATCH']).'%'; ?></td>
-		      <td><?php echo $ea['TimeInMarket']; ?></td>
-		      <td><?php echo $ea['Spent']; ?></td>
-		      <td><?php echo $ea['TimePerOutlet']; ?></td>
-		      <td><?php echo $ea['Nosale']; ?></td>
-		      <td><?php echo intval($ea['NosalePersen']).'%'; ?></td>
-		      <td><?php echo number_format($ea['TotalSale'],2,',','.'); ?></td>
-		    </tr>
-		  </tbody>
-		  <?php } ?>
-		</table>
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  min-height: 420px;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+</style>
+</head>
+<body>
+
+	<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
+	<button class="tablink" onclick="openPage('News', this, 'green')">News</button>
+	<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+	<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+	<div id="Home" class="tabcontent">
+	  <?php $this->load->View('efos/V_efos1') ?>
 	</div>
-</div>
+
+	<div id="News" class="tabcontent">
+	  <h3>News</h3>
+	  <p>Some news this fine day!</p> 
+	</div>
+
+	<div id="Contact" class="tabcontent">
+	  <h3>Contact</h3>
+	  <p>Get in touch, or swing by for a cup of coffee.</p>
+	</div>
+
+	<div id="About" class="tabcontent">
+	  <h3>About</h3>
+	  <p>Who we are and what we do.</p>
+	</div>
+
+	<script>
+	function openPage(pageName,elmnt,color) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+	    tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablink");
+	  for (i = 0; i < tablinks.length; i++) {
+	    tablinks[i].style.backgroundColor = "";
+	  }
+	  document.getElementById(pageName).style.display = "block";
+	  elmnt.style.backgroundColor = color;
+	}
+
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+	</script>
+   
+</body>
+</html> 
