@@ -89,6 +89,14 @@ class C_dasbord extends CI_Controller {
 
 		$this->load->view('V_dasbord',$data);
 	}
+
+	public function updatesales(){
+		$data = array(
+			'side4' => 'V_update_sales'
+		);
+
+		$this->load->view('V_dasbord',$data);
+	}
 }
 
 ?>

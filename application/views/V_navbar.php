@@ -28,7 +28,7 @@
 	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/importexcel'; ?>">Import Exel</a>
 	         </li>
 	         <li class="nav-item"> 
-	            <a class="nav-link" href="#">Update Salesman</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/updatesales'; ?>">Update Salesman</a>
 	         </li>
 	        </ul>
 	        <ul class="navbar-nav">

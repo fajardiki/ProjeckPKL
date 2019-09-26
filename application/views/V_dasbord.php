@@ -29,6 +29,8 @@ body {
     $this->load->view($side2);
   } elseif (isset($side3)) {
     $this->load->view($side3);
+  } elseif (isset($side4)) {
+    $this->load->view($side4);
   }else {
     $this->load->view($side2);
   }
