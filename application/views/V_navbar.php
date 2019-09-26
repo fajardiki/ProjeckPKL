@@ -1,5 +1,6 @@
 <?php $nama = $this->session->userdata('user'); ?>
 
+
 <?php if ($nama[0]['status']=='admin') {?>
 
 	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
@@ -21,10 +22,13 @@
 	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/home'; ?>">Home</a>
 	        </li>
 	         <li class="nav-item"> 
-	            <a class="nav-link" href="">Pengaturan</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/efos'; ?>">Efos</a>
 	         </li>
 	         <li class="nav-item"> 
 	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/importexcel'; ?>">Import Exel</a>
+	         </li>
+	         <li class="nav-item"> 
+	            <a class="nav-link" href="#">Update Salesman</a>
 	         </li>
 	        </ul>
 	        <ul class="navbar-nav">
@@ -88,4 +92,3 @@
 	      </div> 
 	    </nav>
 <?php } ?>
-

@@ -27,7 +27,9 @@ body {
     $this->load->view($side1);
   } elseif (isset($side2)) {
     $this->load->view($side2);
-  } else {
+  } elseif (isset($side3)) {
+    $this->load->view($side3);
+  }else {
     $this->load->view($side2);
   }
 } elseif ($nama[0]['status']=='sales') {

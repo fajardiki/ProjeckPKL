@@ -21,13 +21,16 @@ class C_dasbord extends CI_Controller {
 				$data = array(
 					'side2' => 'V_home',
 					'plane' => $this->M_admin->selectallfost(),
-					'timemarket' => $this->M_admin->selectalltime()
-				);
+					'timemarket' => $this->M_admin->selectalltime(),
+					'pjpcomply' => $this->M_admin->selectallpjp()
+ 				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='sales') {
 				$data = array(
 					'laman1' => 'V_home',
-					'plane' => $this->M_user->selectonefost($nama[0]['Emp_Code'])
+					'plane' => $this->M_user->selectonefost($nama[0]['Emp_Code']),
+					'timemarket' => $this->M_user->selectonetime($nama[0]['Emp_Code']),
+					'pjpcomply' => $this->M_user->selectonepjp($nama[0]['Emp_Code'])
 				);
 				$this->load->view('V_dasbord',$data);
 			}
@@ -42,7 +45,30 @@ class C_dasbord extends CI_Controller {
 			$data = array(
 				'side2' => 'V_home',
 				'plane' => $this->M_admin->selectallfost(),
-				'timemarket' => $this->M_admin->selectalltime()
+				'timemarket' => $this->M_admin->selectalltime(),
+				'pjpcomply' => $this->M_admin->selectallpjp()
+			);
+			$this->load->view('V_dasbord',$data);
+		} elseif ($nama[0]['status']=='sales') {
+			$data = array(
+				'laman1' => 'V_home',
+				'plane' => $this->M_user->selectonefost($nama[0]['Emp_Code']),
+				'timemarket' => $this->M_user->selectonetime($nama[0]['Emp_Code']),
+				'pjpcomply' => $this->M_user->selectonepjp($nama[0]['Emp_Code'])
+			);
+			$this->load->view('V_dasbord',$data);
+		}
+	}
+
+	public function efos() {
+		$nama = $this->session->userdata('user');
+		if ($nama[0]['status']=='admin') {
+			$data = array(
+				'side3' => 'V_efos',
+				'plane' => $this->M_admin->selectallfost(),
+				'timemarket' => $this->M_admin->selectalltime(),
+				'pjpcomply' => $this->M_admin->selectallpjp(),
+				'efosall' => $this->M_admin->selectefos()
 			);
 			$this->load->view('V_dasbord',$data);
 		} elseif ($nama[0]['status']=='sales') {
