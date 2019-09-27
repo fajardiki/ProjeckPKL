@@ -38,18 +38,18 @@
     <tbody>
       <tr>
         <td><?php echo $e['Journey_Date']; ?></td>
-        <td><?php echo $e['Route_Name']; ?></td>
-        <td><?php echo $e['Salesman_Name']; ?></td> 
+        <td><?php echo $e['District']; ?></td>
+        <td><?php echo $e['Salesman']; ?></td> 
         <td><?php echo $e['Planned']; ?></td>
         <td><?php echo $e['Visited']; ?></td>
-        <td><?php echo $e['Un-planed']; ?></td>
+        <td><?php echo $e['Un_planed']; ?></td>
         <td><?php echo $e['Start_Time']; ?></td>
         <td><?php echo $e['End_Time']; ?></td>
         <td><?php echo $e['Spent']; ?></td>
         <td><?php echo $e['Time_Per_Outlet']; ?></td>
         <td><?php echo $e['Nosale']; ?></td>
         <td><?php echo $e['Productive']; ?></td>
-        <td><?php echo $e['Geo-mismatch']; ?></td>
+        <td><?php echo $e['Geo_mismatch']; ?></td>
         <td><?php echo $e['Line']; ?></td>
         <td><?php echo $e['Total_Qty']; ?></td>
         <td><?php echo $e['Total_Sale']; ?></td>
