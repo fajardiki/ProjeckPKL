@@ -46,27 +46,24 @@ body, html {
 <body>
 
 	<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
-	<button class="tablink" onclick="openPage('News', this, 'green')">News</button>
-	<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-	<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+	<button class="tablink" onclick="openPage('News', this, 'green')">Plane</button>
+	<button class="tablink" onclick="openPage('Contact', this, 'blue')">PJP</button>
+	<button class="tablink" onclick="openPage('About', this, 'orange')">Time</button>
 
 	<div id="Home" class="tabcontent">
 	  <?php $this->load->View('efos/V_efos1') ?>
 	</div>
 
 	<div id="News" class="tabcontent">
-	  <h3>News</h3>
-	  <p>Some news this fine day!</p> 
+	  <?php $this->load->View('efos/V_plane') ?>
 	</div>
 
 	<div id="Contact" class="tabcontent">
-	  <h3>Contact</h3>
-	  <p>Get in touch, or swing by for a cup of coffee.</p>
+	  <?php $this->load->View('efos/V_pjpcomply') ?>
 	</div>
 
 	<div id="About" class="tabcontent">
-	  <h3>About</h3>
-	  <p>Who we are and what we do.</p>
+	  <?php $this->load->View('efos/V_timeinmarket') ?>
 	</div>
 
 	<script>

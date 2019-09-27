@@ -22,25 +22,24 @@ class C_import extends CI_Controller {
                 $highestColumn = $worksheet->getHighestColumn();
                 for($row=2; $row<=$highestRow; $row++) {   
                     $JourneyDate = $worksheet->getCellByColumnAndRow(0, $row)->getFormattedValue();
-                    $Week = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-     				$RouteName = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-    				$EmpCode = $worksheet->getCellByColumnAndRow(3, $row)->getOldCalculatedValue();
-    				$SalesmanName = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-    				$Planned = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-    				$Visited = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-    				$Unplaned = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-    				$StartTime = $worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue();
-    				$EndTime = $worksheet->getCellByColumnAndRow(9, $row)->getFormattedValue();
-    				$TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(10, $row)->getOldCalculatedValue())), true)['date'];
-    				$Spent = $worksheet->getCellByColumnAndRow(11, $row)->getFormattedValue();
-    				$TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(12, $row)->getOldCalculatedValue())), true)['date'];
-    				$Nosale = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
-    				$Productive = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
-    				$Geomismatch = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
-    				$Geomatch = $worksheet->getCellByColumnAndRow(16, $row)->getOldCalculatedValue();
-    				$Line = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
-    				$TotalQty = $worksheet->getCellByColumnAndRow(18, $row)->getValue();
-    				$TotalSale = $worksheet->getCellByColumnAndRow(19, $row)->getValue();
+     				$RouteName = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+    				$EmpCode = $worksheet->getCellByColumnAndRow(2, $row)->getOldCalculatedValue();
+    				$SalesmanName = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+    				$Planned = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+    				$Visited = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+    				$Unplaned = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+    				$StartTime = $worksheet->getCellByColumnAndRow(7, $row)->getFormattedValue();
+    				$EndTime = $worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue();
+    				$TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(9, $row)->getOldCalculatedValue())), true)['date'];
+    				$Spent = $worksheet->getCellByColumnAndRow(10, $row)->getFormattedValue();
+    				$TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(11, $row)->getOldCalculatedValue())), true)['date'];
+    				$Nosale = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
+    				$Productive = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+    				$Geomismatch = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+    				$Geomatch = $worksheet->getCellByColumnAndRow(15, $row)->getOldCalculatedValue();
+    				$Line = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+    				$TotalQty = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
+    				$TotalSale = $worksheet->getCellByColumnAndRow(18, $row)->getValue();
 
     				$timemarket = [$TimeinMarket[11],$TimeinMarket[12],$TimeinMarket[13],$TimeinMarket[14],$TimeinMarket[15],$TimeinMarket[16],$TimeinMarket[17],$TimeinMarket[18]];
     				$timeoutlet = [$TimePerOutlet[11],$TimePerOutlet[12],$TimePerOutlet[13],$TimePerOutlet[14],$TimePerOutlet[15],$TimePerOutlet[16],$TimePerOutlet[17],$TimePerOutlet[18]];
@@ -48,10 +47,8 @@ class C_import extends CI_Controller {
                     $data[] = array(
                     	'Date_Update' => date('Y-m-d'),
                         'Journey_Date' => $JourneyDate,
-                        'Week' => $Week,
     				    'Route_Name' => $RouteName,	
     				    'Emp_Code' => $EmpCode,
-    				    'Salesman_Name' => $SalesmanName,
     				    'Planned' => $Planned,
     				    'Visited' => $Visited,
     				    'Un-planed' => $Unplaned,
@@ -70,6 +67,9 @@ class C_import extends CI_Controller {
                     );
                 }
             }
+
+            var_dump($data);
+            die();
             
             $this->M_efos->insertimport($data);
             redirect('C_dasbord/importexcel');
