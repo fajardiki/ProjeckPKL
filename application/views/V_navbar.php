@@ -3,7 +3,7 @@
 
 <?php if ($nama[0]['status']=='admin') {?>
 
-	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;">
+<!-- 	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;"> -->
 
 	<nav class="navbar navbar-expand-md bg-danger navbar-dark" id="navbar" style="border-radius: 4px;">
 	      <!-- Brand -->
@@ -49,7 +49,7 @@
 
 <?php } elseif ($nama[0]['status']=='sales') { ?>
 
-	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
+<!-- 	<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;"> -->
 	<nav class="navbar navbar-expand-md bg-danger navbar-dark" id="navbar" style="border-radius: 4px;">
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="">Seles</a>

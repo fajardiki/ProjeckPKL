@@ -16,22 +16,22 @@
   <table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Journey_Date</th>
-        <th scope="col">Route_Name</th>
-        <th scope="col">Salesman_Name</th> 
+        <th scope="col">Journey Date</th>
+        <th scope="col">Route Name</th>
+        <th scope="col">Salesman Name</th> 
         <th scope="col">Planned</th>
         <th scope="col">Visite</th>
         <th scope="col">Un-planned</th>
-        <th scope="col">Start_Time</th>
-        <th scope="col">End_Time</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
         <th scope="col">Spent</th>
-        <th scope="col">Time_Per_Outlet</th>
+        <th scope="col">Time Per Outlet</th>
         <th scope="col">Nosale</th>
         <th scope="col">Productive</th>
         <th scope="col">Geo-mismatch</th>
         <th scope="col">Line</th>
-        <th scope="col">Total_Qty</th>
-        <th scope="col">TOtal_Sale</th>
+        <th scope="col">Total Qty</th>
+        <th scope="col">Total Sale</th>
       </tr>
     </thead>
     <?php foreach ($efos as $e) { ?>

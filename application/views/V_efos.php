@@ -14,7 +14,7 @@ body, html {
 
 /* Style tab links */
 .tablink {
-  background-color: #555;
+  background-color: #DC143C;
   color: white;
   float: left;
   border: none;
@@ -37,18 +37,21 @@ body, html {
   height: 100%;
 }
 
-#Home {background-color: red;}
-#News {background-color: green;}
-#Contact {background-color: blue;}
-#About {background-color: orange;}
+#Home {background-color: #ffffff;}
+#News {background-color: #ffffff;}
+#Contact {background-color: #ffffff;}
+#About {background-color: #ffffff;}
 </style>
 </head>
 <body>
 
-	<button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
-	<button class="tablink" onclick="openPage('News', this, 'green')">Plane</button>
-	<button class="tablink" onclick="openPage('Contact', this, 'blue')">PJP</button>
-	<button class="tablink" onclick="openPage('About', this, 'orange')">Time</button>
+	<div class="container-fluid">
+	</div>
+
+	<button class="tablink" onclick="openPage('Home', this, '#ff6666')" id="defaultOpen">Home</button>
+	<button class="tablink" onclick="openPage('News', this, '#ff6666')">Plane</button>
+	<button class="tablink" onclick="openPage('Contact', this, '#ff6666')">PJP</button>
+	<button class="tablink" onclick="openPage('About', this, '#ff6666')">Time</button>
 
 	<div id="Home" class="tabcontent">
 	  <?php $this->load->View('efos/V_efos1') ?>
@@ -86,4 +89,4 @@ body, html {
 	</script>
    
 </body>
-</html> 
+</html>
