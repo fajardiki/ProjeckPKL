@@ -46,6 +46,30 @@ body, html {
 <body>
 
 	<div class="container-fluid">
+		<form>
+			<div class="row form-group">
+				<div class="col-sm-4 mb-2">
+				  <select class="form-control" id="sel1">
+				    <option>1</option>
+				    <option>2</option>
+				    <option>3</option>
+				    <option>4</option>
+				  </select>
+				</div>
+				<div class="col-sm-4 mb-2">
+				  	<select class="form-control" id="sel1">
+				    	<option>1</option>
+				    	<option>2</option>
+				    	<option>3</option>
+				    	<option>4</option>
+				  	</select>
+				</div>
+				<div class="col-sm-4">
+					<button type="button" class="btn btn-danger">Danger</button>
+				</div>
+			  
+			</div>
+		</form>
 	</div>
 
 	<button class="tablink" onclick="openPage('Home', this, '#ff6666')" id="defaultOpen">Home</button>

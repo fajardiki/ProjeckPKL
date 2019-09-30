@@ -92,11 +92,33 @@ class C_dasbord extends CI_Controller {
 
 	public function updatesales(){
 		$data = array(
-			'side4' => 'V_update_sales'
+			'side4' => 'V_update_sales',
+			'updatesales' => $this->M_admin->selectupdateseles()
 		);
 
 		$this->load->view('V_dasbord',$data);
 	}
+	public function hapussales(){
+		$id = $this->uri->segment(3);
+		$this->M_admin->hapussales($id);
+		redirect('http://[::1]/ProjeckPKL/C_dasbord/updatesales');
+	}
+
+	public function savesales(){
+		$btn = $this->input->post('save');
+		
+		if (isset($btn)) {
+			$Emp_Code = $this->input->post("Emp_Code");
+			$Salesman = $this->input->post("Salesman");
+			$Status = $this->input->post("Status");
+			$Username = $this->input->post("Username");
+			$Password = $this->input->post("Password");
+			
+			$this->M_admin->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
+		}
+	}
+}
+?>
 }
 
 ?>
