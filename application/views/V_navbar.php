@@ -18,7 +18,7 @@
 	      <div class="collapse navbar-collapse" id="collapsibleNavbar">
 	        <ul class="navbar-nav mr-auto">
 
-	       	<li class="nav-item"> 
+	       	<li class="nav-item">
 	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/home'; ?>">Home</a>
 	        </li>
 	         <li class="nav-item"> 
@@ -37,7 +37,6 @@
 			     	
 			    </span li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            	<img style="width: 35px;" src="">
 	              	
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right bg-danger" aria-labelledby="navbarDropdownMenuLink">
@@ -85,7 +84,6 @@
 	              	
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right bg-danger" aria-labelledby="navbarDropdownMenuLink">
-	              <a class="dropdown-item" href="" style="color: #ffffff">Edit profil</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">Log out</a>
 	            </div>
 	        </ul>

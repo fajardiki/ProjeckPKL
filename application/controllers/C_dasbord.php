@@ -118,7 +118,5 @@ class C_dasbord extends CI_Controller {
 		}
 	}
 }
-?>
-}
 
 ?>

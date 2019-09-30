@@ -1,6 +1,5 @@
-<div class="container-fluid">
-	<h1 align="center">EFOS BRO</h1>
-	<div class="container-fluid" style="overflow: hidden;">
+
+	<div class="container-fluid" style="overflow: hidden; padding: 0;">
 		<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
 		  <thead class="thead-dark">
 		    <tr>
@@ -37,4 +36,3 @@
 		  <?php } ?>
 		</table>
 	</div>
-</div>

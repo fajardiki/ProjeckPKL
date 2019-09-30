@@ -16,7 +16,7 @@
 <div class="container-fluid">
 	<?php if ($nama[0]['status']=='admin') {?>
 	<div class="row">
-		<div class="col-sm-12" align="center" style="margin: 15px;">
+		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 			<h3>EFOS ADMM Group 2019</h3>
 		</div>
 	</div>
@@ -137,6 +137,9 @@
 		<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 		<script>
 			Highcharts.chart('shadow2', {
+			chart: {
+		        backgroundColor: '#cccccc'
+		    },
 		    title: {
 		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
 		    },
@@ -181,20 +184,29 @@
 
 		<?php foreach ($timemarket as $tm) {
 			$week1[] = $tm['Week'];
-			$timeinmarket[] = intval($tm['TimeInMarket']);
-			$spent[] = intval($tm['Spent']);
-			$timeperoutlet[] = intval($tm['TimePerOutlet']);
+			$timeinmarket[] = ($tm['TimeInMarket']);
+			$spent[] = ($tm['Spent']);
+			$timeperoutlet[] = ($tm['TimePerOutlet']);
 		} ?>
 
 		<div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 		<script>
 			Highcharts.chart('graft2', {
+			time: {
+		        timezone: 'Asia/Jakarta'
+		    },
+			chart: {
+		        backgroundColor: '#cccccc'
+		    },
 		    title: {
 		        text: 'EFOS ADMM Group 2019'
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($week1); ?>
+		    },
+		    yAxis: {
+		        type: 'datetime'
 		    },
 		    labels: {
 		        items: [{
@@ -246,6 +258,7 @@
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
 		<script>
 			Highcharts.chart('shadow3', {
+
 		    title: {
 		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
 		    },

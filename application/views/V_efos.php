@@ -45,27 +45,43 @@ body, html {
 </head>
 <body>
 
-	<div class="container-fluid">
+	<div class="container-fluid" align="">
 		<form>
 			<div class="row form-group">
-				<div class="col-sm-4 mb-2">
-				  <select class="form-control" id="sel1">
-				    <option>1</option>
-				    <option>2</option>
-				    <option>3</option>
-				    <option>4</option>
-				  </select>
-				</div>
-				<div class="col-sm-4 mb-2">
-				  	<select class="form-control" id="sel1">
-				    	<option>1</option>
-				    	<option>2</option>
-				    	<option>3</option>
-				    	<option>4</option>
+				<div class="col-sm-2 mb-2">
+				  	<select class="form-control" id="tgl" name="tanggalawal">
+				    	<option value="Januari">Januari</option>
+				    	<option value="Februari">Februari</option>
+				    	<option value="Maret">Maret</option>
+				    	<option value="April">April</option>
+				    	<option value="Mei">Mei</option>
+				    	<option value="Juni">Juni</option>
+				    	<option value="Juli">Juli</option>
+				    	<option value="Agustus">Agustus</option>
+				    	<option value="September">September</option>
+				    	<option value="Oktober">Oktober</option>
+				    	<option value="November">November</option>
+				    	<option value="Desember">Desemberx</option>
 				  	</select>
 				</div>
-				<div class="col-sm-4">
-					<button type="button" class="btn btn-danger">Danger</button>
+				<div class="col-sm-2 mb-2">
+				  	<select class="form-control" id="tal1" name="tanggalakhir">
+				    	<option value="Januari">Januari</option>
+				    	<option value="Februari">Februari</option>
+				    	<option value="Maret">Maret</option>
+				    	<option value="April">April</option>
+				    	<option value="Mei">Mei</option>
+				    	<option value="Juni">Juni</option>
+				    	<option value="Juli">Juli</option>
+				    	<option value="Agustus">Agustus</option>
+				    	<option value="September">September</option>
+				    	<option value="Oktober">Oktober</option>
+				    	<option value="November">November</option>
+				    	<option value="Desember">Desemberx</option>
+				  	</select>
+				</div>
+				<div class="col-sm-1">
+					<button type="button" class="btn btn-danger">Cari</button>
 				</div>
 			  
 			</div>
