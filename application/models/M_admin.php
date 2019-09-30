@@ -20,7 +20,7 @@
 		}
 
 		public function getefos($date) {
-			$hsl = $this->db->query("SELECT * FROM m_efos a INNER JOIN m_selesman b ON a.Emp_Code = b.Emp_Code INNER JOIN m_ruote c ON a.Distrik_Code = c.Distrik_Code WHERE Date_Update='$date'");
+			$hsl = $this->db->query("SELECT * FROM m_efos a INNER JOIN m_selesman b ON a.Emp_Code = b.Emp_Code INNER JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date'");
 			return $hsl->result_array();
 		}
 
