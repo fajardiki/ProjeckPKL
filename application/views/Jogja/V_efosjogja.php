@@ -7,6 +7,11 @@
 
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<style>
+		body {
+		  font-family: 'Lato', sans-serif;
+		}
+	</style>
 </head>
 <body>
 
