@@ -64,7 +64,6 @@ class C_dasbord extends CI_Controller {
 		$nama = $this->session->userdata('user');
 		if ($nama[0]['status']=='admin') {
 			$data = array(
-				'side3' => 'V_efos',
 				'plane' => $this->M_admin->selectallfost(),
 				'timemarket' => $this->M_admin->selectalltime(),
 				'pjpcomply' => $this->M_admin->selectallpjp(),
