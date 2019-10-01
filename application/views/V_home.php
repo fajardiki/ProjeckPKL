@@ -30,7 +30,10 @@
 		        text: 'Diagram Planned - Produktive - Nosale'
 		    },
 		    xAxis: {
-		        categories: ['Week1', 'Week2', 'Week3', 'Week4']
+		        categories: ['1', '2', '3', '4'],
+		        title: {
+			        text: 'Week'
+			    }
 		    },
 		    labels: {
 		        items: [{
@@ -81,10 +84,13 @@
 		<script>
 			Highcharts.chart('graft1', {
 		    title: {
-		        text: ''
+		        text: 'Diagram Planned - Produktive - Nosale'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week); ?>
+		        categories: <?php echo json_encode($week); ?>,
+		        title: {
+			        text: 'Week'
+			    }
 		    },
 		    labels: {
 		        items: [{
@@ -144,7 +150,10 @@
 		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
 		    },
 		    xAxis: {
-		        categories: ['Week1', 'Week2', 'Week3', 'Week4']
+		        categories: ['1', '2', '3', '4'],
+		        title: {
+			        text: 'Week'
+			    }
 		    },
 		    labels: {
 		        items: [{
@@ -184,10 +193,12 @@
 
 		<?php foreach ($timemarket as $tm) {
 			$week1[] = $tm['Week'];
-			$timeinmarket[] = ($tm['TimeInMarket']);
-			$spent[] = ($tm['Spent']);
-			$timeperoutlet[] = ($tm['TimePerOutlet']);
+			$timeinmarket[] = intval($tm['TimeInMarket']);
+			$spent[] = intval($tm['Spent']);
+			$timeperoutlet[] = intval($tm['TimePerOutlet']);
 		} ?>
+
+		<?php echo json_encode($timeinmarket); ?>
 
 		<div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
@@ -200,13 +211,25 @@
 		        backgroundColor: '#cccccc'
 		    },
 		    title: {
-		        text: 'EFOS ADMM Group 2019'
+		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week1); ?>
+		        categories: <?php echo json_encode($week1); ?>,
+			    title: {
+			        text: 'Week'
+			    }
 		    },
 		    yAxis: {
-		        type: 'datetime'
+		        labels: {
+			        formatter: function() {
+			            // show the labels as whole hours (3600000 milliseconds = 1 hour)
+			            return Highcharts.numberFormat(this.value/3600);
+			        }
+			    },
+			    title: {
+			        text: 'Hours'
+			    },
+			    tickInterval: 3600 // number of milliseconds in one hour
 		    },
 		    labels: {
 		        items: [{
@@ -220,15 +243,6 @@
 		            }
 		        }]
 		    },
-		    plotOptions: {
-		        series: {
-		            borderWidth: 0,
-		            dataLabels: {
-		                enabled: true,
-		                format: '{point.y:.1f}'
-		            }
-		        }
-	    	},
 		    series: [{
 		        type: 'column',
 		        name: 'Time In Market',
@@ -263,7 +277,10 @@
 		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
 		    },
 		    xAxis: {
-		        categories: ['Week1', 'Week2', 'Week3', 'Week4']
+		        categories: ['1', '2', '3', '4'],
+		        title: {
+			        text: 'Week'
+			    }
 		    },
 		    labels: {
 		        items: [{
@@ -315,7 +332,10 @@
 		        text: 'EFOS ADMM Group 2019'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week2); ?>
+		        categories: <?php echo json_encode($week2); ?>,
+		        title: {
+			        text: 'Week'
+			    }
 		    },
 		    labels: {
 		        items: [{

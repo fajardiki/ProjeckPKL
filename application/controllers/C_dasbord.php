@@ -101,7 +101,7 @@ class C_dasbord extends CI_Controller {
 	public function hapussales(){
 		$id = $this->uri->segment(3);
 		$this->M_admin->hapussales($id);
-		redirect('http://[::1]/ProjeckPKL/C_dasbord/updatesales');
+		redirect('C_dasbord/updatesales');
 	}
 
 	public function savesales(){

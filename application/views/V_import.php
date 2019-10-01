@@ -13,7 +13,7 @@
 </form>
 
 <div class="container-fluid" style="overflow: hidden;">
-  <table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+  <table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto; border: 1px solid;">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Journey Date</th>
@@ -34,27 +34,177 @@
         <th scope="col">Total Sale</th>
       </tr>
     </thead>
-    <?php foreach ($efos as $e) { ?>
-    <tbody>
-      <tr>
-        <td><?php echo $e['Journey_Date']; ?></td>
-        <td><?php echo $e['District']; ?></td>
-        <td><?php echo $e['Salesman']; ?></td> 
-        <td><?php echo $e['Planned']; ?></td>
-        <td><?php echo $e['Visited']; ?></td>
-        <td><?php echo $e['Un_planed']; ?></td>
-        <td><?php echo $e['Start_Time']; ?></td>
-        <td><?php echo $e['End_Time']; ?></td>
-        <td><?php echo $e['Spent']; ?></td>
-        <td><?php echo $e['Time_Per_Outlet']; ?></td>
-        <td><?php echo $e['Nosale']; ?></td>
-        <td><?php echo $e['Productive']; ?></td>
-        <td><?php echo $e['Geo_mismatch']; ?></td>
-        <td><?php echo $e['Line']; ?></td>
-        <td><?php echo $e['Total_Qty']; ?></td>
-        <td><?php echo $e['Total_Sale']; ?></td>
-      </tr>
-    </tbody>
+    <?php if (empty($efos)) { ?>
+      <tbody>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td> 
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+          <td>/</td>
+        </tr>
+      </tbody>
+    <?php } else { ?>
+      <?php foreach ($efos as $e) { ?>
+      <tbody>
+        <tr>
+          <td><?php echo $e['Journey_Date']; ?></td>
+          <td><?php echo $e['District']; ?></td>
+          <td><?php echo $e['Salesman']; ?></td> 
+          <td><?php echo $e['Planned']; ?></td>
+          <td><?php echo $e['Visited']; ?></td>
+          <td><?php echo $e['Un_planed']; ?></td>
+          <td><?php echo $e['Start_Time']; ?></td>
+          <td><?php echo $e['End_Time']; ?></td>
+          <td><?php echo $e['Spent']; ?></td>
+          <td><?php echo $e['Time_Per_Outlet']; ?></td>
+          <td><?php echo $e['Nosale']; ?></td>
+          <td><?php echo $e['Productive']; ?></td>
+          <td><?php echo $e['Geo_mismatch']; ?></td>
+          <td><?php echo $e['Line']; ?></td>
+          <td><?php echo $e['Total_Qty']; ?></td>
+          <td><?php echo $e['Total_Sale']; ?></td>
+        </tr>
+      </tbody>
+      <?php } ?>
     <?php } ?>
+    
   </table>
 </div>

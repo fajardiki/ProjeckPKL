@@ -1,3 +1,71 @@
+
+<script type="text/javascript">
+<!-- create the highcharts object -->
+
+$(function () {
+        $('#container').highcharts({
+        
+
+        
+            chart: {
+                type: 'column',
+                 backgroundColor: 'transparent'
+            },
+            title: {
+                text: ''
+            },
+
+            xAxis: {
+                categories: ['May 2013', 'June 2013', 'July 2013', 'August 2013', 'September 2013', 'October 2013', 'November 2013', 'December 2013', 'January 2014', 'February 2014', 'March 2014', 'April 2014', ]
+            },
+            yAxis: {
+                 type: 'datetime', //y-axis will be in milliseconds
+                 dateTimeLabelFormats: { //force all formats to be hour:minute:second
+                    second: '%H:%M:%S',
+                    minute: '%H:%M:%S',
+                    hour: '%H:%M:%S',
+                    day: '%H:%M:%S',
+                    week: '%H:%M:%S',
+                    month: '%H:%M:%S',
+                    year: '%H:%M:%S'
+                }, 
+                title: {
+                    text: 'Time Spent on Phone'
+                }
+            },
+            tooltip: {
+                 type: 'datetime', //y-axis will be in milliseconds
+                 dateTimeLabelFormats: { //force all formats to be hour:minute:second
+                    second: '%H:%M:%S',
+                    minute: '%H:%M:%S',
+                    hour: '%H:%M:%S',
+                    day: '%H:%M:%S',
+                    week: '%H:%M:%S',
+                    month: '%H:%M:%S',
+                    year: '%H:%M:%S'
+                }, 
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} calls</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                { name: 'Michelle', data: [7200, 7200, 3600, 7200, 7200, 7200, 7200, 3600, 0, 0, 0, 0, ] },{ name: 'Kim', data: [14400, 32400, 36000, 36000, 32400, 32400, 21600, 28800, 21600, 0, 0, 0, ] },{ name: 'Katie', data: [0, 0, 0, 0, 0, 0, 0, 28800, 10800, 0, 0, 0, ] },            ]
+        });
+    });
+</script>
+
+
+
+<!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 <script>
 var options = {
   chart: {
@@ -29,7 +97,7 @@ var options = {
 }
 
 var chart = Highcharts.chart(options);
-</script>
+</script> -->
 
 
 <!-- <div class="row">
