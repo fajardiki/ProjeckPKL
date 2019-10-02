@@ -58,30 +58,30 @@ class C_jogja extends CI_Controller {
 
 	public function efosall() {
 		$data = array(
-			'efosall' => $this->M_bantul->selectefosbantul()
+			'efosall' => $this->M_jogja->selectefosjogja()
 		);
-		$this->load->view('Bantul/V_efosall',$data);
+		$this->load->view('Jogja/V_efosall',$data);
 	}
 
 	public function plane() {
 		$data = array(
-			'plane' => $this->M_bantul->selectplanebantul()
+			'plane' => $this->M_jogja->selectplanejogja()
 		);
-		$this->load->view('Bantul/V_planebantul',$data);
+		$this->load->view('Jogja/V_planejogja',$data);
 	}
 
 	public function time() {
 		$data = array(
-			'timemarket' => $this->M_bantul->selecttimebantul()
+			'timemarket' => $this->M_jogja->selecttimejogja()
 		);
-		$this->load->view('Bantul/V_timebantul',$data);
+		$this->load->view('Jogja/V_timejogja',$data);
 	}
 
 	public function pjp() {
 		$data = array(
-			'pjpcomply' => $this->M_bantul->selectpjpbantul()
+			'pjpcomply' => $this->M_jogja->selectpjpjogja()
 		);
-		$this->load->view('Bantul/V_planebantul',$data);
+		$this->load->view('Jogja/V_planejogja',$data);
 	}
 }
 ?>

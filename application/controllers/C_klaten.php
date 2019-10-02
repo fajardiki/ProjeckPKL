@@ -55,5 +55,33 @@ class C_klaten extends CI_Controller {
 			$this->M_klaten->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
 		}
 	}
+
+	public function efosall() {
+		$data = array(
+			'efosall' => $this->M_klaten->selectefosklaten()
+		);
+		$this->load->view('Klaten/V_efosall',$data);
+	}
+
+	public function plane() {
+		$data = array(
+			'plane' => $this->M_klaten->selectplaneklaten()
+		);
+		$this->load->view('Klaten/V_planeklaten',$data);
+	}
+
+	public function time() {
+		$data = array(
+			'timemarket' => $this->M_klaten->selecttimeklaten()
+		);
+		$this->load->view('Klaten/V_timeklaten',$data);
+	}
+
+	public function pjp() {
+		$data = array(
+			'pjpcomply' => $this->M_klaten->selectpjpklaten()
+		);
+		$this->load->view('Klaten/V_planeklaten',$data);
+	}
 }
 ?>

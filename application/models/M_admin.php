@@ -37,7 +37,7 @@
 
  		public function selectallpjp() {
  			$hoursl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE WEEK(Journey_Date) = WEEK(CURDATE()) GROUP BY WEEK(Journey_Date);");
- 			return $hsl->result_array();
+ 			return $hoursl->result_array();
  		}
 
  		public function selectefos() {

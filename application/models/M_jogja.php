@@ -36,7 +36,6 @@ class M_jogja extends CI_Model {
 
 	public function savesales($Emp_Code, $Salesman, $Status, $Username, $Password) {
 		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$Emp_Code', '$Salesman', '$Status', '$Username', '$Password')");
-			return $query;
 	}
 }
 ?>

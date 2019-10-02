@@ -55,5 +55,33 @@ class C_magelang extends CI_Controller {
 			$this->M_magelang->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
 		}
 	}
+
+	public function efosall() {
+		$data = array(
+			'efosall' => $this->M_magelang->selectefosmagelang()
+		);
+		$this->load->view('Magelang/V_efosall',$data);
+	}
+
+	public function plane() {
+		$data = array(
+			'plane' => $this->M_magelang->selectplanemagelang()
+		);
+		$this->load->view('Magelang/V_planemagelang',$data);
+	}
+
+	public function time() {
+		$data = array(
+			'timemarket' => $this->M_magelang->selecttimemagelang()
+		);
+		$this->load->view('Magelang/V_timemagelang',$data);
+	}
+
+	public function pjp() {
+		$data = array(
+			'pjpcomply' => $this->M_magelang->selectpjpmagelang()
+		);
+		$this->load->view('Magelang/V_planemagelang',$data);
+	}
 }
 ?>
