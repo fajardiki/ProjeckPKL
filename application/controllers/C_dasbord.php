@@ -64,6 +64,7 @@ class C_dasbord extends CI_Controller {
 		$nama = $this->session->userdata('user');
 		if ($nama[0]['status']=='admin') {
 			$data = array(
+				'side3' => 'V_efos',
 				'plane' => $this->M_admin->selectallfost(),
 				'timemarket' => $this->M_admin->selectalltime(),
 				'pjpcomply' => $this->M_admin->selectallpjp(),
@@ -100,7 +101,12 @@ class C_dasbord extends CI_Controller {
 	public function hapussales(){
 		$id = $this->uri->segment(3);
 		$this->M_admin->hapussales($id);
-		redirect('C_dasbord/updatesales');
+		redirect('http://[::1]/ProjeckPKL/C_dasbord/updatesales');
+	}
+	public function editsales(){
+		$id = $this->uri->segment(3);
+		$this->M_admin->editsales($id);
+		redirect('http://[::1]/ProjeckPKL/C_dasbord/updatesales');
 	}
 
 	public function savesales(){

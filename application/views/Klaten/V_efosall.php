@@ -32,8 +32,7 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Bantul/V_navbarbantul'); ?>
 <!-- Akhir -->
-
-<div class="container-fluid" style="overflow: hidden; padding: 0;">
+	<div class="container-fluid" style="overflow: hidden; padding: 0;">
 		<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
 		  <thead class="thead-dark">
 		    <tr>

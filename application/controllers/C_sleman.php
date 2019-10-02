@@ -55,5 +55,33 @@ class C_sleman extends CI_Controller {
 			$this->M_sleman->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
 		}
 	}
+
+	public function efosall() {
+		$data = array(
+			'efosall' => $this->M_sleman->selectefossleman()
+		);
+		$this->load->view('Sleman/V_efosall',$data);
+	}
+
+	public function plane() {
+		$data = array(
+			'plane' => $this->M_sleman->selectplanesleman()
+		);
+		$this->load->view('Sleman/V_planesleman',$data);
+	}
+
+	public function time() {
+		$data = array(
+			'timemarket' => $this->M_sleman->selecttimesleman()
+		);
+		$this->load->view('Sleman/V_timesleman',$data);
+	}
+
+	public function pjp() {
+		$data = array(
+			'pjpcomply' => $this->M_sleman->selectpjpsleman()
+		);
+		$this->load->view('Sleman/V_planesleman',$data);
+	}
 }
 ?>

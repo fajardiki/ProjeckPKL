@@ -7,7 +7,15 @@
 
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	          $('ul li a').click(function(){
+	            $('li a').removeClass("active");
+	            $(this).addClass("active");
+	        });
+	    });
+	</script>
 	<style>
 		body {
 		  font-family: 'Lato', sans-serif;
@@ -19,7 +27,20 @@
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
-
+	<ul class="nav nav-tabs nav-justified bg-dark">
+	    <li class="nav-item">
+	      <a id="efos" class="nav-link active" href="#">EFOS</a>
+	    </li>
+	    <li class="nav-item">
+	      <a id="plane" class="nav-link" href="#">PLANE</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="#">TIME</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="#">PJP</a>
+	    </li>
+	 </ul>
 	<h1>EFOS KLATEN</h1>
 
 <!-- Footer -->

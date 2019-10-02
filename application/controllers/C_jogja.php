@@ -55,5 +55,33 @@ class C_jogja extends CI_Controller {
 			$this->M_jogja->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
 		}
 	}
+
+	public function efosall() {
+		$data = array(
+			'efosall' => $this->M_bantul->selectefosbantul()
+		);
+		$this->load->view('Bantul/V_efosall',$data);
+	}
+
+	public function plane() {
+		$data = array(
+			'plane' => $this->M_bantul->selectplanebantul()
+		);
+		$this->load->view('Bantul/V_planebantul',$data);
+	}
+
+	public function time() {
+		$data = array(
+			'timemarket' => $this->M_bantul->selecttimebantul()
+		);
+		$this->load->view('Bantul/V_timebantul',$data);
+	}
+
+	public function pjp() {
+		$data = array(
+			'pjpcomply' => $this->M_bantul->selectpjpbantul()
+		);
+		$this->load->view('Bantul/V_planebantul',$data);
+	}
 }
 ?>
