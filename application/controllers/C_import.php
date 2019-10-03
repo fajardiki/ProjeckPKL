@@ -47,7 +47,7 @@ class C_import extends CI_Controller {
                     $data[] = array(
                     	'Date_Update' => date('Y-m-d'),
                         'Journey_Date' => $JourneyDate,
-    				    'Distrik_Code' => $DistrikCode,	
+    				    'District_Code' => $DistrikCode,	
     				    'Emp_Code' => $EmpCode,
     				    'Planned' => $Planned,
     				    'Visited' => $Visited,
