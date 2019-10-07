@@ -42,68 +42,72 @@
 		<div id="start_time"></div> 
 	</div>
 </div>
+<?php foreach ($timemarket as $tm) {
+    $week[] = $tm['Week'];
+    $timeinmarket[] = intval($tm['TimeInMarket']);
+    $spent[] = intval($tm['Spent']);
+    $timeperoutlet[] = intval($tm['TimePerOutlet']);
+} ?>
 <script type="">
-	Highcharts.getJSON(
-    'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/usdeur.json',
-    function (data) {
-
-        Highcharts.chart('container', {
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: 'USD to EUR exchange rate over time'
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
-                title: {
-                    text: 'Exchange rate'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 0,
-                            x2: 0,
-                            y2: 1
-                        },
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
-                    },
-                    marker: {
-                        radius: 2
-                    },
-                    lineWidth: 1,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    },
-                    threshold: null
-                }
-            },
-
-            series: [{
-                type: 'area',
-                name: 'USD to EUR',
-                data: data
-            }]
-        });
-    }
-);
+Highcharts.chart('start_time', {
+    time: {
+        timezone: 'Asia/Jakarta'
+    },
+    chart: {
+        backgroundColor: '#cccccc'
+    },
+    title: {
+        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+    },
+    xAxis: {
+        categories: <?php echo json_encode($week); ?>,
+        title: {
+            text: 'Week'
+        }
+    },
+    yAxis: {
+        labels: {
+            formatter: function() {
+                // show the labels as whole hours (3600000 milliseconds = 1 hour)
+                return Highcharts.numberFormat(this.value/3600);
+            }
+        },
+        title: {
+            text: 'Hours'
+        },
+        tickInterval: 3600 // number of milliseconds in one hour
+    },
+    labels: {
+        items: [{
+            style: {
+                left: '50px',
+                top: '18px',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'black'
+            }
+        }]
+    },
+    series: [{
+        type: 'column',
+        name: 'Time In Market',
+        data: <?php echo json_encode($timeinmarket); ?>
+    }, {
+        type: 'column',
+        name: 'Spent',
+        data: <?php echo json_encode($spent); ?>
+    }, {
+        type: 'spline',
+        name: 'Time Per Outlet',
+        data: <?php echo json_encode($timeperoutlet); ?>,
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }]
+});
 </script>
 
 <!-- Footer -->

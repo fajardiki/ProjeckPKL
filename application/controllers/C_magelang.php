@@ -81,7 +81,7 @@ class C_magelang extends CI_Controller {
 		$data = array(
 			'pjpcomply' => $this->M_magelang->selectpjpmagelang()
 		);
-		$this->load->view('Magelang/V_planemagelang',$data);
+		$this->load->view('Magelang/V_pjpmagelang',$data);
 	}
 }
 ?>

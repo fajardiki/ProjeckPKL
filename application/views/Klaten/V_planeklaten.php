@@ -32,11 +32,6 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Bantul/V_navbarbantul'); ?>
 <!-- Akhir -->
-<div class="row">
-	<div class="col-lg-12"
-		<h1>PLANE<small> Grafik Plane</small></h1>    
-	 </div>
-</div>
 
 <div class="row">
 	<div class="col-lg-12"
@@ -44,59 +39,52 @@
 	</div>
 </div>
 
+<?php foreach ($plane as $p) {
+    $week[] = $p['Week'];
+    $planed[] = intval($p['Planned']);
+    $productive[] = intval($p['Productive']);
+    $nosale[] = intval($p['Nosale']);
+} ?> 
+
 <script type="text/javascript">
-	Highcharts.chart('grafik_plane', {
-    chart: {
-        type: 'area'
-    },  
+Highcharts.chart('grafik_plane', {
     title: {
-        text: 'Laporan Plane Pada Per Enam Bulan '
-    },
-    subtitle: {
-        text: 'Source: Wikipedia.org'
+        text: 'Diagram Plane'
     },
     xAxis: {
-        categories: ['oktober', 'novenber', 'desember', 'januari', 'februari', 'maret',],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
+        categories: <?php echo json_encode($week); ?>
     },
-    yAxis: {
-        title: {
-            text: 'Billions'
-        },
-        labels: {
-            formatter: function () {
-                return this.value / 1000;
+    labels: {
+        items: [{
+            html: 'Total fruit consumption',
+            style: {
+                left: '50px',
+                top: '18px',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'black'
             }
-        }
-    },
-    tooltip: {
-        split: true,
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
-        }
+        }]
     },
     series: [{
-        name: 'Plane',
-        data: [502, 635, 809, 947, 1402, 3634]
+        type: 'column',
+        name: 'Jane',
+        data: <?php echo json_encode($planed); ?>
     }, {
-        name: 'Visit',
-        data: [106, 107, 111, 133, 221, 767]
+        type: 'column',
+        name: 'Joe',
+        data: <?php echo json_encode($productive); ?>
     }, {
-        name: 'Unplane',
-        data: [163, 203, 276, 408, 547, 729]
-    }, ]
+        type: 'spline',
+        name: 'Average',
+        data: <?php echo json_encode($nosale); ?>,
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }]
 });
 </script>
 

@@ -32,79 +32,60 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Bantul/V_navbarbantul'); ?>
 <!-- Akhir -->
-<h1>PJP Comply</h1>
-<div class="row">
-	<div class="col-lg-12"
-		<h1>PLANE<small> Grafik PJP</small></h1>    
-	 </div>
-</div>
-
 <div class="row">
 	<div class="col-lg-12"
 		<div id="grafik_pjp"></div> 
 	</div>
 </div>
 
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script type="text/javascript">Highcharts.chart('grafik_pjp', {
-  chart: {
-    type: 'area'
-  },
-  title: {
-    text: 'Historic and Estimated PJP '
-  },
-  subtitle: {
-    text: 'Source: bik.org'
-  },
-  xAxis: {
-    categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-    tickmarkPlacement: 'on',
+<?php foreach ($pjpcomply as $pjp) {
+  $week[] = $pjp['Week'];
+  $pjpcom[] = intval($pjp['PJP_COMPLY']);
+  $geomath[] = intval($pjp['GEOMATCH']);
+  $productive_call[] = intval($pjp['PRODUCTIVE_CALL']);
+} ?>
+
+<script>
+Highcharts.chart('grafik_pjp', {
     title: {
-      enabled: false
-    }
-  },
-  yAxis: {
-    title: {
-      text: 'Billions'
+        text: 'Diagram Plane'
+    },
+    xAxis: {
+        categories: <?php echo json_encode($week); ?>
     },
     labels: {
-      formatter: function () {
-        return this.value / 1000;
-      }
-    }
-  },
-  tooltip: {
-    split: true,
-    valueSuffix: ' millions'
-  },
-  plotOptions: {
-    area: {
-      stacking: 'normal',
-      lineColor: '#666666',
-      lineWidth: 1,
-      marker: {
-        lineWidth: 1,
-        lineColor: '#666666'
-      }
-    }
-  },
-  series: [{
-    name: 'Asia',
-    data: [502, 635, 809, 947, 1402, 3634, 5268]
-  }, {
-    name: 'Africa',
-    data: [106, 107, 111, 133, 221, 767, 1766]
-  }, {
-    name: 'Europe',
-    data: [163, 203, 276, 408, 547, 729, 628]
-  }, {
-    name: 'America',
-    data: [18, 31, 54, 156, 339, 818, 1201]
-  }, {
-    name: 'Oceania',
-    data: [2, 2, 2, 6, 13, 30, 46]
-  }]
-});</script>
+        items: [{
+            html: 'Total fruit consumption',
+            style: {
+                left: '50px',
+                top: '18px',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'black'
+            }
+        }]
+    },
+    series: [{
+        type: 'column',
+        name: 'Jane',
+        data: <?php echo json_encode($pjpcom); ?>
+    }, {
+        type: 'column',
+        name: 'Joe',
+        data: <?php echo json_encode($geomath); ?>
+    }, {
+        type: 'spline',
+        name: 'Average',
+        data: <?php echo json_encode($productive_call); ?>,
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }]
+});
+</script>
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 

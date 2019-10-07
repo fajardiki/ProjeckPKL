@@ -81,7 +81,7 @@ class C_klaten extends CI_Controller {
 		$data = array(
 			'pjpcomply' => $this->M_klaten->selectpjpklaten()
 		);
-		$this->load->view('Klaten/V_planeklaten',$data);
+		$this->load->view('Klaten/V_pjpklaten',$data);
 	}
 }
 ?>

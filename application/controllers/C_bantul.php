@@ -81,7 +81,7 @@ class C_bantul extends CI_Controller {
 		$data = array(
 			'pjpcomply' => $this->M_bantul->selectpjpbantul()
 		);
-		$this->load->view('Bantul/V_planebantul',$data);
+		$this->load->view('Bantul/V_pjpbantul',$data);
 	}
 }
 ?>
