@@ -81,7 +81,7 @@ class C_jogja extends CI_Controller {
 		$data = array(
 			'pjpcomply' => $this->M_jogja->selectpjpjogja()
 		);
-		$this->load->view('Jogja/V_planejogja',$data);
+		$this->load->view('Jogja/V_pjpjogja',$data);
 	}
 }
 ?>

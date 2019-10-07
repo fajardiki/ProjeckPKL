@@ -72,7 +72,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($plane as $p) {
-			$week[] = $p['Week'];
+			$conces[] = $p['Conces'];
 			$planed[] = intval($p['Planned']);
 			$productive[] = intval($p['Productive']);
 			$nosale[] = intval($p['Nosale']);
@@ -87,7 +87,7 @@
 		        text: 'Diagram Planned - Produktive - Nosale'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week); ?>,
+		        categories: <?php echo json_encode($conces); ?>,
 		        title: {
 			        text: 'Week'
 			    }
@@ -192,7 +192,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($timemarket as $tm) {
-			$week1[] = $tm['Week'];
+			$conces1[] = $tm['Conces'];
 			$timeinmarket[] = intval($tm['TimeInMarket']);
 			$spent[] = intval($tm['Spent']);
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
@@ -213,7 +213,7 @@
 		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week1); ?>,
+		        categories: <?php echo json_encode($conces1); ?>,
 			    title: {
 			        text: 'Week'
 			    }
@@ -315,7 +315,7 @@
 		</script>
 	<?php } else { ?>
 		<?php foreach ($pjpcomply as $pjp) {
-			$week2[] = $pjp['Week'];
+			$conces2[] = $pjp['Conces'];
 			$pjpcom[] = intval($pjp['PJP_COMPLY']);
 			$geomath[] = intval($pjp['GEOMATCH']);
 			$productive_call[] = intval($pjp['PRODUCTIVE_CALL']);
@@ -330,7 +330,7 @@
 		        text: 'EFOS ADMM Group 2019'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week2); ?>,
+		        categories: <?php echo json_encode($conces2); ?>,
 		        title: {
 			        text: 'Week'
 			    }

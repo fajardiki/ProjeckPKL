@@ -20,7 +20,7 @@ class C_dasbord extends CI_Controller {
 			if ($nama[0]['status']=='admin') {
 				$data = array(
 					'side2' => 'V_home',
-					'plane' => $this->M_admin->selectallfost(),
+					'plane' => $this->M_admin->selectallplane(),
 					'timemarket' => $this->M_admin->selectalltime(),
 					'pjpcomply' => $this->M_admin->selectallpjp()
  				);
@@ -44,7 +44,7 @@ class C_dasbord extends CI_Controller {
 		if ($nama[0]['status']=='admin') {
 			$data = array(
 				'side2' => 'V_home',
-				'plane' => $this->M_admin->selectallfost(),
+				'plane' => $this->M_admin->selectallplane(),
 				'timemarket' => $this->M_admin->selectalltime(),
 				'pjpcomply' => $this->M_admin->selectallpjp()
 			);

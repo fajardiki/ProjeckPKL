@@ -24,19 +24,19 @@
 			return $hsl->result_array();
 		}
 
-		public function selectallfost() {
- 			$hsl = $this->db->query('SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE WEEK(Journey_Date) = WEEK(CURDATE()) GROUP BY WEEK(Journey_Date)');
+		public function selectallplane() {
+ 			$hsl = $this->db->query('SELECT nama_conces as Conces, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE MONTH(CURDATE()) AND year(CURDATE()) GROUP BY a.id_conces;');
  			return $hsl->result_array();
  		}
 
  		public function selectalltime() {
- 			$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos GROUP BY WEEK(Journey_Date)");
+ 			$hsl = $this->db->query("SELECT nama_conces as Conces, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces GROUP BY a.id_conces");
 
  			return $hsl->result_array();
  		}
 
  		public function selectallpjp() {
- 			$hoursl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE WEEK(Journey_Date) = WEEK(CURDATE()) GROUP BY WEEK(Journey_Date);");
+ 			$hoursl = $this->db->query("SELECT nama_conces as Conces, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces GROUP BY a.id_conces;");
  			return $hoursl->result_array();
  		}
 
