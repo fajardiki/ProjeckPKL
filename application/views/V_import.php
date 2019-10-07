@@ -1,6 +1,16 @@
 <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
   <h5 align="center">Import File Excel di sini!!</h5>           
   <div class="form-group">
+    <div class="col-sm-12">
+      <select class="form-control mb-1" id="conces" name="conces">
+        <option>-- Pilih Conces --</option>
+        <option value="1">Jogja</option>
+        <option value="2">Magelang</option>
+        <option value="3">Bantul</option>
+        <option value="4">Klaten</option>
+        <option value="5">Sleman</option>
+      </select>
+    </div>
     <div class="col-sm-12">  
       <input type="file" name="file" class="form-control" id="file" required accept=".xls, .xlsx" /></p>
     </div>

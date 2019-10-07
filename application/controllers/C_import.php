@@ -14,6 +14,7 @@ class C_import extends CI_Controller {
 
     public function saveimport() {
     if(isset($_FILES["file"]["name"])) {
+            $conces = $this->input->post('conces');
             $path = $_FILES["file"]["tmp_name"];
             $object = PHPExcel_IOFactory::load($path);
 
@@ -46,6 +47,7 @@ class C_import extends CI_Controller {
 
                     $data[] = array(
                     	'Date_Update' => date('Y-m-d'),
+                        'id_conces' => $conces,
                         'Journey_Date' => $JourneyDate,
     				    'District_Code' => $DistrikCode,	
     				    'Emp_Code' => $EmpCode,

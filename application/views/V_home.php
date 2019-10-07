@@ -198,7 +198,6 @@
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
 		} ?>
 
-		<?php echo json_encode($timeinmarket); ?>
 
 		<div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
@@ -250,7 +249,6 @@
 		    }, {
 		        type: 'column',
 		        name: 'Spent',
-		        lineColor: Highcharts.getOptions().colors[2],
 		        data: <?php echo json_encode($spent); ?>
 		    }, {
 		        type: 'spline',

@@ -4,6 +4,9 @@
 	<title></title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<style>
 		body {
 		  font-family: 'Lato', sans-serif;
@@ -44,8 +47,8 @@
 					      <td><?php echo $us['Username']; ?></td>
 					      <td><?php echo $us['Password']; ?></td>
 					      <td style="text-align: center;">
-					      	<a href="<?php echo base_url().'C_dasbord/edit' ?>" class="fas fa-edit"></a>
-					      	<a href="<?php echo base_url().'C_dasbord/hapussales/'.$us['Emp_Code'] ?>" class="fas fa-trash"></a>
+					      	<a href="<?php echo base_url().'C_dasbord/edit' ?>" class="fa fa-edit" style="font-size:15px;"></a>
+					      	<a href="<?php echo base_url().'C_dasbord/hapussales/'.$us['Emp_Code'] ?>" class="fa fa-trash" style="font-size:15px;"></a>
 					      </td>
 					    </tr>
 					  </tbody>
