@@ -28,7 +28,7 @@
 			<h3>EFOS ADMM CONCES KLATEN</h3>
 		</div>
 	</div>
-	
+	<br>
 	<!-- Grafik Planed -->
 	<?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
@@ -144,7 +144,7 @@
 	<?php } ?>
 
 	<!-- Akhir Grafik Planed -->
-
+	<br><br>
 
 	<!-- Grafik Time -->
 	<?php if (empty($timemarket)) { ?>
@@ -274,7 +274,7 @@
 		</script>
 	<?php } ?>
 	<!-- Akhir Grafik Time -->
-
+	<br><br>
 	<!-- Grafik PJP COMPLY -->
 	<?php if (empty($pjpcomply)) { ?>
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
@@ -337,7 +337,7 @@
 		<script>
 			Highcharts.chart('graft3', {
 		    title: {
-		        text: 'EFOS ADMM Group 2019'
+		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($week2); ?>,
@@ -387,6 +387,7 @@
 		});
 		</script>
 	<?php } ?>
+	<br><br><br>
 </div>
 	<!-- Akhir Grafik PJP COMPLY -->
 

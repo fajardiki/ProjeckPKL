@@ -28,7 +28,8 @@
 			<h3>EFOS ADMM CONCES BANTUL</h3>
 		</div>
 	</div>
-	
+
+	<br>
 	<!-- Grafik Planed -->
 	<?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
@@ -145,6 +146,7 @@
 
 	<!-- Akhir Grafik Planed -->
 
+	<br><br>
 
 	<!-- Grafik Time -->
 	<?php if (empty($timemarket)) { ?>
@@ -206,7 +208,6 @@
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
 		} ?>
 
-		<?php echo json_encode($timeinmarket); ?>
 
 		<div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
@@ -275,6 +276,8 @@
 	<?php } ?>
 	<!-- Akhir Grafik Time -->
 
+	<br><br>
+
 	<!-- Grafik PJP COMPLY -->
 	<?php if (empty($pjpcomply)) { ?>
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
@@ -337,7 +340,7 @@
 		<script>
 			Highcharts.chart('graft3', {
 		    title: {
-		        text: 'EFOS ADMM Group 2019'
+		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($week2); ?>,
@@ -389,6 +392,8 @@
 	<?php } ?>
 </div>
 	<!-- Akhir Grafik PJP COMPLY -->
+
+<br><br><br>
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>

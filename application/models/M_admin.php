@@ -20,23 +20,23 @@
 		}
 
 		public function getefos($date) {
-			$hsl = $this->db->query("SELECT * FROM m_efos a INNER JOIN m_selesman b ON a.Emp_Code = b.Emp_Code INNER JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date'");
+			$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date'");
 			return $hsl->result_array();
 		}
 
 		public function selectallplane() {
- 			$hsl = $this->db->query('SELECT nama_conces as Conces, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE MONTH(CURDATE()) AND year(CURDATE()) GROUP BY a.id_conces;');
+ 			$hsl = $this->db->query('SELECT nama_conces as Conces, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(CURDATE()) GROUP BY a.id_conces;');
  			return $hsl->result_array();
  		}
 
  		public function selectalltime() {
- 			$hsl = $this->db->query("SELECT nama_conces as Conces, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces GROUP BY a.id_conces");
+ 			$hsl = $this->db->query("SELECT nama_conces as Conces, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(CURDATE()) GROUP BY a.id_conces");
 
  			return $hsl->result_array();
  		}
 
  		public function selectallpjp() {
- 			$hoursl = $this->db->query("SELECT nama_conces as Conces, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces GROUP BY a.id_conces;");
+ 			$hoursl = $this->db->query("SELECT nama_conces as Conces, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(CURDATE()) GROUP BY a.id_conces;");
  			return $hoursl->result_array();
  		}
 

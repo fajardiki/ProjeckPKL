@@ -28,6 +28,8 @@
 			<h3>EFOS ADMM CONCES MAGELANG</h3>
 		</div>
 	</div>
+
+	<br><br>
 	
 	<!-- Grafik Planed -->
 	<?php if (empty($plane)) { ?>
@@ -145,6 +147,7 @@
 
 	<!-- Akhir Grafik Planed -->
 
+	<br><br><br>
 
 	<!-- Grafik Time -->
 	<?php if (empty($timemarket)) { ?>
@@ -275,6 +278,8 @@
 	<?php } ?>
 	<!-- Akhir Grafik Time -->
 
+	<br><br><br>
+
 	<!-- Grafik PJP COMPLY -->
 	<?php if (empty($pjpcomply)) { ?>
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
@@ -387,6 +392,7 @@
 		});
 		</script>
 	<?php } ?>
+	<br><br><br>
 </div>
 	<!-- Akhir Grafik PJP COMPLY -->
 

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <?php $nama = $this->session->userdata('user'); ?>
 
 
@@ -62,11 +64,7 @@
 	         </li>
 	        </ul>
 	        <ul class="navbar-nav">
-	        	<span class="navbar-text">
-	        		
-			     	
-			    </span li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	            <a class="nav-link fa fa-sign-out" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
 	              	
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
@@ -107,14 +105,14 @@
 	        <ul class="navbar-nav">
 	        	<span class="navbar-text">
 	        		
-			     	
+	
 			    </span li class="nav-item dropdown">
-	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	            <a class="nav-link fa fa-sign-out" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	            	<img style="width: 35px;" src="">
 	              	
 	            </a>
 	            <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-	              <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">Log out</a>
+	              <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
 	            </div>
 	        </ul>
 	      </div> 

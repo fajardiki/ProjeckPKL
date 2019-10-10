@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,72 +19,42 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<h1 align="center" style="margin-bottom: 50px;">Salesman Magelang</h1>
-<!--<div class="row justify-content-center">-->
-
-<div class="container">
-		<div class="row">
-			<div class="col-sm-6">
-				<table class="table table-bordered table-responsive" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-					<thead class="thead-dark">
-				<!--<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-					<thead class="thead-dark">-->
-					   <tr>
-					 	<th scope="col">Emp_Code</th>
-						<th scope="col">Salesman</th>
-						<th scope="col">Status</th>
-						<th scope="col">Username</th>
-						<th scope="col">Password</th>
-						<th scope="col">Option</th>
-					  </tr>
-					</thead>
-			 		<?php foreach ($updatesales as $us) { ?>
-					  <tbody>
-					    <tr>
-					      <th class="table-dark" style="text-align: center;"><?php echo $us['Emp_Code']; ?></th>
-					      <td><?php echo $us['Salesman']; ?></td>
-					      <td><?php echo $us['Status']; ?></td>
-					      <td><?php echo $us['Username']; ?></td>
-					      <td><?php echo $us['Password']; ?></td>
-					      <td style="text-align: center;">
-					      	<a href="<?php echo base_url().'C_dasbord/edit' ?>" class="fa fa-edit" style="font-size:15px;"></a>
-					      	<a href="<?php echo base_url().'C_dasbord/hapussales/'.$us['Emp_Code'] ?>" class="fa fa-trash" style="font-size:15px;"></a>
-					      </td>
-					    </tr>
-					  </tbody>
-					  <?php } ?>
-				</table>
-			</div>
-			<div class="col-sm-6">
-			<form method="post" action="<?php echo base_url().'C_dasbord/savesales'?>">
-				<div class="form-group">
-					<label>Emp Code</label>
-					<input type="text" name="Emp_Code" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Salesman</label>
-					<input type="text" name="Salesman" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Status</label>
-					<input type="text" name="Status" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Username</label>
-					<input type="text" name="Username" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input type="text" name="Password" class="form-control">
-				</div>
-					<div class="form-group">
-					<button type="submit" class="btn btn-primary" name="save">Save</button>
-				</div>
-			</form>				
+<div class="container-fluid mb-5 mt-3">
+	<h1 align="center">Salesman Magelang</h1>
+</div>
+<div class="container-fluid" align="center" style="margin-bottom: 6px;">
+	<div class="row">
+	<?php foreach ($updatesales as $us) { ?>
+		<div class="col-sm-4 mb-2">
+			<div class="card" style="width:400px">
+			    <img class="card-img-top" src="<?php echo base_url().'assets/img/user.jpg' ?>" alt="Card image" style="width:100%">
+			    <div class="card-body">
+			      <h4 class="card-title"><?php echo $us['Salesman']; ?></h4>
+			      <p class="card-text"><?php echo $us['Status']; ?> / <?php echo $us['Username']; ?> / <?php echo $us['Password']; ?></p>
+			      <a href="<?php echo base_url().'C_magelang/diagramsales' ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
+			  	  <a href="<?php echo base_url().'C_magelang/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a>
+			  	  <a href="<?php echo base_url().'C_magelang/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a>
+			    </div>
+			 </div>
+		</div>
+	<?php } ?>
+	<a href="<?php echo base_url().'C_magelang/savesales' ?>">
+		<div class="col-sm-4 mb-2">
+			<div class="card" style="width:400px">
+			    <img class="card-img-top" src="<?php echo base_url().'assets/img/tuser.jpg' ?>" alt="Card image" style="width:100%">
+			    <div class="card-body">
+			      	<h4 class="card-title">Tambah Salesman</h4>
+			      	<p class="card-text">Status / Username / Password</p>
+				    <a href="#" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
+			  	  	<a href="#" class="card-link fa fa-edit" style="font-size:15px;"></a>
+			  	  	<a href="#" class="card-link fa fa-trash" style="font-size:15px;"></a>
+			    </div>
 			</div>
 		</div>
+	</a>
+	</div>
 </div>
-
+<br><br><br>
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->
