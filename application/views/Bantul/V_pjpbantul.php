@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<body style="font-family: cambria;">
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul li a').click(function(){

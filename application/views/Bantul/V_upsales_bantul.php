@@ -13,53 +13,49 @@
 		}
 	</style>
 </head>
-<body>
+<body style="font-family: cambria;">
 
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
 <div class="container-fluid mb-5 mt-3">
-	<h1 align="center">Salesman Bantul</h1>
+	<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Bantul</h1>
+	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
-<div class="container-fluid" align="center" style="margin-bottom: 6px;">
+<div class="container-fluid" align="center" style="margin-bottom: 6px; font-size: 11px;">
 	<div class="row">
-	<?php foreach ($updatesales as $us) { ?>
 		<div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-12 mb-2">
-					<div class="media border p-3">
-					  <img src="<?php echo base_url().'assets/img/user.jpg' ?>" alt="John Doe" class="mr-3 mt-3" style="width:100px;">
-					  <div class="media-body">
-					    <h4><?php echo $us['Salesman']; ?></h4>
-					    <p><?php echo $us['Status']; ?> / <?php echo $us['Username']; ?> / <?php echo $us['Password']; ?></p>
-					    <a href="<?php echo base_url().'C_bantul/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
-					  	<a href="<?php echo base_url().'C_bantul/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a>
-					  	<a href="<?php echo base_url().'C_bantul/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a>
-					  </div>
-					</div>
-				</div>
-			</div>
+			<table class="table table-sm" style="text-align: center;">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Emp_Code</th>
+			      <th scope="col">Nama</th>
+			      <th scope="col">Username</th>
+			      <th scope="col">Password</th>
+			      <th scope="col" colspan="3">Opsi</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<?php foreach ($updatesales as $us) { ?>
+			    <tr>
+			      <th scope="row">1</th>
+			      <td><?php echo $us['Emp_Code']; ?></td>
+			      <td><?php echo $us['Salesman']; ?></td>
+			      <td><?php echo $us['Username']; ?></td>
+			      <td><?php echo $us['Password']; ?></td>
+			      <td><a href="<?php echo base_url().'C_bantul/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_bantul/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_bantul/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
+			    </tr>
+				<?php } ?>
+				<tr>
+					<td colspan="8"><a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_bantul/savesales' ?>">Tambah</a></td>
+				</tr>
+			   </tbody>
+			</table>
 		</div>
-	<?php } ?>
-	<a href="<?php echo base_url().'C_bantul/savesales' ?>">
-		<div class="col-sm-12">
-			<div class="row">
-				<div class="col-sm-12 mb-2">
-					<div class="media border p-3">
-					  <img src="<?php echo base_url().'assets/img/tuser.jpg' ?>" alt="John Doe" class="mr-3 mt-3" style="width:100px;">
-					  <div class="media-body">
-					    <h4>Tambah Salesman</h4>
-					    <p>Status / Username / Password</p>
-					    <a class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
-					  	<a class="card-link fa fa-edit" style="font-size:15px;"></a>
-					  	<a class="card-link fa fa-trash" style="font-size:15px;"></a>
-					  </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</a>
 	</div>
 </div>
 <br><br><br>

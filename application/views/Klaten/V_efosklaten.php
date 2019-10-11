@@ -22,7 +22,7 @@
 		}
 	</style>
 </head>
-<body>
+<body style="font-family: cambria;">
 
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>

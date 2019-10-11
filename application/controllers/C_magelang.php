@@ -95,6 +95,7 @@ class C_magelang extends CI_Controller {
 				$conces = $this->input->post("conces");
 				
 				$this->M_magelang->savesales($empcode,$nama,$status,$username,$password,$conces);
+				redirect('C_magelang/updatesales');
 			}
 		}
 	}
@@ -225,5 +226,69 @@ class C_magelang extends CI_Controller {
 	}
 
 	// pjp
+
+	// District
+	public function updatedistrict(){
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+			$btn = $this->input->post('update');
+
+			if (!isset($id) AND !isset($btn)) {
+				$data = array(
+					'updatedistrict' => $this->M_magelang->selectupdatedistrict()
+				);
+
+				$this->load->view('Magelang/V_distrikmagelang',$data);
+			} elseif (isset($id)) {
+				$data = array(
+					'sales' => $this->M_magelang->selectdistrict($id)
+				);
+				$this->load->view('Magelang/V_updatedistrict',$data);
+			} else {
+
+				if (isset($btn)) {
+					$empcode = $this->input->post('empcode');
+					$nama = $this->input->post('nama');
+					$status = $this->input->post('status');
+					$username = $this->input->post('username');
+					$password = $this->input->post('password');
+					$conces = $this->input->post('conces');
+
+					$this->M_magelang->updatesales($empcode,$nama,$status,$username,$password,$conces);
+					redirect('C_magelang/updatedistrict');
+				}
+			}
+		}
+	}
+
+	public function hapusdistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$discod = $this->uri->segment(3);
+			$this->M_magelang->hapusdistrict($discod);
+			redirect('C_magelang/updatedistrict');
+		}
+	}
+
+	public function savedistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('save');
+			if (!isset($btn)) {
+				$this->load->view('Magelang/V_tambahdistrict');
+			} else {
+				$discode = $this->input->post("district_code");
+				$district = $this->input->post("district");
+				$conces = $this->input->post("conces");
+
+				$this->M_magelang->savedistrict($discode, $district, $conces);
+				redirect('C_magelang/updatedistrict');
+			}
+		}
+	}
 }
 ?>

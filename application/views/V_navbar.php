@@ -21,7 +21,7 @@
 	        <ul class="navbar-nav mr-auto">
 
 	       	<li class="nav-item">
-	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/home'; ?>">BERANDA</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord'; ?>">BERANDA</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,7 +32,6 @@
 	              <a class="dropdown-item" href="<?php echo base_url().'C_magelang' ?>" style="color: #ffffff">Andrawina Magelang</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_bantul' ?>" style="color: #ffffff">Andrawina Bantul</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_klaten' ?>" style="color: #ffffff">Andrawina Klaten</a>
-	              <a class="dropdown-item" href="<?php echo base_url().'C_sleman' ?>" style="color: #ffffff">Andrawina Sleman</a>
 	            </div>
 	        </li>
 	        <li class="nav-item dropdown">
@@ -44,7 +43,6 @@
 	              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/efos'; ?>" style="color: #ffffff">Andrawina Magelang</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/efos'; ?>" style="color: #ffffff">Andrawina Bantul</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/efos'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-	              <a class="dropdown-item" href="<?php echo base_url().'C_sleman/efos'; ?>" style="color: #ffffff">Andrawina Sleman</a>
 	            </div>
 	        </li>
 	        <li class="nav-item dropdown">
@@ -56,12 +54,22 @@
 	              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatesales'; ?>" style="color: #ffffff">Andrawina Magelang</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatesales'; ?>" style="color: #ffffff">Andrawina Bantul</a>
 	              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatesales'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-	              <a class="dropdown-item" href="<?php echo base_url().'C_sleman/updatesales'; ?>" style="color: #ffffff">Andrawina Sleman</a>
 	            </div>
 	        </li>
-	         <li class="nav-item"> 
+	        <li class="nav-item dropdown">
+	            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	              DISTRICT
+	            </a>
+	            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
+	              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatedistrict'; ?>" style="color: #ffffff">Andrawina Jogja</a>
+	              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatedistrict'; ?>" style="color: #ffffff">Andrawina Magelang</a>
+	              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatedistrict'; ?>" style="color: #ffffff">Andrawina Bantul</a>
+	              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatedistrict'; ?>" style="color: #ffffff">Andrawina Klaten</a>
+	            </div>
+	        </li>
+	        <li class="nav-item"> 
 	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/importexcel'; ?>">IMPORT EXCEL</a>
-	         </li>
+	        </li>
 	        </ul>
 	        <ul class="navbar-nav">
 	            <a class="nav-link fa fa-sign-out" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
@@ -80,8 +88,6 @@
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="">SALES</a>
-	      
-
 
 	      <!-- Toggler/collapsibe Button -->
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -93,10 +99,10 @@
 	        <ul class="navbar-nav mr-auto">
 
 	       	<li class="nav-item"> 
-	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/home'; ?>">BERANDA</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord'; ?>">BERANDA</a>
 	        </li>
 	          <li class="nav-item"> 
-	            <a class="nav-link" href="">EFOS</a>
+	            <a class="nav-link" href="<?php echo base_url().'C_dasbord/efos'; ?>">EFOS</a>
 	          </li>
 	          <li class="nav-item"> 
 	            <a class="nav-link" href=""></a>

@@ -8,7 +8,7 @@
 		}
 	</style>
 </head>
-<body>
+<body style="font-family: cambria;">
 	<ul class="nav nav-tabs nav-justified bg-dark">
 	    <li class="nav-item">
 	      <a id="efos" class="nav-link" href="efosall">EFOS</a>
@@ -22,7 +22,6 @@
 	    <li class="nav-item">
 	      <a class="nav-link" href="pjp">PJP</a>
 	    </li>
-	 </ul>
-
+	  </ul>
 </body>
 </html>

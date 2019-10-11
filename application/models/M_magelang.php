@@ -61,7 +61,7 @@ class M_magelang extends CI_Model {
  	// Upadte sales
 
 	public function selectupdateseles() {
- 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password FROM m_selesman");
+ 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password FROM m_selesman WHERE id_conces = 2");
  			return $hsl->result_array();
  	}
 
@@ -85,6 +85,21 @@ class M_magelang extends CI_Model {
 
 	public function savesales($empcode,$nama,$status,$username,$password,$conces) {
 		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$empcode','$nama','$status','$username','$password','$conces')");
+	}
+
+	// District
+	public function selectupdatedistrict() {
+		$hsl = $this->db->query("SELECT nama_conces as Conces, District_Code, District FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE a.id_conces = 2");
+ 		return $hsl->result_array();
+	}
+
+	public function hapusdistrict($discod) {
+		$query = $this->db->query("DELETE FROM m_ruote WHERE District_Code='$discod'");
+			return $query;
+	}
+
+	public function savedistrict($discode, $district, $conces) {
+		$query = $this->db->query("INSERT INTO m_ruote VALUES ('$discode','$district','$conces')");
 	}
 }
 ?>

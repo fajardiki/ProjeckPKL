@@ -7,13 +7,18 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 	<style>
 		body {
 		  font-family: 'Lato', sans-serif;
 		}
 	</style>
 </head>
-<body>
+<body style="font-family: cambria;">
 
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
@@ -23,42 +28,44 @@
 	<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Jogja</h1>
 	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
-<div class="container-fluid" align="center" style="margin-bottom: 6px;">
+
+<div class="container-fluid mt-4" align="center" style="margin-bottom: 6px; font-size: 11px;">
 	<div class="row">
-	<?php foreach ($updatesales as $us) { ?>
-		<div class="col-sm-4 mb-2">
-			<div class="card" style="width:400px">
-			    <img class="card-img-top" src="<?php echo base_url().'assets/img/user.jpg' ?>" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      <h4 class="card-title"><?php echo $us['Salesman']; ?></h4>
-			      <p class="card-text"><?php echo $us['Status']; ?> / <?php echo $us['Username']; ?> / <?php echo $us['Password']; ?></p>
-			      <a href="<?php echo base_url().'C_jogja/diagramsales' ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
-			  	  <a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a>
-			  	  <a href="<?php echo base_url().'C_jogja/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a>
-			    </div>
-			 </div>
+		<div class="col-sm-12">
+			<table class="table table-sm" style="text-align: center;">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Emp_Code</th>
+			      <th scope="col">Nama</th>
+			      <th scope="col">Username</th>
+			      <th scope="col">Password</th>
+			      <th scope="col" colspan="3">Opsi</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<?php foreach ($updatesales as $us) { ?>
+			    <tr>
+			      <th scope="row">1</th>
+			      <td><?php echo $us['Emp_Code']; ?></td>
+			      <td><?php echo $us['Salesman']; ?></td>
+			      <td><?php echo $us['Username']; ?></td>
+			      <td><?php echo $us['Password']; ?></td>
+			      <td><a href="<?php echo base_url().'C_jogja/diagramsales' ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_jogja/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
+			    </tr>
+				<?php } ?>
+				<tr>
+					<td colspan="8"><a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_jogja/savesales' ?>">Tambah</a></td>
+				</tr>
+			   </tbody>
+			</table>
 		</div>
-	<?php } ?>
-	<a href="<?php echo base_url().'C_jogja/savesales' ?>">
-		<div class="col-sm-4 mb-2">
-			<div class="card" style="width:400px">
-			    <img class="card-img-top" src="<?php echo base_url().'assets/img/tuser.jpg' ?>" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      	<h4 class="card-title">Tambah Salesman</h4>
-			      	<p class="card-text">Status / Username / Password</p>
-				    <a href="#" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a>
-			  	  	<a href="#" class="card-link fa fa-edit" style="font-size:15px;"></a>
-			  	  	<a href="#" class="card-link fa fa-trash" style="font-size:15px;"></a>
-			    </div>
-			</div>
-		</div>
-	</a>
 	</div>
 </div>
-<br><br><br>
-<!-- Footer -->
-<?php $this->load->view('V_footer'); ?>
-<!-- Akhir Footer -->
+
+
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

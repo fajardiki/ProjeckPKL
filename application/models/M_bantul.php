@@ -64,7 +64,7 @@ class M_bantul extends CI_Model {
 
  	//  Update sales
  	public function selectupdateseles() {
- 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password FROM m_selesman");
+ 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password FROM m_selesman WHERE id_conces = 3");
  			return $hsl->result_array();
  	}
 
@@ -72,6 +72,11 @@ class M_bantul extends CI_Model {
  		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password, id_conces FROM m_selesman WHERE Emp_Code = '$id'");
  		return $hsl->result_array();
  	}
+
+ 	public function updatesales($empcode,$nama,$status,$username,$password,$conces) {
+ 		$hsl = $this->db->query("UPDATE m_selesman SET Salesman = '$nama', status = '$status', username = '$username', password ='$password', id_conces = '$conces' WHERE Emp_Code = '$empcode'");
+ 	}
+
  	// Update sales
 
  	// Hapus sales
@@ -85,11 +90,26 @@ class M_bantul extends CI_Model {
 
 	// Save sales
 
-	public function savesales($Emp_Code, $Salesman, $Status, $Username, $Password) {
-		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$Emp_Code', '$Salesman', '$Status', '$Username', '$Password')");
+	public function savesales($empcode,$nama,$status,$username,$password,$conces) {
+		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$empcode','$nama','$status','$username','$password','$conces')");
 			return $query;
 	}
 
 	// Save sales
+
+	// District
+	public function selectupdatedistrict() {
+		$hsl = $this->db->query("SELECT nama_conces as Conces, District_Code, District FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE a.id_conces = 3");
+ 		return $hsl->result_array();
+	}
+
+	public function hapusdistrict($discod) {
+		$query = $this->db->query("DELETE FROM m_ruote WHERE District_Code='$discod'");
+			return $query;
+	}
+
+	public function savedistrict($discode, $district, $conces) {
+		$query = $this->db->query("INSERT INTO m_ruote VALUES ('$discode','$district','$conces')");
+	}
 }
 ?>

@@ -88,5 +88,29 @@ class M_jogja extends CI_Model {
 	public function savesales($empcode,$nama,$status,$username,$password,$conces) {
 		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$empcode','$nama','$status','$username','$password','$conces')");
 	}
+
+	// District setiing
+	public function selectupdatedistrict() {
+		$hsl = $this->db->query("SELECT nama_conces as Conces, District_Code, District FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE a.id_conces = 1");
+ 		return $hsl->result_array();
+	}
+
+	public function hapusdistrict($discod) {
+		$query = $this->db->query("DELETE FROM m_ruote WHERE District_Code='$discod'");
+			return $query;
+	}
+
+	public function savedistrict($discode, $district, $conces) {
+		$query = $this->db->query("INSERT INTO m_ruote VALUES ('$discode','$district','$conces')");
+	}
+
+	public function selectdistrict($discode) {
+		$hsl = $this->db->query("SELECT District_Code, District, nama_conces as Conces FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE District_Code = '$discode'");
+ 		return $hsl->result_array();
+	}
+
+	public function updatedistrict($discode, $district, $conces) {
+		$hsl = $this->db->query("UPDATE m_ruote SET District = '$district', id_conces = '$conces' WHERE District_Code = '$discode'");
+	}
 }
 ?>

@@ -43,7 +43,9 @@ class C_bantul extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$id = $this->uri->segment(3);
-			if (!isset($id)) {
+			$btn = $this->input->post('update');
+
+			if (!isset($id) AND !isset($btn)) {
 				$data = array(
 					'updatesales' => $this->M_bantul->selectupdateseles()
 				);
@@ -55,7 +57,17 @@ class C_bantul extends CI_Controller {
 				);
 				$this->load->view('Bantul/V_updatesalse',$data);
 			} else {
-				$btn = $this->input->post('update');
+				if (isset($btn)) {
+					$empcode = $this->input->post('empcode');
+					$nama = $this->input->post('nama');
+					$status = $this->input->post('status');
+					$username = $this->input->post('username');
+					$password = $this->input->post('password');
+					$conces = $this->input->post('conces');
+
+					$this->M_bantul->updatesales($empcode,$nama,$status,$username,$password,$conces);
+					redirect('C_bantul/updatesales');
+				}
 			}
 		}
 	}
@@ -78,13 +90,15 @@ class C_bantul extends CI_Controller {
 			if (!isset($btn)) {
 				$this->load->view('Bantul/V_savesales');
 			} else {
-				$Emp_Code = $this->input->post("Emp_Code");
-				$Salesman = $this->input->post("Salesman");
-				$Status = $this->input->post("Status");
-				$Username = $this->input->post("Username");
-				$Password = $this->input->post("Password");
+				$empcode = $this->input->post("empcode");
+				$nama = $this->input->post("nama");
+				$status = $this->input->post("status");
+				$username = $this->input->post("username");
+				$password = $this->input->post("password");
+				$conces = $this->input->post("conces");
 				
-				$this->M_jogja->savesales($Emp_Code, $Salesman, $Status, $Username, $Password);
+				$this->M_bantul->savesales($empcode,$nama,$status,$username,$password,$conces);
+				redirect('C_bantul/updatesales');
 			}
 		}
 	}
@@ -217,5 +231,70 @@ class C_bantul extends CI_Controller {
 	}
 
 	// pjp
+
+	// District
+	public function updatedistrict(){
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+			$btn = $this->input->post('update');
+
+			if (!isset($id) AND !isset($btn)) {
+				$data = array(
+					'updatedistrict' => $this->M_bantul->selectupdatedistrict()
+				);
+
+				$this->load->view('Bantul/V_distrikbantul',$data);
+			} elseif (isset($id)) {
+				$data = array(
+					'sales' => $this->M_bantul->selectdistrict($id)
+				);
+				$this->load->view('Bantul/V_updatedistrict',$data);
+			} else {
+
+				if (isset($btn)) {
+					$empcode = $this->input->post('empcode');
+					$nama = $this->input->post('nama');
+					$status = $this->input->post('status');
+					$username = $this->input->post('username');
+					$password = $this->input->post('password');
+					$conces = $this->input->post('conces');
+
+					$this->M_bantul->updatesales($empcode,$nama,$status,$username,$password,$conces);
+					redirect('C_bantul/updatedistrict');
+				}
+			}
+		}
+	}
+
+	public function hapusdistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$discod = $this->uri->segment(3);
+			$this->M_bantul->hapusdistrict($discod);
+			redirect('C_bantul/updatedistrict');
+		}
+	}
+
+	public function savedistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('save');
+			if (!isset($btn)) {
+				$this->load->view('Bantul/V_tambahdistrict');
+			} else {
+				$discode = $this->input->post("district_code");
+				$district = $this->input->post("district");
+				$conces = $this->input->post("conces");
+
+				$this->M_bantul->savedistrict($discode, $district, $conces);
+				redirect('C_bantul/updatedistrict');
+			}
+		}
+	}
+
 }
 ?>

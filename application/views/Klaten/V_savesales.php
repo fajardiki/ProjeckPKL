@@ -5,7 +5,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
+<body style="font-family: cambria;">
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2"></div>
@@ -17,61 +17,56 @@
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-      <form>
+      <form action="<?php echo base_url().'C_klaten/savesales' ?>" method="post">
         <div class="form-group row">
           <label for="empcode" class="col-sm-2 col-form-label">Emp_Code</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="empcode" value="">
+            <input type="text" class="form-control" name="empcode" value="">
           </div>
         </div>
         <div class="form-group row">
           <label for="nama" class="col-sm-2 col-form-label">Nama</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nama" value="">
+            <input type="text" class="form-control" name="nama" value="">
           </div>
         </div>
         <div class="form-group row">
           <label for="status" class="col-sm-2 col-form-label">Status</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="status" value="">
+            <input type="text" class="form-control" name="status" value="">
           </div>
         </div>
         <div class="form-group row">
           <label for="username" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="username" value="">
+            <input type="text" class="form-control" name="username" value="">
           </div>
         </div>
         <div class="form-group row">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="password" value="">
+            <input type="text" class="form-control" name="password" value="">
           </div>
         </div>
         <div class="form-group row">
           <label for="conces" class="col-sm-2 col-form-label">Conces</label>
           <div class="col-sm-10">
             <select class="form-control mb-1" id="conces" name="conces">
-              <option>-- Pilih Conces --</option>
-              <option value="1">Jogja</option>
-              <option value="2">Magelang</option>
-              <option value="3">Bantul</option>
               <option value="4">Klaten</option>
-              <option value="5">Sleman</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
-      <div class="col-sm-12">
-       <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-12">
-       <input type="submit" class="btn btn-block btn-danger" value="Back" name="back">
-      </div>
-    </div>
+          <div class="col-sm-12">
+           <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save">
+          </div>
+        </div>
       </form>
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <a type="submit" class="btn btn-block btn-danger" href="<?php echo base_url().'C_klaten/updatesales' ?>">Kembali</a>
+          </div>
+        </div>
     </div>
   </div>
 </div>

@@ -9,13 +9,8 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    <style>
-        body {
-          font-family: 'Lato', sans-serif;
-        }
-    </style>
 </head>
-<body>
+<body style="font-family: cambria;">
 <script type="text/javascript">
     $(document).ready(function(){
         $('ul li a').click(function(){

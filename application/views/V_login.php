@@ -11,7 +11,7 @@
 
     <title>Halaman Login</title>
   </head>
-  <body style="background-image: url();">
+  <body style="background-image: url(); font-family: cambria;">
 
  <div class="container form">
     <div class="row">

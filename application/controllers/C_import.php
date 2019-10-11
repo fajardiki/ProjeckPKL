@@ -66,7 +66,6 @@ class C_import extends CI_Controller {
                     );
                 }
             }
-
             
             $this->M_efos->insertimport($data);
             redirect('C_dasbord/importexcel');

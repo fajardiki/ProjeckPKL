@@ -8,7 +8,7 @@
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	
 </head>
-<body>
+<body style="font-family: cambria;">
 
 <?php $nama = $this->session->userdata('user'); ?>
 

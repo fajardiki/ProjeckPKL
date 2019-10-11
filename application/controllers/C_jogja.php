@@ -64,13 +64,6 @@ class C_jogja extends CI_Controller {
 					$password = $this->input->post('password');
 					$conces = $this->input->post('conces');
 
-					var_dump($empcode);
-					var_dump($nama);
-					var_dump($status);
-					var_dump($username);
-					var_dump($password);
-					var_dump($conces);
-
 					$this->M_jogja->updatesales($empcode,$nama,$status,$username,$password,$conces);
 					redirect('C_jogja/updatesales');
 				}
@@ -103,15 +96,8 @@ class C_jogja extends CI_Controller {
 				$password = $this->input->post("password");
 				$conces = $this->input->post("conces");
 
-				var_dump($empcode);
-					var_dump($nama);
-					var_dump($status);
-					var_dump($username);
-					var_dump($password);
-					var_dump($conces);
-
-				
 				$this->M_jogja->savesales($empcode,$nama,$status,$username,$password,$conces);
+				redirect('C_jogja/updatesales');
 			}
 		}
 	}
@@ -235,5 +221,67 @@ class C_jogja extends CI_Controller {
 	}
 
 	// pjp
+
+	// District
+	public function updatedistrict(){
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$discode = $this->uri->segment(3);
+			$btn = $this->input->post('update');
+
+			if (!isset($id) AND !isset($btn)) {
+				$data = array(
+					'updatedistrict' => $this->M_jogja->selectupdatedistrict()
+				);
+
+				$this->load->view('Jogja/V_distrikjogja',$data);
+			} elseif (isset($discode)) {
+				$data = array(
+					'sales' => $this->M_jogja->selectdistrict($discode)
+				);
+				$this->load->view('Jogja/V_updatedistrict',$data);
+			} else {
+
+				if (isset($btn)) {
+					$discode = $this->input->post("district_code");
+					$district = $this->input->post("district");
+					$conces = $this->input->post("conces");
+
+					$this->M_jogja->updatedistrict($discode, $district, $conces);
+					redirect('C_jogja/updatedistrict');
+				}
+			}
+		}
+	}
+
+	public function hapusdistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$discod = $this->uri->segment(3);
+			$this->M_jogja->hapusdistrict($discod);
+			redirect('C_jogja/updatedistrict');
+		}
+	}
+
+	public function savedistrict() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('save');
+			if (!isset($btn)) {
+				$this->load->view('Jogja/V_tambahdistrict');
+			} else {
+				$discode = $this->input->post("district_code");
+				$district = $this->input->post("district");
+				$conces = $this->input->post("conces");
+
+				$this->M_jogja->savedistrict($discode, $district, $conces);
+				redirect('C_jogja/updatedistrict');
+			}
+		}
+	}
+	
 }
 ?>

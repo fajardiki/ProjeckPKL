@@ -10,13 +10,8 @@
 	<script src="https://code.highcharts.com/modules/series-label.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-	<style>
-		body {
-		  font-family: 'Lato', sans-serif;
-		}
-	</style>
 </head>
-<body>
+<body style="font-family: cambria;">
 
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
