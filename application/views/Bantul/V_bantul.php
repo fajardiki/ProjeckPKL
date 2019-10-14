@@ -44,6 +44,15 @@
 			        text: 'Week'
 			    }
 		    },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.1f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -101,6 +110,15 @@
 			        text: 'Week'
 			    }
 		    },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.1f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -293,6 +311,15 @@
 			        text: 'Week'
 			    }
 		    },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.1f}%'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -348,6 +375,15 @@
 			        text: 'Week'
 			    }
 		    },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.1f}%'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {

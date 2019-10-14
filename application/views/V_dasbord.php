@@ -48,6 +48,15 @@
               text: 'Week'
           }
         },
+        plotOptions: {
+          series: {
+              borderWidth: 0,
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}'
+              }
+          }
+        },
         labels: {
             items: [{
                 style: {
@@ -103,6 +112,15 @@
             categories: <?php echo json_encode($conces); ?>,
             title: {
               text: 'Week'
+          }
+        },
+        plotOptions: {
+          series: {
+              borderWidth: 0,
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}'
+              }
           }
         },
         labels: {
@@ -296,6 +314,15 @@
               text: 'Week'
           }
         },
+          plotOptions: {
+              series: {
+                  borderWidth: 0,
+                  dataLabels: {
+                      enabled: true,
+                      format: '{point.y:.1f}%'
+                  }
+              }
+          },
         labels: {
             items: [{
                 style: {
@@ -351,6 +378,15 @@
               text: 'Week'
           }
         },
+      plotOptions: {
+          series: {
+              borderWidth: 0,
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}%'
+              }
+          }
+      },
         labels: {
             items: [{
                 style: {
@@ -648,11 +684,10 @@
               <?php }?>
         </div>
     </div>
-
-  
-
   <!-- Akhir Plane -->
+
   <br><br>
+
   <!-- Grafik Time -->
     <div class="row">
         <div class="col-sm-12">
@@ -778,9 +813,9 @@
         </div>
         <div class="col-sm-6">
             <?php if (empty($timemarket1)) { ?>
-                <div id="shadow2" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
+                <div id="shadow22" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
                 <script>
-                  Highcharts.chart('shadow2', {
+                  Highcharts.chart('shadow22', {
                     title: {
                         text: ''
                     },
@@ -831,10 +866,10 @@
                   $timeperoutlet1[] = intval($tm1['TimePerOutlet']);
                 } ?>
 
-                <div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
+                <div id="graft22" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
 
                 <script>
-                  Highcharts.chart('graft2', {
+                  Highcharts.chart('graft22', {
                     title: {
                         text: ''
                     },
@@ -1016,9 +1051,9 @@
         </div>
         <div class="col-sm-6">
             <?php if (empty($pjpcomply1)) { ?>
-                <div id="shadow3" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
+                <div id="shadow33" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
                 <script>
-                  Highcharts.chart('shadow3', {
+                  Highcharts.chart('shadow33', {
                     title: {
                         text: ''
                     },
@@ -1070,10 +1105,10 @@
             } ?>
 
 
-            <div id="graft3" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
+            <div id="graft33" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>
 
             <script>
-              Highcharts.chart('graft3', {
+              Highcharts.chart('graft33', {
                 title: {
                     text: ''
                 },

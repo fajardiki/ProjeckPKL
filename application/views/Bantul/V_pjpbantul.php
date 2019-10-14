@@ -96,6 +96,15 @@
       xAxis: {
           categories: <?php echo json_encode($week); ?>
       },
+      plotOptions: {
+          series: {
+              borderWidth: 0,
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}%'
+              }
+          }
+      },
       labels: {
           items: [{
               html: 'Total fruit consumption',

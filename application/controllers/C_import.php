@@ -66,9 +66,113 @@ class C_import extends CI_Controller {
                     );
                 }
             }
-            
-            $this->M_efos->insertimport($data);
-            redirect('C_dasbord/importexcel');
+
+            // if (empty($RouteName) && empty($SalesmanName) && empty($Planned) && empty($Visited) && empty($Unplaned) && empty($StartTime) && empty($EndTime) && empty($TimeinMarket) && empty($Spent) && empty($TimePerOutlet) && empty($Nosale) && empty($Productive) && empty($Geomismatch) && empty($Line) && empty($TotalQty) && empty($TotalSale)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Exel yang anda input kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($RouteName)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Route name kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($SalesmanName)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Salesman name kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Planned)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Planned kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Visited)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Visited kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Unplaned)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Un-planed kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($StartTime)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Start Time kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($EndTime)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'End Time kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($TimeinMarket)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Time in Market kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Spent)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Spent kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($TimePerOutlet)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Time per Outlet kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Nosale)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Nosale kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Productive)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Productive kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Geomismatch)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Geomismatch kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($Line)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Line kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($TotalQty)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Total Qty kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } elseif (empty($TotalSale)) {
+            //     $data = array(
+            //         'statuspesan' => 'gagal',
+            //         'isipesan' => 'Total Sale kosong'
+            //     );
+            //     $this->load->view('V_import', $data);
+            // } else {
+                $this->M_efos->insertimport($data);
+                redirect('C_dasbord/importexcel');
+            // }
             
         }                
     

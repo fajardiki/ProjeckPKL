@@ -94,19 +94,19 @@ class C_magelang extends CI_Controller {
 				$password = $this->input->post("password");
 				$conces = $this->input->post("conces");
 
-				if (empty($empcodee) && empty($nama) && empty($status) && empty($username) && empty($password) && empty($conces)) {
+				if (empty($empcode) && empty($nama) && empty($status) && empty($username) && empty($password) && empty($conces)) {
 					$data = array(
 						'statuspesan' => 'gagal',
 						'isipesan' => 'Semua kolom harus di isi'
 					);
 					$this->load->view('Magelang/V_savesales', $data);
-				} elseif (empty($empcodee)) {
+				} elseif (empty($empcode)) {
 					$data = array(
 						'statuspesan' => 'gagal',
 						'isipesan' => 'Emp Code Code tidak boleh kosong'
 					);
 					$this->load->view('Magelang/V_savesales', $data);
-				} elseif (empty(empty($nama))) {
+				} elseif (empty($nama)) {
 					$data = array(
 						'statuspesan' => 'gagal',
 						'isipesan' => 'Nama tidak boleh kosong'
@@ -137,9 +137,17 @@ class C_magelang extends CI_Controller {
 					);
 					$this->load->view('Magelang/V_savesales', $data);
 				} else {
-				
-					$this->M_magelang->savesales($empcode,$nama,$status,$username,$password,$conces);
-					redirect('C_magelang/updatesales');
+					$cek = $this->M_magelang->selectonesales($empcode);
+					if ($cek == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Emp_Code yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
+						);
+						$this->load->view('Magelang/V_savesales', $data);
+					} else {
+						$this->M_magelang->savesales($empcode,$nama,$status,$username,$password,$conces);
+						redirect('C_magelang/updatesales');
+					}
 				}
 			}
 		}
@@ -352,9 +360,17 @@ class C_magelang extends CI_Controller {
 					);
 					$this->load->view('Magelang/V_tambahdistrict', $data);
 				} else {
-
-					$this->M_magelang->savedistrict($discode, $district, $conces);
-					redirect('C_magelang/updatedistrict');
+					$cek = $this->M_magelang->selectonedistrict($discode);
+					if ($cek == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Id yang anda inputkan sudah ada, silahkan inputkan dengan id lain'
+						);
+						$this->load->view('Magelang/V_tambahdistrict', $data);
+					} else {
+						$this->M_magelang->savedistrict($discode, $district, $conces);
+						redirect('C_magelang/updatedistrict');
+					}
 				}
 			}
 		}

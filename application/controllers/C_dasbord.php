@@ -114,6 +114,25 @@ class C_dasbord extends CI_Controller {
 		}
 	}
 
+	public function efosallselect()	{
+		$nama = $this->session->userdata('user');
+
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('cari');
+			if (isset($btn)) {
+				$bln = $this->input->post('bulan');
+				$thn = $this->input->post('tahun');
+
+				$data = array(
+					'efossales' => $this->M_user->selecteonefossales($bln, $thn, $nama[0]['Emp_Code'])
+				);
+				$this->load->view('V_efossales',$data);
+			}
+		}
+	}
+
 	// Plane
 
 
@@ -127,6 +146,25 @@ class C_dasbord extends CI_Controller {
 				'plane' => $this->M_user->selectplanesales($nama[0]['Emp_Code'])
 			);
 			$this->load->view('/V_planesales',$data);
+		}
+	}
+
+	public function planeselect() {
+		$nama = $this->session->userdata('user');
+
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('cari');
+			if (isset($btn)) {
+				$bln = $this->input->post('bulan');
+				$thn = $this->input->post('tahun');
+
+				$data = array(
+					'plane' => $this->M_user->selectoneplanebantul($bln, $thn, $nama[0]['Emp_Code'])
+				);
+				$this->load->view('V_planesales',$data);
+			}
 		}
 	}
 
@@ -145,6 +183,25 @@ class C_dasbord extends CI_Controller {
 		}
 	}
 
+	public function timeselect() {
+		$nama = $this->session->userdata('user');
+
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('cari');
+			if (isset($btn)) {
+				$bln = $this->input->post('bulan');
+				$thn = $this->input->post('tahun');
+
+				$data = array(
+					'timemarket' => $this->M_user->selectonetimesales($bln, $thn, $nama[0]['Emp_Code'])
+				);
+				$this->load->view('V_timesales',$data);
+			}
+		}
+	}
+
 	// PJP
 
 	public function pjp() {
@@ -157,6 +214,25 @@ class C_dasbord extends CI_Controller {
 				'pjpcomply' => $this->M_user->selectpjpsales($nama[0]['Emp_Code'])
 			);
 			$this->load->view('V_pjpsales',$data);
+		}
+	}
+
+	public function pjpselect()	{
+		$nama = $this->session->userdata('user');
+
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('cari');
+			if (isset($btn)) {
+				$bln = $this->input->post('bulan');
+				$thn = $this->input->post('tahun');
+
+				$data = array(
+					'pjpcomply' => $this->M_user->selectonepjpbantul($bln, $thn, $nama[0]['Emp_Code'])
+				);
+				$this->load->view('V_pjpsales',$data);
+			}
 		}
 	}
 

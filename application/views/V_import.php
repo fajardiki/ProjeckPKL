@@ -35,8 +35,40 @@
       </div>
     </div>
   </form>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <?php
+          if (isset($statuspesan)) {
+            if ($statuspesan != "sukses") {
+          ?>   
+              <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
+          <?php
+            } else {
+          ?>
+              <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
+          <?php
+              }
+            }
+        ?>
+      </div>
+    </div>
+  </div>
 
   <div class="container-fluid" style="overflow-y: scroll;">
+    <!-- <div class="row">
+      <div class="col-sm-12 mb-2">
+      
+        <select class="form-control mb-1" id="conces" name="conces">
+          <option>-- Pilih Conces --</option>
+          <option value="1">Jogja</option>
+          <option value="2">Magelang</option>
+          <option value="3">Bantul</option>
+          <option value="4">Klaten</option>
+          <option value="5">Sleman</option>
+        </select>
+      </div>
+    </div> -->
     <div class="row">
       <div class="col-sm-12">
           <table class="table" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">

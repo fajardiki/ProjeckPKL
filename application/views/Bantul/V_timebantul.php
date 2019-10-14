@@ -100,6 +100,15 @@
                 text: 'Week'
             }
         },
+        plotOptions: {
+          series: {
+              borderWidth: 0,
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f} seconds'
+              }
+          }
+        },
         yAxis: {
             labels: {
                 formatter: function() {

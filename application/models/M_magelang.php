@@ -83,6 +83,16 @@ class M_magelang extends CI_Model {
 
 	// Save sales
 
+	public function selectonesales($empcode) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Emp_Code = '$empcode'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
 	public function savesales($empcode,$nama,$status,$username,$password,$conces) {
 		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$empcode','$nama','$status','$username','$password','$conces')");
 	}
@@ -96,6 +106,16 @@ class M_magelang extends CI_Model {
 	public function hapusdistrict($discod) {
 		$query = $this->db->query("DELETE FROM m_ruote WHERE District_Code='$discod'");
 			return $query;
+	}
+
+	public function selectonedistrict($discode) {
+		$periksa = $this->db->query("SELECT * FROM m_ruote WHERE District_Code = '$discode'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
 	}
 
 	public function savedistrict($discode, $district, $conces) {

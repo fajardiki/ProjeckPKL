@@ -20,7 +20,7 @@
 		}
 
 		public function getefos($date) {
-			$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date'");
+			$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date' GROUP BY Journey_Date DESC LIMIT 5");
 			return $hsl->result_array();
 		}
 
