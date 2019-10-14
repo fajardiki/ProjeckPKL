@@ -93,9 +93,54 @@ class C_magelang extends CI_Controller {
 				$username = $this->input->post("username");
 				$password = $this->input->post("password");
 				$conces = $this->input->post("conces");
+
+				if (empty($empcodee) && empty($nama) && empty($status) && empty($username) && empty($password) && empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Semua kolom harus di isi'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty($empcodee)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Emp Code Code tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty(empty($nama))) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Nama tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty($status)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty($username)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty($password)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} elseif (empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_savesales', $data);
+				} else {
 				
-				$this->M_magelang->savesales($empcode,$nama,$status,$username,$password,$conces);
-				redirect('C_magelang/updatesales');
+					$this->M_magelang->savesales($empcode,$nama,$status,$username,$password,$conces);
+					redirect('C_magelang/updatesales');
+				}
 			}
 		}
 	}
@@ -232,31 +277,28 @@ class C_magelang extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$id = $this->uri->segment(3);
+			$discode = $this->uri->segment(3);
 			$btn = $this->input->post('update');
 
-			if (!isset($id) AND !isset($btn)) {
+			if (!isset($discode) AND !isset($btn)) {
 				$data = array(
 					'updatedistrict' => $this->M_magelang->selectupdatedistrict()
 				);
 
 				$this->load->view('Magelang/V_distrikmagelang',$data);
-			} elseif (isset($id)) {
+			} elseif (isset($discode)) {
 				$data = array(
-					'sales' => $this->M_magelang->selectdistrict($id)
+					'distrik' => $this->M_magelang->selectdistrict($discode)
 				);
 				$this->load->view('Magelang/V_updatedistrict',$data);
 			} else {
 
 				if (isset($btn)) {
-					$empcode = $this->input->post('empcode');
-					$nama = $this->input->post('nama');
-					$status = $this->input->post('status');
-					$username = $this->input->post('username');
-					$password = $this->input->post('password');
-					$conces = $this->input->post('conces');
+					$discode = $this->input->post("district_code");
+					$district = $this->input->post("district");
+					$conces = $this->input->post("conces");
 
-					$this->M_magelang->updatesales($empcode,$nama,$status,$username,$password,$conces);
+					$this->M_magelang->updatedistrict($discode, $district, $conces);
 					redirect('C_magelang/updatedistrict');
 				}
 			}
@@ -285,8 +327,35 @@ class C_magelang extends CI_Controller {
 				$district = $this->input->post("district");
 				$conces = $this->input->post("conces");
 
-				$this->M_magelang->savedistrict($discode, $district, $conces);
-				redirect('C_magelang/updatedistrict');
+				if (empty($discode) && empty($district) && empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Semua kolom harus di isi'
+					);
+					$this->load->view('Magelang/V_tambahdistrict', $data);
+				} elseif (empty($discode)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'District Code tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_tambahdistrict', $data);
+				} elseif (empty($district)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'District tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_tambahdistrict', $data);
+				} elseif (empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Magelang/V_tambahdistrict', $data);
+				} else {
+
+					$this->M_magelang->savedistrict($discode, $district, $conces);
+					redirect('C_magelang/updatedistrict');
+				}
 			}
 		}
 	}

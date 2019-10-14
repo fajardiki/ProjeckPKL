@@ -21,13 +21,13 @@
         <div class="form-group row">
           <label for="empcode" class="col-sm-2 col-form-label">District Code</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="district_code" value="">
+            <input type="text" readonly class="form-control-plaintext" name="district_code" value="<?php echo $distrik[0]['District_Code'] ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="nama" class="col-sm-2 col-form-label">District</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="district" value="">
+            <input type="text" class="form-control" name="district" value="<?php echo $distrik[0]['District'] ?>">
           </div>
         </div>
         <div class="form-group row">

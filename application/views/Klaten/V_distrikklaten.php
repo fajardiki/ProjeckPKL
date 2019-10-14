@@ -39,7 +39,7 @@
 			      <td><?php echo $ud['District_Code']; ?></td>
 			      <td><?php echo $ud['District']; ?></td>
 			      <td><?php echo $ud['Conces']; ?></td>
-			      <td><a href="<?php echo base_url().'C_klaten/updatedistrict/'.$ud['District_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_klaten/updatedistrict/'.$ud['District_Code'] ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
 			      <td><a href="<?php echo base_url().'C_klaten/hapusdistrict/'.$ud['District_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
 			    </tr>
 			    <?php $no++; ?>

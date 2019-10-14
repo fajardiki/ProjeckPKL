@@ -96,8 +96,52 @@ class C_jogja extends CI_Controller {
 				$password = $this->input->post("password");
 				$conces = $this->input->post("conces");
 
-				$this->M_jogja->savesales($empcode,$nama,$status,$username,$password,$conces);
-				redirect('C_jogja/updatesales');
+				if (empty($empcodee) && empty($nama) && empty($status) && empty($username) && empty($password) && empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Semua kolom harus di isi'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty($empcodee)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Emp Code Code tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty(empty($nama))) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Nama tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty($status)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty($username)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty($password)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} elseif (empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_savesales', $data);
+				} else {
+					$this->M_jogja->savesales($empcode,$nama,$status,$username,$password,$conces);
+					redirect('C_jogja/updatesales');
+				}
 			}
 		}
 	}
@@ -230,7 +274,7 @@ class C_jogja extends CI_Controller {
 			$discode = $this->uri->segment(3);
 			$btn = $this->input->post('update');
 
-			if (!isset($id) AND !isset($btn)) {
+			if (!isset($discode) AND !isset($btn)) {
 				$data = array(
 					'updatedistrict' => $this->M_jogja->selectupdatedistrict()
 				);
@@ -238,8 +282,9 @@ class C_jogja extends CI_Controller {
 				$this->load->view('Jogja/V_distrikjogja',$data);
 			} elseif (isset($discode)) {
 				$data = array(
-					'sales' => $this->M_jogja->selectdistrict($discode)
+					'distrik' => $this->M_jogja->selectdistrict($discode)
 				);
+
 				$this->load->view('Jogja/V_updatedistrict',$data);
 			} else {
 
@@ -277,8 +322,34 @@ class C_jogja extends CI_Controller {
 				$district = $this->input->post("district");
 				$conces = $this->input->post("conces");
 
-				$this->M_jogja->savedistrict($discode, $district, $conces);
-				redirect('C_jogja/updatedistrict');
+				if (empty($discode) && empty($district) && empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Semua kolom harus di isi'
+					);
+					$this->load->view('Jogja/V_tambahdistrict', $data);
+				} elseif (empty($discode)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'District Code tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_tambahdistrict', $data);
+				} elseif (empty($district)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'District tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_tambahdistrict', $data);
+				} elseif (empty($conces)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Concess tidak boleh kosong'
+					);
+					$this->load->view('Jogja/V_tambahdistrict', $data);
+				} else {
+					$this->M_jogja->savedistrict($discode, $district, $conces);
+					redirect('C_jogja/updatedistrict');
+				}
 			}
 		}
 	}

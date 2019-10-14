@@ -111,5 +111,14 @@ class M_bantul extends CI_Model {
 	public function savedistrict($discode, $district, $conces) {
 		$query = $this->db->query("INSERT INTO m_ruote VALUES ('$discode','$district','$conces')");
 	}
+
+	public function selectdistrict($discode) {
+		$hsl = $this->db->query("SELECT District_Code, District, nama_conces as Conces FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE District_Code = '$discode'");
+ 		return $hsl->result_array();
+	}
+
+	public function updatedistrict($discode, $district, $conces) {
+		$hsl = $this->db->query("UPDATE m_ruote SET District = '$district', id_conces = '$conces' WHERE District_Code = '$discode'");
+	}
 }
 ?>
