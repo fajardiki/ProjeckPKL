@@ -7,6 +7,7 @@ class C_bantul extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_bantul');
+		$this->load->model('M_user');
 	}
 
 	public function index() {
@@ -37,6 +38,26 @@ class C_bantul extends CI_Controller {
 	}
 
 	// Sales
+
+	public function diagramsales() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+
+			if (!isset($id)) {
+				redirect('C_bantul/updatesales');
+			} else {
+				$data = array(
+					'sales' => $this->M_bantul->digsales($id),
+					'plane' => $this->M_bantul->selectonefost($id),
+					'timemarket' => $this->M_bantul->selectonetime($id),
+					'pjpcomply' => $this->M_bantul->selectonepjp($id)
+				);
+				$this->load->view('Bantul/V_diagramsales',$data);
+			}
+		}
+	}
 
 	public function updatesales(){
 		if (!$this->session->userdata('username')) {

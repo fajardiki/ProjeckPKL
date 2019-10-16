@@ -19,6 +19,19 @@
       <div class="col-sm-4" id="form_login">
         <h1 class="login_text">Form Admin</h1>
         <br>
+        <?php
+          if (isset($statuspesan)) {
+            if ($statuspesan != "sukses") {
+        ?>   
+            <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
+        <?php
+          } else {
+        ?>
+            <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
+        <?php
+            }
+          }
+        ?>
         <form action="<?php echo base_url().'C_login_admin/login'; ?>" method="post">
           <div class="form-group">
             <label for="inputAddress">Username</label>

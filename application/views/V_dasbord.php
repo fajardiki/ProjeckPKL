@@ -53,7 +53,7 @@
               borderWidth: 0,
               dataLabels: {
                   enabled: true,
-                  format: '{point.y:.1f}'
+                  format: '{point.y:.0f}'
               }
           }
         },
@@ -114,13 +114,9 @@
               text: 'Week'
           }
         },
-        plotOptions: {
-          series: {
-              borderWidth: 0,
-              dataLabels: {
-                  enabled: true,
-                  format: '{point.y:.1f}'
-              }
+        yAxis: {
+          title: {
+              text: ''
           }
         },
         labels: {
@@ -140,7 +136,7 @@
                 borderWidth: 0,
                 dataLabels: {
                     enabled: true,
-                    format: '{point.y:.1f}'
+                    format: '{point.y:.0f}'
                 }
             }
         },
@@ -185,6 +181,11 @@
             categories: ['1', '2', '3', '4'],
             title: {
               text: 'Week'
+          }
+        },
+        yAxis: {
+          title: {
+              text: ''
           }
         },
         labels: {
@@ -254,13 +255,24 @@
             labels: {
               formatter: function() {
                   // show the labels as whole hours (3600000 milliseconds = 1 hour)
-                  return Highcharts.numberFormat(this.value/3600);
+                  return Highcharts.numberFormat(this.value/3600)+'H';
               }
           },
           title: {
-              text: 'Hours'
+              text: ''
           },
           tickInterval: 3600 // number of milliseconds in one hour
+        },
+        plotOptions: {
+          series: {
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(){
+                        return secondsTimeSpanToHMS(this.y);
+                    }
+                },
+                enableMouseTracking: false
+            }
         },
         labels: {
             items: [{
@@ -293,6 +305,14 @@
             }
         }]
     });
+
+    function secondsTimeSpanToHMS(s) {
+      var h = Math.floor(s / 3600); //Get whole hours
+      s -= h * 3600;
+      var m = Math.floor(s / 60); //Get remaining minutes
+      s -= m * 60;
+      return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+  }
     </script>
   <?php } ?>
   <!-- Akhir Grafik Time -->
@@ -312,6 +332,11 @@
             categories: ['1', '2', '3', '4'],
             title: {
               text: 'Week'
+          }
+        },
+        yAxis: {
+          title: {
+              text: ''
           }
         },
           plotOptions: {
@@ -378,15 +403,20 @@
               text: 'Week'
           }
         },
-      plotOptions: {
-          series: {
-              borderWidth: 0,
-              dataLabels: {
-                  enabled: true,
-                  format: '{point.y:.1f}%'
-              }
+        yAxis: {
+          title: {
+              text: ''
           }
-      },
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
         labels: {
             items: [{
                 style: {
@@ -471,6 +501,11 @@
                     xAxis: {
                         categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                     },
+                    yAxis: {
+                      title: {
+                          text: ''
+                      }
+                    },
                     labels: {
                         items: [{
                             style: {
@@ -526,6 +561,11 @@
                     },
                     xAxis: {
                         categories: <?php echo json_encode($day); ?>
+                    },
+                    yAxis: {
+                      title: {
+                          text: ''
+                      }
                     },
                     labels: {
                         items: [{
@@ -781,11 +821,13 @@
                     },
                     plotOptions: {
                         series: {
-                            borderWidth: 0,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.y:.1f}'
-                            }
+                          dataLabels: {
+                              enabled: true,
+                              formatter: function(){
+                                  return secondsTimeSpanToHMS(this.y);
+                              }
+                          },
+                          enableMouseTracking: false
                         }
                     },
                     series: [{
@@ -808,6 +850,14 @@
                         }
                     }]
                 });
+
+                function secondsTimeSpanToHMS(s) {
+                  var h = Math.floor(s / 3600); //Get whole hours
+                  s -= h * 3600;
+                  var m = Math.floor(s / 60); //Get remaining minutes
+                  s -= m * 60;
+                  return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+                }
                 </script>
             <?php } ?>
         </div>
@@ -893,12 +943,14 @@
                     },
                     plotOptions: {
                         series: {
-                            borderWidth: 0,
-                            dataLabels: {
-                                enabled: true,
-                                format: '{point.y:.1f}'
-                            }
-                        }
+                          dataLabels: {
+                              enabled: true,
+                              formatter: function(){
+                                  return secondsTimeSpanToHMS(this.y);
+                              }
+                          },
+                          enableMouseTracking: false
+                      }
                     },
                     series: [{
                         type: 'column',
@@ -920,6 +972,14 @@
                         }
                     }]
                 });
+
+                function secondsTimeSpanToHMS(s) {
+                  var h = Math.floor(s / 3600); //Get whole hours
+                  s -= h * 3600;
+                  var m = Math.floor(s / 60); //Get remaining minutes
+                  s -= m * 60;
+                  return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+                }
                 </script>
             <?php } ?>
         </div>

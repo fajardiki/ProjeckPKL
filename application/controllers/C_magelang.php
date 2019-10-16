@@ -36,6 +36,28 @@ class C_magelang extends CI_Controller {
 		}
 	}
 
+	// Sales
+
+	public function diagramsales() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+
+			if (!isset($id)) {
+				redirect('C_magelang/updatesales');
+			} else {
+				$data = array(
+					'sales' => $this->M_magelang->digsales($id),
+					'plane' => $this->M_magelang->selectonefost($id),
+					'timemarket' => $this->M_magelang->selectonetime($id),
+					'pjpcomply' => $this->M_magelang->selectonepjp($id)
+				);
+				$this->load->view('Magelang/V_diagramsales',$data);
+			}
+		}
+	}
+
 	public function updatesales(){
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');

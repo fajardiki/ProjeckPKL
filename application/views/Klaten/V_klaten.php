@@ -10,11 +10,6 @@
 	<script src="https://code.highcharts.com/modules/series-label.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-	<style>
-		body {
-		  font-family: 'Lato', sans-serif;
-		}
-	</style>
 </head>
 <body style="font-family: cambria;">
 
@@ -43,6 +38,20 @@
 			        text: 'Week'
 			    }
 		    },
+		    yAxis: {
+	          title: {
+	              text: ''
+	          }
+	        },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.0f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -100,6 +109,20 @@
 			        text: 'Week'
 			    }
 		    },
+		    yAxis: {
+	          title: {
+	              text: ''
+	          }
+	        },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.0f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -112,15 +135,6 @@
 		            }
 		        }]
 		    },
-		    plotOptions: {
-		        series: {
-		            borderWidth: 0,
-		            dataLabels: {
-		                enabled: true,
-		                format: '{point.y:.1f}'
-		            }
-		        }
-	    	},
 		    series: [{
 		        type: 'column',
 		        name: 'Planned',
@@ -163,6 +177,20 @@
 			        text: 'Week'
 			    }
 		    },
+		    yAxis: {
+	          title: {
+	              text: ''
+	          }
+	        },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.0f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -206,8 +234,6 @@
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
 		} ?>
 
-		<?php echo json_encode($timeinmarket); ?>
-
 		<div id="graft2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 		<script>
@@ -231,14 +257,34 @@
 		        labels: {
 			        formatter: function() {
 			            // show the labels as whole hours (3600000 milliseconds = 1 hour)
-			            return Highcharts.numberFormat(this.value/3600);
+			            return Highcharts.numberFormat(this.value/3600)+'H';
 			        }
 			    },
 			    title: {
-			        text: 'Hours'
+			        text: ''
 			    },
 			    tickInterval: 3600 // number of milliseconds in one hour
 		    },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.0f}'
+	                }
+	            }
+	        },
+	        plotOptions: {
+	            series: {
+	                dataLabels: {
+	                    enabled: true,
+	                    formatter: function(){
+	                        return secondsTimeSpanToHMS(this.y);
+	                    }
+	                },
+	                enableMouseTracking: false
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -271,6 +317,13 @@
 		        }
 		    }]
 		});
+		function secondsTimeSpanToHMS(s) {
+	        var h = Math.floor(s / 3600); //Get whole hours
+	        s -= h * 3600;
+	        var m = Math.floor(s / 60); //Get remaining minutes
+	        s -= m * 60;
+	        return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+	    }
 		</script>
 	<?php } ?>
 	<!-- Akhir Grafik Time -->
@@ -290,6 +343,20 @@
 			        text: 'Week'
 			    }
 		    },
+		    yAxis: {
+	          title: {
+	              text: ''
+	          }
+	        },
+	        plotOptions: {
+	            series: {
+	                borderWidth: 0,
+	                dataLabels: {
+	                    enabled: true,
+	                    format: '{point.y:.0f}'
+	                }
+	            }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -345,6 +412,11 @@
 			        text: 'Week'
 			    }
 		    },
+		    yAxis: {
+	          title: {
+	              text: ''
+	          }
+	        },
 		    labels: {
 		        items: [{
 		            style: {
@@ -362,7 +434,7 @@
 		            borderWidth: 0,
 		            dataLabels: {
 		                enabled: true,
-		                format: '{point.y:.1f}%'
+		                format: '{point.y:.0f}%'
 		            }
 		        }
 	    	},

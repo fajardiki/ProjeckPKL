@@ -22,7 +22,6 @@
           <option value="2">Magelang</option>
           <option value="3">Bantul</option>
           <option value="4">Klaten</option>
-          <option value="5">Sleman</option>
         </select>
       </div>
       <div class="col-sm-12">  

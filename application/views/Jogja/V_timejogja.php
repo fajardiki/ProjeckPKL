@@ -109,9 +109,20 @@
                 }
             },
             title: {
-                text: 'Hours'
+                text: ''
             },
             tickInterval: 3600 // number of milliseconds in one hour
+        },
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(){
+                        return secondsTimeSpanToHMS(this.y);
+                    }
+                },
+                enableMouseTracking: false
+            }
         },
         labels: {
             items: [{
@@ -144,6 +155,14 @@
             }
         }]
     });
+
+    function secondsTimeSpanToHMS(s) {
+        var h = Math.floor(s / 3600); //Get whole hours
+        s -= h * 3600;
+        var m = Math.floor(s / 60); //Get remaining minutes
+        s -= m * 60;
+        return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on tes and seconds
+    }
     </script>
 
     <br><br><br>

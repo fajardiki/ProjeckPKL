@@ -36,6 +36,28 @@ class C_klaten extends CI_Controller {
 		}
 	}
 
+	// Sales
+
+	public function diagramsales() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+
+			if (!isset($id)) {
+				redirect('C_klaten/updatesales');
+			} else {
+				$data = array(
+					'sales' => $this->M_klaten->digsales($id),
+					'plane' => $this->M_klaten->selectonefost($id),
+					'timemarket' => $this->M_klaten->selectonetime($id),
+					'pjpcomply' => $this->M_klaten->selectonepjp($id)
+				);
+				$this->load->view('Klaten/V_diagramsales',$data);
+			}
+		}
+	}
+
 	public function updatesales(){
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');

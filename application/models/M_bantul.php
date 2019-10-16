@@ -107,6 +107,29 @@ class M_bantul extends CI_Model {
 
 	// Save sales
 
+	// Digram Sales
+	public function digsales($empcode) {
+		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = $empcode");
+		return $hsl->result_array();
+	}
+	public function selectonefost($emp_code) {
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) AS Planned, SUM(Productive) AS Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		return $hsl->result_array();
+	}
+
+	public function selectonetime($emp_code) {
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+
+		return $hsl->result_array();
+	}
+
+	public function selectonepjp($emp_code) {
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+
+		return $hsl->result_array();
+	}
+	// Sales
+
 	// District
 	public function selectupdatedistrict() {
 		$hsl = $this->db->query("SELECT nama_conces as Conces, District_Code, District FROM m_ruote a LEFT JOIN m_conces b ON a.id_conces = b.id_conces WHERE a.id_conces = 3");

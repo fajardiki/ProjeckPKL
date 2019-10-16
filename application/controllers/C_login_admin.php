@@ -23,23 +23,46 @@ class C_login_admin extends CI_Controller {
 				$username = $this->input->post("username");
 				$password = $this->input->post("password");
 
-				$cekk = $this->M_admin->login_admin($username, $password);
-				$jenis = 'seles';
-				if ($cekk) {
-					$dt= array(
-						'username' => $username,
-						'password' => $password,
-						'user' => $this->M_admin->selectoneadmin($username, $password)
+				if (empty($username) && empty($password)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Username dan Password tidak boleh kosong!'
 					);
-					$ses = $this->session->set_userdata($dt);
-					redirect('C_dasbord');
+					$this->load->view('V_login',$data);
+				} elseif (empty($username)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Username tidak boleh kosong!'
+					);
+					$this->load->view('V_login',$data);
+				} elseif (empty($password)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Password tidak boleh kosong!'
+					);
+					$this->load->view('V_login',$data);
 				} else {
-					redirect('C_login_admin');
-				}
+
+					$cekk = $this->M_admin->login_admin($username, $password);
+					$jenis = 'seles';
+					if ($cekk == 1) {
+						$dt= array(
+							'username' => $username,
+							'password' => $password,
+							'user' => $this->M_admin->selectoneadmin($username, $password)
+						);
+						$ses = $this->session->set_userdata($dt);
+						redirect('C_dasbord');
+					} else {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Login gagal'
+						);
+						$this->load->view('admin/V_login_admin', $data);
+					}
 				
-			} else {
-				redirect('C_login_admin');
-			}
+				}	 
+		}
 	}
 
 }

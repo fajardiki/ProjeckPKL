@@ -93,7 +93,6 @@
         },
         labels: {
             items: [{
-                html: 'Total fruit consumption',
                 style: {
                     left: '50px',
                     top: '18px',
@@ -103,6 +102,20 @@
                     ) || 'black'
                 }
             }]
+        },
+        yAxis: {
+          title: {
+              text: ''
+          }
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.0f}'
+                }
+            }
         },
         series: [{
                 type: 'column',

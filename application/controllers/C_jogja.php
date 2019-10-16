@@ -36,6 +36,29 @@ class C_jogja extends CI_Controller {
 		}
 	}
 
+	// Sales
+
+	public function diagramsales() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$id = $this->uri->segment(3);
+
+			if (!isset($id)) {
+				redirect('C_jogja/updatesales');
+			} else {
+				$data = array(
+					'sales' => $this->M_jogja->digsales($id),
+					'plane' => $this->M_jogja->selectonefost($id),
+					'timemarket' => $this->M_jogja->selectonetime($id),
+					'pjpcomply' => $this->M_jogja->selectonepjp($id)
+				);
+				$this->load->view('Jogja/V_diagramsales',$data);
+			}
+		}
+	}
+
+
 	public function updatesales(){
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');

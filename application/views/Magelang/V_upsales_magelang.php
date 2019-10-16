@@ -33,18 +33,19 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<?php $no=1; ?>
 			  	<?php foreach ($updatesales as $us) { ?>
 			    <tr>
-			      <th scope="row">1</th>
+			      <th scope="row"><?php echo $no; ?></th>
 			      <td><?php echo $us['Emp_Code']; ?></td>
 			      <td><?php echo $us['Salesman']; ?></td>
 			      <td><?php echo $us['Username']; ?></td>
 			      <td><?php echo $us['Password']; ?></td>
-			      <td><a href="<?php echo base_url().'C_magelang/diagramsales' ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_magelang/diagramsales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
 			      <td><a href="<?php echo base_url().'C_magelang/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
 			      <td><a href="<?php echo base_url().'C_magelang/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
 			    </tr>
-				<?php } ?>
+				<?php $no++; } ?>
 				<tr>
 					<td colspan="8"><a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_magelang/savesales' ?>">Tambah</a></td>
 				</tr>
