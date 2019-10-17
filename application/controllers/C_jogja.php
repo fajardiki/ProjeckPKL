@@ -209,7 +209,7 @@ class C_jogja extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'plane' => $this->M_jogja->selectplanejogja()
+				'plane' => $this->M_jogja->selectplane()
 			);
 			$this->load->view('Jogja/V_planejogja',$data);
 		}
@@ -241,7 +241,7 @@ class C_jogja extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'timemarket' => $this->M_jogja->selecttimejogja()
+				'timemarket' => $this->M_jogja->selecttime()
 			);
 			$this->load->view('Jogja/V_timejogja',$data);
 		}
@@ -273,7 +273,7 @@ class C_jogja extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'pjpcomply' => $this->M_jogja->selectpjpjogja()
+				'pjpcomply' => $this->M_jogja->selectpjp()
 			);
 			$this->load->view('Jogja/V_pjpjogja',$data);
 		}

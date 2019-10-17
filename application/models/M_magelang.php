@@ -3,6 +3,12 @@
  * 
  */
 class M_magelang extends CI_Model {
+
+	public function selectplane() {
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE id_conces = 2 GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
+ 			return $hsl->result_array();
+	}
+
 	public function selectplanemagelang() {
 		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE id_conces = 2 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
  			return $hsl->result_array();
@@ -16,6 +22,12 @@ class M_magelang extends CI_Model {
 	// plane
 
 	// time
+
+	public function selecttime() {
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
+
+ 			return $hsl->result_array();
+	}
 
 	public function selecttimemagelang() {
 		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
@@ -32,6 +44,11 @@ class M_magelang extends CI_Model {
 	// time
 
 	// pjp
+
+	public function selectpjp() {
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 2 GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
+ 			return $hsl->result_array();
+	}
 
 	public function selectpjpmagelang() {
 		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 2 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
@@ -60,22 +77,22 @@ class M_magelang extends CI_Model {
 
 	// Digram Sales
 	public function digsales($empcode) {
-		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = $empcode");
+		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = '$empcode'");
 		return $hsl->result_array();
 	}
 	public function selectonefost($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) AS Planned, SUM(Productive) AS Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) AS Planned, SUM(Productive) AS Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE Emp_Code = '$emp_code' GROUP BY MONTH(Journey_Date)");
 		return $hsl->result_array();
 	}
 
 	public function selectonetime($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$emp_code GROUP BY MONTH(Journey_Date)");
 
 		return $hsl->result_array();
 	}
 
 	public function selectonepjp($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = '$emp_code' GROUP BY MONTH(Journey_Date)");
 
 		return $hsl->result_array();
 	}
@@ -89,7 +106,7 @@ class M_magelang extends CI_Model {
  	}
 
  	public function selectsales($id) {
- 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password, id_conces FROM m_selesman WHERE Emp_Code = $id");
+ 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password, id_conces FROM m_selesman WHERE Emp_Code = '$id'");
  		return $hsl->result_array();
  	}
 

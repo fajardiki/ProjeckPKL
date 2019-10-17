@@ -213,7 +213,7 @@ class C_klaten extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'plane' => $this->M_klaten->selectplaneklaten()
+				'plane' => $this->M_klaten->selectplane()
 			);
 			$this->load->view('Klaten/V_planeklaten',$data);
 		}
@@ -245,7 +245,7 @@ class C_klaten extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'timemarket' => $this->M_klaten->selecttimeklaten()
+				'timemarket' => $this->M_klaten->selecttime()
 			);
 			$this->load->view('Klaten/V_timeklaten',$data);
 		}
@@ -277,7 +277,7 @@ class C_klaten extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'pjpcomply' => $this->M_klaten->selectpjpklaten()
+				'pjpcomply' => $this->M_klaten->selectpjp()
 			);
 			$this->load->view('Klaten/V_pjpklaten',$data);
 		}

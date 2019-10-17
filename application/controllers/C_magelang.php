@@ -213,7 +213,7 @@ class C_magelang extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'plane' => $this->M_magelang->selectplanemagelang()
+				'plane' => $this->M_magelang->selectplane()
 			);
 			$this->load->view('Magelang/V_planemagelang',$data);
 		}
@@ -245,7 +245,7 @@ class C_magelang extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'timemarket' => $this->M_magelang->selecttimemagelang()
+				'timemarket' => $this->M_magelang->selecttime()
 			);
 			$this->load->view('Magelang/V_timemagelang',$data);
 		}
@@ -277,7 +277,7 @@ class C_magelang extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'pjpcomply' => $this->M_magelang->selectpjpmagelang()
+				'pjpcomply' => $this->M_magelang->selectpjp()
 			);
 			$this->load->view('Magelang/V_pjpmagelang',$data);
 		}

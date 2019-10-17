@@ -217,7 +217,7 @@ class C_bantul extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'plane' => $this->M_bantul->selectplanebantul()
+				'plane' => $this->M_bantul->selectplane()
 			);
 			$this->load->view('Bantul/V_planebantul',$data);
 		}
@@ -249,7 +249,7 @@ class C_bantul extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'timemarket' => $this->M_bantul->selecttimebantul()
+				'timemarket' => $this->M_bantul->selecttime()
 			);
 			$this->load->view('Bantul/V_timebantul',$data);
 		}
@@ -281,7 +281,7 @@ class C_bantul extends CI_Controller {
 			redirect('C_login');
 		} else {
 			$data = array(
-				'pjpcomply' => $this->M_bantul->selectpjpbantul()
+				'pjpcomply' => $this->M_bantul->selectpjp()
 			);
 			$this->load->view('Bantul/V_pjpbantul',$data);
 		}
