@@ -35,7 +35,7 @@
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
 		        title: {
-			        text: 'Week'
+			        text: 'Month'
 			    }
 		    },
 		    yAxis: {
@@ -89,7 +89,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($plane as $p) {
-			$week[] = $p['Week'];
+			$month[] = $p['month'];
 			$planed[] = intval($p['Planned']);
 			$productive[] = intval($p['Productive']);
 			$nosale[] = intval($p['Nosale']);
@@ -104,9 +104,9 @@
 		        text: 'Diagram Planned - Produktive - Nosale'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week); ?>,
+		        categories: <?php echo json_encode($month); ?>,
 		        title: {
-			        text: 'Week'
+			        text: ''
 			    }
 		    },
 		    yAxis: {
@@ -174,7 +174,7 @@
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
 		        title: {
-			        text: 'Week'
+			        text: 'Month'
 			    }
 		    },
 		    yAxis: {
@@ -228,7 +228,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($timemarket as $tm) {
-			$week1[] = $tm['Week'];
+			$month1[] = $tm['month'];
 			$timeinmarket[] = intval($tm['TimeInMarket']);
 			$spent[] = intval($tm['Spent']);
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
@@ -248,9 +248,9 @@
 		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week1); ?>,
+		        categories: <?php echo json_encode($month1); ?>,
 			    title: {
-			        text: 'Week'
+			        text: ''
 			    }
 		    },
 		    yAxis: {
@@ -340,7 +340,7 @@
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
 		        title: {
-			        text: 'Week'
+			        text: 'Month'
 			    }
 		    },
 		    yAxis: {
@@ -392,7 +392,7 @@
 		</script>
 	<?php } else { ?>
 		<?php foreach ($pjpcomply as $pjp) {
-			$week2[] = $pjp['Week'];
+			$month2[] = $pjp['month'];
 			$pjpcom[] = intval($pjp['PJP_COMPLY']);
 			$geomath[] = intval($pjp['GEOMATCH']);
 			$productive_call[] = intval($pjp['PRODUCTIVE_CALL']);
@@ -407,9 +407,9 @@
 		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($week2); ?>,
+		        categories: <?php echo json_encode($month2); ?>,
 		        title: {
-			        text: 'Week'
+			        text: ''
 			    }
 		    },
 		    yAxis: {

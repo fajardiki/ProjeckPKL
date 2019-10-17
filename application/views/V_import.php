@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body style="font-family: cambria;">
 
@@ -54,18 +56,35 @@
     </div>
   </div>
 
-  <div class="container-fluid" style="overflow-y: scroll;">
-    <!-- <div class="row">
+  <!-- <div class="container-fluid" style="overflow-y: scroll;">
+    <div class="row">
+      <div class="col-sm-3 mb-2">
+        <button class="btn">Pilih perncarian</button>
+      </div>
+      <div class="col-sm-3 mb-2">
+        <button class="btn" id="pilih">Wk</button>
+      </div>
+      <div class="col-sm-3 mb-2">
+        <button class="btn" id="pilih">Wk</button>
+      </div>
+    </div>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("#pilih").hide();
+            $("h1").hide();
+              $("button").click(function(){
+                $("#pilih").toggle();
+              });
+
+              $("#pilih").click(function() {
+                $("h1").show();
+              })
+            });        
+        </script>
+    <div class="row">
       <div class="col-sm-12 mb-2">
-      
-        <select class="form-control mb-1" id="conces" name="conces">
-          <option>-- Pilih Conces --</option>
-          <option value="1">Jogja</option>
-          <option value="2">Magelang</option>
-          <option value="3">Bantul</option>
-          <option value="4">Klaten</option>
-          <option value="5">Sleman</option>
-        </select>
+        <h1>QQQQQ</h1>
+
       </div>
     </div> -->
     <div class="row">
