@@ -116,6 +116,36 @@ class M_bantul extends CI_Model {
 		}
 	}
 
+	public function selectnamesales($namesales) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Salesman = '$namesales'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
+	public function selectunamesales($uname) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Username = '$uname'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
+	public function selectpwordsales($pword) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Password = '$pword'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
 	public function savesales($empcode,$nama,$status,$username,$password,$conces) {
 		$query = $this->db->query("INSERT INTO m_selesman VALUES ('$empcode','$nama','$status','$username','$password','$conces')");
 			return $query;

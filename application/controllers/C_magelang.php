@@ -84,8 +84,35 @@ class C_magelang extends CI_Controller {
 					$password = $this->input->post('password');
 					$conces = $this->input->post('conces');
 
-					$this->M_magelang->updatesales($empcode,$nama,$status,$username,$password,$conces);
-					redirect('C_magelang/updatesales');
+					$ceknama = $this->M_magelang->selectnamesales($nama);
+					$cekuname = $this->M_magelang->selectunamesales($username);
+					$cekpword = $this->M_magelang->selectpwordsales($password);
+
+					if ($ceknama == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda',
+							'updatesales' => $this->M_magelang->selectupdateseles()
+						);
+						$this->load->view('Magelang/V_upsales_magelang',$data);
+					} elseif ($cekuname == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda',
+							'updatesales' => $this->M_magelang->selectupdateseles()
+						);
+						$this->load->view('Magelang/V_upsales_magelang',$data);
+					} elseif ($cekpword == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda',
+							'updatesales' => $this->M_magelang->selectupdateseles()
+						);
+						$this->load->view('Magelang/V_upsales_magelang',$data);
+					} else {
+						$this->M_magelang->updatesales($empcode,$nama,$status,$username,$password,$conces);
+						redirect('C_magelang/updatesales');
+					}
 				}
 			}
 		}
@@ -160,10 +187,31 @@ class C_magelang extends CI_Controller {
 					$this->load->view('Magelang/V_savesales', $data);
 				} else {
 					$cek = $this->M_magelang->selectonesales($empcode);
+					$ceknama = $this->M_magelang->selectnamesales($nama);
+					$cekuname = $this->M_magelang->selectunamesales($username);
+					$cekpword = $this->M_magelang->selectpwordsales($password);
 					if ($cek == 1) {
 						$data = array(
 							'statuspesan' => 'gagal',
 							'isipesan' => 'Emp_Code yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
+						);
+						$this->load->view('Magelang/V_savesales', $data);
+					} elseif ($ceknama == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda'
+						);
+						$this->load->view('Magelang/V_savesales', $data);
+					} elseif ($cekuname == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda'
+						);
+						$this->load->view('Magelang/V_savesales', $data);
+					} elseif ($cekpword == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda'
 						);
 						$this->load->view('Magelang/V_savesales', $data);
 					} else {

@@ -87,6 +87,34 @@ class C_jogja extends CI_Controller {
 					$password = $this->input->post('password');
 					$conces = $this->input->post('conces');
 
+					// $ceknama = $this->M_jogja->selectnamesales($nama);
+					// $cekuname = $this->M_jogja->selectunamesales($username);
+					// $cekpword = $this->M_jogja->selectpwordsales($password);
+
+					// if ($ceknama == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda',
+					// 		'updatesales' => $this->M_jogja->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Jogja/V_upsales_jogja',$data);
+					// } elseif ($cekuname == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda',
+					// 		'updatesales' => $this->M_jogja->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Jogja/V_upsales_jogja',$data);
+					// } elseif ($cekpword == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda',
+					// 		'updatesales' => $this->M_jogja->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Jogja/V_upsales_jogja',$data);
+					// } else {
+						
+					// }
 					$this->M_jogja->updatesales($empcode,$nama,$status,$username,$password,$conces);
 					redirect('C_jogja/updatesales');
 				}
@@ -161,12 +189,33 @@ class C_jogja extends CI_Controller {
 						'isipesan' => 'Concess tidak boleh kosong'
 					);
 					$this->load->view('Jogja/V_savesales', $data);
-				} else {
+				}  else {
 					$cek = $this->M_jogja->selectonesales($empcode);
+					$ceknama = $this->M_jogja->selectnamesales($nama);
+					$cekuname = $this->M_jogja->selectunamesales($username);
+					$cekpword = $this->M_jogja->selectpwordsales($password);
 					if ($cek == 1) {
 						$data = array(
 							'statuspesan' => 'gagal',
 							'isipesan' => 'Emp_Code yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
+						);
+						$this->load->view('Jogja/V_savesales', $data);
+					} elseif ($ceknama == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda'
+						);
+						$this->load->view('Jogja/V_savesales', $data);
+					} elseif ($cekuname == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda'
+						);
+						$this->load->view('Jogja/V_savesales', $data);
+					} elseif ($cekpword == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda'
 						);
 						$this->load->view('Jogja/V_savesales', $data);
 					} else {

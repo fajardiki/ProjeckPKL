@@ -86,6 +86,34 @@ class C_bantul extends CI_Controller {
 					$password = $this->input->post('password');
 					$conces = $this->input->post('conces');
 
+					// $ceknama = $this->M_bantul->selectnamesales($nama);
+					// $cekuname = $this->M_bantul->selectunamesales($username);
+					// $cekpword = $this->M_bantul->selectpwordsales($password);
+
+					// if ($ceknama == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda',
+					// 		'updatesales' => $this->M_bantul->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Bantul/V_upsales_bantul',$data);
+					// } elseif ($cekuname == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda',
+					// 		'updatesales' => $this->M_bantul->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Bantul/V_upsales_bantul',$data);
+					// } elseif ($cekpword == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda',
+					// 		'updatesales' => $this->M_bantul->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Bantul/V_upsales_bantul',$data);
+					// } else {
+						
+					// }
 					$this->M_bantul->updatesales($empcode,$nama,$status,$username,$password,$conces);
 					redirect('C_bantul/updatesales');
 				}
@@ -162,12 +190,33 @@ class C_bantul extends CI_Controller {
 					$this->load->view('Bantul/V_savesales', $data);
 				} else {
 					$cek = $this->M_bantul->selectonesales($empcode);
+					$ceknama = $this->M_bantul->selectnamesales($nama);
+					$cekuname = $this->M_bantul->selectunamesales($username);
+					$cekpword = $this->M_bantul->selectpwordsales($password);
 					if ($cek == 1) {
 						$data = array(
 							'statuspesan' => 'gagal',
 							'isipesan' => 'Emp_Code yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
 						);
-					$this->load->view('Bantul/V_savesales', $data);
+						$this->load->view('Bantul/V_savesales', $data);
+					} elseif ($ceknama == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda'
+						);
+						$this->load->view('Bantul/V_savesales', $data);
+					} elseif ($cekuname == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda'
+						);
+						$this->load->view('Bantul/V_savesales', $data);
+					} elseif ($cekpword == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda'
+						);
+						$this->load->view('Bantul/V_savesales', $data);
 					} else {
 						$this->M_bantul->savesales($empcode,$nama,$status,$username,$password,$conces);
 						redirect('C_bantul/updatesales');

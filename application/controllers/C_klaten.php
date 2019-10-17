@@ -85,6 +85,35 @@ class C_klaten extends CI_Controller {
 					$password = $this->input->post('password');
 					$conces = $this->input->post('conces');
 
+					// $ceknama = $this->M_klaten->selectnamesales($nama);
+					// $cekuname = $this->M_klaten->selectunamesales($username);
+					// $cekpword = $this->M_klaten->selectpwordsales($password);
+
+					// if ($ceknama == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda',
+					// 		'updatesales' => $this->M_klaten->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Klaten/V_upsales_klaten',$data);
+					// } elseif ($cekuname == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda',
+					// 		'updatesales' => $this->M_klaten->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Klaten/V_upsales_klaten',$data);
+					// } elseif ($cekpword == 1) {
+					// 	$data = array(
+					// 		'statuspesan' => 'gagal',
+					// 		'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda',
+					// 		'updatesales' => $this->M_klaten->selectupdateseles()
+					// 	);
+					// 	$this->load->view('Klaten/V_upsales_klaten',$data);
+					// } else {
+						
+					// }
+
 					$this->M_klaten->updatesales($empcode,$nama,$status,$username,$password,$conces);
 					redirect('C_klaten/updatesales');
 				}
@@ -161,10 +190,31 @@ class C_klaten extends CI_Controller {
 					$this->load->view('Klaten/V_savesales', $data);
 				} else {
 					$cek = $this->M_klaten->selectonesales($empcode);
+					$ceknama = $this->M_klaten->selectnamesales($nama);
+					$cekuname = $this->M_klaten->selectunamesales($username);
+					$cekpword = $this->M_klaten->selectpwordsales($password);
 					if ($cek == 1) {
 						$data = array(
 							'statuspesan' => 'gagal',
 							'isipesan' => 'Emp_Code yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
+						);
+						$this->load->view('Klaten/V_savesales', $data);
+					} elseif ($ceknama == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Nama yang anda inputkan sudah ada, silahkan input dengan Nama yang berbeda'
+						);
+						$this->load->view('Klaten/V_savesales', $data);
+					} elseif ($cekuname == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Username yang anda inputkan sudah ada, silahkan input dengan Username yang berbeda'
+						);
+						$this->load->view('Klaten/V_savesales', $data);
+					} elseif ($cekpword == 1) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Password yang anda inputkan sudah ada, silahkan input dengan Password yang berbeda'
 						);
 						$this->load->view('Klaten/V_savesales', $data);
 					} else {

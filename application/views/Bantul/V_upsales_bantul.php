@@ -26,6 +26,23 @@
 <div class="container-fluid" align="center" style="margin-bottom: 6px; font-size: 11px;">
 	<div class="row">
 		<div class="col-sm-12">
+			<?php
+		        if (isset($statuspesan)) {
+		          if ($statuspesan != "sukses") {
+		      ?>   
+		          <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
+		      <?php
+		        } else {
+		      ?>
+		          <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
+		      <?php
+		          }
+		        }
+		      ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
 			<table class="table table-sm" style="text-align: center;">
 			  <thead>
 			    <tr>

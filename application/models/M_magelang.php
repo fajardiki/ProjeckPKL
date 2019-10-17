@@ -86,7 +86,7 @@ class M_magelang extends CI_Model {
 	}
 
 	public function selectonetime($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$emp_code' GROUP BY MONTH(Journey_Date)");
 
 		return $hsl->result_array();
 	}
@@ -125,6 +125,36 @@ class M_magelang extends CI_Model {
 
 	public function selectonesales($empcode) {
 		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Emp_Code = '$empcode'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
+	public function selectnamesales($namesales) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Salesman = '$namesales'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
+	public function selectunamesales($uname) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Username = '$uname'");
+
+		if ($periksa->num_rows()>0) {
+		 	return 1;
+		} else {
+		 	return 0;
+		}
+	}
+
+	public function selectpwordsales($pword) {
+		$periksa = $this->db->query("SELECT * FROM m_selesman WHERE Password = '$pword'");
 
 		if ($periksa->num_rows()>0) {
 		 	return 1;
