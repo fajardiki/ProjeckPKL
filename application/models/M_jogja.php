@@ -62,7 +62,7 @@ class M_jogja extends CI_Model {
 
  	// Digram Sales
 	public function digsales($empcode) {
-		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = $empcode");
+		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = '$empcode'");
 		return $hsl->result_array();
 	}
 	public function selectonefost($emp_code) {

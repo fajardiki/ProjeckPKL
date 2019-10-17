@@ -69,7 +69,7 @@ class M_bantul extends CI_Model {
  	}
 
  	public function selectsales($id) {
- 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password, id_conces FROM m_selesman WHERE Emp_Code = $id");
+ 		$hsl = $this->db->query("SELECT Emp_Code, Salesman, Status, Username, Password, id_conces FROM m_selesman WHERE Emp_Code = '$id'");
  		return $hsl->result_array();
  	}
 
@@ -109,16 +109,16 @@ class M_bantul extends CI_Model {
 
 	// Digram Sales
 	public function digsales($empcode) {
-		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = $empcode");
+		$hsl = $this->db->query("SELECT Salesman FROM m_selesman WHERE Emp_Code = '$empcode'");
 		return $hsl->result_array();
 	}
 	public function selectonefost($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) AS Planned, SUM(Productive) AS Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) AS Planned, SUM(Productive) AS Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE Emp_Code = '$emp_code' GROUP BY MONTH(Journey_Date)");
 		return $hsl->result_array();
 	}
 
 	public function selectonetime($emp_code) {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code GROUP BY MONTH(Journey_Date)");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, AVG(TIME_TO_SEC(Spent)) as Spent, AVG(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$emp_code' GROUP BY MONTH(Journey_Date)");
 
 		return $hsl->result_array();
 	}

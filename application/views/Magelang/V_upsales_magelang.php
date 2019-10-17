@@ -41,8 +41,8 @@
 			      <td><?php echo $us['Salesman']; ?></td>
 			      <td><?php echo $us['Username']; ?></td>
 			      <td><?php echo $us['Password']; ?></td>
-			      <td><a href="<?php echo base_url().'C_magelang/diagramsales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
-			      <td><a href="<?php echo base_url().'C_magelang/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_magelang/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_magelang/updatesales/'.$us['Emp_Code'] ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
 			      <td><a href="<?php echo base_url().'C_magelang/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
 			    </tr>
 				<?php $no++; } ?>

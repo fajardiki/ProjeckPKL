@@ -12,11 +12,6 @@
 	<script src="https://code.highcharts.com/highcharts-more.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-	<style>
-		body {
-		  font-family: 'Lato', sans-serif;
-		}
-	</style>
 </head>
 <body style="font-family: cambria;">
 
@@ -52,8 +47,8 @@
 			      <td><?php echo $us['Salesman']; ?></td>
 			      <td><?php echo $us['Username']; ?></td>
 			      <td><?php echo $us['Password']; ?></td>
-			      <td><a href="<?php echo base_url().'C_jogja/diagramsales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
-			      <td><a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?> ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_jogja/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fa fa-bar-chart-o" style="font-size:15px;"></a></td>
+			      <td><a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?>" class="card-link fa fa-edit" style="font-size:15px;"></a></td>
 			      <td><a href="<?php echo base_url().'C_jogja/hapussales/'.$us['Emp_Code'] ?>" class="card-link fa fa-trash" style="font-size:15px;"></a></td>
 			    </tr>
 				<?php $no++; } ?>
