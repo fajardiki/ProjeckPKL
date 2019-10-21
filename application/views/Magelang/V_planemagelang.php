@@ -24,7 +24,7 @@
 <!-- Akhir -->
 
 <!-- Navbar efos -->
-<?php $this->load->view('Bantul/V_navbarbantul'); ?>
+<?php $this->load->view('Magelang/V_navbarmagelang'); ?>
 <!-- Akhir -->
 
 <div class="container-fluid">

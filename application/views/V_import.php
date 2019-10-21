@@ -8,12 +8,12 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body style="font-family: cambria;">
+<body style="font-family: cambria; padding:0; height: 100%;">
 
   <!-- Navbar -->
   <?php $this->load->view('V_navbar'); ?>
   <!-- Akhir -->
-  <br>
+<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 70px;">
   <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
     <h5 align="center">Import File Excel di sini!!</h5>           
     <div class="form-group">
@@ -232,6 +232,11 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Footer -->
+<?php $this->load->view('V_footer'); ?>
+<!-- Akhir Footer -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

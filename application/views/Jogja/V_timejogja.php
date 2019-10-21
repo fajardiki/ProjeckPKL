@@ -30,9 +30,9 @@
 <!-- Akhir -->
 
 <!-- Navbar efos -->
-<?php $this->load->view('Bantul/V_navbarbantul'); ?>
+<?php $this->load->view('Jogja/V_navbarjogja'); ?>
 <!-- Akhir -->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 20px;">
     <h1 class="mt-2" align="center" style="font-size: 4vw;">TIME JOGJA</h1>
     <hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
     <form method="post" action="<?php echo base_url().'C_jogja/timeselect' ?>" class="mt-2 ml-5 mr-5 mb-2">

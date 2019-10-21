@@ -13,17 +13,17 @@
 
 
 </head>
-<body style="font-family: cambria;">
+<body style="font-family: cambria; padding:0; height: 100%;">
 
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
 <!-- Content -->
-<div class="container-fluid" style="margin-top: 15px; margin-bottom: 70px;">
+<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 70px;">
 
 <!-- Admin -->
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
   <?php if ($nama[0]['status']=='admin') {?>
   <div class="row">
     <div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
@@ -460,13 +460,12 @@
     </script>
   <?php } ?>
   <!-- Akhir Grafik PJP COMPLY -->
-</div>
+<!-- </div> -->
 <!-- Akhir admin -->
 
 
 
 <!-- Sales -->
-
 <?php } elseif ($nama[0]['status']=='sales') { ?>
 
   <div class="jumbotron jumbotron-fluid">

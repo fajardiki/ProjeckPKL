@@ -30,7 +30,7 @@
 <!-- Akhir -->
 
 <!-- Navbar efos -->
-<?php $this->load->view('Bantul/V_navbarbantul'); ?>
+<?php $this->load->view('Jogja/V_navbarjogja'); ?>
 <!-- Akhir -->
 <div class="container-fluid">
   <h1 class="mt-2" align="center" style="font-size: 4vw;">PJP JOGJA</h1>

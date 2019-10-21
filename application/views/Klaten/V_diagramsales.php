@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 				<h3><?php echo $sales[0]['Salesman']; ?></h3>
-				<h6>Magelang</h6>
+				<h6>Klaten</h6>
 			</div>
 		</div>
 

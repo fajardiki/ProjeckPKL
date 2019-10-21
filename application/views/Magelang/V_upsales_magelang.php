@@ -14,7 +14,7 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid mb-5 mt-3">
+<div class="container-fluid mb-5" style="margin-top: 60px;">
 	<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Magelang</h1>
 	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<table class="table table-sm" style="text-align: center;">
-			  <thead>
+			  <thead style="font-size: 9px;">
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col">Emp_Code</th>

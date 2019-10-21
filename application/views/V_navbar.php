@@ -4,10 +4,8 @@
 
 
 <?php if ($nama[0]['status']=='admin') {?>
-
-<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;"> 
-
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
+<!-- <img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;">  -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar" style="position: fixed; top: 0; width: 100%; z-index: 9999;">
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="#">ADMIN</a>
 	      
@@ -84,8 +82,8 @@
 
 <?php } elseif ($nama[0]['status']=='sales') { ?>
 
-<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
+<!-- <img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;"> -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar" style="position: fixed; top: 0; width: 100%; z-index: 9999;">
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="">SALES</a>
 

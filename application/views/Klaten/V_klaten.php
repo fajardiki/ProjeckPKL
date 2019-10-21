@@ -17,7 +17,7 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 70px;">
 	<div class="row">
 		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 			<h3>EFOS ADMM CONCES KLATEN</h3>
