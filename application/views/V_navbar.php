@@ -1,11 +1,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style type="text/css">
+	.sticky {
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	  z-index: 9999;
+	}
+</style>
+
 <?php $nama = $this->session->userdata('user'); ?>
 
 
 <?php if ($nama[0]['status']=='admin') {?>
-<!-- <img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;">  -->
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar" style="position: fixed; top: 0; width: 100%; z-index: 9999;">
+<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="min-width: 100%; height: auto; width: 100px;"> 
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
+		<!-- style="position: fixed; top: .header-image; width: 100%; z-index: 9999;" -->
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="#">ADMIN</a>
 	      
@@ -82,8 +92,9 @@
 
 <?php } elseif ($nama[0]['status']=='sales') { ?>
 
-<!-- <img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;"> -->
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar" style="position: fixed; top: 0; width: 100%; z-index: 9999;">
+<img src="http://www.andrawinadmm.co.id/wp-content/uploads/2017/02/Header2.jpg" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
+		<!-- style="position: fixed; top: 0; width: 100%; z-index: 9999;" -->
 	      <!-- Brand -->
 	      <a class="navbar-brand" align="" href="">SALES</a>
 
@@ -122,3 +133,18 @@
 	      </div> 
 	    </nav>
 <?php } ?>
+
+		<script type="text/javascript">
+			window.onscroll = function() {myFunction()};
+
+			var navbar = document.getElementById("navbar");
+			var sticky = navbar.offsetTop;
+
+			function myFunction() {
+			  if (window.pageYOffset >= sticky) {
+			    navbar.classList.add("sticky")
+			  } else {
+			    navbar.classList.remove("sticky");
+			  }
+			}
+		</script>

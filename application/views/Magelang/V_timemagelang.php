@@ -30,7 +30,7 @@
 <div class="container-fluid">
     <h1 class="mt-2" align="center" style="font-size: 4vw;">TIME MAGELANG</h1>
     <hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
-    <form method="post" action="<?php echo base_url().'C_magelang/timeselect' ?>" class="mt-2 ml-5 mr-5 mb-2">
+    <form method="post" action="<?php echo base_url().'C_magelang/timeselect' ?>" class="mt-2 ml-2 mr-2 mb-2">
         <div class="row">
             <div class="col-sm-2">       
                 <div class="form-group">
@@ -84,9 +84,6 @@
     Highcharts.chart('start_time', {
         time: {
             timezone: 'Asia/Jakarta'
-        },
-        chart: {
-            backgroundColor: '#cccccc'
         },
         title: {
             text: 'Diagram TimeInMarket - Spent - TimePerOutlet'

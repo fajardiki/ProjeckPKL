@@ -20,7 +20,7 @@
 <!-- Akhir -->
 
 <!-- Content -->
-<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 70px;">
+<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 10px; margin-bottom: 60px;">
 
 <!-- Admin -->
 <!-- <div class="container-fluid"> -->

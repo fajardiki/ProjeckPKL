@@ -26,7 +26,7 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Bantul/V_navbarbantul'); ?>
 <!-- Akhir -->
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 100px">
 	<h1 class="mt-2" align="center" style="font-size: 4vw;">EFOS BANTUL</h1>
 	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 		<form method="post" action="<?php echo base_url().'C_bantul/efosallselect' ?>" class="mt-2 ml-3 mr-3 mb-2">
@@ -68,7 +68,7 @@
 				</div>
 			</div>
 		</form>
-		<div class="row m-1">
+		<div class="row">
 			<div class="col-sm-12">
 				<div class="container-fluid" style="overflow:scroll;">
 					<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
@@ -109,8 +109,6 @@
 				</div>
 			</div>
 		</div>
-
-	<br><br><br>
 </div>
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>

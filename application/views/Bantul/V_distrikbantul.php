@@ -13,12 +13,12 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid mb-5" style="margin-top: 60px;">
+<div class="container-fluid mb-5" style="margin-top: 10px;">
 	<h1 class="mt-2" align="center" style="font-size: 4vw;">District Bantul</h1>
 	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
 
-<div class="container-fluid mt-4" align="center" style="margin-bottom: 6px; font-size: 11px;">
+<div class="container-fluid mt-4" align="center" style="font-size: 11px; margin-bottom: 100px;">
 	<div class="row">
 		<div class="col-sm-12">
 			<table class="table table-sm" style="text-align: center;">
@@ -52,6 +52,9 @@
 		</div>
 	</div>
 </div>
+<!-- Footer -->
+<?php $this->load->view('V_footer'); ?>
+<!-- Akhir Footer -->
 
 
 

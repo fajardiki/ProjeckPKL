@@ -23,6 +23,20 @@
  		$h = $hsl->row_array();
  		return $h['Emp_Code'];
  	}
+
+ 	public function selectefos($nama) {
+ 		$periksa = $this->db->query("SELECT * FROM upload WHERE name_upload = '$nama'");
+
+ 		if ($periksa->num_rows()>0) {
+			return 1;
+		} else {
+			return 0;
+		}
+ 	}
+
+ 	public function insertname($nama) {
+ 		$query = $this->db->query("INSERT INTO upload VALUES ('',now(),'$nama')");
+ 	}
  } 
 
  ?>

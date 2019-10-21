@@ -17,7 +17,7 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid" style="margin-top: 70px;">
+<div class="container-fluid" style="margin-top: 10px; margin-bottom: 60px;">
 	<div class="row">
 		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 			<h3>EFOS ADMM CONCES MAGELANG</h3>
@@ -456,7 +456,6 @@
 		});
 		</script>
 	<?php } ?>
-	<br><br><br>
 </div>
 	<!-- Akhir Grafik PJP COMPLY -->
 

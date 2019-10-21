@@ -13,7 +13,7 @@
   <!-- Navbar -->
   <?php $this->load->view('V_navbar'); ?>
   <!-- Akhir -->
-<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 70px;">
+<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 10px; margin-bottom: 100px;">
   <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
     <h5 align="center">Import File Excel di sini!!</h5>           
     <div class="form-group">
@@ -233,7 +233,6 @@
     </div>
   </div>
 </div>
-
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->
