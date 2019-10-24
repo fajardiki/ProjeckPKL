@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-
-	<script src="https://code.highcharts.com/highcharts.js"></script>
-	<script src="https://code.highcharts.com/modules/series-label.js"></script>
-	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	
-</head>
-<body style="font-family: cambria;">
-
 <?php $nama = $this->session->userdata('user'); ?>
 
 <!-- Admin -->
@@ -730,5 +718,3 @@
 
 <?php } ?>
 <!-- Akhir sales -->
-</body>
-</html>

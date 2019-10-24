@@ -35,11 +35,11 @@
         <form action="<?php echo base_url().'C_login/login'; ?>" method="post">
           <div class="form-group">
             <label for="inputAddress">Username</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Input Username" name="username">
+            <input type="text" class="form-control" id="inputusername" placeholder="Input Username" name="username" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="inputAddress">Password</label>
-            <input type="password" class="form-control" id="inputAddress" placeholder="Input Password" name="password">
+            <input type="password" class="form-control" id="inputpassword" placeholder="Input Password" name="password" autocomplete="off">
           </div>
           <button type="submit" class="btn btn-primary" id="btn_login" name="btnlogin">Sign in</button>
         </form>
