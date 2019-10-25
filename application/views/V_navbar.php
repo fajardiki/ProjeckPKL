@@ -94,7 +94,7 @@
 			              IMPORT
 			            </a>
 			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="#" style="color: #ffffff">Data Efos</a>
+			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
 			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
 			            </div>
 			        </li>

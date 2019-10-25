@@ -252,6 +252,16 @@ class C_dasbord extends CI_Controller {
 		}
 	}
 
+	public function dataefos() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$this->load->view('V_dataallefos');
+		}
+	}
+
+	// Akhir import
+
 	// public function updatesales(){
 	// 	if (!$this->session->userdata('username')) {
 	// 		redirect('C_login');
