@@ -17,7 +17,7 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			if ($nama[0]['status']=='admin') {
+			if ($nama[0]['status']=='Admin') {
 				$data = array(
 					'plane' => $this->M_admin->selectallplane(),
 					'timemarket' => $this->M_admin->selectalltime(),
@@ -32,6 +32,34 @@ class C_dasbord extends CI_Controller {
 					'plane1' => $this->M_user->selectonefostnow($nama[0]['Emp_Code']),
 					'timemarket1' => $this->M_user->selectonetimenow($nama[0]['Emp_Code']),
 					'pjpcomply1' => $this->M_user->selectonepjpnow($nama[0]['Emp_Code'])
+				);
+				$this->load->view('V_dasbord',$data);
+			} elseif ($nama[0]['status']=='HRD') {
+				$data = array(
+					'plane' => $this->M_admin->selectallplane(),
+					'timemarket' => $this->M_admin->selectalltime(),
+					'pjpcomply' => $this->M_admin->selectallpjp()
+				);
+				$this->load->view('V_dasbord',$data);
+			} elseif ($nama[0]['status']=='Supervisor') {
+				$data = array(
+					'plane' => $this->M_admin->selectallplane(),
+					'timemarket' => $this->M_admin->selectalltime(),
+					'pjpcomply' => $this->M_admin->selectallpjp()
+				);
+				$this->load->view('V_dasbord',$data);
+			} elseif ($nama[0]['status']=='Owner') {
+				$data = array(
+					'plane' => $this->M_admin->selectallplane(),
+					'timemarket' => $this->M_admin->selectalltime(),
+					'pjpcomply' => $this->M_admin->selectallpjp()
+				);
+				$this->load->view('V_dasbord',$data);
+			} elseif ($nama[0]['status']=='Oprational Manager') {
+				$data = array(
+					'plane' => $this->M_admin->selectallplane(),
+					'timemarket' => $this->M_admin->selectalltime(),
+					'pjpcomply' => $this->M_admin->selectallpjp()
 				);
 				$this->load->view('V_dasbord',$data);
 			}

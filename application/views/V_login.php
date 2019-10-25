@@ -17,7 +17,7 @@
     <div class="row">
     <div class="col-sm-4"></div>
       <div class="col-sm-4" id="form_login">
-        <h1 class="login_text">Form Sales</h1>
+        <h1 class="login_text">Form Login</h1>
         <br>
         <?php
           if (isset($statuspesan)) {

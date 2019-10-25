@@ -9,7 +9,7 @@
 
   <!-- Admin -->
   <!-- <div class="container-fluid"> -->
-    <?php if ($nama[0]['status']=='admin') {?>
+  <?php if ($nama[0]['status']=='Admin' OR $nama[0]['status']=='Supervisor' OR $nama[0]['status']=='HRD') {?>
     <div class="row">
       <div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
         <h3>EFOS ADMM Group 2019</h3>
@@ -1274,6 +1274,15 @@
           </div>
       </div>
     <!-- Akhir Grafik PJP COMPLY -->
+
+  <?php } elseif ($nama[0]['status']=='HRD') { ?>
+
+  <?php } elseif ($nama[0]['status']=='Supervisor') { ?>
+
+  <?php } elseif ($nama[0]['status']=='Operational Manager') { ?>
+
+  <?php } elseif ($nama[0]['status']=='Owner') { ?>
+
   <?php } ?>
   <!-- Akhir sales -->
 

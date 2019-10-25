@@ -6,13 +6,20 @@ class M_user extends CI_Model {
 	
 	public function login_seles($username, $password) {
 		$periksa = $this->db->get_where('m_selesman',array('username'=>$username, 'password'=>$password));
-
-		if ($periksa->num_rows()>0) {
-	 		return 1;
-	 	} else {
-	 		return 0;
-	 	}
+		return $periksa->result_array();
 	}
+
+	public function login_user($username, $password) {
+		$periksa = $this->db->get_where('user',array('username'=>$username, 'password'=>$password));
+		return $periksa->result_array();
+
+	}
+
+	// Select user
+	public function selectoneuser($username, $password) {
+			$hsl = $this->db->query("SELECT * FROM user WHERE username='$username' AND password='$password'");
+			return $hsl->result_array();
+		}
 
 	// Beranda
 	public function selectoneseles($username, $password) {
