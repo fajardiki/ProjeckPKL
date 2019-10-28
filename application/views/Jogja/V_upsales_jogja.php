@@ -1,10 +1,11 @@
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
+<?php $nama = $this->session->userdata('user'); ?>
 
 <div class="container-fluid mb-5" style="margin-top: 10px;">
-	<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Jogja</h1>
-	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
+	<h1 class="mt-2" align="center" style="font-size: 3vw;">Salesman Jogja</h1>
+	<hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
 
 <div class="container-fluid mt-4" align="center" style="margin-bottom: 50px; font-size: 11px;">
@@ -39,19 +40,33 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<?php $no=1; ?>
-			  	<?php foreach ($updatesales as $us) { ?>
-			    <tr>
-			      <th scope="row"><?php echo $no; ?></th>
-			      <td><?php echo $us['Emp_Code']; ?></td>
-			      <td><?php echo $us['Salesman']; ?></td>
-			      <td><?php echo $us['Username']; ?></td>
-			      <td><?php echo $us['Password']; ?></td>
-			      <td><a href="<?php echo base_url().'C_jogja/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fas fa-chart-bar" style="font-size:15px;"></a></td>
-			      <td><a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?>" class="card-link fas fa-edit" style="font-size:15px;"></a></td>
-			      <td><a href="<?php echo base_url().'C_jogja/hapussales/'.$us['Emp_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;"></a></td>
-			    </tr>
-				<?php $no++; } ?>
+			  	<?php if ($nama[0]['status']=='HRD' OR $nama[0]['status']=='Owner' OR $nama[0]['status']=='Supervisor' OR $nama[0]['status']=='Oprational Manager') { ?>
+			  		<?php $no = 1 ?>
+				  	<?php foreach ($updatesales as $us) { ?>
+				    <tr>
+				      <th scope="row"><?php echo $no; ?></th>
+				      <td><?php echo $us['Emp_Code']; ?></td>
+				      <td><?php echo $us['Salesman']; ?></td>
+				      <td><?php echo $us['Username']; ?></td>
+				      <td><?php echo $us['Password']; ?></td>
+				      <td><a href="<?php echo base_url().'C_jogja/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fas fa-chart-bar" style="font-size:15px;"></a></td>
+				    </tr>
+					<?php $no++; } ?>
+			  	<?php } else {?>
+				  	<?php $no=1; ?>
+				  	<?php foreach ($updatesales as $us) { ?>
+				    <tr>
+				      <th scope="row"><?php echo $no; ?></th>
+				      <td><?php echo $us['Emp_Code']; ?></td>
+				      <td><?php echo $us['Salesman']; ?></td>
+				      <td><?php echo $us['Username']; ?></td>
+				      <td><?php echo $us['Password']; ?></td>
+				      <td><a href="<?php echo base_url().'C_jogja/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fas fa-chart-bar" style="font-size:15px;"></a></td>
+				      <td><a href="<?php echo base_url().'C_jogja/updatesales/'.$us['Emp_Code'] ?>" class="card-link fas fa-edit" style="font-size:15px;"></a></td>
+				      <td><a href="<?php echo base_url().'C_jogja/hapussales/'.$us['Emp_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;"></a></td>
+				    </tr>
+					<?php $no++; } ?>
+				<?php } ?>
 				<tr>
 					<td colspan="8"><a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_jogja/savesales' ?>">Tambah</a></td>
 				</tr>

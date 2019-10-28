@@ -10,35 +10,56 @@ class C_magelang extends CI_Controller {
 	}
 
 	public function index() {
+		$nama = $this->session->userdata('user');
+
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_magelang->selectplanemagelang(),
-				'timemarket' => $this->M_magelang->selecttimemagelang(),
-				'pjpcomply' => $this->M_magelang->selectpjpmagelang()
-	 		);
-			$this->load->view('Magelang/V_magelang',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten');
+			} else {
+				$data = array(
+					'plane' => $this->M_magelang->selectplanemagelang(),
+					'timemarket' => $this->M_magelang->selecttimemagelang(),
+					'pjpcomply' => $this->M_magelang->selectpjpmagelang()
+		 		);
+				$this->load->view('Magelang/V_magelang',$data);
+			}
 		}
 	}
 
 	public function efos() {
+		$nama = $this->session->userdata('user');
+
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_magelang->selectplanemagelang(),
-				'timemarket' => $this->M_magelang->selectplanemagelang(),
-				'pjpcomply' => $this->M_magelang->selectplanemagelang(),
-				'efosall' => $this->M_magelang->selectefosmagelang()
-			);
-			$this->load->view('Magelang/V_efosmagelang',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja/efos');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul/efos');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten/efos');
+			} else {
+				$data = array(
+					'plane' => $this->M_magelang->selectplanemagelang(),
+					'timemarket' => $this->M_magelang->selectplanemagelang(),
+					'pjpcomply' => $this->M_magelang->selectplanemagelang(),
+					'efosall' => $this->M_magelang->selectefosmagelang()
+				);
+				$this->load->view('Magelang/V_efosmagelang',$data);
+			}
 		}
 	}
 
 	// Sales
 
 	public function diagramsales() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -47,29 +68,46 @@ class C_magelang extends CI_Controller {
 			if (!isset($id)) {
 				redirect('C_magelang/updatesales');
 			} else {
-				$data = array(
-					'sales' => $this->M_magelang->digsales($id),
-					'plane' => $this->M_magelang->selectonefost($id),
-					'timemarket' => $this->M_magelang->selectonetime($id),
-					'pjpcomply' => $this->M_magelang->selectonepjp($id)
-				);
-				$this->load->view('Magelang/V_diagramsales',$data);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'sales' => $this->M_magelang->digsales($id),
+						'plane' => $this->M_magelang->selectonefost($id),
+						'timemarket' => $this->M_magelang->selectonetime($id),
+						'pjpcomply' => $this->M_magelang->selectonepjp($id)
+					);
+					$this->load->view('Magelang/V_diagramsales',$data);
+				}
 			}
 		}
 	}
 
 	public function updatesales(){
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
 			$id = $this->uri->segment(3);
 			$btn = $this->input->post('update');
 			if (!isset($id) AND !isset($btn)) {
-				$data = array(
-					'updatesales' => $this->M_magelang->selectupdateseles()
-				);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'updatesales' => $this->M_magelang->selectupdateseles()
+					);
 
-				$this->load->view('Magelang/V_upsales_magelang',$data);
+					$this->load->view('Magelang/V_upsales_magelang',$data);
+				}
 			} elseif (isset($id)) {
 				$data = array(
 					'sales' => $this->M_magelang->selectsales($id)

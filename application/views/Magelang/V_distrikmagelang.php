@@ -3,8 +3,8 @@
 <!-- Akhir -->
 
 <div class="container-fluid mb-5" style="margin-top: 10px;">
-	<h1 class="mt-2" align="center" style="font-size: 4vw;">District Magelang</h1>
-	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
+	<h1 class="mt-2" align="center" style="font-size: 3vw;">District Magelang</h1>
+	<hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
 </div>
 
 <div class="container-fluid mt-4" align="center" style="font-size: 11px; margin-bottom: 100px;">

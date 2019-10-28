@@ -2,6 +2,8 @@
 /**
  * 
  */
+
+
 class C_bantul extends CI_Controller {
 	
 	function __construct() {
@@ -11,35 +13,55 @@ class C_bantul extends CI_Controller {
 	}
 
 	public function index() {
+		$nama = $this->session->userdata('user');
+
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_bantul->selectplanebantul(),
-				'timemarket' => $this->M_bantul->selecttimebantul(),
-				'pjpcomply' => $this->M_bantul->selectpjpbantul()
-	 		);
-			$this->load->view('Bantul/V_bantul',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja');
+			} elseif ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten');
+			} else {
+				$data = array(
+					'plane' => $this->M_bantul->selectplanebantul(),
+					'timemarket' => $this->M_bantul->selecttimebantul(),
+					'pjpcomply' => $this->M_bantul->selectpjpbantul()
+		 		);
+				$this->load->view('Bantul/V_bantul',$data);
+			}
 		}
 	}
 
 	public function efos() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_bantul->selectplanebantul(),
-				'timemarket' => $this->M_bantul->selectplanebantul(),
-				'pjpcomply' => $this->M_bantul->selectplanebantul(),
-				'efosall' => $this->M_bantul->selectefosbantul()
-			);
-			$this->load->view('Bantul/V_efosbantul',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja/efos');
+			} elseif ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang/efos');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten/efos');
+			} else {
+				$data = array(
+					'plane' => $this->M_bantul->selectplanebantul(),
+					'timemarket' => $this->M_bantul->selectplanebantul(),
+					'pjpcomply' => $this->M_bantul->selectplanebantul(),
+					'efosall' => $this->M_bantul->selectefosbantul()
+				);
+				$this->load->view('Bantul/V_efosbantul',$data);
+			}
 		}
 	}
 
 	// Sales
 
 	public function diagramsales() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -48,18 +70,27 @@ class C_bantul extends CI_Controller {
 			if (!isset($id)) {
 				redirect('C_bantul/updatesales');
 			} else {
-				$data = array(
-					'sales' => $this->M_bantul->digsales($id),
-					'plane' => $this->M_bantul->selectonefost($id),
-					'timemarket' => $this->M_bantul->selectonetime($id),
-					'pjpcomply' => $this->M_bantul->selectonepjp($id)
-				);
-				$this->load->view('Bantul/V_diagramsales',$data);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'sales' => $this->M_bantul->digsales($id),
+						'plane' => $this->M_bantul->selectonefost($id),
+						'timemarket' => $this->M_bantul->selectonetime($id),
+						'pjpcomply' => $this->M_bantul->selectonepjp($id)
+					);
+					$this->load->view('Bantul/V_diagramsales',$data);
+				}
 			}
 		}
 	}
 
 	public function updatesales(){
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -67,11 +98,19 @@ class C_bantul extends CI_Controller {
 			$btn = $this->input->post('update');
 
 			if (!isset($id) AND !isset($btn)) {
-				$data = array(
-					'updatesales' => $this->M_bantul->selectupdateseles()
-				);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'updatesales' => $this->M_bantul->selectupdateseles()
+					);
 
-				$this->load->view('Bantul/V_upsales_bantul',$data);
+					$this->load->view('Bantul/V_upsales_bantul',$data);
+				}
 			} elseif (isset($id)) {
 				$data = array(
 					'sales' => $this->M_bantul->selectsales($id)

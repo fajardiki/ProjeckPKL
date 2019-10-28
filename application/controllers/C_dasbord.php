@@ -42,12 +42,17 @@ class C_dasbord extends CI_Controller {
 				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='Supervisor') {
-				$data = array(
-					'plane' => $this->M_admin->selectallplane(),
-					'timemarket' => $this->M_admin->selectalltime(),
-					'pjpcomply' => $this->M_admin->selectallpjp()
-				);
-				$this->load->view('V_dasbord',$data);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten');
+				} else {
+					redirect('C_logout');
+				}
 			} elseif ($nama[0]['status']=='Owner') {
 				$data = array(
 					'plane' => $this->M_admin->selectallplane(),
@@ -56,12 +61,17 @@ class C_dasbord extends CI_Controller {
 				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='Oprational Manager') {
-				$data = array(
-					'plane' => $this->M_admin->selectallplane(),
-					'timemarket' => $this->M_admin->selectalltime(),
-					'pjpcomply' => $this->M_admin->selectallpjp()
-				);
-				$this->load->view('V_dasbord',$data);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten');
+				} else {
+					redirect('C_logout');
+				}
 			}
 
 		}

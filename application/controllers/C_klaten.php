@@ -10,35 +10,55 @@ class C_klaten extends CI_Controller {
 	}
 
 	public function index() {
+		$nama = $this->session->userdata('user');
+
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_klaten->selectplaneklaten(),
-				'timemarket' => $this->M_klaten->selecttimeklaten(),
-				'pjpcomply' => $this->M_klaten->selectpjpklaten()
-	 		);
-			$this->load->view('Klaten/V_klaten',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja');
+			} elseif ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul');
+			} else {
+				$data = array(
+					'plane' => $this->M_klaten->selectplaneklaten(),
+					'timemarket' => $this->M_klaten->selecttimeklaten(),
+					'pjpcomply' => $this->M_klaten->selectpjpklaten()
+		 		);
+				$this->load->view('Klaten/V_klaten',$data);
+			}
 		}
 	}
 
 	public function efos() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_klaten->selectplaneklaten(),
-				'timemarket' => $this->M_klaten->selecttimeklaten(),
-				'pjpcomply' => $this->M_klaten->selectpjpklaten(),
-				'efosall' => $this->M_klaten->selectefosklaten()
-			);
-			$this->load->view('Klaten/V_efosklaten',$data);
+			if ($nama[0]['id_conces']=='1') {
+				redirect('C_jogja/efos');
+			} elseif ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang/efos');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul/efos');
+			} else {
+				$data = array(
+					'plane' => $this->M_klaten->selectplaneklaten(),
+					'timemarket' => $this->M_klaten->selecttimeklaten(),
+					'pjpcomply' => $this->M_klaten->selectpjpklaten(),
+					'efosall' => $this->M_klaten->selectefosklaten()
+				);
+				$this->load->view('Klaten/V_efosklaten',$data);
+			}
 		}
 	}
 
 	// Sales
 
 	public function diagramsales() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -47,18 +67,27 @@ class C_klaten extends CI_Controller {
 			if (!isset($id)) {
 				redirect('C_klaten/updatesales');
 			} else {
-				$data = array(
-					'sales' => $this->M_klaten->digsales($id),
-					'plane' => $this->M_klaten->selectonefost($id),
-					'timemarket' => $this->M_klaten->selectonetime($id),
-					'pjpcomply' => $this->M_klaten->selectonepjp($id)
-				);
-				$this->load->view('Klaten/V_diagramsales',$data);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} else {
+					$data = array(
+						'sales' => $this->M_klaten->digsales($id),
+						'plane' => $this->M_klaten->selectonefost($id),
+						'timemarket' => $this->M_klaten->selectonetime($id),
+						'pjpcomply' => $this->M_klaten->selectonepjp($id)
+					);
+					$this->load->view('Klaten/V_diagramsales',$data);
+				}
 			}
 		}
 	}
 
 	public function updatesales(){
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -66,11 +95,19 @@ class C_klaten extends CI_Controller {
 			$btn = $this->input->post('update');
 
 			if (!isset($id) AND !isset($btn)) {
-				$data = array(
-					'updatesales' => $this->M_klaten->selectupdateseles()
-				);
+				if ($nama[0]['id_conces']=='1') {
+					redirect('C_jogja/updatesales');
+				} elseif ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} else {
+					$data = array(
+						'updatesales' => $this->M_klaten->selectupdateseles()
+					);
 
-				$this->load->view('Klaten/V_upsales_klaten',$data);
+					$this->load->view('Klaten/V_upsales_klaten',$data);
+				}
 			} elseif (isset($id)) {
 				$data = array(
 					'sales' => $this->M_klaten->selectsales($id)

@@ -9,7 +9,18 @@ class C_import extends CI_Controller {
         $this->load->library('PHPExcel');
     }
     public function index() {
-        $this->load->view('V_import');
+        $nama = $this->session->userdata('user');
+
+        if (!$this->session->userdata('username')) {
+            redirect('C_login');
+        } else {
+            if ($nama[0]['status']=='Admin') {
+                $this->load->view('V_import');
+            } else {
+                redirect('C_logout/logoutadmin');
+            }
+            
+        }   
     }
 
     public function saveimport() {

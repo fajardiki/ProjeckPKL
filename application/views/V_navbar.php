@@ -206,26 +206,6 @@
 			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatesales'; ?>" style="color: #ffffff">Andrawina Klaten</a>
 			            </div>
 			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              DISTRICT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatedistrict'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatedistrict'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatedistrict'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatedistrict'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown"> 
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              IMPORT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
-			            </div>
-			        </li>
 			        </ul>
 			        <ul class="navbar-nav">
 			            <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
@@ -253,32 +233,50 @@
 			      <!-- Navbar links -->
 			      <div class="collapse navbar-collapse" id="collapsibleNavbar">
 			        <ul class="navbar-nav mr-auto">
+			        <?php if ($nama[0]['id_conces']=='1') { ?>
+			        	<li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_jogja' ?>">BERANDA</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_jogja/efos'; ?>">EFOS</a>
+				        </li> 
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_jogja/updatesales'; ?>">SALES</a>
+				        </li>
+			        <?php } elseif ($nama[0]['id_conces']=='2') { ?>
+			        	<li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_magelang' ?>">BERANDA</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_magelang/efos'; ?>">EFOS</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_magelang/updatesales'; ?>">SALES</a>
+				        </li>
+			        <?php } elseif ($nama[0]['id_conces']=='3') { ?>
+			        	<li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_bantul' ?>">BERANDA</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_bantul/efos'; ?>">EFOS</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_bantul/updatesales'; ?>">SALES</a>
+				        </li>
+			        <?php } elseif ($nama[0]['id_conces']=='4') { ?>
+			        	<li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_klaten' ?>">BERANDA</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_klaten/efos'; ?>">EFOS</a>
+				        </li>
+				        <li class="nav-item">
+				            <a class="nav-link" href="<?php echo base_url().'C_klaten/updatesales'; ?>">SALES</a>
+				        </li>
+			        <?php } else { ?>
 
-			       	<li class="nav-item">
-			            <a class="nav-link" href="<?php echo base_url().'C_dasbord'; ?>">BERANDA</a>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              ADMM
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja' ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang' ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul' ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten' ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              EFOS
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/efos'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/efos'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/efos'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/efos'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
+			        <?php } ?>
+			       
 			        </ul>
 			        <ul class="navbar-nav">
 			            <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
@@ -291,7 +289,7 @@
 			      </div> 
 			    </nav>
 
-		<?php } elseif ($nama[0]['status']=='Operational Manager') { ?>
+		<?php } elseif ($nama[0]['status']=='Oprational Manager') { ?>
 
 			<img src="<?php echo base_url().'assets/img/Header2.jpg' ?>" class="header-image" width="5002" height="597" alt="" style="margin-bottom: 0; border-bottom: 1 solid #eaeaea; width: 100%; max-width: 100%; height: auto;"> 
 			<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
@@ -308,62 +306,49 @@
 			      <div class="collapse navbar-collapse" id="collapsibleNavbar">
 			        <ul class="navbar-nav mr-auto">
 
-			       	<li class="nav-item">
-			            <a class="nav-link" href="<?php echo base_url().'C_dasbord'; ?>">BERANDA</a>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              ADMM
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja' ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang' ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul' ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten' ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              EFOS
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/efos'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/efos'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/efos'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/efos'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              SALESMAN
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatesales'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatesales'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatesales'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatesales'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              DISTRICT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatedistrict'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatedistrict'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatedistrict'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatedistrict'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown"> 
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              IMPORT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
-			            </div>
-			        </li>
+				       	<?php if ($nama[0]['id_conces']=='1') { ?>
+				        	<li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_jogja' ?>">BERANDA</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_jogja/efos'; ?>">EFOS</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_jogja/updatesales'; ?>">SALES</a>
+					        </li>
+				        <?php } elseif ($nama[0]['id_conces']=='2') { ?>
+				        	<li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_magelang' ?>">BERANDA</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_magelang/efos'; ?>">EFOS</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_magelang/updatesales'; ?>">SALES</a>
+					        </li>
+				        <?php } elseif ($nama[0]['id_conces']=='3') { ?>
+				        	<li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_bantul' ?>">BERANDA</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_bantul/efos'; ?>">EFOS</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_bantul/updatesales'; ?>">SALES</a>
+					        </li>
+				        <?php } elseif ($nama[0]['id_conces']=='4') { ?>
+				        	<li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_klaten' ?>">BERANDA</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_klaten/efos'; ?>">EFOS</a>
+					        </li>
+					        <li class="nav-item">
+					            <a class="nav-link" href="<?php echo base_url().'C_klaten/updatesales'; ?>">SALES</a>
+					        </li>
+				        <?php } else { ?>
+
+				        <?php } ?>
 			        </ul>
 			        <ul class="navbar-nav">
 			            <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
@@ -427,26 +412,6 @@
 			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatesales'; ?>" style="color: #ffffff">Andrawina Magelang</a>
 			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatesales'; ?>" style="color: #ffffff">Andrawina Bantul</a>
 			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatesales'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown">
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              DISTRICT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatedistrict'; ?>" style="color: #ffffff">Andrawina Jogja</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatedistrict'; ?>" style="color: #ffffff">Andrawina Magelang</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_bantul/updatedistrict'; ?>" style="color: #ffffff">Andrawina Bantul</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_klaten/updatedistrict'; ?>" style="color: #ffffff">Andrawina Klaten</a>
-			            </div>
-			        </li>
-			        <li class="nav-item dropdown"> 
-			            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			              IMPORT
-			            </a>
-			            <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
-			              <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
 			            </div>
 			        </li>
 			        </ul>

@@ -10,35 +10,55 @@ class C_jogja extends CI_Controller {
 	}
 
 	public function index() {
+		$nama = $this->session->userdata('user');
+
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_jogja->selectplanejogja(),
-				'timemarket' => $this->M_jogja->selecttimejogja(),
-				'pjpcomply' => $this->M_jogja->selectpjpjogja(),
-	 		);
-			$this->load->view('Jogja/V_jogja',$data);
+			if ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten');
+			} else {
+				$data = array(
+					'plane' => $this->M_jogja->selectplanejogja(),
+					'timemarket' => $this->M_jogja->selecttimejogja(),
+					'pjpcomply' => $this->M_jogja->selectpjpjogja(),
+		 		);
+				$this->load->view('Jogja/V_jogja',$data);
+			}
 		}
 	}
 
 	public function efos() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$data = array(
-				'plane' => $this->M_jogja->selectplanejogja(),
-				'timemarket' => $this->M_jogja->selecttimejogja(),
-				'pjpcomply' => $this->M_jogja->selectpjpjogja(),
-				'efosall' => $this->M_jogja->selectefosjogja()
-			);
-			$this->load->view('Jogja/V_efosjogja',$data);
+			if ($nama[0]['id_conces']=='2') {
+				redirect('C_magelang/efos');
+			} elseif ($nama[0]['id_conces']=='3') {
+				redirect('C_bantul/efos');
+			} elseif ($nama[0]['id_conces']=='4') {
+				redirect('C_klaten/efos');
+			} else {
+				$data = array(
+					'plane' => $this->M_jogja->selectplanejogja(),
+					'timemarket' => $this->M_jogja->selecttimejogja(),
+					'pjpcomply' => $this->M_jogja->selectpjpjogja(),
+					'efosall' => $this->M_jogja->selectefosjogja()
+				);
+				$this->load->view('Jogja/V_efosjogja',$data);
+			}
 		}
 	}
 
 	// Sales
 
 	public function diagramsales() {
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -47,19 +67,28 @@ class C_jogja extends CI_Controller {
 			if (!isset($id)) {
 				redirect('C_jogja/updatesales');
 			} else {
-				$data = array(
-					'sales' => $this->M_jogja->digsales($id),
-					'plane' => $this->M_jogja->selectonefost($id),
-					'timemarket' => $this->M_jogja->selectonetime($id),
-					'pjpcomply' => $this->M_jogja->selectonepjp($id)
-				);
-				$this->load->view('Jogja/V_diagramsales',$data);
+				if ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'sales' => $this->M_jogja->digsales($id),
+						'plane' => $this->M_jogja->selectonefost($id),
+						'timemarket' => $this->M_jogja->selectonetime($id),
+						'pjpcomply' => $this->M_jogja->selectonepjp($id)
+					);
+					$this->load->view('Jogja/V_diagramsales',$data);
+				}
 			}
 		}
 	}
 
 
 	public function updatesales(){
+		$nama = $this->session->userdata('user');
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
@@ -67,11 +96,19 @@ class C_jogja extends CI_Controller {
 			$btn = $this->input->post('update');
 
 			if (!isset($id) AND !isset($btn)) {
-				$data = array(
-					'updatesales' => $this->M_jogja->selectupdateseles()
-				);
+				if ($nama[0]['id_conces']=='2') {
+					redirect('C_magelang/updatesales');
+				} elseif ($nama[0]['id_conces']=='3') {
+					redirect('C_bantul/updatesales');
+				} elseif ($nama[0]['id_conces']=='4') {
+					redirect('C_klaten/updatesales');
+				} else {
+					$data = array(
+						'updatesales' => $this->M_jogja->selectupdateseles()
+					);
 
-				$this->load->view('Jogja/V_upsales_jogja',$data);
+					$this->load->view('Jogja/V_upsales_jogja',$data);
+				}
 			} elseif (isset($id)) {
 				$data = array(
 					'sales' => $this->M_jogja->selectsales($id)

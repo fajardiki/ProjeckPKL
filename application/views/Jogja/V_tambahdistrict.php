@@ -10,8 +10,8 @@
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-      <h1 class="mt-2" align="center" style="font-size: 4vw;">Tambah District Jogja</h1>
-    <hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
+      <h1 class="mt-2" align="center" style="font-size: 3vw;">Tambah District Jogja</h1>
+    <hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
     </div>
   </div>
   <div class="row">
