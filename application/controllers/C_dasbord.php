@@ -8,6 +8,7 @@ class C_dasbord extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->model('M_user');
+		$this->load->model('M_efos');
 	}
 	
 	public function index() {
@@ -294,7 +295,16 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$this->load->view('V_dataallefos');
+			$this->load->database();
+			$jumlah_data = $this->m_efos->dataefos();
+			$this->load->library('pagination');
+			$config['base_url'] = base_url().'C_dasbord/dataefos/';
+			$config['total_rows'] = $jumlah_data;
+			$config['per_page'] = 10;
+			$from = $this->uri->segment(3);
+			$this->pagination->initialize($config);		
+			$data['dataefos'] = $this->m_efos->data($config['per_page'],$from);
+			$this->load->view('V_dataallefos',$data);
 		}
 	}
 

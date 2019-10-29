@@ -1275,13 +1275,9 @@
       </div>
     <!-- Akhir Grafik PJP COMPLY -->
 
-  <?php } elseif ($nama[0]['status']=='HRD') { ?>
-
   <?php } elseif ($nama[0]['status']=='Supervisor') { ?>
 
   <?php } elseif ($nama[0]['status']=='Operational Manager') { ?>
-
-  <?php } elseif ($nama[0]['status']=='Owner') { ?>
 
   <?php } ?>
   <!-- Akhir sales -->
