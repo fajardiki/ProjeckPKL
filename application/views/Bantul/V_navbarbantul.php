@@ -4,7 +4,7 @@
 	<title></title>
 	<style>
 		.nav-link {
-			color: #ffff;
+			color: #fff;
 		}
 	</style>
 </head>
