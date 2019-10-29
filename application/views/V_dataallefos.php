@@ -33,22 +33,22 @@
             <?php if (empty($efos)) { ?>
               <tbody>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td scope="col">Journey Date</td>
+                  <td scope="col">Route Name</td>
+                  <td scope="col">Salesman Name</td> 
+                  <td scope="col">Planned</td>
+                  <td scope="col">Visite</td>
+                  <td scope="col">Un-planned</td>
+                  <td scope="col">Start Time</td>
+                  <td scope="col">End Time</td>
+                  <td scope="col">Spent</td>
+                  <td scope="col">Time Per Outlet</td>
+                  <td scope="col">Nosale</td>
+                  <td scope="col">Producktive</td>
+                  <td scope="col">Geo-mismatch</td>
+                  <td scope="col">Line</td>
+                  <td scope="col">Total Qty</td>
+                  <td scope="col">Total Sale</td>
                 </tr>
                 <tr>
                   <td>/</td>
