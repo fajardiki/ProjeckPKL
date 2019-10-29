@@ -50,7 +50,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="container-fluid" style="overflow:scroll;">
-					<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+					<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
 					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">Week</th>

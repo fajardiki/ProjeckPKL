@@ -9,6 +9,7 @@ class C_dasbord extends CI_Controller {
 		$this->load->model('M_admin');
 		$this->load->model('M_user');
 		$this->load->model('M_efos');
+		$this->load->library('pagination');
 	}
 	
 	public function index() {
@@ -295,15 +296,42 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$this->load->database();
-			$jumlah_data = $this->m_efos->dataefos();
-			$this->load->library('pagination');
-			$config['base_url'] = base_url().'C_dasbord/dataefos/';
+			$jumlah_data = $this->M_efos->dataefos();
+			$config['base_url'] = base_url().'index.php/C_dasbord/dataefos/';
 			$config['total_rows'] = $jumlah_data;
-			$config['per_page'] = 10;
+			$config['per_page'] = 20;
+
+			//paging configuration
+            $config['num_links'] = 2;
+            $config['use_page_numbers'] = TRUE;
+            $config['reuse_query_string'] = TRUE;
+
+			// Membuat Style pagination untuk BootStrap v4
+	     	$config['first_link']       = 'First';
+	        $config['last_link']        = 'Last';
+	        $config['next_link']        = 'Next';
+	        $config['prev_link']        = 'Prev';
+	        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+	        $config['full_tag_close']   = '</ul></nav></div>';
+	        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+	        $config['num_tag_close']    = '</span></li>';
+	        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+	        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+	        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+	        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+	        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+	        $config['prev_tagl_close']  = '</span>Next</li>';
+	        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+	        $config['first_tagl_close'] = '</span></li>';
+	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+	        $config['last_tagl_close']  = '</span></li>';
+
 			$from = $this->uri->segment(3);
-			$this->pagination->initialize($config);		
-			$data['dataefos'] = $this->m_efos->data($config['per_page'],$from);
+			$this->pagination->initialize($config);	
+
+			// build paging links	
+			$data['dataefos'] = $this->M_efos->data($config['per_page'],$from);
+			$data['pagination'] = $this->pagination->create_links();
 			$this->load->view('V_dataallefos',$data);
 		}
 	}

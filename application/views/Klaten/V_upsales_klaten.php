@@ -27,7 +27,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<table class="table table-sm" style="text-align: center;">
+			<table class="table table-bordered" style="text-align: center;">
 			  <thead style="font-size: 9px;">
 			    <tr>
 			      <th scope="col">#</th>

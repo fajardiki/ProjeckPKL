@@ -5,9 +5,11 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Magelang/V_navbarmagelang'); ?>
 <!-- Akhir -->
-<div class="container-fluid" style="margin-bottom: 100px;">
+
 	<h1 class="mt-2" align="center" style="font-size: 3vw;">EFOS MAGELANG</h1>
 	<hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
+
+	<div class="container-fluid mb-4">
 		<form method="post" action="<?php echo base_url().'C_magelang/efosallselect' ?>" class="mt-2 ml-3 mr-3 mb-2">
 			<div class="row">
 				<div class="col-sm-2">       
@@ -50,7 +52,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="container-fluid" style="overflow: scroll;">
-					<table class="table" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+					<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
 					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">Week</th>
@@ -81,6 +83,9 @@
 					      <td><?php echo $ea['Nosale']; ?></td>
 					      <td><?php echo intval($ea['NosalePersen']).'%'; ?></td>
 					      <td><?php echo number_format($ea['TotalSale'],2,',','.'); ?></td>
+					      <td></td>
+					      <td></td>
+					      <td></td>
 					    </tr>
 					  </tbody>
 					  <?php } ?>

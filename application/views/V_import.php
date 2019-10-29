@@ -77,7 +77,7 @@
     </div> -->
     <div class="row">
       <div class="col-sm-12">
-          <table class="table" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">
+          <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Journey Date</th>
@@ -101,94 +101,94 @@
             <?php if (empty($efos)) { ?>
               <tbody>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td></td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td></td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td></td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td></td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
+                  <td></td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             <?php } else { ?>
