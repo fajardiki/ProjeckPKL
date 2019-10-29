@@ -4,6 +4,9 @@
 
 <!-- Content -->
 
+<h1 class="mt-2" align="center" style="font-size: 3vw;">EFOS SALES</h1>
+<hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
+
 <div class="row">
       <div class="col-sm-12">
           <table class="table" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">
@@ -47,102 +50,7 @@
                   <td>/</td>
                   <td>/</td>
                 </tr>
-                <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                </tr>
-                <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                </tr>
-                <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                </tr>
-                <tr>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td> 
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                  <td>/</td>
-                </tr>
               </tbody>
-            <?php } else { ?>
-              <?php foreach ($efos as $e) { ?>
-              <tbody>
-                <tr>
-                  <td><?php echo $e['Journey_Date']; ?></td>
-                  <td><?php echo $e['District']; ?></td>
-                  <td><?php echo $e['Salesman']; ?></td> 
-                  <td><?php echo $e['Planned']; ?></td>
-                  <td><?php echo $e['Visited']; ?></td>
-                  <td><?php echo $e['Un_planed']; ?></td>
-                  <td><?php echo $e['Start_Time']; ?></td>
-                  <td><?php echo $e['End_Time']; ?></td>
-                  <td><?php echo $e['Spent']; ?></td>
-                  <td><?php echo $e['Time_Per_Outlet']; ?></td>
-                  <td><?php echo $e['Nosale']; ?></td>
-                  <td><?php echo $e['Productive']; ?></td>
-                  <td><?php echo $e['Geo_mismatch']; ?></td>
-                  <td><?php echo $e['Line']; ?></td>
-                  <td><?php echo $e['Total_Qty']; ?></td>
-                  <td><?php echo $e['Total_Sale']; ?></td>
-                </tr>
-              </tbody>
-              <?php } ?>
             <?php } ?>
             
           </table>
