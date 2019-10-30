@@ -12,7 +12,7 @@
     <title>Halaman Login</title>
   </head>
   <body style="font-family: cambria;">
-
+<img src="<?php echo base_url().'assets/img/allusesr.JPG' ?>" style="position: absolute; width: 550px;">
  <div class="container form">
     <div class="row">
     <div class="col-sm-4"></div>
