@@ -27,15 +27,36 @@ class C_dasbord extends CI_Controller {
  				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='sales') {
-				$data = array(
-					'plane' => $this->M_user->selectonefost($nama[0]['Emp_Code']),
-					'timemarket' => $this->M_user->selectonetime($nama[0]['Emp_Code']),
-					'pjpcomply' => $this->M_user->selectonepjp($nama[0]['Emp_Code']),
-					'plane1' => $this->M_user->selectonefostnow($nama[0]['Emp_Code']),
-					'timemarket1' => $this->M_user->selectonetimenow($nama[0]['Emp_Code']),
-					'pjpcomply1' => $this->M_user->selectonepjpnow($nama[0]['Emp_Code'])
-				);
-				$this->load->view('V_dasbord',$data);
+				$week = $this->input->post('tanggal');
+
+				if (empty($week)) {
+					$data = array(
+						'plane' => $this->M_user->selectonefost($nama[0]['Emp_Code']),
+						'plane1' => $this->M_user->selectonefostnow($nama[0]['Emp_Code']),
+						'timemarket' => $this->M_user->selectonetime($nama[0]['Emp_Code']),
+						'timemarket1' => $this->M_user->selectonetimenow($nama[0]['Emp_Code']),
+						'pjpcomply' => $this->M_user->selectonepjp($nama[0]['Emp_Code']),
+						'pjpcomply1' => $this->M_user->selectonepjpnow($nama[0]['Emp_Code']),
+						'summary' => $this->M_user->selectsummary($nama[0]['Emp_Code'])
+					);
+
+					$this->load->view('V_dasbord',$data);
+				} else {
+
+					$th = substr($week, 0,4);
+					$wk = substr($week, 6,7);
+					$data = array(
+						'plane' => $this->M_user->selectonefostweek($nama[0]['Emp_Code'], $th,$wk),
+						'plane1' => $this->M_user->selectonefostnowweek($nama[0]['Emp_Code'], $th,$wk),
+						'timemarket' => $this->M_user->selectonetimeweek($nama[0]['Emp_Code'], $th,$wk),
+						'timemarket1' => $this->M_user->selectonetimenowweek($nama[0]['Emp_Code'], $th,$wk),
+						'pjpcomply' => $this->M_user->selectonepjpweek($nama[0]['Emp_Code'], $th,$wk),
+						'pjpcomply1' => $this->M_user->selectonepjpnowweek($nama[0]['Emp_Code'], $th,$wk),
+						'summary' => $this->M_user->selectsummaryweek($nama[0]['Emp_Code'], $th,$wk)
+					);
+
+					$this->load->view('V_dasbord',$data);
+				}
 			} elseif ($nama[0]['status']=='HRD') {
 				$data = array(
 					'plane' => $this->M_admin->selectallplane(),

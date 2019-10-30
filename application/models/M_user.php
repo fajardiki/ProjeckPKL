@@ -27,51 +27,40 @@ class M_user extends CI_Model {
 		return $hsl->result_array();
 	}
 
-	public function selectonefost($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$emp_code' AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
-		return $hsl->result_array();
-	}
-
-	public function selectonefostnow($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$emp_code' AND WEEK(Journey_Date) = WEEK(CURDATE())");
-		return $hsl->result_array();
-	}
-
-	public function selectonetime($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
-
-		return $hsl->result_array();
-	}
-
-	public function selectonetimenow($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())");
-
-		return $hsl->result_array();
-	}
-
-	public function selectonepjp($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
-
-		return $hsl->result_array();
-	}
-
-	public function selectonepjpnow($emp_code) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())");
-
-		return $hsl->result_array();
-	}
-
 	// BBB
 
 
 	// plane
+		// dasbord
+		public function selectonefost($emp_code) {
+			$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$emp_code' AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
+			return $hsl->result_array();
+		}
+
+		public function selectonefostweek($empcode,$th,$wk) {
+			$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk'-1 AND year(Journey_Date) = '$th'");
+	 			return $hsl->result_array();
+		}
+
+		public function selectonefostnow($emp_code) {
+			$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$emp_code' AND WEEK(Journey_Date) = WEEK(CURDATE())");
+			return $hsl->result_array();
+		}
+
+		public function selectonefostnowweek($empcode,$th,$wk) {
+			$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, DAYNAME(Journey_Date) AS Day, Planned, Productive, Nosale FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk' AND year(Journey_Date) = '$th'");
+			return $hsl->result_array();
+		}
+
+
+		// 
 
 	public function selectplanesales($empcode) {
 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE Emp_Code = '$empcode' GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
  			return $hsl->result_array();
 	}
 
-	public function selectoneplanebantul($bln, $thn, $empcode) {
+	public function selectoneplanesales($bln, $thn, $empcode) {
 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE MONTH(Journey_Date)='$bln' AND year(Journey_Date)='$thn' AND Emp_Code = '$empcode' GROUP BY WEEK(Journey_Date) DESC LIMIT 4");
  			return $hsl->result_array();
 	}
@@ -79,6 +68,32 @@ class M_user extends CI_Model {
 	// plane
 
 	// time
+
+		// Dassboar
+			public function selectonetime($emp_code) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonetimeweek($empcode,$th,$wk) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk'-1 AND year(Journey_Date) = '$th'");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonetimenow($emp_code) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonetimenowweek($empcode,$th,$wk) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, TIME_TO_SEC(Time_in_Market) as TimeInMarket, TIME_TO_SEC(Spent) as Spent, TIME_TO_SEC(Time_Per_Outlet) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk' AND year(Journey_Date) = '$th'");
+
+				return $hsl->result_array();
+			}
+		// 
 
 	public function selecttimesales($empcode) {
 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) AS Week, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE Emp_Code = '$empcode' GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
@@ -96,12 +111,38 @@ class M_user extends CI_Model {
 
 	// pjp
 
+		// Dasbord
+			public function selectonepjp($emp_code) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())-1");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonepjpweek($empcode,$th,$wk) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk'-1 AND year(Journey_Date) = '$th'");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonepjpnow($emp_code) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = $emp_code AND WEEK(Journey_Date) = WEEK(CURDATE())");
+
+				return $hsl->result_array();
+			}
+
+			public function selectonepjpnowweek($empcode,$th,$wk) {
+				$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAYNAME(Journey_Date) as Day, (((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, (((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, (((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk' AND year(Journey_Date) = '$th'");
+
+				return $hsl->result_array();
+			}
+		// 
+
 	public function selectpjpsales($empcode) {
 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE Emp_Code = '$empcode' GROUP BY WEEK(Journey_Date) DESC LIMIT 5");
  			return $hsl->result_array();
 	}
 
-	public function selectonepjpbantul($bln, $thn, $empcode) {
+	public function selectonepjpsales($bln, $thn, $empcode) {
 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE MONTH(Journey_Date)='$bln' AND year(Journey_Date)='$thn' AND Emp_Code = '$empcode' GROUP BY WEEK(Journey_Date) DESC LIMIT 4");
  			return $hsl->result_array();
 	}
@@ -122,6 +163,17 @@ class M_user extends CI_Model {
 
  	// Efos
 
+ 	// Summary
+ 	public function selectsummary($empcode)	{
+ 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAY(Journey_Date) as Day, Planned, Un_planed, Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos WHERE Emp_Code='$empcode' AND WEEK(Journey_Date)=WEEK(CURDATE()) GROUP BY DAY(Journey_Date)");
+ 		return $hsl->result_array();
+ 	}
+
+ 	public function selectsummaryweek($empcode,$th,$wk)	{
+ 		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as Week, DAY(Journey_Date) as Day, Planned, Un_planed, Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos WHERE Emp_Code = '$empcode' AND WEEK(Journey_Date) = '$wk' AND year(Journey_Date) = '$th' GROUP BY DAY(Journey_Date)");
+ 		return $hsl->result_array();
+ 	}
+ 	// Summary
 }
 
 ?>
