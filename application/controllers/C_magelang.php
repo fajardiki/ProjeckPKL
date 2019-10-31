@@ -25,7 +25,8 @@ class C_magelang extends CI_Controller {
 				$data = array(
 					'plane' => $this->M_magelang->selectplanemagelang(),
 					'timemarket' => $this->M_magelang->selecttimemagelang(),
-					'pjpcomply' => $this->M_magelang->selectpjpmagelang()
+					'pjpcomply' => $this->M_magelang->selectpjpmagelang(),
+					'summary' => $this->M_magelang->selectsummarymagelang()
 		 		);
 				$this->load->view('Magelang/V_magelang',$data);
 			}

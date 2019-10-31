@@ -19,14 +19,22 @@
 			</div>
 		</div>
 
-		<br>
 		<!-- Grafik Planed -->
+		<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
+                </div>
+              </div>
+          </div>
+      </div>
 		<?php if (empty($plane)) { ?>
 			<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 			<script>
 				Highcharts.chart('shadow1', {
 			    title: {
-			        text: 'Diagram Planned - Produktive - Nosale'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: ['1', '2', '3', '4'],
@@ -95,7 +103,7 @@
 			<script>
 				Highcharts.chart('graft1', {
 			    title: {
-			        text: 'Diagram Planned - Produktive - Nosale'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: <?php echo json_encode($month); ?>,
@@ -165,9 +173,16 @@
 
 		<!-- Akhir Grafik Planed -->
 
-		<br><br>
-
 		<!-- Grafik Time -->
+		<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
+                </div>
+              </div>
+          </div>
+      	</div>
 		<?php if (empty($timemarket)) { ?>
 			<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 			<script>
@@ -176,7 +191,7 @@
 			        backgroundColor: '#cccccc'
 			    },
 			    title: {
-			        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: ['1', '2', '3', '4'],
@@ -242,7 +257,7 @@
 			        backgroundColor: '#cccccc'
 			    },
 			    title: {
-			        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: <?php echo json_encode($month1); ?>,
@@ -323,13 +338,22 @@
 		<br><br>
 
 		<!-- Grafik PJP COMPLY -->
+		<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
+                </div>
+              </div>
+          </div>
+     	</div>
 		<?php if (empty($pjpcomply)) { ?>
 			<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
 			<script>
 				Highcharts.chart('shadow3', {
 
 			    title: {
-			        text: 'Diagram PJP Comply - Geomatch - Productive Call'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: ['1', '2', '3', '4'],
@@ -401,7 +425,7 @@
 			<script>
 				Highcharts.chart('graft3', {
 			    title: {
-			        text: 'Diagram PJP Comply - Geomatch - Productive Call'
+			        text: ''
 			    },
 			    xAxis: {
 			        categories: <?php echo json_encode($month2); ?>,

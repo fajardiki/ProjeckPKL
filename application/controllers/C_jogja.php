@@ -26,7 +26,8 @@ class C_jogja extends CI_Controller {
 					'plane' => $this->M_jogja->selectplanejogja(),
 					'timemarket' => $this->M_jogja->selecttimejogja(),
 					'pjpcomply' => $this->M_jogja->selectpjpjogja(),
-		 		);
+					'summary' => $this->M_jogja->selectsummaryjogja()
+			 	);
 				$this->load->view('Jogja/V_jogja',$data);
 			}
 		}

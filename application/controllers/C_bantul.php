@@ -28,7 +28,8 @@ class C_bantul extends CI_Controller {
 				$data = array(
 					'plane' => $this->M_bantul->selectplanebantul(),
 					'timemarket' => $this->M_bantul->selecttimebantul(),
-					'pjpcomply' => $this->M_bantul->selectpjpbantul()
+					'pjpcomply' => $this->M_bantul->selectpjpbantul(),
+					'summary' => $this->M_bantul->selectsummarybantul()
 		 		);
 				$this->load->view('Bantul/V_bantul',$data);
 			}

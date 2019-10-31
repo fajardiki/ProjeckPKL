@@ -25,7 +25,8 @@ class C_klaten extends CI_Controller {
 				$data = array(
 					'plane' => $this->M_klaten->selectplaneklaten(),
 					'timemarket' => $this->M_klaten->selecttimeklaten(),
-					'pjpcomply' => $this->M_klaten->selectpjpklaten()
+					'pjpcomply' => $this->M_klaten->selectpjpklaten(),
+					'summary' => $this->M_klaten->selectsummaryklaten()
 		 		);
 				$this->load->view('Klaten/V_klaten',$data);
 			}

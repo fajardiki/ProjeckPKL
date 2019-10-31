@@ -81,6 +81,9 @@
 					      <td><?php echo $ea['Nosale']; ?></td>
 					      <td><?php echo intval($ea['NosalePersen']).'%'; ?></td>
 					      <td><?php echo number_format($ea['TotalSale'],2,',','.'); ?></td>
+					      <td></td>
+					      <td></td>
+					      <td></td>
 					    </tr>
 					  </tbody>
 					  <?php } ?>

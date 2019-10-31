@@ -9,15 +9,133 @@
 		</div>
 	</div>
 
-	<br><br>
+	<!-- Sumery -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+              <div class="container">
+                <?php if (!empty($summary)) { ?>
+                  <?php foreach ($summary as $s) {} ?>
+                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
+                <?php } else { ?>
+                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
+                <?php } ?>                
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" style="overflow-x: scroll;">
+        <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+          <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+            <tr>
+              <th scope="col">Month</th>
+              <th scope="col">Planned</th>
+              <th scope="col">Un-planed</th>
+              <th scope="col">Visited</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Nosale</th>
+              <th scope="col">PJP-Comply</th>
+              <th scope="col">No-Sale</th>
+              <th scope="col">Productive-Call</th>
+              <th scope="col">Total Penjualan</th>  
+            </tr>
+          </thead>
+          <?php if (!empty($summary)) { ?>
+            <?php foreach ($summary as $sm) { ?>
+            <tbody>
+              <tr>
+                <td><?php echo $sm['Month'] ?></td>
+                <td><?php echo number_format($sm['Planned']) ?></td>
+                <td><?php echo number_format($sm['Un_planed']) ?></td>
+                <td><?php echo number_format($sm['Visited']) ?></td>
+                <td><?php echo $sm['Start_Time'] ?></td>
+                <td><?php echo $sm['End_Time'] ?></td>
+                <td><?php echo number_format($sm['Nosale']) ?></td>
+                <td><?php echo intval($sm['pjp_comply']).'%' ?></td>
+                <td><?php echo intval($sm['NosalePersen']).'%' ?></td>
+                <td><?php echo intval($sm['Productive_Call']).'%' ?></td>
+                <td><?php echo "Rp " . number_format($sm['Total_Sale'],2,',','.') ?></td>
+              </tr>
+            </tbody>
+            <?php } ?>
+          <?php } else { ?>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          <?php } ?>
+        </table>
+      </div>
+    </div>
 	
 	<!-- Grafik Planed -->
+	<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
+                </div>
+              </div>
+          </div>
+      </div>
 	<?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 		<script>
 			Highcharts.chart('shadow1', {
 		    title: {
-		        text: 'Diagram Planned - Produktive - Nosale'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -91,7 +209,7 @@
 		<script>
 			Highcharts.chart('graft1', {
 		    title: {
-		        text: 'Diagram Planned - Produktive - Nosale'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($month); ?>,
@@ -152,9 +270,16 @@
 
 	<!-- Akhir Grafik Planed -->
 
-	<br><br><br>
-
 	<!-- Grafik Time -->
+	<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
+                </div>
+              </div>
+          </div>
+      </div>
 	<?php if (empty($timemarket)) { ?>
 		<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 		<script>
@@ -163,7 +288,7 @@
 		        backgroundColor: '#cccccc'
 		    },
 		    title: {
-		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -242,7 +367,7 @@
 		        backgroundColor: '#cccccc'
 		    },
 		    title: {
-		        text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($month1); ?>,
@@ -320,16 +445,23 @@
 	<?php } ?>
 	<!-- Akhir Grafik Time -->
 
-	<br><br><br>
-
 	<!-- Grafik PJP COMPLY -->
+	<div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
+                </div>
+              </div>
+          </div>
+      </div>
 	<?php if (empty($pjpcomply)) { ?>
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
 		<script>
 			Highcharts.chart('shadow3', {
 
 		    title: {
-		        text: 'Diagram PJP Comply - Geomatch - Productive Call'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -401,7 +533,7 @@
 		<script>
 			Highcharts.chart('graft3', {
 		    title: {
-		        text: 'EFOS ADMM Group 2019'
+		        text: ''
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($month2); ?>,

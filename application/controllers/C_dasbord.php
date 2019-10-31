@@ -20,12 +20,26 @@ class C_dasbord extends CI_Controller {
 			redirect('C_login');
 		} else {
 			if ($nama[0]['status']=='Admin') {
-				$data = array(
-					'plane' => $this->M_admin->selectallplane(),
-					'timemarket' => $this->M_admin->selectalltime(),
-					'pjpcomply' => $this->M_admin->selectallpjp()
- 				);
-				$this->load->view('V_dasbord',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					$data = array(
+						'plane' => $this->M_admin->selectallplane(),
+						'timemarket' => $this->M_admin->selectalltime(),
+						'pjpcomply' => $this->M_admin->selectallpjp(),
+						'summary' => $this->M_admin->selectsummaryconces()
+	 				);
+	 				$this->load->view('V_dasbord',$data);
+				} else {
+					$th = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'plane' => $this->M_admin->selectallplaneconcesth($bln, $th),
+						'timemarket' => $this->M_admin->selectalltimeconcesth($bln, $th),
+						'pjpcomply' => $this->M_admin->selectallpjpconcesth($bln, $th),
+						'summary' => $this->M_admin->selectsummaryconcesth($bln, $th)
+	 				); 
+					$this->load->view('V_dasbord',$data);
+				}
 			} elseif ($nama[0]['status']=='sales') {
 				$week = $this->input->post('tanggal');
 

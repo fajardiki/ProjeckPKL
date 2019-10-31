@@ -16,8 +16,145 @@
       </div>
     </div>
     
+    <!-- tanggal -->
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4 form-group">
+        <div class="mb-1">
+          <form class="input-group" action="<?php echo base_url().'C_dasbord' ?>" method="post">
+            <input type="month" class="form-control border border-secondary" name="tanggal">
+            <div class="input-group-append">
+              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-    <br>
+    <!-- Sumery -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+              <div class="container">
+                <?php if (!empty($summary)) { ?>
+                  <?php foreach ($summary as $s) {} ?>
+                  <?php if (isset($s['Month']) AND isset($s['Year'])): ?>
+                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Month']; ?>, <?php echo $s['Year']; ?></p>
+                  <?php else: ?>
+                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
+                  <?php endif ?>
+                <?php } else { ?>
+                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
+                <?php } ?>                
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" style="overflow-x: scroll;">
+        <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+          <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+            <tr>
+              <th scope="col">Conces</th>
+              <th scope="col">Planned</th>
+              <th scope="col">Un-planed</th>
+              <th scope="col">Visited</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+              <th scope="col">Nosale</th>
+              <th scope="col">PJP-Comply</th>
+              <th scope="col">No-Sale</th>
+              <th scope="col">Productive-Call</th>
+              <th scope="col">Total Penjualan</th>  
+            </tr>
+          </thead>
+          <?php if (!empty($summary)) { ?>
+            <?php foreach ($summary as $sm) { ?>
+            <tbody>
+              <tr>
+                <td><?php echo $sm['Conces'] ?></td>
+                <td><?php echo number_format($sm['Planned']) ?></td>
+                <td><?php echo number_format($sm['Un_planed']) ?></td>
+                <td><?php echo number_format($sm['Visited']) ?></td>
+                <td><?php echo $sm['Start_Time'] ?></td>
+                <td><?php echo $sm['End_Time'] ?></td>
+                <td><?php echo number_format($sm['Nosale']) ?></td>
+                <td><?php echo intval($sm['pjp_comply']).'%' ?></td>
+                <td><?php echo intval($sm['NosalePersen']).'%' ?></td>
+                <td><?php echo intval($sm['Productive_Call']).'%' ?></td>
+                <td><?php echo "Rp " . number_format($sm['Total_Sale'],2,',','.') ?></td>
+              </tr>
+            </tbody>
+            <?php } ?>
+          <?php } else { ?>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          <?php } ?>
+        </table>
+      </div>
+    </div>
+
+      <div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">Planned - Produktive - Nosale</p>
+                </div>
+              </div>
+          </div>
+      </div>
     
     <!-- Grafik Planed -->
     <?php if (empty($plane)) { ?>
@@ -25,7 +162,7 @@
       <script>
         Highcharts.chart('shadow1', {
           title: {
-              text: 'Diagram Planned - Produktive - Nosale'
+              text: ''
           },
           xAxis: {
               categories: ['1', '2', '3', '4'],
@@ -95,7 +232,7 @@
       <script>
         Highcharts.chart('graft1', {
           title: {
-              text: 'Diagram Planned - Produktive - Nosale'
+              text: ''
           },
           xAxis: {
               categories: <?php echo json_encode($conces); ?>,
@@ -128,7 +265,9 @@
                   borderWidth: 0,
                   dataLabels: {
                       enabled: true,
-                      format: '{point.y:.0f}'
+                      formatter:function() {
+                        return Highcharts.numberFormat(this.y,0);
+                      }
                   }
               }
           },
@@ -161,6 +300,16 @@
 
     <br><br>
 
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                <div class="container">
+                  <p class="lead" style=" font-size: 2vw;">TimeInMarket - Spent - TimePerOutlet</p>
+                </div>
+              </div>
+          </div>
+      </div>
+
     <!-- Grafik Time -->
     <?php if (empty($timemarket)) { ?>
       <div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
@@ -170,7 +319,7 @@
               backgroundColor: '#cccccc'
           },
           title: {
-              text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+              text: ''
           },
           xAxis: {
               categories: ['1', '2', '3', '4'],
@@ -237,11 +386,8 @@
         time: {
               timezone: 'Asia/Jakarta'
           },
-        chart: {
-              backgroundColor: '#cccccc'
-          },
           title: {
-              text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+              text: ''
           },
           xAxis: {
               categories: <?php echo json_encode($conces1); ?>,
@@ -321,7 +467,15 @@
     <?php } ?>
     <!-- Akhir Grafik Time -->
 
-    <br><br>
+      <div class="row mt-4">
+          <div class="col-sm-12">
+              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+                    <div class="container">
+                    <p class="lead" style=" font-size: 2vw;">PJP Comply - Geomatch - Productive Call</p>
+                  </div>
+              </div>
+          </div>
+      </div>
 
     <!-- Grafik PJP COMPLY -->
     <?php if (empty($pjpcomply)) { ?>
@@ -330,7 +484,7 @@
         Highcharts.chart('shadow3', {
 
           title: {
-              text: 'Diagram PJP Comply - Geomatch - Productive Call'
+              text: ''
           },
           xAxis: {
               categories: ['1', '2', '3', '4'],
@@ -402,7 +556,7 @@
       <script>
         Highcharts.chart('graft3', {
           title: {
-              text: 'Diagram PJP Comply - Geomatch - Productive Call'
+              text: ''
           },
           xAxis: {
               categories: <?php echo json_encode($conces2); ?>,
@@ -497,9 +651,9 @@
       <div class="col-sm-4 form-group">
         <div class="mb-1">
           <form class="input-group" action="<?php echo base_url().'C_dasbord' ?>" method="post">
-            <input type="week" class="form-control border border-danger" name="tanggal">
+            <input type="week" class="form-control border border-secondary" name="tanggal">
             <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-danger" type="button" value="Cari">
+              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
             </div>
           </form>
         </div>
@@ -544,16 +698,16 @@
             <tbody>
               <tr>
                 <td><?php echo $sm['Day'] ?></td>
-                <td><?php echo $sm['Planned'] ?></td>
-                <td><?php echo $sm['Un_planed'] ?></td>
-                <td><?php echo $sm['Visited'] ?></td>
+                <td><?php echo  number_format($sm['Planned']) ?></td>
+                <td><?php echo  number_format($sm['Un_planed']) ?></td>
+                <td><?php echo  number_format($sm['Visited']) ?></td>
                 <td><?php echo $sm['Start_Time'] ?></td>
                 <td><?php echo $sm['End_Time'] ?></td>
-                <td><?php echo $sm['Nosale'] ?></td>
+                <td><?php echo  number_format($sm['Nosale']) ?></td>
                 <td><?php echo intval($sm['pjp_comply']).'%' ?></td>
                 <td><?php echo intval($sm['NosalePersen']).'%' ?></td>
                 <td><?php echo intval($sm['Productive_Call']).'%' ?></td>
-                <td><?php echo $sm['Total_Sale'] ?></td>
+                <td><?php echo "Rp " . number_format($sm['Total_Sale'],2,',','.') ?></td>
               </tr>
             </tbody>
             <?php } ?>
@@ -731,7 +885,9 @@
                               borderWidth: 0,
                               dataLabels: {
                                   enabled: true,
-                                  format: '{point.y:.1f}'
+                                  formatter:function() {
+                                    return Highcharts.numberFormat(this.y,0);
+                                  }
                               }
                           }
                       },
@@ -770,6 +926,11 @@
                       },
                       xAxis: {
                           categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                      },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
                       },
                       credits: {
                           enabled: false
@@ -830,6 +991,11 @@
                       xAxis: {
                           categories: <?php echo json_encode($day1); ?>
                       },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
+                      },
                       credits: {
                           enabled: false
                       },
@@ -850,7 +1016,9 @@
                               borderWidth: 0,
                               dataLabels: {
                                   enabled: true,
-                                  format: '{point.y:.1f}'
+                                  formatter:function() {
+                                    return Highcharts.numberFormat(this.y,0);
+                                  }
                               }
                           }
                       },
@@ -905,6 +1073,11 @@
                       },
                       xAxis: {
                           categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                      },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
                       },
                       credits: {
                           enabled: false
@@ -962,6 +1135,11 @@
                       },
                       xAxis: {
                           categories: <?php echo json_encode($day1); ?>
+                      },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
                       },
                       credits: {
                           enabled: false
@@ -1034,6 +1212,11 @@
                       xAxis: {
                           categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                       },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
+                      },
                       credits: {
                           enabled: false
                       },
@@ -1090,6 +1273,11 @@
                       },
                       xAxis: {
                           categories: <?php echo json_encode($day1); ?>
+                      },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
                       },
                       credits: {
                           enabled: false
@@ -1176,6 +1364,11 @@
                       xAxis: {
                           categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                       },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
+                      },
                       credits: {
                           enabled: false
                       },
@@ -1233,6 +1426,11 @@
                   },
                   xAxis: {
                       categories: <?php echo json_encode($day2); ?>
+                  },
+                  yAxis: {
+                    title: {
+                        text: ''
+                    }
                   },
                   credits: {
                       enabled: false
@@ -1294,6 +1492,11 @@
                       xAxis: {
                           categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
                       },
+                      yAxis: {
+                        title: {
+                            text: ''
+                        }
+                      },
                       credits: {
                           enabled: false
                       },
@@ -1351,6 +1554,11 @@
                   },
                   xAxis: {
                       categories: <?php echo json_encode($day1); ?>
+                  },
+                  yAxis: {
+                    title: {
+                        text: ''
+                    }
                   },
                   credits: {
                       enabled: false
