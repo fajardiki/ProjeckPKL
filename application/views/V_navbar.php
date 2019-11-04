@@ -7,14 +7,14 @@
 	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/fontawesome.css' ?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/brands.css' ?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/solid.css' ?>">
-	<style type="text/css">
+	<!-- <style type="text/css">
 		.sticky {
 		  position: fixed;
 		  top: 0;
 		  width: 100%;
 		  z-index: 9999;
 		}
-	</style>
+	</style> -->
 
 	<script src="<?php echo base_url().'assets/js/highcharts.js'?>"></script>
 	<script src="<?php echo base_url().'assets/js/series-label.js'?>"></script>
@@ -27,7 +27,7 @@
 	<?php $nama = $this->session->userdata('user'); ?>
 
 		<?php if ($nama[0]['status']=='Admin') {?>
-		<img src="<?php echo base_url().'assets/img/Header2.jpg' ?>" class="header-image" width="5002" height="597" alt="" style="margin-bottom: 0; border-bottom: 1 solid #eaeaea; width: 100%; max-width: 100%; height: auto;"> 
+		<!-- <img src="<?php echo base_url().'assets/img/Header2.jpg' ?>" class="header-image" width="5002" height="597" alt="" style="margin-bottom: 0; border-bottom: 1 solid #eaeaea; width: 100%; max-width: 100%; height: auto;">  -->
 			<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
 				<!-- style="position: fixed; top: .header-image; width: 100%; z-index: 9999;" -->
 			      <!-- Brand -->
@@ -112,7 +112,7 @@
 
 		<?php } elseif ($nama[0]['status']=='sales') { ?>
 
-		<img src="<?php echo base_url().'assets/img/Header2.jpg' ?>" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;">
+		<!-- <img src="<?php echo base_url().'assets/img/Header2.jpg' ?>" class="header-image" width="1518" height="197" alt="" style="max-width: 100%; height: auto;"> -->
 			<nav class="navbar navbar-expand-md bg-dark navbar-dark" id="navbar">
 				<!-- style="position: fixed; top: 0; width: 100%; z-index: 9999;" -->
 			      <!-- Brand -->

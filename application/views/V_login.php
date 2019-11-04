@@ -12,7 +12,7 @@
     <title>Halaman Login</title>
   </head>
   <body style="font-family: cambria;">
-<img src="<?php echo base_url().'assets/img/allusesr.JPG' ?>" style="position: absolute; width: 550px;">
+<!-- <img src="<?php echo base_url().'assets/img/allusesr.JPG' ?>" style="position: absolute; width: 550px;"> -->
  <div class="container form">
     <div class="row">
     <div class="col-sm-4"></div>
@@ -35,11 +35,11 @@
         <form action="<?php echo base_url().'C_login/login'; ?>" method="post">
           <div class="form-group">
             <label for="inputAddress">Username</label>
-            <input type="text" class="form-control" id="inputusername" placeholder="Input Username" name="username" autocomplete="off">
+            <input type="text" class="form-control" id="inputusername" placeholder="Username" name="username" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="inputAddress">Password</label>
-            <input type="password" class="form-control" id="inputpassword" placeholder="Input Password" name="password" autocomplete="off">
+            <input type="password" class="form-control" id="inputpassword" placeholder="Password" name="password" autocomplete="off">
           </div>
           <button type="submit" class="btn btn-danger" id="btn_login" name="btnlogin">Sign in</button>
         </form>

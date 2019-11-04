@@ -22,13 +22,26 @@ class C_magelang extends CI_Controller {
 			} elseif ($nama[0]['id_conces']=='4') {
 				redirect('C_klaten');
 			} else {
-				$data = array(
-					'plane' => $this->M_magelang->selectplanemagelang(),
-					'timemarket' => $this->M_magelang->selecttimemagelang(),
-					'pjpcomply' => $this->M_magelang->selectpjpmagelang(),
-					'summary' => $this->M_magelang->selectsummarymagelang()
-		 		);
-				$this->load->view('Magelang/V_magelang',$data);
+				$week = $this->input->post('tanggal');
+				if (empty($week)) {
+					$data = array(
+						'plane' => $this->M_magelang->selectplanemagelang(),
+						'timemarket' => $this->M_magelang->selecttimemagelang(),
+						'pjpcomply' => $this->M_magelang->selectpjpmagelang(),
+						'summary' => $this->M_magelang->selectsummarymagelang()
+			 		);
+					$this->load->view('Magelang/V_magelang',$data);
+				} else {
+					$th = substr($week, 0,4);
+					$wk = substr($week, 6,7);
+					$data = array(
+						'plane' => $this->M_magelang->selectplanemagelangwk($th,$wk),
+						'timemarket' => $this->M_magelang->selecttimemagelangwk($th,$wk),
+						'pjpcomply' => $this->M_magelang->selectpjpmagelangwk($th,$wk),
+						'summary' => $this->M_magelang->selectsummarymagelangwk($th,$wk)
+			 		);
+					$this->load->view('Magelang/V_magelang',$data);
+				}
 			}
 		}
 	}
@@ -282,13 +295,17 @@ class C_magelang extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'efosall' => $this->M_magelang->selecteonefosmagelang($bln, $thn)
-				);
-				$this->load->view('Magelang/V_efosall',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_magelang/efos');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'efosall' => $this->M_magelang->selecteonefosmagelang($bln, $thn)
+					);
+					$this->load->view('Magelang/V_efosmagelang',$data);
+				}
 			}
 		}
 	}
@@ -314,13 +331,17 @@ class C_magelang extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'plane' => $this->M_magelang->selectoneplanemagelang($bln, $thn)
-				);
-				$this->load->view('Magelang/V_planemagelang',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_magelang/plane');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'plane' => $this->M_magelang->selectoneplanemagelang($bln, $thn)
+					);
+					$this->load->view('Magelang/V_planemagelang',$data);
+				}	
 			}
 		}
 	}
@@ -346,13 +367,17 @@ class C_magelang extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'timemarket' => $this->M_magelang->selectonetimemagelang($bln, $thn)
-				);
-				$this->load->view('Magelang/V_timemagelang',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_magelang/time');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'timemarket' => $this->M_magelang->selectonetimemagelang($bln, $thn)
+					);
+					$this->load->view('Magelang/V_timemagelang',$data);
+				}
 			}
 		}
 	}
@@ -378,13 +403,17 @@ class C_magelang extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'pjpcomply' => $this->M_magelang->selectonepjpmagelang($bln, $thn)
-				);
-				$this->load->view('Magelang/V_pjpmagelang',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_magelang/pjp');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'pjpcomply' => $this->M_magelang->selectonepjpmagelang($bln, $thn)
+					);
+					$this->load->view('Magelang/V_pjpmagelang',$data);
+				}	
 			}
 		}
 	}

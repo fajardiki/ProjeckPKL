@@ -8,7 +8,7 @@
 </div>
 
 <div class="container-fluid mt-4" align="center" style="font-size: 11px; margin-bottom: 100px;">
-	<div class="row">
+	<div class="row" style="overflow-y: scroll;">
 		<div class="col-sm-12">
 			<table class="table table-bordered" style="text-align: center;">
 			  <thead>

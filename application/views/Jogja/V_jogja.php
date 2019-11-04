@@ -2,12 +2,27 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid" style="margin-top: 10px; margin-bottom: 60px;">
+<div class="container-fluid" style="margin-top: 10px;">
 	<div class="row">
 		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 			<h3>EFOS ADMM CONCES JOGJA</h3>
 		</div>
 	</div>
+
+	<!-- tanggal -->
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4 form-group">
+        <div class="mb-1">
+          <form class="input-group" action="<?php echo base_url().'C_jogja' ?>" method="post">
+            <input type="week" class="form-control border border-secondary" name="tanggal">
+            <div class="input-group-append">
+              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- Sumery -->
     <div class="row">
@@ -29,7 +44,7 @@
         <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
           <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
             <tr>
-              <th scope="col">Month</th>
+              <th scope="col">Salesman</th>
               <th scope="col">Planned</th>
               <th scope="col">Un-planed</th>
               <th scope="col">Visited</th>
@@ -46,7 +61,7 @@
             <?php foreach ($summary as $sm) { ?>
             <tbody>
               <tr>
-                <td><?php echo $sm['Month'] ?></td>
+                <td><?php echo $sm['Salesman'] ?></td>
                 <td><?php echo number_format($sm['Planned']) ?></td>
                 <td><?php echo number_format($sm['Un_planed']) ?></td>
                 <td><?php echo number_format($sm['Visited']) ?></td>
@@ -197,7 +212,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($plane as $p) {
-			$month[] = $p['month'];
+			$day[] = $p['Day'];
 			$planed[] = intval($p['Planned']);
 			$productive[] = intval($p['Productive']);
 			$nosale[] = intval($p['Nosale']);
@@ -212,7 +227,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month); ?>,
+		        categories: <?php echo json_encode($day); ?>,
 		        title: {
 			        text: ''
 			    }
@@ -351,6 +366,7 @@
 
 		<?php foreach ($timemarket as $tm) {
 			$month1[] = $tm['month'];
+			$day1[] = $tm['Day'];
 			$timeinmarket[] = intval($tm['TimeInMarket']);
 			$spent[] = intval($tm['Spent']);
 			$timeperoutlet[] = intval($tm['TimePerOutlet']);
@@ -370,7 +386,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month1); ?>,
+		        categories: <?php echo json_encode($day1); ?>,
 			    title: {
 			        text: ''
 			    }
@@ -379,7 +395,7 @@
 		        labels: {
 			        formatter: function() {
 			            // show the labels as whole hours (3600000 milliseconds = 1 hour)
-			            return Highcharts.numberFormat(this.value/3600)+'H';
+			            return Highcharts.numberFormat(this.value/3600,0)+'H';
 			        }
 			    },
 			    title: {
@@ -522,6 +538,7 @@
 	<?php } else { ?>
 		<?php foreach ($pjpcomply as $pjp) {
 			$month2[] = $pjp['month'];
+			$day2[] = $pjp['Day'];
 			$pjpcom[] = intval($pjp['PJP_COMPLY']);
 			$geomath[] = intval($pjp['GEOMATCH']);
 			$productive_call[] = intval($pjp['PRODUCTIVE_CALL']);
@@ -536,7 +553,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month2); ?>,
+		        categories: <?php echo json_encode($day2); ?>,
 		        title: {
 			        text: ''
 			    }

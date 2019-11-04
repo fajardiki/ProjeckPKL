@@ -25,13 +25,26 @@ class C_bantul extends CI_Controller {
 			} elseif ($nama[0]['id_conces']=='4') {
 				redirect('C_klaten');
 			} else {
-				$data = array(
-					'plane' => $this->M_bantul->selectplanebantul(),
-					'timemarket' => $this->M_bantul->selecttimebantul(),
-					'pjpcomply' => $this->M_bantul->selectpjpbantul(),
-					'summary' => $this->M_bantul->selectsummarybantul()
-		 		);
-				$this->load->view('Bantul/V_bantul',$data);
+				$week = $this->input->post('tanggal');
+				if (empty($week)) {
+					$data = array(
+						'plane' => $this->M_bantul->selectplanebantul(),
+						'timemarket' => $this->M_bantul->selecttimebantul(),
+						'pjpcomply' => $this->M_bantul->selectpjpbantul(),
+						'summary' => $this->M_bantul->selectsummarybantul()
+			 		);
+					$this->load->view('Bantul/V_bantul',$data);
+				} else {
+					$th = substr($week, 0,4);
+					$wk = substr($week, 6,7);
+					$data = array(
+						'plane' => $this->M_bantul->selectplanebantulwk($th,$wk),
+						'timemarket' => $this->M_bantul->selecttimebantulwk($th,$wk),
+						'pjpcomply' => $this->M_bantul->selectpjpbantulwk($th,$wk),
+						'summary' => $this->M_bantul->selectsummarybantulwk($th,$wk)
+			 		);
+					$this->load->view('Bantul/V_bantul',$data);
+				}
 			}
 		}
 	}
@@ -286,13 +299,18 @@ class C_bantul extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'efosall' => $this->M_bantul->selecteonefosbantul($bln, $thn)
-				);
-				$this->load->view('Bantul/V_efosall',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_bantul/efos');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'efosall' => $this->M_bantul->selecteonefosbantul($bln, $thn)
+					);
+					$this->load->view('Bantul/V_efosbantul',$data);
+				}
+				
 			}
 		}
 	}
@@ -318,13 +336,17 @@ class C_bantul extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'plane' => $this->M_bantul->selectoneplanebantul($bln, $thn)
-				);
-				$this->load->view('Bantul/V_planebantul',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_bantul/plane');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'plane' => $this->M_bantul->selectoneplanebantul($bln, $thn)
+					);
+					$this->load->view('Bantul/V_planebantul',$data);
+				}			
 			}
 		}
 	}
@@ -350,13 +372,17 @@ class C_bantul extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'timemarket' => $this->M_bantul->selectonetimebantul($bln, $thn)
-				);
-				$this->load->view('Bantul/V_timebantul',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_bantul/time');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'timemarket' => $this->M_bantul->selectonetimebantul($bln, $thn)
+					);
+					$this->load->view('Bantul/V_timebantul',$data);
+				}			
 			}
 		}
 	}
@@ -382,13 +408,19 @@ class C_bantul extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_bantul/pjp');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'pjpcomply' => $this->M_bantul->selectonepjpbantul($bln, $thn)
+					);
+					$this->load->view('Bantul/V_pjpbantul',$data);
+				}
 
-				$data = array(
-					'pjpcomply' => $this->M_bantul->selectonepjpbantul($bln, $thn)
-				);
-				$this->load->view('Bantul/V_pjpbantul',$data);
+				
 			}
 		}
 	}

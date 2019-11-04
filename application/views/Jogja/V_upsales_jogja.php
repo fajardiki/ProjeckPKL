@@ -26,12 +26,12 @@
 		      ?>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-12">
+	<div class="row" style="overflow-y: scroll;">
+		<div class="col-sm-12" >
 			<table class="table table-bordered" style="text-align: center;">
-			  <thead style="font-size: 9px;">
+			  <thead>
 			    <tr>
-			      <th scope="col">#</th>
+			      <th scope="col">No</th>
 			      <th scope="col">Emp_Code</th>
 			      <th scope="col">Nama</th>
 			      <th scope="col">Username</th>

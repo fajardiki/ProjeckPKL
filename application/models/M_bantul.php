@@ -12,7 +12,12 @@ class M_bantul extends CI_Model {
 	}
 
 	public function selectplanebantul() {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, SUM(Planned) as Planned, SUM(Productive) as Productive, SUM(Nosale) as Nosale FROM m_efos WHERE id_conces = 3 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 3 AND WEEK(Journey_Date,1) = WEEK(CURDATE())-30 GROUP BY DAYNAME(Journey_Date)");
+ 			return $hsl->result_array();
+	}
+
+	public function selectplanebantulwk($th,$wk)	{
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 3 AND YEAR(Journey_Date ) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
  			return $hsl->result_array();
 	}
 
@@ -32,8 +37,13 @@ class M_bantul extends CI_Model {
 	}
 
 	public function selecttimebantul() {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 3 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 3 AND WEEK(Journey_Date,1) = WEEK(CURDATE())-30 GROUP BY DAYNAME(Journey_Date)");
 
+ 			return $hsl->result_array();
+	}
+
+	public function selecttimebantulwk($th,$wk)	{
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 3 AND YEAR(Journey_Date) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
  			return $hsl->result_array();
 	}
 
@@ -53,7 +63,12 @@ class M_bantul extends CI_Model {
 	}
 
 	public function selectpjpbantul() {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 3 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 3 AND WEEK(Journey_Date,1) = WEEK(CURDATE())-30 GROUP BY DAYNAME(Journey_Date)");
+ 			return $hsl->result_array();
+	}
+
+	public function selectpjpbantulwk($th,$wk) {
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 3 AND YEAR(Journey_Date) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
  			return $hsl->result_array();
 	}
 
@@ -63,6 +78,19 @@ class M_bantul extends CI_Model {
 	}
 
 	// pjp
+
+	// Summary
+	public function selectsummarybantul() {
+		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = WEEK(CURDATE())-30 AND a.id_conces = 3 GROUP BY a.Emp_Code DESC");
+ 		return $hsl->result_array();
+	}
+
+	public function selectsummarybantulwk($th,$wk) {
+		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = '$wk' AND year(Journey_Date) = '$th' AND a.id_conces = 3 GROUP BY a.Emp_Code ORDER BY a.Emp_Code DESC");
+ 		return $hsl->result_array();
+	}
+
+	// Summary
 	
 	// Efoss
 
@@ -210,12 +238,6 @@ class M_bantul extends CI_Model {
 		$hsl = $this->db->query("UPDATE m_ruote SET District = '$district', id_conces = '$conces' WHERE District_Code = '$discode'");
 	}
 
-	// Summary
-	public function selectsummarybantul() {
-		$hsl = $this->db->query("SELECT MonthName(Journey_Date) AS Month, YEAR(Journey_Date) AS Year, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos WHERE year(Journey_Date)=year(CURDATE()) AND id_conces = 3 GROUP BY MonthName(Journey_Date) ORDER BY Month(Journey_Date) DESC LIMIT 5");
- 		return $hsl->result_array();
-	}
-
-	// Summary
+	
 }
 ?>

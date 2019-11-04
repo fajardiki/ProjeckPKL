@@ -9,6 +9,21 @@
 		</div>
 	</div>
 
+	<!-- tanggal -->
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4 form-group">
+        <div class="mb-1">
+          <form class="input-group" action="<?php echo base_url().'C_bantul' ?>" method="post">
+            <input type="week" class="form-control border border-secondary" name="tanggal">
+            <div class="input-group-append">
+              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
 	<!-- Sumery -->
     <div class="row">
         <div class="col-sm-12">
@@ -29,7 +44,7 @@
         <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
           <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
             <tr>
-              <th scope="col">Month</th>
+              <th scope="col">Salesman</th>
               <th scope="col">Planned</th>
               <th scope="col">Un-planed</th>
               <th scope="col">Visited</th>
@@ -46,7 +61,7 @@
             <?php foreach ($summary as $sm) { ?>
             <tbody>
               <tr>
-                <td><?php echo $sm['Month'] ?></td>
+                <td><?php echo $sm['Salesman'] ?></td>
                 <td><?php echo number_format($sm['Planned']) ?></td>
                 <td><?php echo number_format($sm['Un_planed']) ?></td>
                 <td><?php echo number_format($sm['Visited']) ?></td>
@@ -197,6 +212,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($plane as $p) {
+			$day[] = $p['Day'];
 			$month[] = $p['month'];
 			$planed[] = intval($p['Planned']);
 			$productive[] = intval($p['Productive']);
@@ -212,7 +228,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month); ?>,
+		        categories: <?php echo json_encode($day); ?>,
 		        title: {
 			        text: ''
 			    }
@@ -341,6 +357,7 @@
 	<?php } else { ?>
 
 		<?php foreach ($timemarket as $tm) {
+			$day1[] = $tm['Day'];
 			$month1[] = $tm['month'];
 			$timeinmarket[] = intval($tm['TimeInMarket']);
 			$spent[] = intval($tm['Spent']);
@@ -362,7 +379,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month1); ?>,
+		        categories: <?php echo json_encode($day1); ?>,
 			    title: {
 			        text: ''
 			    }
@@ -513,6 +530,7 @@
 		</script>
 	<?php } else { ?>
 		<?php foreach ($pjpcomply as $pjp) {
+			$day2[] = $pjp['Day'];
 			$month2[] = $pjp['month'];
 			$pjpcom[] = intval($pjp['PJP_COMPLY']);
 			$geomath[] = intval($pjp['GEOMATCH']);
@@ -528,7 +546,7 @@
 		        text: ''
 		    },
 		    xAxis: {
-		        categories: <?php echo json_encode($month2); ?>,
+		        categories: <?php echo json_encode($day2); ?>,
 		        title: {
 			        text: ''
 			    }

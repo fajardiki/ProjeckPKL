@@ -22,13 +22,28 @@ class C_klaten extends CI_Controller {
 			} elseif ($nama[0]['id_conces']=='3') {
 				redirect('C_bantul');
 			} else {
-				$data = array(
-					'plane' => $this->M_klaten->selectplaneklaten(),
-					'timemarket' => $this->M_klaten->selecttimeklaten(),
-					'pjpcomply' => $this->M_klaten->selectpjpklaten(),
-					'summary' => $this->M_klaten->selectsummaryklaten()
-		 		);
-				$this->load->view('Klaten/V_klaten',$data);
+				$week = $this->input->post('tanggal');
+				if (empty($week)) {
+					$data = array(
+						'plane' => $this->M_klaten->selectplaneklaten(),
+						'timemarket' => $this->M_klaten->selecttimeklaten(),
+						'pjpcomply' => $this->M_klaten->selectpjpklaten(),
+						'summary' => $this->M_klaten->selectsummaryklaten()
+			 		);
+					$this->load->view('Klaten/V_klaten',$data);
+				} else {
+					$th = substr($week, 0,4);
+					$wk = substr($week, 6,7);
+					$data = array(
+						'plane' => $this->M_klaten->selectplaneklatenwk($th,$wk),
+						'timemarket' => $this->M_klaten->selecttimeklatenwk($th,$wk),
+						'pjpcomply' => $this->M_klaten->selectpjpklatenwk($th,$wk),
+						'summary' => $this->M_klaten->selectsummaryklatenwk($th,$wk)
+			 		);
+					$this->load->view('Klaten/V_klaten',$data);
+				}
+
+				
 			}
 		}
 	}
@@ -281,13 +296,17 @@ class C_klaten extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'efosall' => $this->M_klaten->selecteonefosklaten($bln, $thn)
-				);
-				$this->load->view('Klaten/V_efosall',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_klaten/efos');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'efosall' => $this->M_klaten->selecteonefosklaten($bln, $thn)
+					);
+					$this->load->view('Klaten/V_efosklaten',$data);
+				}			
 			}
 		}
 	}
@@ -313,13 +332,17 @@ class C_klaten extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'plane' => $this->M_klaten->selectoneplaneklaten($bln, $thn)
-				);
-				$this->load->view('Klaten/V_planeklaten',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_klaten/plane');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'plane' => $this->M_klaten->selectoneplaneklaten($bln, $thn)
+					);
+					$this->load->view('Klaten/V_planeklaten',$data);
+				}					
 			}
 		}
 	}
@@ -345,13 +368,17 @@ class C_klaten extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'timemarket' => $this->M_klaten->selectonetimeklaten($bln, $thn)
-				);
-				$this->load->view('Klaten/V_timeklaten',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_klaten/time');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'timemarket' => $this->M_klaten->selectonetimeklaten($bln, $thn)
+					);
+					$this->load->view('Klaten/V_timeklaten',$data);
+				}
 			}
 		}
 	}
@@ -377,13 +404,17 @@ class C_klaten extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'pjpcomply' => $this->M_klaten->selectonepjpklaten($bln, $thn)
-				);
-				$this->load->view('Klaten/V_pjpklaten',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_klaten/pjp');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'pjpcomply' => $this->M_klaten->selectonepjpklaten($bln, $thn)
+					);
+					$this->load->view('Klaten/V_pjpklaten',$data);
+				}				
 			}
 		}
 	}

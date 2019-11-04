@@ -22,13 +22,27 @@ class C_jogja extends CI_Controller {
 			} elseif ($nama[0]['id_conces']=='4') {
 				redirect('C_klaten');
 			} else {
-				$data = array(
-					'plane' => $this->M_jogja->selectplanejogja(),
-					'timemarket' => $this->M_jogja->selecttimejogja(),
-					'pjpcomply' => $this->M_jogja->selectpjpjogja(),
-					'summary' => $this->M_jogja->selectsummaryjogja()
-			 	);
-				$this->load->view('Jogja/V_jogja',$data);
+				$week = $this->input->post('tanggal');
+				if (empty($week)) {
+					$data = array(
+						'plane' => $this->M_jogja->selectplanejogja(),
+						'timemarket' => $this->M_jogja->selecttimejogja(),
+						'pjpcomply' => $this->M_jogja->selectpjpjogja(),
+						'summary' => $this->M_jogja->selectsummaryjogja()
+				 	);
+					$this->load->view('Jogja/V_jogja',$data);
+				} else {
+					$th = substr($week, 0,4);
+					$wk = substr($week, 6,7);
+					$data = array(
+						'plane' => $this->M_jogja->selectplanejogjawk($th,$wk),
+						'timemarket' => $this->M_jogja->selecttimejogjawk($th,$wk),
+						'pjpcomply' => $this->M_jogja->selectpjpjogjawk($th,$wk),
+						'summary' => $this->M_jogja->selectsummaryjogjawk($th,$wk)
+				 	);
+					$this->load->view('Jogja/V_jogja',$data);
+				}
+				
 			}
 		}
 	}
@@ -280,13 +294,20 @@ class C_jogja extends CI_Controller {
 	public function efosallselect() {
 		$btn = $this->input->post('cari');
 		if (isset($btn)) {
-			$bln = $this->input->post('bulan');
-			$thn = $this->input->post('tahun');
+			$bulan = $this->input->post('tanggal');
+			if (empty($bulan)) {
+				redirect('C_efos/efos');
+			} else {
+				$thn = substr($bulan, 0,4);
+				$bln = substr($bulan, 5,6);
+				$data = array(
+					'efosall' => $this->M_jogja->selecteonefosjogja($bln, $thn)
+				);
+				$this->load->view('Jogja/V_efosjogja',$data);
 
-			$data = array(
-				'efosall' => $this->M_jogja->selecteonefosjogja($bln, $thn)
-			);
-			$this->load->view('Jogja/V_efosall',$data);
+			}
+		} else {
+			redirect('efos');
 		}
 	}
 	// Efoss
@@ -308,13 +329,19 @@ class C_jogja extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_efos/plane');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
 
-				$data = array(
-					'plane' => $this->M_jogja->selectoneplanejogja($bln, $thn)
-				);
-				$this->load->view('Jogja/V_planejogja',$data);
+					$data = array(
+						'plane' => $this->M_jogja->selectoneplanejogja($bln, $thn)
+					);
+					$this->load->view('Jogja/V_planejogja',$data);
+
+				}
 			}
 		}
 	}
@@ -340,13 +367,20 @@ class C_jogja extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_efos/time');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
 
-				$data = array(
+					$data = array(
 					'timemarket' => $this->M_jogja->selectonetimejogja($bln, $thn)
-				);
-				$this->load->view('Jogja/V_timejogja',$data);
+					);
+					$this->load->view('Jogja/V_timejogja',$data);
+
+				}
+				
 			}
 		}
 	}
@@ -372,13 +406,18 @@ class C_jogja extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_efos/pjp');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
 
-				$data = array(
-					'pjpcomply' => $this->M_jogja->selectonepjpjogja($bln, $thn)
-				);
-				$this->load->view('Jogja/V_pjpjogja',$data);
+					$data = array(
+						'pjpcomply' => $this->M_jogja->selectonepjpjogja($bln, $thn)
+					);
+					$this->load->view('Jogja/V_pjpjogja',$data);
+				}				
 			}
 		}
 	}

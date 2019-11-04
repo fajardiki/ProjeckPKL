@@ -26,7 +26,7 @@
 		      ?>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="overflow-y: scroll;">
 		<div class="col-sm-12">
 			<table class="table table-bordered" style="text-align: center;">
 			  <thead style="font-size: 9px;">
