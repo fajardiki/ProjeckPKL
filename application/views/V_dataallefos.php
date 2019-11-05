@@ -4,8 +4,8 @@
 
 <!-- Content -->
 
-<h1 class="mt-2" align="center" style="font-size: 3vw;">EFOS SALES</h1>
-<hr style="border: 1px solid; width: 10vw; margin-top: 0px; margin-bottom: 30px;">
+<h1 align="center" style="font-size: 4vw; margin-top: 50px;">EFOS SALES</h1>
+<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
     <div class="container-fluid" style="overflow-y: scroll; margin: 0;">
       <div class="row">
         <div class="col-sm-12">

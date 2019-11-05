@@ -9,7 +9,7 @@
 	</style>
 </head>
 <body style="font-family: cambria;">
-	<ul class="nav nav-tabs nav-justified bg-dark" style="margin-top: #navbar; font-size: 10px;">
+	<ul class="nav nav-tabs nav-justified bg-dark" style="margin-top: 50px; font-size: 10px;">
 	    <li class="nav-item">
 	      <a id="efos" class="nav-link" href="efos">EFOS MAGELANG</a>
 	    </li>

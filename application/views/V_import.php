@@ -1,9 +1,9 @@
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
-<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 10px; margin-bottom: 100px;">
+<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 60px; margin-bottom: 100px;">
   <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
-    <h5 align="center">Import File Excel di sini!!</h5>           
+    <h1 align="center">Import File Excel</h1>           
     <div class="form-group">
       <div class="col-sm-12">
         <select class="form-control mb-1" id="conces" name="conces">

@@ -21,6 +21,13 @@
 			background-color: #FF0000;
 			color: #fff;
 		}
+
+		#navbar {
+			position: fixed; 
+			width: 100%; 
+			z-index: 9999;
+			top: 0;
+		}
 	</style>
 
 	<?php 
