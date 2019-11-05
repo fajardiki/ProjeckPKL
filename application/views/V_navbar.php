@@ -16,6 +16,20 @@
 		}
 	</style> -->
 
+	<style>
+		.min {
+			background-color: #FF0000;
+			color: #fff;
+		}
+	</style>
+
+	<?php 
+		function seconds_from_time($time) {
+			list($h, $m, $s) = explode(':', $time);
+			return ($h * 3600) + ($m * 60) + $s;
+		}
+	?>
+
 	<script src="<?php echo base_url().'assets/js/highcharts.js'?>"></script>
 	<script src="<?php echo base_url().'assets/js/series-label.js'?>"></script>
 	<script src="<?php echo base_url().'assets/js/exporting.js'?>"></script>

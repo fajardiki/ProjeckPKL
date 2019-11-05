@@ -23,5 +23,13 @@
 	      <a class="nav-link" href="pjp">PJP</a>
 	    </li>
 	  </ul>
+
+	  <script>
+	  	$(document).ready(function() {
+	  		$('.nav-link').click(function(){
+			    $(this).addClass('active');
+			})
+	  	})
+	  </script>
 </body>
 </html>

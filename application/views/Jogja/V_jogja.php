@@ -58,20 +58,44 @@
             </tr>
           </thead>
           <?php if (!empty($summary)) { ?>
-            <?php foreach ($summary as $sm) { ?>
+            <?php foreach ($summary as $sm) { 
+            	$saless = $sm['Salesman'];
+				$planneds = number_format($sm['Planned']);
+				$unplanneds = number_format($sm['Un_planed']);
+				$visiteds = number_format($sm['Visited']);
+				$stattimes = $sm['Start_Time'];
+				$endtimes = $sm['End_Time'];
+				$nosales = number_format($sm['Nosale']);
+				$pjpcomplys = intval($sm['pjp_comply']);
+				$nosalepersens = intval($sm['NosalePersen']);
+				$productivecalls = intval($sm['Productive_Call']);
+				$totalsales = number_format($sm['Total_Sale'],2,',','.');
+            ?>
             <tbody>
               <tr>
-                <td><?php echo $sm['Salesman'] ?></td>
-                <td><?php echo number_format($sm['Planned']) ?></td>
-                <td><?php echo number_format($sm['Un_planed']) ?></td>
-                <td><?php echo number_format($sm['Visited']) ?></td>
-                <td><?php echo $sm['Start_Time'] ?></td>
-                <td><?php echo $sm['End_Time'] ?></td>
-                <td><?php echo number_format($sm['Nosale']) ?></td>
-                <td><?php echo intval($sm['pjp_comply']).'%' ?></td>
-                <td><?php echo intval($sm['NosalePersen']).'%' ?></td>
-                <td><?php echo intval($sm['Productive_Call']).'%' ?></td>
-                <td><?php echo "Rp " . number_format($sm['Total_Sale'],2,',','.') ?></td>
+                <td><?php echo $saless ?></td>
+                <td><?php echo $planneds ?></td>
+                <td><?php echo $unplanneds ?></td>
+                <td><?php echo $visiteds ?></td>
+                <td><?php echo $stattimes ?></td>
+                <td><?php echo $endtimes ?></td>
+                <!-- Nosale percent -->
+				<?php if ($nosales > 10) { ?>
+					<td class="min"><?php echo $nosales ?></td>
+				<?php } else { ?>
+					<td><?php echo $nosales ?></td>
+				<?php } ?>
+                
+                <!-- Pjp comply -->
+				<?php if ($pjpcomplys < 95) { ?>
+					<td class="min"><?php echo $pjpcomplys ?></td>
+				<?php } else { ?>
+					<td><?php echo $pjpcomplys ?></td>
+				<?php } ?>
+
+                <td><?php echo $nosalepersens.'%' ?></td>
+                <td><?php echo $productivecalls.'%' ?></td>
+                <td><?php echo "Rp " .$totalsales ?></td>
               </tr>
             </tbody>
             <?php } ?>

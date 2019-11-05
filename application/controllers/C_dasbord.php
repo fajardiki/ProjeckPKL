@@ -197,13 +197,17 @@ class C_dasbord extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'efossales' => $this->M_user->selecteonefossales($bln, $thn, $nama[0]['Emp_Code'])
-				);
-				$this->load->view('V_efossales',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_dasbord/efos');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'efossales' => $this->M_user->selecteonefossales($bln, $thn, $nama[0]['Emp_Code'])
+					);
+					$this->load->view('V_efossales',$data);
+				}	
 			}
 		}
 	}
@@ -232,13 +236,17 @@ class C_dasbord extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'plane' => $this->M_user->selectoneplanebantul($bln, $thn, $nama[0]['Emp_Code'])
-				);
-				$this->load->view('V_planesales',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_dasbord/plane');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'plane' => $this->M_user->selectoneplanesales($bln, $thn, $nama[0]['Emp_Code'])
+					);
+					$this->load->view('V_planesales',$data);
+				}		
 			}
 		}
 	}
@@ -266,13 +274,17 @@ class C_dasbord extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'timemarket' => $this->M_user->selectonetimesales($bln, $thn, $nama[0]['Emp_Code'])
-				);
-				$this->load->view('V_timesales',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_dasbord/time');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'timemarket' => $this->M_user->selectonetimesales($bln, $thn, $nama[0]['Emp_Code'])
+					);
+					$this->load->view('V_timesales',$data);
+				}
 			}
 		}
 	}
@@ -300,13 +312,17 @@ class C_dasbord extends CI_Controller {
 		} else {
 			$btn = $this->input->post('cari');
 			if (isset($btn)) {
-				$bln = $this->input->post('bulan');
-				$thn = $this->input->post('tahun');
-
-				$data = array(
-					'pjpcomply' => $this->M_user->selectonepjpbantul($bln, $thn, $nama[0]['Emp_Code'])
-				);
-				$this->load->view('V_pjpsales',$data);
+				$bulan = $this->input->post('tanggal');
+				if (empty($bulan)) {
+					redirect('C_dasbord/pjp');
+				} else {
+					$thn = substr($bulan, 0,4);
+					$bln = substr($bulan, 5,6);
+					$data = array(
+						'pjpcomply' => $this->M_user->selectonepjpsales($bln, $thn, $nama[0]['Emp_Code'])
+					);
+					$this->load->view('V_pjpsales',$data);
+				}				
 			}
 		}
 	}
