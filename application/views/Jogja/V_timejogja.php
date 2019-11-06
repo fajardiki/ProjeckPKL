@@ -5,28 +5,15 @@
 <!-- Navbar efos -->
 <?php $this->load->view('Jogja/V_navbarjogja'); ?>
 <!-- Akhir -->
-<div class="container-fluid" style="margin-top: 20px;">
 
-    <!-- tanggal -->
-    <div class="row m-1 mt-4">
-      <div class="col-sm-8"></div>
-      <div class="col-sm-4 form-group">
-        <div class="mb-1">
-          <form class="input-group" action="<?php echo base_url().'C_jogja/timeselect' ?>" method="post">
-            <input type="month" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<form class="input-group" action="<?php echo base_url().'C_jogja/timeselect' ?>" method="post">
+  <input type="month" class="form-control border border-secondary" name="tanggal">
+  <div class="input-group-append">
+    <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
+  </div>
+</form>
 
-    <div class="row">
-    	<div class="col-lg-12">
-    		<div id="start_time"></div> 
-    	</div>
-    </div>
+<div id="start_time"></div> 
 
     <?php foreach ($timemarket as $tm) {
         $week[] = $tm['Week'];
@@ -114,7 +101,7 @@
         return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on tes and seconds
     }
     </script>
-</div>
+
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->

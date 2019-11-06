@@ -1,11 +1,9 @@
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
-<div class="container-fluid" style="position:relative; min-height: 100%; margin-top: 60px; margin-bottom: 100px;">
   <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
     <h1 align="center">Import File Excel</h1>           
     <div class="form-group">
-      <div class="col-sm-12">
         <select class="form-control mb-1" id="conces" name="conces">
           <option>-- Pilih Conces --</option>
           <option value="1">Jogja</option>
@@ -13,18 +11,14 @@
           <option value="3">Bantul</option>
           <option value="4">Klaten</option>
         </select>
-      </div>
-      <div class="col-sm-12">  
-        <input type="file" name="file" class="form-control" id="file" required accept=".xls, .xlsx" /></p>
-      </div>
+        
+        <input type="file" name="file" class="form-control" id="file" required accept=".xls, .xlsx"/></p>
     </div>
     <div class="form-group">
-      <div class="col-sm-12">
        <input type="submit" class="btn btn-block btn-danger" value="Import" name="import">
-      </div>
     </div>
   </form>
-  <div class="container-fluid">
+
     <div class="row">
       <div class="col-sm-12">
         <?php
@@ -42,41 +36,8 @@
         ?>
       </div>
     </div>
-  </div>
 
-  <div class="container-fluid" style="overflow-y: scroll;">
-    <!-- <div class="row">
-      <div class="col-sm-3 mb-2">
-        <button class="btn">Pilih perncarian</button>
-      </div>
-      <div class="col-sm-3 mb-2">
-        <button class="btn" id="pilih">Wk</button>
-      </div>
-      <div class="col-sm-3 mb-2">
-        <button class="btn" id="pilih">Wk</button>
-      </div>
-    </div>
-        <script type="text/javascript">
-          $(document).ready(function(){
-            $("#pilih").hide();
-            $("h1").hide();
-              $("button").click(function(){
-                $("#pilih").toggle();
-              });
 
-              $("#pilih").click(function() {
-                $("h1").show();
-              })
-            });        
-        </script>
-    <div class="row">
-      <div class="col-sm-12 mb-2">
-        <h1>QQQQQ</h1>
-
-      </div>
-    </div> -->
-    <div class="row">
-      <div class="col-sm-12">
           <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">
             <thead class="thead-dark">
               <tr>
@@ -217,10 +178,7 @@
             <?php } ?>
             
           </table>
-      </div>
-    </div>
-  </div>
-</div>
+ 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->

@@ -62,7 +62,7 @@ class M_magelang extends CI_Model {
 	}
 
 	public function selectpjpmagelang() {
-		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 2 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
+		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, AVG(((Visited-Un_planed)/Planned)*100) AS PJP_COMPLY, AVG(((Visited-Geo_mismatch)/Visited)*100) AS GEOMATCH, AVG(((Productive)/(Planned+Un_planed))*100) AS PRODUCTIVE_CALL FROM m_efos WHERE id_conces = 2 GROUP BY MONTH(Journey_Date) DESC LIMIT 5");
  			return $hsl->result_array();
 	}
 

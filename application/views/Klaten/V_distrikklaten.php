@@ -2,14 +2,10 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid mb-5" style="margin-top: 50px;">
+
 	<h1 class="mt-2" align="center" style="font-size: 4vw;">District Klaten</h1>
 	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
-</div>
 
-<div class="container-fluid mt-4" align="center" style="font-size: 11px;">
-	<div class="row" style="overflow-y: scroll;">
-		<div class="col-sm-12">
 			<table class="table table-bordered" style="text-align: center;">
 			  <thead>
 			    <tr>
@@ -38,9 +34,7 @@
 				</tr>
 			   </tbody>
 			</table>
-		</div>
-	</div>
-</div>
+
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->

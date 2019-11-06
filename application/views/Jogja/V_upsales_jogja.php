@@ -3,12 +3,9 @@
 <!-- Akhir -->
 <?php $nama = $this->session->userdata('user'); ?>
 
-<div class="container-fluid mb-5" style="margin-top: 60px;">
-	<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Jogja</h1>
-	<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
-</div>
+<h1 class="mt-2" align="center" style="font-size: 4vw;">Salesman Jogja</h1>
+<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
 
-<div class="container-fluid mt-4" align="center" style="margin-bottom: 50px; font-size: 11px;">
 	<div class="row">
 		<div class="col-sm-12">
 			<?php
@@ -74,7 +71,7 @@
 			</table>
 		</div>
 	</div>
-</div>
+
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>

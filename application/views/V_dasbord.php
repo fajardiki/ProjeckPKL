@@ -41,7 +41,7 @@
     <?php } ?>                
   </div>
 
-<section style="overflow-y: scroll;">
+<section style="overflow-x: scroll; height: 350px;">
   <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 9px; margin: auto;">
     <thead class="thead-dark">  
       <tr>

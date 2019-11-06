@@ -137,9 +137,6 @@
 		        <li class="nav-item"> 
 		            <a class="nav-link" href="<?php echo base_url().'C_dasbord/efos'; ?>">EFOS</a>
 		        </li>
-		        <li class="nav-item"> 
-		            <a class="nav-link" href=""></a>
-		        </li>
 		    </ul>
 		    <ul class="navbar-nav">
 		       	<span class="navbar-text"></span li class="nav-item dropdown">

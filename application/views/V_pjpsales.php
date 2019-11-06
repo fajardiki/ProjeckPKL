@@ -5,27 +5,15 @@
 <!-- Navbar efos -->
 <?php $this->load->view('V_navbarsales'); ?>
 <!-- Akhir -->
-<div class="container-fluid">
-   <!-- tanggal -->
-    <div class="row m-1 mt-4">
-      <div class="col-sm-8"></div>
-      <div class="col-sm-4 form-group">
-        <div class="mb-1">
-          <form class="input-group" action="<?php echo base_url().'C_dasbord/pjpselect' ?>" method="post">
-            <input type="month" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
-  <div class="row">
-  	<div class="col-lg-12">
-  		<div id="grafik_pjp"></div> 
-  	</div>
+<form class="input-group" action="<?php echo base_url().'C_dasbord/pjpselect' ?>" method="post">
+  <input type="month" class="form-control border border-secondary" name="tanggal">
+  <div class="input-group-append">
+    <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
   </div>
+</form>
+
+<div id="grafik_pjp"></div> 
 
   <?php foreach ($pjpcomply as $pjp) {
     $week[] = $pjp['Week'];
@@ -91,7 +79,6 @@
           }]
   });
   </script>
-</div>
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
