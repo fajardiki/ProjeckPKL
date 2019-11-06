@@ -280,23 +280,23 @@ class C_jogja extends CI_Controller {
 	}
 
 	// Efoss
-	public function efosall() {
-		if (!$this->session->userdata('username')) {
-			redirect('C_login');
-		} else {
-			$data = array(
-				'efosall' => $this->M_jogja->selectefosjogja()
-			);
-			$this->load->view('Jogja/V_efosall',$data);
-		}
-	}
+	// public function efosall() {
+	// 	if (!$this->session->userdata('username')) {
+	// 		redirect('C_login');
+	// 	} else {
+	// 		$data = array(
+	// 			'efosall' => $this->M_jogja->selectefosjogja()
+	// 		);
+	// 		$this->load->view('Jogja/V_efosall',$data);
+	// 	}
+	// }
 
 	public function efosallselect() {
 		$btn = $this->input->post('cari');
 		if (isset($btn)) {
 			$bulan = $this->input->post('tanggal');
 			if (empty($bulan)) {
-				redirect('C_efos/efos');
+				redirect('C_jogja/efos');
 			} else {
 				$thn = substr($bulan, 0,4);
 				$bln = substr($bulan, 5,6);
@@ -331,7 +331,7 @@ class C_jogja extends CI_Controller {
 			if (isset($btn)) {
 				$bulan = $this->input->post('tanggal');
 				if (empty($bulan)) {
-					redirect('C_efos/plane');
+					redirect('C_jogja/plane');
 				} else {
 					$thn = substr($bulan, 0,4);
 					$bln = substr($bulan, 5,6);
@@ -369,7 +369,7 @@ class C_jogja extends CI_Controller {
 			if (isset($btn)) {
 				$bulan = $this->input->post('tanggal');
 				if (empty($bulan)) {
-					redirect('C_efos/time');
+					redirect('C_jogja/time');
 				} else {
 					$thn = substr($bulan, 0,4);
 					$bln = substr($bulan, 5,6);
@@ -408,7 +408,7 @@ class C_jogja extends CI_Controller {
 			if (isset($btn)) {
 				$bulan = $this->input->post('tanggal');
 				if (empty($bulan)) {
-					redirect('C_efos/pjp');
+					redirect('C_jogja/pjp');
 				} else {
 					$thn = substr($bulan, 0,4);
 					$bln = substr($bulan, 5,6);

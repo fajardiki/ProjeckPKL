@@ -54,9 +54,9 @@ class C_import extends CI_Controller {
             				$Unplaned = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
             				$StartTime = $worksheet->getCellByColumnAndRow(6, $row)->getFormattedValue();
             				$EndTime = $worksheet->getCellByColumnAndRow(7, $row)->getFormattedValue();
-            				$TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(8, $row)->getOldCalculatedValue())), true)['date'];
+            				$TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue())), true)['date'];
             				$Spent = $worksheet->getCellByColumnAndRow(9, $row)->getFormattedValue();
-            				$TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(10, $row)->getOldCalculatedValue())), true)['date'];
+            				$TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(10, $row)->getFormattedValue())), true)['date'];
             				$Nosale = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
             				$Productive = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
             				$Geomismatch = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
@@ -95,6 +95,8 @@ class C_import extends CI_Controller {
                     $this->M_efos->insertimport($data);
                     redirect('C_dasbord/importexcel');
                 }
+
+                // $TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(8, $row)->getOldCalculatedValue())), true)['date'];
                 
         }               
     

@@ -26,7 +26,10 @@ class C_dasbord extends CI_Controller {
 						'plane' => $this->M_admin->selectallplane(),
 						'timemarket' => $this->M_admin->selectalltime(),
 						'pjpcomply' => $this->M_admin->selectallpjp(),
-						'summary' => $this->M_admin->selectsummaryconces()
+						'summaryj' => $this->M_admin->selectsummaryconcesjogja(),
+						'summarym' => $this->M_admin->selectsummaryconcesmagelang(),
+						'summaryb' => $this->M_admin->selectsummaryconcesbantul(),
+						'summaryk' => $this->M_admin->selectsummaryconcesklaten()
 	 				);
 	 				$this->load->view('V_dasbord',$data);
 				} else {
@@ -94,7 +97,11 @@ class C_dasbord extends CI_Controller {
 				$data = array(
 					'plane' => $this->M_admin->selectallplane(),
 					'timemarket' => $this->M_admin->selectalltime(),
-					'pjpcomply' => $this->M_admin->selectallpjp()
+					'pjpcomply' => $this->M_admin->selectallpjp(),
+					'summaryj' => $this->M_admin->selectsummaryconcesjogja(),
+					'summarym' => $this->M_admin->selectsummaryconcesmagelang(),
+					'summaryb' => $this->M_admin->selectsummaryconcesbantul(),
+					'summaryk' => $this->M_admin->selectsummaryconcesklaten()
 				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='Oprational Manager') {

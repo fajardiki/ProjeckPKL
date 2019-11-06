@@ -2,47 +2,30 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid" style="margin-top: 50px;">
-	<div class="row">
-		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
-			<h3>EFOS ADMM CONCES JOGJA</h3>
-		</div>
-	</div>
+<!-- Content -->
+<section style="padding: 15px; background-color: #cccccc;">
+	<h3>EFOS ADMM CONCES JOGJA</h3>
+</section>
 
-	<!-- tanggal -->
-    <div class="row">
-      <div class="col-sm-8"></div>
-      <div class="col-sm-4 form-group">
-        <div class="mb-1">
-          <form class="input-group" action="<?php echo base_url().'C_jogja' ?>" method="post">
-            <input type="week" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+    <?php if (!empty($summary)) { ?>
+	    <?php foreach ($summary as $s) {} ?>
+	        <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
+    <?php } else { ?>
+      <p class="lead" style=" font-size: 2vw;">Summary..</p>
+    <?php } ?>                
+</div>
 
-    <!-- Sumery -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-              <div class="container">
-                <?php if (!empty($summary)) { ?>
-                  <?php foreach ($summary as $s) {} ?>
-                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
-                <?php } else { ?>
-                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
-                <?php } ?>                
-              </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12" style="overflow-x: scroll;">
-        <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-          <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+<!-- Shearch -->
+<form class="input-group" action="<?php echo base_url().'C_jogja' ?>" method="post">
+  <input type="week" class="form-control border border-secondary" name="tanggal">
+  <div class="input-group-append">
+    <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+  </div>
+</form>
+
+<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+          <thead class="thead-dark" align="center">  
             <tr>
               <th scope="col">Salesman</th>
               <th scope="col">Planned</th>
@@ -156,19 +139,12 @@
             </tbody>
           <?php } ?>
         </table>
-      </div>
-    </div>
 
 	<!-- Grafik Planed -->
-	<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
-                </div>
-              </div>
-          </div>
-      </div>
+    <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+        <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
+
+    </div>
 	<?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 		<script>
@@ -310,15 +286,9 @@
 	<!-- Akhir Grafik Planed -->
 
 	<!-- Grafik Time -->
-	<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
-                </div>
-              </div>
-          </div>
-      </div>
+    <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+        <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
+    </div>
 	<?php if (empty($timemarket)) { ?>
 		<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 		<script>
@@ -486,15 +456,9 @@
 	<!-- Akhir Grafik Time -->
 
 	<!-- Grafik PJP COMPLY -->
-	<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
-                </div>
-              </div>
-          </div>
-      </div>
+    <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+        <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
+    </div>
 	<?php if (empty($pjpcomply)) { ?>
 		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
 		<script>
@@ -632,9 +596,9 @@
 		});
 		</script>
 	<?php } ?>
-</div>
-	<!-- Akhir Grafik PJP COMPLY -->
+
+<!-- Akhir Content -->
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
-<!-- Akhir Footer -->
+<!-- Akhir Footer

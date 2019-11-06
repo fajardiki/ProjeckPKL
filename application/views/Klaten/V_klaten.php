@@ -31,7 +31,7 @@
               <div class="container">
                 <?php if (!empty($summary)) { ?>
                   <?php foreach ($summary as $s) {} ?>
-                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
+                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
                 <?php } else { ?>
                   <p class="lead" style=" font-size: 2vw;">Summary..</p>
                 <?php } ?>                  
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="row">
-      <div class="col-sm-12" style="overflow-x: scroll;">
+      <div class="col-sm-12" style="overflow-x: scroll; height: 350px;">
         <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
           <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
             <tr>

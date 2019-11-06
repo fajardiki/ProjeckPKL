@@ -282,16 +282,16 @@ class C_bantul extends CI_Controller {
 	// Sales
 
 	// Efoss
-	public function efosall() {
-		if (!$this->session->userdata('username')) {
-			redirect('C_login');
-		} else {
-			$data = array(
-				'efosall' => $this->M_bantul->selectefosbantul()
-			);
-			$this->load->view('Bantul/V_efosall',$data);
-		}
-	}
+	// public function efosall() {
+	// 	if (!$this->session->userdata('username')) {
+	// 		redirect('C_login');
+	// 	} else {
+	// 		$data = array(
+	// 			'efosall' => $this->M_bantul->selectefosbantul()
+	// 		);
+	// 		$this->load->view('Bantul/V_efosall',$data);
+	// 	}
+	// }
 
 	public function efosallselect() {
 		if (!$this->session->userdata('username')) {

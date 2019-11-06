@@ -2,47 +2,58 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
+<!-- Content -->
+<div class="col" align="center" style="padding: 15px; background-color: #cccccc;">
+	<h3>EFOS ADMM CONCES MAGELANG</h3>
+</div>
+<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+    <?php if (!empty($summary)) { ?>
+      <?php foreach ($summary as $s) {} ?>
+        <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
+    <?php } else { ?>
+      <p class="lead" style=" font-size: 2vw;">Summary..</p>
+    <?php } ?>                
+</div>
+
+<!-- Shearch -->
+<form class="input-group" action="<?php echo base_url().'C_magelang' ?>" method="post">
+  <input type="week" class="form-control border border-secondary" name="tanggal">
+  <div class="input-group-append">
+    <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+  </div>
+</form>
+
+<!-- Akhir Content-->
+
+
+
 <div class="container-fluid" style="margin-top: 50px; margin-bottom: 60px;">
 	<div class="row">
-		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
-			<h3>EFOS ADMM CONCES MAGELANG</h3>
-		</div>
+		
 	</div>
-
-	<!-- tanggal -->
-    <div class="row">
-      <div class="col-sm-8"></div>
-      <div class="col-sm-4 form-group">
-        <div class="mb-1">
-          <form class="input-group" action="<?php echo base_url().'C_magelang' ?>" method="post">
-            <input type="week" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
 	<!-- Sumery -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-              <div class="container">
-                <?php if (!empty($summary)) { ?>
-                  <?php foreach ($summary as $s) {} ?>
-                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
-                <?php } else { ?>
-                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
-                <?php } ?>                
-              </div>
-            </div>
+            
         </div>
     </div>
+
+    <!-- tanggal -->
     <div class="row">
-      <div class="col-sm-12" style="overflow-x: scroll;">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4 form-group">
+        <div class="mb-1">
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-12" style="overflow-x: scroll; height: 350px;">
         <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-          <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+          <thead class="thead-dark" align="center">  
             <tr>
               <th scope="col">Salesman</th>
               <th scope="col">Planned</th>
@@ -638,4 +649,4 @@
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
-<!-- Akhir Footer -->
+<!-- Akhir Footer
