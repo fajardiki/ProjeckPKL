@@ -2,47 +2,30 @@
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
 
-<div class="container-fluid" style="margin-top: 10px; margin-top: 50px;">
-	<div class="row">
-		<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
-			<h3>EFOS ADMM CONCES BANTUL</h3>
-		</div>
+
+<!-- conten -->
+	<div class="col" align="center" style=" padding: 15px; background-color: #cccccc;">
+		<h3>EFOS ADMM CONCES BANTUL</h3>
 	</div>
-
-	<!-- Sumery -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-              <div class="container">
-                <?php if (!empty($summary)) { ?>
-                  <?php foreach ($summary as $s) {} ?>
-                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
-                <?php } else { ?>
-                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
-                <?php } ?>                 
-              </div>
-            </div>
-        </div>
+	<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+        <?php if (!empty($summary)) { ?>
+           <?php foreach ($summary as $s) {} ?>
+               <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
+            <?php } else { ?>
+        	   <p class="lead" style=" font-size: 2vw;">Summary..</p>
+   		 <?php } ?>                             
     </div>
 
-    <!-- tanggal -->
-    <div class="row">
-      <div class="col-sm-8"></div>
-      <div class="col-sm-4 form-group">
-        <div class="">
-          <form class="input-group" action="<?php echo base_url().'C_bantul' ?>" method="post">
-            <input type="week" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
-            </div>
-          </form>
-        </div>
+ <!-- shearch-->
+   <form class="input-group" action="<?php echo base_url().'C_bantul' ?>" method="post">
+      <input type="week" class="form-control border border-secondary" name="tanggal">
+         <div class="input-group-append">
+          <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
       </div>
-    </div>
+   </form>
 
-    <div class="row">
-      <div class="col-sm-12" style="overflow-x: scroll; height: 350px;">
-        <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+   <!--- summary-->
+    <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
           <thead class="thead-dark" align="center">  
             <tr>
               <th scope="col">Salesman</th>
@@ -157,20 +140,12 @@
             </tbody>
           <?php } ?>
         </table>
-      </div>
+
+    <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+       <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
     </div>
 
-	<!-- Grafik Planed -->
-	<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
-                </div>
-              </div>
-          </div>
-      </div>
-	<?php if (empty($plane)) { ?>
+    <?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 		<script>
 			Highcharts.chart('shadow1', {
@@ -309,9 +284,6 @@
 		</script>
 	<?php } ?>
 
-	<!-- Akhir Grafik Planed -->
-
-	<!-- Grafik Time -->
 	<div class="row mt-4">
           <div class="col-sm-12">
               <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
@@ -477,9 +449,8 @@
 	    }
 		</script>
 	<?php } ?>
-	<!-- Akhir Grafik Time -->
 
-	<!-- Grafik PJP COMPLY -->
+	<!-- pjp -->
 	<div class="row mt-4">
           <div class="col-sm-12">
               <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
@@ -626,7 +597,7 @@
 		</script>
 	<?php } ?>
 </div>
-	<!-- Akhir Grafik PJP COMPLY -->
+<!-- akhir conten -->		
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
