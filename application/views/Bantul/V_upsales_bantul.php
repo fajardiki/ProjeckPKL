@@ -65,11 +65,11 @@
 		    </tr>
 			<?php $no++; } ?>
 		 	<?php } ?>
-			<tr>
-				<td colspan="8"><a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_bantul/savesales' ?>">Tambah</a></td>
-			</tr>
 		  </tbody>
 		</table>
+	</section>
+	<section class="mt-1" style="margin-bottom: 70px;">
+		<a class="btn btn-dark" style="width: 100%" href="<?php echo base_url().'C_bantul/savesales' ?>">Tambah</a>
 	</section>
 
 <!-- Footer -->

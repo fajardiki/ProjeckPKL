@@ -12,7 +12,7 @@
 	<script src="<?php echo base_url().'assets/js/exporting.js'?>"></script>
 </head>
 <body>
-	<div class="container-fluid">
+	<div style="font-family: cambria; height: 100%; background-color: #D3D3D3">
 		<div class="row">
 			<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 				<h3><?php echo $sales[0]['Salesman']; ?></h3>
@@ -21,19 +21,16 @@
 		</div>
 
 		<!-- Grafik Planed -->
-		<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
-                </div>
-              </div>
-          </div>
-      	</div>
+      	<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+            <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
+        </div>
 		<?php if (empty($plane)) { ?>
 			<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 			<script>
 				Highcharts.chart('shadow1', {
+				chart: {
+			        backgroundColor: ''
+			    },
 			    title: {
 			        text: ''
 			    },
@@ -103,6 +100,9 @@
 
 			<script>
 				Highcharts.chart('graft1', {
+				chart: {
+			        backgroundColor: ''
+			    },
 			    title: {
 			        text: ''
 			    },
@@ -175,15 +175,9 @@
 		<!-- Akhir Grafik Planed -->
 
 		<!-- Grafik Time -->
-		<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
-                </div>
-              </div>
-          </div>
-      	</div>
+      	<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+            <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
+        </div>
 		<?php if (empty($timemarket)) { ?>
 			<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 			<script>
@@ -337,20 +331,16 @@
 		<!-- Akhir Grafik Time -->
 
 		<!-- Grafik PJP COMPLY -->
-		<div class="row mt-4">
-          <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <div class="container">
-                  <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
-                </div>
-              </div>
-          </div>
-      	</div>
+        <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+            <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
+        </div>
 		<?php if (empty($pjpcomply)) { ?>
 			<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
 			<script>
 				Highcharts.chart('shadow3', {
-
+				chart: {
+			        backgroundColor: ''
+			    },
 			    title: {
 			        text: ''
 			    },
@@ -423,6 +413,9 @@
 
 			<script>
 				Highcharts.chart('graft3', {
+				chart: {
+			        backgroundColor: ''
+			    },
 			    title: {
 			        text: ''
 			    },
@@ -492,13 +485,12 @@
 			</script>
 		<?php } ?>
 		<div class="form-group row">
-        <div class="col-sm-12">
-          <a type="submit" class="btn btn-block btn-danger" href="<?php echo base_url().'C_magelang/updatesales' ?>">Kembali</a>
-        </div>
-      </div>
-	</div>
+	        <div class="col-sm-12">
+	          <a type="submit" class="btn btn-block btn-danger" href="<?php echo base_url().'C_magelang/updatesales' ?>">Kembali</a>
+	        </div>
+	     </div>
 		<!-- Akhir Grafik PJP COMPLY -->
-
+	</div>
 <script src="<?php echo base_url().'assets/js/jquery-3.2.1.slim.min.js' ?>" ></script>
 <script src="<?php echo base_url().'assets/js/popper.min.js' ?>" ></script>
 <script src="<?php echo base_url().'assets/js/bootstrap.min.js' ?>" ></script>

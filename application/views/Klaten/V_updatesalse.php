@@ -5,7 +5,7 @@
 
   <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css' ?>">
 </head>
-<body style="font-family: cambria;">
+<body style="font-family: cambria; height: 100%; background-color: #D3D3D3">
 <div class="container-fluid">
   <div class="row">
   	<div class="col-sm-2"></div>

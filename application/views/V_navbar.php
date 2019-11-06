@@ -18,7 +18,7 @@
 
 	<style>
 		.min {
-			background-color: #FF0000;
+			background-color: #CC0033;
 			color: #fff;
 		}
 
