@@ -6,13 +6,18 @@
 <?php $this->load->view('Magelang/V_navbarmagelang'); ?>
 <!-- Akhir -->
 
-<form class="input-group" action="<?php echo base_url().'C_magelang/efosallselect' ?>" method="post">
+<div class="jumbotron jumbotron-fluid mb-1" style="margin: 0; padding: 0; text-align: center; height: 50px;">
+    <h1 class="lead pt-3">EFOS Magelang</h1>
+</div>
+
+<form class="input-group mb-2" action="<?php echo base_url().'C_magelang/efosallselect' ?>" method="post">
   <input type="month" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
     <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
   </div>
 </form>
 
+<section style="overflow-x: scroll;">
 <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
 	<thead class="thead-dark">
 		<tr>
@@ -94,6 +99,7 @@
 	</tbody>
 	<?php } ?>
 </table>
+</section>
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->

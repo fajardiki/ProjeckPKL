@@ -6,7 +6,11 @@
 <?php $this->load->view('Bantul/V_navbarbantul'); ?>
 <!-- Akhir -->
 
-<form class="input-group" action="<?php echo base_url().'C_bantul/planeselect' ?>" method="post">
+<div class="jumbotron jumbotron-fluid mb-1" style="margin: 0; padding: 0; text-align: center; height: 50px;">
+    <h1 class="lead pt-3">Planned Bantul</h1>
+</div>
+
+<form class="input-group mb-2" action="<?php echo base_url().'C_bantul/planeselect' ?>" method="post">
   <input type="month" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
     <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
@@ -27,6 +31,9 @@
         title: {
             text: 'Diagram Plane'
         },
+        chart: {
+             backgroundColor: ''
+          },
         xAxis: {
             categories: <?php echo json_encode($week); ?>
         },

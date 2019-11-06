@@ -26,6 +26,9 @@
         time: {
             timezone: 'Asia/Jakarta'
         },
+        chart: {
+             backgroundColor: ''
+          },
         title: {
             text: 'Diagram Time'
         },

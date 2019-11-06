@@ -3,21 +3,21 @@
 <!-- Akhir -->
 
 <!-- Content -->
-<div class="col" align="center" style="padding: 15px; background-color: #cccccc;">
+<div class="col" align="center" style="padding: 15px; background-color: #cccccc; margin-top: 50px">
 	<h3>EFOS ADMM CONCES MAGELANG</h3>
 </div>
 
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
     <?php if (!empty($summary)) { ?>
       <?php foreach ($summary as $s) {} ?>
-        <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
+        <h1 class="lead">Summary week <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></h1>
     <?php } else { ?>
-      <p class="lead" style=" font-size: 2vw;">Summary..</p>
+      <h1 class="lead">Summary..</h1>
     <?php } ?>                
 </div>
 
 <!-- Shearch -->
-<form class="input-group" action="<?php echo base_url().'C_magelang' ?>" method="post">
+<form class="input-group mb-2" action="<?php echo base_url().'C_magelang' ?>" method="post">
   <input type="week" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
     <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
@@ -25,7 +25,7 @@
 </form>
 
 <!-- Summary -->
-
+<section style="overflow-x: scroll; height: 350px;">
 <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
     <thead class="thead-dark" align="center">  
         <tr>
@@ -44,7 +44,7 @@
    	</thead>
    	<?php if (!empty($summary)) { ?>
    	    <?php foreach ($summary as $sm) { 
-   	      	$saless = $sm['Salesman'];
+   	    $saless = $sm['Salesman'];
 		$planneds = number_format($sm['Planned']);
 		$unplanneds = number_format($sm['Un_planed']);
 		$visiteds = number_format($sm['Visited']);
@@ -140,11 +140,12 @@
     </tbody>
     <?php } ?>
 </table>
+</section>
 
 <!-- Planned -->
 
-<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-    <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
+<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+    <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
 </div>
 
 <?php if (empty($plane)) { ?>
@@ -153,6 +154,9 @@
 			Highcharts.chart('shadow1', {
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -229,6 +233,9 @@
 		    title: {
 		        text: ''
 		    },
+		    chart: {
+		        backgroundColor: ''
+		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($day); ?>,
 		        title: {
@@ -287,8 +294,8 @@
 	<?php } ?>
 
 	<!-- Time -->
-	<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-        <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
+	<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
     </div>
 
     <?php if (empty($timemarket)) { ?>
@@ -296,7 +303,7 @@
 		<script>
 			Highcharts.chart('shadow2', {
 			chart: {
-		        backgroundColor: '#cccccc'
+		        backgroundColor: ''
 		    },
 		    title: {
 		        text: ''
@@ -376,7 +383,7 @@
 		        timezone: 'Asia/Jakarta'
 		    },
 			chart: {
-		        backgroundColor: '#cccccc'
+		        backgroundColor: ''
 		    },
 		    title: {
 		        text: ''
@@ -458,17 +465,20 @@
 
 	<!-- PJP -->
 
-	<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-        <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
+	<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
     </div>
 
     <?php if (empty($pjpcomply)) { ?>
-		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
+		<div id="shadow3" style="min-width: 310px; height: 400px; margin-bottom: 50px;"></div>
 		<script>
 			Highcharts.chart('shadow3', {
 
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -536,12 +546,15 @@
 		} ?>
 
 
-		<div id="graft3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="graft3" style="min-width: 310px; height: 400px; margin-bottom: 50px;"></div>
 
 		<script>
 			Highcharts.chart('graft3', {
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($day2); ?>,

@@ -4,154 +4,161 @@
 
 
 <!-- Content -->
-<div class="col" align="center" style="padding: 15px; background-color: #cccccc;">
-		<h3>EFOS ADMM CONCES KLATEN</h3>
-	</div>
+<div class="col" align="center" style="padding: 15px; background-color: #cccccc; margin-top: 50px;">
+	<h3>EFOS ADMM CONCES KLATEN</h3>
+</div>
 
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                <?php if (!empty($summary)) { ?>
-                  <?php foreach ($summary as $s) {} ?>
-                    <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></p>
-                <?php } else { ?>
-                  <p class="lead" style=" font-size: 2vw;">Summary..</p>
-                <?php } ?>                  
-            </div>
+    <?php if (!empty($summary)) { ?>
+      <?php foreach ($summary as $s) {} ?>
+        <h1 class="lead">Summary week <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></h1>
+    <?php } else { ?>
+      <h1 class="lead">Summary..</h1>
+    <?php } ?>                  
+</div>
 <!-- Search -->
-          <form class="input-group" action="<?php echo base_url().'C_klaten' ?>" method="post">
-            <input type="week" class="form-control border border-secondary" name="tanggal">
-            <div class="input-group-append">
-              <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
-            </div>
-          </form>
-<!-- Summary -->
- <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-          <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
-            <tr>
-              <th scope="col">Salesman</th>
-              <th scope="col">Planned</th>
-              <th scope="col">Un-planed</th>
-              <th scope="col">Visited</th>
-              <th scope="col">Start Time</th>
-              <th scope="col">End Time</th>
-              <th scope="col">Nosale</th>
-              <th scope="col">PJP-Comply</th>
-              <th scope="col">No-Sale</th>
-              <th scope="col">Productive-Call</th>
-              <th scope="col">Total Penjualan</th>  
-            </tr>
-          </thead>
-          <?php if (!empty($summary)) { ?>
-            <?php foreach ($summary as $sm) { 
-            	$saless = $sm['Salesman'];
-				$planneds = number_format($sm['Planned']);
-				$unplanneds = number_format($sm['Un_planed']);
-				$visiteds = number_format($sm['Visited']);
-				$stattimes = $sm['Start_Time'];
-				$endtimes = $sm['End_Time'];
-				$nosales = number_format($sm['Nosale']);
-				$pjpcomplys = intval($sm['pjp_comply']);
-				$nosalepersens = intval($sm['NosalePersen']);
-				$productivecalls = intval($sm['Productive_Call']);
-				$totalsales = number_format($sm['Total_Sale'],2,',','.');
-            ?>
-            <tbody>
-              <tr>
-                <td><?php echo $saless ?></td>
-                <td><?php echo $planneds ?></td>
-                <td><?php echo $unplanneds ?></td>
-                <td><?php echo $visiteds ?></td>
-                <td><?php echo $stattimes ?></td>
-                <td><?php echo $endtimes ?></td>
-                <!-- Nosale percent -->
-				<?php if ($nosales > 10) { ?>
-					<td class="min"><?php echo $nosales ?></td>
-				<?php } else { ?>
-					<td><?php echo $nosales ?></td>
-				<?php } ?>
-                
-                <!-- Pjp comply -->
-				<?php if ($pjpcomplys < 95) { ?>
-					<td class="min"><?php echo $pjpcomplys ?></td>
-				<?php } else { ?>
-					<td><?php echo $pjpcomplys ?></td>
-				<?php } ?>
+<form class="input-group mb-2" action="<?php echo base_url().'C_klaten' ?>" method="post">
+  <input type="week" class="form-control border border-secondary" name="tanggal">
+  <div class="input-group-append">
+    <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
+  </div>
+</form>
 
-                <td><?php echo $nosalepersens.'%' ?></td>
-                <td><?php echo $productivecalls.'%' ?></td>
-                <td><?php echo "Rp " .$totalsales ?></td>
-              </tr>
-            </tbody>
-            <?php } ?>
-          <?php } else { ?>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          <?php } ?>
-        </table>
-<!-- Diagram -->
-         <div class="col-sm-12">
-              <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                  <p class="lead" style=" font-size: 2vw;">Diagram Planned - Produktive - Nosale</p>
-                </div>
-              </div>
+<!-- Summary -->
+<section style="overflow-x: scroll; height: 350px">
+ <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+    <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+      <tr>
+        <th scope="col">Salesman</th>
+        <th scope="col">Planned</th>
+        <th scope="col">Un-planed</th>
+        <th scope="col">Visited</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Nosale</th>
+        <th scope="col">PJP-Comply</th>
+        <th scope="col">No-Sale</th>
+        <th scope="col">Productive-Call</th>
+        <th scope="col">Total Penjualan</th>  
+      </tr>
+    </thead>
+    <?php if (!empty($summary)) { ?>
+       <?php foreach ($summary as $sm) { 
+        $saless = $sm['Salesman'];
+		$planneds = number_format($sm['Planned']);
+		$unplanneds = number_format($sm['Un_planed']);
+		$visiteds = number_format($sm['Visited']);
+		$stattimes = $sm['Start_Time'];
+		$endtimes = $sm['End_Time'];
+		$nosales = number_format($sm['Nosale']);
+		$pjpcomplys = intval($sm['pjp_comply']);
+		$nosalepersens = intval($sm['NosalePersen']);
+		$productivecalls = intval($sm['Productive_Call']);
+		$totalsales = number_format($sm['Total_Sale'],2,',','.');
+    ?>
+    <tbody>
+      <tr>
+        <td><?php echo $saless ?></td>
+        <td><?php echo $planneds ?></td>
+        <td><?php echo $unplanneds ?></td>
+        <td><?php echo $visiteds ?></td>
+        <td><?php echo $stattimes ?></td>
+        <td><?php echo $endtimes ?></td>
+
+        <!-- Nosale percent -->
+		<?php if ($nosales > 10) { ?>
+			<td class="min"><?php echo $nosales ?></td>
+		<?php } else { ?>
+			<td><?php echo $nosales ?></td>
+		<?php } ?>
+    	         
+    	<!-- Pjp comply -->
+		<?php if ($pjpcomplys < 95) { ?>
+			<td class="min"><?php echo $pjpcomplys ?></td>
+		<?php } else { ?>
+			<td><?php echo $pjpcomplys ?></td>
+		<?php } ?>
+
+        <td><?php echo $nosalepersens.'%' ?></td>
+        <td><?php echo $productivecalls.'%' ?></td>
+        <td><?php echo "Rp " .$totalsales ?></td>
+      </tr>
+    </tbody>
+    <?php } ?>
+  <?php } else { ?>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  <?php } ?>
+</table>
+</section>
+
 <!-- Grafik Planned -->
+<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+    <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
+</div>
+
+
 	<?php if (empty($plane)) { ?>
 		<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
 		<script>
 			Highcharts.chart('shadow1', {
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -228,6 +235,9 @@
 		    title: {
 		        text: ''
 		    },
+		    chart: {
+		        backgroundColor: ''
+		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($day); ?>,
 		        title: {
@@ -287,15 +297,15 @@
 <!-- Akhir Grafik -->
 
 <!-- Grafik Time -->
- <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                  <p class="lead" style=" font-size: 2vw;">Diagram TimeInMarket - Spent - TimePerOutlet</p>
-              </div>
+ 	<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
+    </div>
  	<?php if (empty($timemarket)) { ?>
 		<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
 		<script>
 			Highcharts.chart('shadow2', {
 			chart: {
-		        backgroundColor: '#cccccc'
+		        backgroundColor: ''
 		    },
 		    title: {
 		        text: ''
@@ -375,7 +385,7 @@
 		        timezone: 'Asia/Jakarta'
 		    },
 			chart: {
-		        backgroundColor: '#cccccc'
+		        backgroundColor: ''
 		    },
 		    title: {
 		        text: ''
@@ -465,16 +475,19 @@
 <!-- Akhir Grafik Time -->
 
 <!-- PJP Comply -->
- <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-                  <p class="lead" style=" font-size: 2vw;">Diagram PJP Comply - Geomatch - Productive Call</p>
-              </div>
+ 	<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
+    </div>
 	<?php if (empty($pjpcomply)) { ?>
-		<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
+		<div id="shadow3" style="min-width: 310px; height: 400px; margin-bottom: 50px;"></div>
 		<script>
 			Highcharts.chart('shadow3', {
 
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: ['1', '2', '3', '4'],
@@ -542,12 +555,15 @@
 		} ?>
 
 
-		<div id="graft3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="graft3" style="min-width: 310px; height: 400px; margin-bottom: 50px;"></div>
 
 		<script>
 			Highcharts.chart('graft3', {
 		    title: {
 		        text: ''
+		    },
+		    chart: {
+		        backgroundColor: ''
 		    },
 		    xAxis: {
 		        categories: <?php echo json_encode($day2); ?>,

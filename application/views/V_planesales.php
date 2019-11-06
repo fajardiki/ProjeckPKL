@@ -28,6 +28,9 @@
         title: {
             text: 'Diagram Planned'
         },
+        chart: {
+             backgroundColor: ''
+          },
         xAxis: {
             categories: <?php echo json_encode($week); ?>
         },

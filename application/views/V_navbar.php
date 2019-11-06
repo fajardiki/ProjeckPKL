@@ -16,7 +16,7 @@
 		}
 	</style> -->
 
-<!-- 	<style>
+	<style>
 		.min {
 			background-color: #FF0000;
 			color: #fff;
@@ -24,11 +24,20 @@
 
 		#navbar {
 			position: fixed; 
-			width: 100%; 
+			width: 100%;
+			left: 0;
 			z-index: 9999;
 			top: 0;
 		}
-	</style> -->
+
+		footer {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			left: 0;
+			z-index: 9999;
+		}
+	</style>
 
 	<?php 
 		function seconds_from_time($time) {
@@ -43,7 +52,7 @@
 	<script src="<?php echo base_url().'assets/js/jquery.min.js' ?>"></script>
 	<script src="<?php echo base_url().'assets/fontawesome/js/fontawesome.min.js' ?>"></script>
 </head>
-<body style="font-family: cambria; height: 100%;">
+<body style="font-family: cambria; height: 100%; background-color: #D3D3D3">
 
 <div class="container-fluid"> 
 

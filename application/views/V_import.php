@@ -1,8 +1,12 @@
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
-  <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data"> 
-    <h1 align="center">Import File Excel</h1>           
+
+<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center; margin-top: 70px;">
+    <h1 class="lead" style="padding: 10px;">Import File Excel</h1>
+</div>
+
+  <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data">           
     <div class="form-group">
         <select class="form-control mb-1" id="conces" name="conces">
           <option>-- Pilih Conces --</option>
@@ -38,7 +42,7 @@
     </div>
 
 
-          <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px; margin: auto;">
+          <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px; margin-bottom: 70px;">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Journey Date</th>

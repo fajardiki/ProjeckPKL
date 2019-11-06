@@ -10,7 +10,7 @@
 <!-- Admin -->
 <?php if ($nama[0]['status']=='Admin' OR $nama[0]['status']=='Owner' OR $nama[0]['status']=='HRD') {?>
 
-  <div class="col" align="center" style=" padding: 15px; background-color: #cccccc;">
+  <div class="col" align="center" style=" padding: 15px; background-color: #cccccc; margin-top: 50px;">
       <h3>EFOS ADMM Group <?php echo date('Y'); ?></h3>
   </div>
 
@@ -32,12 +32,12 @@
     <?php if (!empty($summary)) { ?>
       <?php foreach ($summary as $s) {} ?>
         <?php if (isset($s['Month']) AND isset($s['Year'])): ?>
-          <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Month']; ?>, <?php echo $s['Year']; ?></p>
+          <h1 class="lead">Summary <?php echo $s['Month']; ?>, <?php echo $s['Year']; ?></h1>
         <?php else: ?>
-          <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Year']; ?></p>
+          <h1 class="lead">Summary <?php echo $s['Year']; ?></h1>
         <?php endif ?>
       <?php } else { ?>
-        <p class="lead" style=" font-size: 2vw;">Summary..</p>
+        <h1 class="lead">Summary..</h1>
     <?php } ?>                
   </div>
 
@@ -364,8 +364,8 @@
   </table>
 </section>
 
-<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-  <p class="lead" style=" font-size: 2vw;">Planned - Produktive - Nosale</p>
+<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+  <h1 class="lead">Planned - Produktive - Nosale</h1>
 </div>
 
 <!-- Grafik Planed -->
@@ -375,6 +375,9 @@
         Highcharts.chart('shadow1', {
           title: {
               text: ''
+          },
+          chart: {
+             backgroundColor: ''
           },
           xAxis: {
               categories: ['1', '2', '3', '4'],
@@ -446,6 +449,9 @@
           title: {
               text: ''
           },
+          chart: {
+             backgroundColor: ''
+          },
           xAxis: {
               categories: <?php echo json_encode($conces); ?>,
               title: {
@@ -510,8 +516,8 @@
 
     <!-- Akhir Grafik Planed -->
 
-<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-  <p class="lead" style=" font-size: 2vw;">TimeInMarket - Spent - TimePerOutlet</p>
+<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+  <h1 class="lead">TimeInMarket - Spent - TimePerOutlet</h1>
 </div>
 
 <!-- Grafik Time -->
@@ -520,7 +526,7 @@
       <script>
         Highcharts.chart('shadow2', {
         chart: {
-              backgroundColor: '#cccccc'
+              backgroundColor: ''
           },
           title: {
               text: ''
@@ -589,6 +595,9 @@
         Highcharts.chart('graft2', {
         time: {
               timezone: 'Asia/Jakarta'
+          },
+          chart: {
+             backgroundColor: ''
           },
           title: {
               text: ''
@@ -671,8 +680,8 @@
     <?php } ?>
     <!-- Akhir Grafik Time -->
 
-<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-  <p class="lead" style=" font-size: 2vw;">PJP Comply - Geomatch - Productive Call</p>
+<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+  <h1 class="lead">PJP Comply - Geomatch - Productive Call</h1>
 </div>
 
 <!-- Grafik PJP COMPLY -->
@@ -683,6 +692,9 @@
 
           title: {
               text: ''
+          },
+          chart: {
+             backgroundColor: ''
           },
           xAxis: {
               categories: ['1', '2', '3', '4'],
@@ -749,12 +761,15 @@
       } ?>
 
 
-      <div id="graft3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+      <div id="graft3" style="min-width: 310px; height: 400px; margin-bottom: 50px;"></div>
 
       <script>
         Highcharts.chart('graft3', {
           title: {
               text: ''
+          },
+          chart: {
+             backgroundColor: ''
           },
           xAxis: {
               categories: <?php echo json_encode($conces2); ?>,
@@ -951,6 +966,9 @@
         title: {
           text: ''
         },
+        chart: {
+           backgroundColor: ''
+        },
         subtitle: {
           text: 'Minggu ke ' + <?php echo date('W')-2; ?> + ' belum ada pencapaian'
         },
@@ -1012,7 +1030,10 @@
         Highcharts.chart('graft1', {
             title: {
               text: ''
-           },
+            },
+            chart: {
+               backgroundColor: ''
+            },
             subtitle: {
               text: 'Minggu Ke ' + <?php echo $p['Week']; ?>
             },
@@ -1080,6 +1101,9 @@
                       title: {
                           text: ''
                       },
+                      chart: {
+                         backgroundColor: ''
+                      },
                       subtitle: {
                           text: 'Minggu ke ' + <?php echo date('W')-1; ?> + ' belum ada pencapaian'
                       },
@@ -1143,6 +1167,9 @@
                     Highcharts.chart('graft11', {
                       title: {
                           text: 'Diagram Planned - Produktive - Nosale'
+                      },
+                      chart: {
+                         backgroundColor: ''
                       },
                       subtitle: {
                           text: 'Minggu Ke ' + <?php echo $p1['Week']; ?>
@@ -1220,6 +1247,9 @@
                       title: {
                           text: ''
                       },
+                      chart: {
+                         backgroundColor: ''
+                      },
                       subtitle: {
                           text: 'Minggu ke ' + <?php echo date('W')-2; ?> + ' belum ada pencapaian'
                       },
@@ -1281,6 +1311,9 @@
                     Highcharts.chart('graft2', {
                       title: {
                           text: ''
+                      },
+                      chart: {
+                         backgroundColor: ''
                       },
                       subtitle: {
                           text: 'Minggu Ke ' + <?php echo $tm['Week']; ?>
@@ -1358,6 +1391,9 @@
                       title: {
                           text: ''
                       },
+                      chart: {
+                         backgroundColor: ''
+                      },
                       subtitle: {
                           text: 'Minggu ke ' + <?php echo date('W')-1; ?> + ' belum ada pencapaian'
                       },
@@ -1419,6 +1455,9 @@
                     Highcharts.chart('graft22', {
                       title: {
                           text: ''
+                      },
+                      chart: {
+                         backgroundColor: ''
                       },
                       subtitle: {
                           text: 'Minggu Ke ' + <?php echo $tm1['Week']; ?>
@@ -1505,6 +1544,9 @@
                       title: {
                           text: ''
                       },
+                      chart: {
+                         backgroundColor: ''
+                      },
                       subtitle: {
                           text: 'Minggu ke ' + <?php echo date('W')-2; ?> + ' belum ada pencapaian'
                       },
@@ -1567,6 +1609,9 @@
                 Highcharts.chart('graft3', {
                   title: {
                       text: ''
+                  },
+                  chart: {
+                     backgroundColor: ''
                   },
                   subtitle: {
                       text: 'Minggu Ke ' + <?php echo $pjp['Week']; ?>
@@ -1633,6 +1678,9 @@
                       title: {
                           text: ''
                       },
+                      chart: {
+                         backgroundColor: ''
+                      },
                       subtitle: {
                           text: 'Minggu ke ' + <?php echo date('W')-1; ?> + ' belum ada pencapaian'
                       },
@@ -1695,6 +1743,9 @@
                 Highcharts.chart('graft33', {
                   title: {
                       text: ''
+                  },
+                  chart: {
+                     backgroundColor: ''
                   },
                   subtitle: {
                       text: 'Minggu Ke ' + <?php echo $pjp1['Week']; ?>

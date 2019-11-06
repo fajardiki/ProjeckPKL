@@ -27,6 +27,9 @@
       title: {
           text: 'Diagram PJP'
       },
+        chart: {
+             backgroundColor: ''
+          },
       xAxis: {
           categories: <?php echo json_encode($week); ?>
       },
