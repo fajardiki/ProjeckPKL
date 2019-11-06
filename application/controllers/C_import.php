@@ -54,9 +54,11 @@ class C_import extends CI_Controller {
             				$Unplaned = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
             				$StartTime = $worksheet->getCellByColumnAndRow(6, $row)->getFormattedValue();
             				$EndTime = $worksheet->getCellByColumnAndRow(7, $row)->getFormattedValue();
-            				$TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue())), true)['date'];
+                            $TimeinMarket = $worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue();
+            				// $TimeinMarket = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(8, $row)->getFormattedValue())), true)['date'];
             				$Spent = $worksheet->getCellByColumnAndRow(9, $row)->getFormattedValue();
-            				$TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(10, $row)->getFormattedValue())), true)['date'];
+                            $TimePerOutlet = $worksheet->getCellByColumnAndRow(10, $row)->getFormattedValue();
+            				// $TimePerOutlet = json_decode(json_encode(PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow(10, $row)->getFormattedValue())), true)['date'];
             				$Nosale = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
             				$Productive = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
             				$Geomismatch = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
@@ -64,23 +66,25 @@ class C_import extends CI_Controller {
             				$TotalQty = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
             				$TotalSale = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
 
-            				$timemarket = [$TimeinMarket[11],$TimeinMarket[12],$TimeinMarket[13],$TimeinMarket[14],$TimeinMarket[15],$TimeinMarket[16],$TimeinMarket[17],$TimeinMarket[18]];
-            				$timeoutlet = [$TimePerOutlet[11],$TimePerOutlet[12],$TimePerOutlet[13],$TimePerOutlet[14],$TimePerOutlet[15],$TimePerOutlet[16],$TimePerOutlet[17],$TimePerOutlet[18]];
+            				// $timemarket = [$TimeinMarket[11],$TimeinMarket[12],$TimeinMarket[13],$TimeinMarket[14],$TimeinMarket[15],$TimeinMarket[16],$TimeinMarket[17],$TimeinMarket[18]];
+            				// $timeoutlet = [$TimePerOutlet[11],$TimePerOutlet[12],$TimePerOutlet[13],$TimePerOutlet[14],$TimePerOutlet[15],$TimePerOutlet[16],$TimePerOutlet[17],$TimePerOutlet[18]];
 
                             $data[] = array(
+                                'File_Name' => $_FILES["file"]["name"],
                             	'Date_Update' => date('Y-m-d'),
                                 'id_conces' => $conces,
+
                                 'Journey_Date' => date('Y-m-d', strtotime($JourneyDate)),
-            				    'District_Code' => $this->M_efos->district_code($RouteName),	
+            				    'District_Code' => $this->M_efos->district_code($RouteName),
             				    'Emp_Code' => $this->M_efos->emp_code($SalesmanName),
             				    'Planned' => $Planned,
             				    'Visited' => $Visited,
             				    'Un_planed' => $Unplaned,
             				    'Start_Time' => $StartTime,
             				    'End_Time' => $EndTime,
-            				    'Time_in_Market' => implode("", $timemarket),
+            				    'Time_in_Market' => $TimeinMarket,
             				    'Spent' =>$Spent,
-            				    'Time_Per_Outlet' => implode("", $timeoutlet),
+            				    'Time_Per_Outlet' => $TimePerOutlet,
             				    'Nosale' => $Nosale,
             				    'Productive' => $Productive,
             				    'Geo_mismatch' => $Geomismatch,

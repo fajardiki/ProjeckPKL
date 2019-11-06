@@ -26,7 +26,7 @@
 			position: fixed; 
 			width: 100%;
 			left: 0;
-			z-index: 9999;
+			z-index: 4;
 			top: 0;
 		}
 
@@ -35,7 +35,7 @@
 			bottom: 0;
 			width: 100%;
 			left: 0;
-			z-index: 9999;
+			z-index: 3;
 		}
 	</style>
 

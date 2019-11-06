@@ -17,7 +17,7 @@
   </div>
 </form>
 
-<div id="start_time"></div> 
+<div id="start_time" style="margin-bottom: 7%;"></div> 
 
     <?php foreach ($timemarket as $tm) {
         $week[] = $tm['Week'];

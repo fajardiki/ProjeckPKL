@@ -7,7 +7,7 @@
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center; margin-top: 70px;">
     <h1 class="lead" style="padding: 10px;">EFOS SALESMAN</h1>
 </div>
-    
+<section style="overflow-x: scroll;">   
 <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 9px; margin: auto;">
   <thead class="thead-dark">
     <tr>
@@ -56,6 +56,7 @@
     </tbody>
     <?php } ?>
 </table>
+</section> 
 <section class="mt-2" style="margin-bottom: 70px;">
   <?php echo $pagination ?>
 </section>   

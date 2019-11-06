@@ -17,7 +17,7 @@
   </div>
 </form>
 
-<div id="grafik_plane"></div> 
+<div id="grafik_plane" style="margin-bottom: 7%;"></div> 
 
 
     <?php foreach ($plane as $p) {

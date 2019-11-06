@@ -15,7 +15,7 @@
     <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari" name="cari">
   </div>
 </form>
-<section style="overflow-x: scroll;">
+<section style="overflow-x: scroll; margin-bottom: 10%;">
 <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
   <thead class="thead-dark">
     <tr>

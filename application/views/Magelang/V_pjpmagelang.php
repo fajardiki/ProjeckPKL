@@ -17,7 +17,7 @@
   </div>
 </form>
 
-<div id="grafik_pjp"></div> 
+<div id="grafik_pjp" style="margin-bottom: 7%;"></div> 
   <?php foreach ($pjpcomply as $pjp) {
     $week[] = $pjp['Week'];
     $pjpcom[] = intval($pjp['PJP_COMPLY']);

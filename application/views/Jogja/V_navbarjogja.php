@@ -10,7 +10,7 @@
 </head>
 <body style="font-family: cambria;">
 
-	 <ul class="nav nav-tabs nav-justified bg-dark" style="position: fixed; font-size: 10px; margin-top: 50px; width: 100%; left: 0;">
+	 <ul class="nav nav-tabs nav-justified bg-dark" style="position: fixed; font-size: 10px; margin-top: 50px; width: 100%; left: 0; z-index: 2;">
 	    <li class="nav-item">
 	      <a id="efos" class="nav-link" href="efos">EFOS</a>
 	    </li>
