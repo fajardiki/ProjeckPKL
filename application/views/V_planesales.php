@@ -6,6 +6,10 @@
 <?php $this->load->view('V_navbarsales'); ?>
 <!-- Akhir -->
 
+<div class="jumbotron jumbotron-fluid mb-1" style="margin: 0; padding: 0; text-align: center; height: 50px;">
+    <h1 class="lead pt-3">Planned Sales</h1>
+</div>
+
 <form class="input-group" action="<?php echo base_url().'C_dasbord/planeselect' ?>" method="post">
   <input type="month" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
@@ -13,7 +17,7 @@
   </div>
 </form>
 
-<div id="grafik_plane"></div> 
+<div id="grafik_plane" style="margin-bottom: 10%;"></div> 
 
 
     <?php foreach ($plane as $p) {
@@ -26,7 +30,7 @@
     <script type="text/javascript">
     Highcharts.chart('grafik_plane', {
         title: {
-            text: 'Diagram Planned'
+            text: ''
         },
         chart: {
              backgroundColor: ''

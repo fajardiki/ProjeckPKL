@@ -40,7 +40,7 @@
         </div>
         <div class="form-group row">
     		  <div class="col-sm-12">
-    		   <input type="submit" class="btn btn-block btn-danger" value="Perbarui" name="update">
+    		   <input type="submit" class="btn btn-block btn-danger" value="Perbarui" name="update" onclick="return confirm('Anda yakin ingin memperbarui data distrik ini ?')">
     		  </div>
     		</div>
       </form>

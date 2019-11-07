@@ -6,6 +6,10 @@
 <?php $this->load->view('V_navbarsales'); ?>
 <!-- Akhir -->
 
+<div class="jumbotron jumbotron-fluid mb-1" style="margin: 0; padding: 0; text-align: center; height: 50px;">
+    <h1 class="lead pt-3">Time Sales</h1>
+</div>
+
 <form class="input-group" action="<?php echo base_url().'C_dasbord/timeselect' ?>" method="post">
     <input type="month" class="form-control border border-secondary" name="tanggal">
     <div class="input-group-append">
@@ -13,7 +17,7 @@
     </div>
 </form>
 
-<div id="start_time"></div> 
+<div id="start_time" style="margin-bottom: 10%;"></div> 
 
     <?php foreach ($timemarket as $tm) {
         $week[] = $tm['Week'];
@@ -30,7 +34,7 @@
              backgroundColor: ''
           },
         title: {
-            text: 'Diagram Time'
+            text: ''
         },
         xAxis: {
             categories: <?php echo json_encode($week); ?>,

@@ -21,7 +21,7 @@
 
 		// Efos
 		public function getefos($date) {
-			$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date' GROUP BY Journey_Date DESC LIMIT 5");
+			$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE Date_Update='$date' GROUP BY Journey_Date DESC");
 			return $hsl->result_array();
 		}
 
@@ -46,7 +46,7 @@
 
  		// Time
  		public function selectalltime() {
- 			$hsl = $this->db->query("SELECT nama_conces as Conces, avg(TIME_TO_SEC(Time_in_Market)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(CURDATE()) GROUP BY a.id_conces");
+ 			$hsl = $this->db->query("SELECT nama_conces as Conces, avg(TIME_TO_SEC(End_Time-Start_Time)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(CURDATE()) GROUP BY a.id_conces");
 
  			return $hsl->result_array();
  		}
@@ -75,14 +75,17 @@
  			$hsl = $this->db->query("SELECT YEAR(Journey_Date) AS Year, MONTHNAME(Journey_Date) AS Month, nama_conces as Conces, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(Journey_Date)=year(CURDATE()) AND a.id_conces = 1 GROUP BY MONTH(Journey_Date)");
  			return $hsl->result_array();
  		}
+
  		public function selectsummaryconcesmagelang() {
  			$hsl = $this->db->query("SELECT YEAR(Journey_Date) AS Year, MONTHNAME(Journey_Date) AS Month, nama_conces as Conces, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(Journey_Date)=year(CURDATE()) AND a.id_conces = 2 GROUP BY MONTH(Journey_Date)");
  			return $hsl->result_array();
  		}
+
  		public function selectsummaryconcesbantul() {
  			$hsl = $this->db->query("SELECT YEAR(Journey_Date) AS Year, MONTHNAME(Journey_Date) AS Month, nama_conces as Conces, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(Journey_Date)=year(CURDATE()) AND a.id_conces = 3 GROUP BY MONTH(Journey_Date)");
  			return $hsl->result_array();
  		}
+ 		
  		public function selectsummaryconcesklaten() {
  			$hsl = $this->db->query("SELECT YEAR(Journey_Date) AS Year, MONTHNAME(Journey_Date) AS Month, nama_conces as Conces, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a INNER JOIN m_conces b ON a.id_conces = b.id_conces WHERE year(Journey_Date)=year(CURDATE()) AND a.id_conces = 4 GROUP BY MONTH(Journey_Date)");
  			return $hsl->result_array();

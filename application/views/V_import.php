@@ -9,7 +9,7 @@
   <form method="post" action="<?=site_url()?>C_import/saveimport" class="form-horizontal" enctype="multipart/form-data">           
     <div class="form-group">
         <select class="form-control mb-1" id="conces" name="conces">
-          <option>-- Pilih Conces --</option>
+          <option value="">-- Pilih Conces --</option>
           <option value="1">Jogja</option>
           <option value="2">Magelang</option>
           <option value="3">Bantul</option>
@@ -19,7 +19,7 @@
         <input type="file" name="file" class="form-control" id="file" required accept=".xls, .xlsx"/></p>
     </div>
     <div class="form-group">
-       <input type="submit" class="btn btn-block btn-danger" value="Import" name="import">
+       <input type="submit" class="btn btn-block btn-danger" value="Import" name="import" onclick="return confirm('Anda yakin ingin mengupload file efos ini ?')">
     </div>
   </form>
 
@@ -41,8 +41,8 @@
       </div>
     </div>
 
-
-          <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px; margin-bottom: 70px;">
+        <section style="overflow-x: scroll; height: 350px; margin-bottom: 60px;">
+          <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 10px;">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Journey Date</th>
@@ -179,10 +179,9 @@
                 </tr>
               </tbody>
               <?php } ?>
-            <?php } ?>
-            
+            <?php } ?> 
           </table>
- 
+        </section>
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>
 <!-- Akhir Footer -->

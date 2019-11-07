@@ -6,6 +6,10 @@
 <?php $this->load->view('V_navbarsales'); ?>
 <!-- Akhir -->
 
+<div class="jumbotron jumbotron-fluid mb-1" style="margin: 0; padding: 0; text-align: center; height: 50px;">
+    <h1 class="lead pt-3">PJP_Comply Sales</h1>
+</div>
+
 <form class="input-group" action="<?php echo base_url().'C_dasbord/pjpselect' ?>" method="post">
   <input type="month" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
@@ -13,7 +17,7 @@
   </div>
 </form>
 
-<div id="grafik_pjp"></div> 
+<div id="grafik_pjp" style="margin-bottom: 10%;"></div> 
 
   <?php foreach ($pjpcomply as $pjp) {
     $week[] = $pjp['Week'];
@@ -25,7 +29,7 @@
   <script>
   Highcharts.chart('grafik_pjp', {
       title: {
-          text: 'Diagram PJP'
+          text: ''
       },
         chart: {
              backgroundColor: ''

@@ -58,7 +58,7 @@
         </div>
         <div class="form-group row">
     		  <div class="col-sm-12">
-    		   <input type="submit" class="btn btn-block btn-danger" value="Update" name="update">
+    		   <input type="submit" class="btn btn-block btn-danger" value="Update" name="update" onclick="return confirm('Anda yakin ingin memperbarui data sales ini ?')">
     		  </div>
     		</div>
       </form>

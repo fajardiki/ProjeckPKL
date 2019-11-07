@@ -53,7 +53,8 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-12">
-           <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save">
+           <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save" onclick="return confirm('Anda yakin ingin menambah distrik ini ?')"
+>
           </div>
         </div>
       </form>

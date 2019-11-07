@@ -847,12 +847,13 @@
 <!-- Akhir admin -->
 <!-- Sales -->
 <?php } elseif ($nama[0]['status']=='sales') { ?>
-<div class="jumbotron jumbotron-fluid">
+
+<div class="jumbotron jumbotron-fluid" style="margin-top: 60px; text-align: center;">
   <h1 class="display-4" style=" font-size: 4vw;">Selamat datang <?php echo $nama[0]['Salesman']; ?></h1>
   <p class="lead" style=" font-size: 2vw;">Ini adalah pencapaian anda 2 minggu ini.</p>
 </div>
 
-<form class="input-group" action="<?php echo base_url().'C_dasbord' ?>" method="post">
+<form class="input-group mb-2" action="<?php echo base_url().'C_dasbord' ?>" method="post">
   <input type="week" class="form-control border border-secondary" name="tanggal">
   <div class="input-group-append">
     <input type="submit" class="btn btn-outline-secondary" type="button" value="Cari">
@@ -862,16 +863,15 @@
 <!-- Summry -->
 
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-  <div class="container">
     <?php if (!empty($summary)) { ?>
       <?php foreach ($summary as $s) {} ?>
-      <p class="lead" style=" font-size: 2vw;">Summary <?php echo $s['Week']; ?></p>
+      <h1 class="lead">Summary week <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></h1>
     <?php } else { ?>
-      <p class="lead" style=" font-size: 2vw;">Summary ...</p>
+      <h1 class="lead">Summary ...</h1>
     <?php } ?>                
-  </div>
 </div>
 
+<section style="overflow-x: scroll; height: 300px; margin-bottom: 2px;">
 <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
   <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
     <tr>
@@ -950,10 +950,11 @@
     </tbody>
   <?php } ?>
 </table>
+</section>
 
 <!-- Plane -->
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-    <p class="lead" style=" font-size: 2vw;">Planned - Produktive - Nosale</p>
+    <h1 class="lead">Planned - Produktive - Nosale</h1>
 </div>
 
 <div class="row">
@@ -1236,7 +1237,7 @@
     <!-- Grafik Time -->
 
     <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-      <p class="lead" style=" font-size: 2vw;">TimeInMarket - Spent - TimePerOutlet</p>
+      <h1 class="lead">TimeInMarket - Spent - TimePerOutlet</h1>
     </div>
     <div class="row">
           <div class="col-sm-6">
@@ -1533,9 +1534,9 @@
     <!-- Grafik PJP COMPLY -->
 
       <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <p class="lead" style=" font-size: 2vw;">PJP Comply - Geomatch - Productive Call</p>
+            <h1 class="lead">PJP Comply - Geomatch - Productive Call</h1>
       </div>
-      <div class="row">
+      <div class="row" style="margin-bottom: 70px;">
           <div class="col-sm-6">
               <?php if (empty($pjpcomply)) { ?>
                   <div id="shadow3" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;"></div>

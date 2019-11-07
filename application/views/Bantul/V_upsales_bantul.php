@@ -61,7 +61,7 @@
 		      <td><?php echo $us['Password']; ?></td>
 		      <td><a href="<?php echo base_url().'C_bantul/diagramsales/'.$us['Emp_Code'] ?>" class="card-link fas fa-chart-bar" style="font-size:15px;"></a></td>
 		      <td><a href="<?php echo base_url().'C_bantul/updatesales/'.$us['Emp_Code'] ?>" class="card-link fas fa-edit" style="font-size:15px;"></a></td>
-		      <td><a href="<?php echo base_url().'C_bantul/hapussales/'.$us['Emp_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;"></a></td>
+		      <td><a href="<?php echo base_url().'C_bantul/hapussales/'.$us['Emp_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;" onclick="return confirm('Anda yakin ingin menghapus sales ini ?')"></a></td>
 		    </tr>
 			<?php $no++; } ?>
 		 	<?php } ?>

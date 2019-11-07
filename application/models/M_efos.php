@@ -24,6 +24,12 @@
  		return $h['Emp_Code'];
  	}
 
+ 	public function idupload($FileName) {
+ 		$hsl = $this->db->query("SELECT id_upload FROM upload WHERE name_upload = '$FileName'");
+ 		$h = $hsl->row_array();
+ 		return $h['id_upload'];
+ 	}
+
  	public function selectefos($nama) {
  		$periksa = $this->db->query("SELECT * FROM upload WHERE name_upload = '$nama'");
 
@@ -46,6 +52,26 @@
  	public function data($number,$offset) {
  		return $query = $this->db->get('m_efos',$number,$offset)->result_array();
  	}
+
+ 	// Delete efos
+ 	public function datauploadcount() {
+ 		$hsl = $this->db->query("SELECT * FROM upload");
+		return $hsl->num_rows();
+ 	}
+
+ 	public function dataupload($number,$offset) {
+ 		return $query = $this->db->get('upload',$number,$offset)->result_array();
+ 	}
+
+ 	public function deleteefos($idfile) {
+ 		$this->db->query("DELETE FROM m_efos WHERE File_Name = '$idfile'");
+ 	}
+
+ 	public function deleteupload($idfile) {
+ 		$this->db->query("DELETE FROM upload WHERE id_upload = '$idfile'");
+ 	}
+
+ 	// Akhir
  } 
 
  ?>

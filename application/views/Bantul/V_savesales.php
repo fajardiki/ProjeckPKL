@@ -71,7 +71,7 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-12">
-           <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save" autocomplete="off">
+           <input type="submit" class="btn btn-block btn-danger" value="Simpan" name="save" autocomplete="off" onclick="return confirm('Anda yakin ingin menambah sales ini ?')">
           </div>
         </div>
       </form>

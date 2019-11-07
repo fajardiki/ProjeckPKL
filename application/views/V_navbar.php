@@ -114,8 +114,9 @@
 				<li class="nav-item dropdown"> 
 				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">IMPORT</a>
 				        <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
 				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
+				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
+				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/editdataefos'; ?>" style="color: #ffffff">Hapus Data Efos</a>
 				        </div>
 				</li>
 			</ul>

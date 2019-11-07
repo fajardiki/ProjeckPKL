@@ -26,7 +26,7 @@
 	      <td><?php echo $ud['District']; ?></td>
 	      <td><?php echo $ud['Conces']; ?></td>
 	      <td><a href="<?php echo base_url().'C_bantul/updatedistrict/'.$ud['District_Code'] ?>" class="card-link fas fa-edit" style="font-size:15px;"></a></td>
-	      <td><a href="<?php echo base_url().'C_bantul/hapusdistrict/'.$ud['District_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;"></a></td>
+	      <td><a href="<?php echo base_url().'C_bantul/hapusdistrict/'.$ud['District_Code'] ?>" class="card-link fas fa-trash" style="font-size:15px;" onclick="return confirm('Anda yakin ingin menghapus district ini ?')"></a></td>
 	    </tr>
 	    <?php $no++; ?>
 		<?php } ?>
