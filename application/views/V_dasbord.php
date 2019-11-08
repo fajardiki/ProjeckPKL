@@ -29,13 +29,9 @@
   <!-- Sumary -->
 
   <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-    <?php if (!empty($summary)) { ?>
-      <?php foreach ($summary as $s) {} ?>
-        <?php if (isset($s['Month']) AND isset($s['Year'])): ?>
-          <h1 class="lead">Summary <?php echo $s['Month']; ?>, <?php echo $s['Year']; ?></h1>
-        <?php else: ?>
-          <h1 class="lead">Summary <?php echo $s['Year']; ?></h1>
-        <?php endif ?>
+    <?php if (!empty($summaryj)) { ?>
+      <?php foreach ($summaryj as $s) {} ?>
+        <h1 class="lead">Summary <?php echo $s['Year']; ?></h1>
       <?php } else { ?>
         <h1 class="lead">Summary..</h1>
     <?php } ?>                

@@ -41,6 +41,7 @@
  	}
 
  	public function insertname($nama) {
+ 		$tanggal = date('l, d-m-Y');
  		$query = $this->db->query("INSERT INTO upload VALUES ('',now(),'$nama')");
  	}
 

@@ -8,6 +8,7 @@ class C_import extends CI_Controller {
         $this->load->model('M_efos');
         $this->load->library('PHPExcel');
     }
+    
     public function index() {
         $nama = $this->session->userdata('user');
 
@@ -50,7 +51,7 @@ class C_import extends CI_Controller {
 
                         $this->load->view('V_import', $data);
                     } else {
-
+                        
                         $this->M_efos->insertname($_FILES["file"]["name"]);
 
                         foreach($object->getWorksheetIterator() as $worksheet) {
