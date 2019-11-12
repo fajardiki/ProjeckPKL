@@ -354,18 +354,17 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$jumlah_data = $this->M_efos->dataefos();
-			$config['base_url'] = base_url().'index.php/C_dasbord/dataefos/';
-			$config['total_rows'] = $jumlah_data;
-			$config['per_page'] = 20;
-
-			//paging configuration
-            $config['num_links'] = 2;
-            $config['use_page_numbers'] = TRUE;
-            $config['reuse_query_string'] = TRUE;
-
-			// Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
+						//konfigurasi pagination
+	        $config['base_url'] = site_url('C_dasbord/dataefos'); //site url
+	        $config['total_rows'] = $this->db->count_all('m_efos'); //total row
+	        $config['per_page'] = 10;  //show record per halaman
+	        $config["uri_segment"] = 3;  // uri parameter
+	        $choice = $config["total_rows"] / $config["per_page"];
+	        // $config["num_links"] = floor($choice);
+	        $config['num_links'] = 2;
+	 
+	        // Membuat Style pagination untuk BootStrap v4
+	      	$config['first_link']       = 'First';
 	        $config['last_link']        = 'Last';
 	        $config['next_link']        = 'Next';
 	        $config['prev_link']        = 'Prev';
@@ -383,14 +382,17 @@ class C_dasbord extends CI_Controller {
 	        $config['first_tagl_close'] = '</span></li>';
 	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
 	        $config['last_tagl_close']  = '</span></li>';
-
-			$from = $this->uri->segment(3);
-			$this->pagination->initialize($config);	
-
-			// build paging links	
-			$data['dataefos'] = $this->M_efos->data($config['per_page'],$from);
-			$data['pagination'] = $this->pagination->create_links();
-			$this->load->view('V_dataallefos',$data);
+	 
+	        $this->pagination->initialize($config);
+	        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	 
+	        //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
+	        $data['data'] = $this->M_efos->data($config["per_page"], $data['page']);           
+	 
+	        $data['pagination'] = $this->pagination->create_links();
+	 
+	        //load view mahasiswa view
+	        $this->load->view('V_dataallefos',$data);
 		}
 	}
 
@@ -400,18 +402,16 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$jumlah_data = $this->M_efos->datauploadcount();
-			$config['base_url'] = base_url().'index.php/C_dasbord/editdataefos/';
-			$config['total_rows'] = $jumlah_data;
-			$config['per_page'] = 20;
-
-			//paging configuration
-            $config['num_links'] = 2;
-            $config['use_page_numbers'] = TRUE;
-            $config['reuse_query_string'] = TRUE;
-
-			// Membuat Style pagination untuk BootStrap v4
-	     	$config['first_link']       = 'First';
+			//konfigurasi pagination
+	        $config['base_url'] = site_url('C_dasbord/editdataefos'); //site url
+	        $config['total_rows'] = $this->db->count_all('upload'); //total row
+	        $config['per_page'] = 10;  //show record per halaman
+	        $config["uri_segment"] = 3;  // uri parameter
+	        $choice = $config["total_rows"] / $config["per_page"];
+	        $config['num_links'] = 2;
+	 
+	        // Membuat Style pagination untuk BootStrap v4
+	      	$config['first_link']       = 'First';
 	        $config['last_link']        = 'Last';
 	        $config['next_link']        = 'Next';
 	        $config['prev_link']        = 'Prev';
@@ -429,14 +429,18 @@ class C_dasbord extends CI_Controller {
 	        $config['first_tagl_close'] = '</span></li>';
 	        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
 	        $config['last_tagl_close']  = '</span></li>';
+	 
+	        $this->pagination->initialize($config);
+	        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	 
+	        //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
+	        $data['data'] = $this->M_efos->dataupload($config["per_page"], $data['page']);           
+	 
+	        $data['pagination'] = $this->pagination->create_links();
+	 
+	        //load view mahasiswa view
+	        $this->load->view('V_dataupload',$data);
 
-			$from = $this->uri->segment(3);
-			$this->pagination->initialize($config);	
-
-			// build paging links	
-			$data['dataupload'] = $this->M_efos->dataupload($config['per_page'],$from);
-			$data['pagination'] = $this->pagination->create_links();
-			$this->load->view('V_dataupload',$data);
 		}
 	}
 

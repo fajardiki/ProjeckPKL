@@ -42,26 +42,34 @@
 
  	public function insertname($nama) {
  		$tanggal = date('l, d-m-Y');
- 		$query = $this->db->query("INSERT INTO upload VALUES ('',now(),'$nama')");
- 	}
-
- 	public function dataefos() {
- 		$hsl = $this->db->query("SELECT * FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code");
-		return $hsl->num_rows();
+ 		$query = $this->db->query("INSERT INTO upload(date_upload, name_upload) VALUES (now(),'$nama')");
  	}
 
  	public function data($number,$offset) {
- 		return $query = $this->db->get('m_efos',$number,$offset)->result_array();
+ 		$this->db->select('*');
+                $this->db->from('m_efos a');
+                $this->db->join('upload b', 'a.File_Name=b.id_upload', 'left');
+                $this->db->join('m_conces c ', 'a.id_conces=c.id_conces', 'left');
+                $this->db->join('m_ruote d ', 'a.District_Code=d.District_Code', 'left');
+                $this->db->join('m_selesman e ', 'a.Emp_Code=e.Emp_Code', 'left');
+                $this->db->limit($number);
+                $this->db->offset($offset);
+                $this->db->order_by("File_Name", "asc");
+                return $query=$this->db->get()->result_array();
+ 		// return $query = $this->db->get('m_efos',$number,$offset)->result_array();
  	}
 
  	// Delete efos
- 	public function datauploadcount() {
- 		$hsl = $this->db->query("SELECT * FROM upload");
-		return $hsl->num_rows();
- 	}
 
  	public function dataupload($number,$offset) {
- 		return $query = $this->db->get('upload',$number,$offset)->result_array();
+ 		$this->db->select('*');
+ 		$this->db->from('upload');
+ 		$this->db->limit($number);
+                $this->db->offset($offset);
+                $this->db->group_by("name_upload");
+                $this->db->order_by("name_upload", "asc");
+                return $query=$this->db->get()->result_array();
+ 		// return $query = $this->db->get('upload',$number,$offset)->result_array();
  	}
 
  	public function deleteefos($idfile) {

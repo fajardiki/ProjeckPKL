@@ -64,21 +64,29 @@
             <td><?php echo $visiteds ?></td>
             <td><?php echo $stattimes ?></td>
             <td><?php echo $endtimes ?></td>
-            <!-- Nosale percent -->
-			<?php if ($nosales > 10) { ?>
-			<td class="min"><?php echo $nosales ?></td>
-			<?php } else { ?>
-			<td><?php echo $nosales ?></td>
-			<?php } ?>
-               
-               <!-- Pjp comply -->
+            <td><?php echo $nosales ?></td>
+                
+			<!-- Pjp comply -->
 			<?php if ($pjpcomplys < 95) { ?>
-			<td class="min"><?php echo $pjpcomplys ?></td>
+			  <td class="min"><?php echo $pjpcomplys. '%' ?></td>
 			<?php } else { ?>
-			<td><?php echo $pjpcomplys ?></td>
+			  <td><?php echo $pjpcomplys. '%' ?></td>
 			<?php } ?>
-            <td><?php echo $nosalepersens.'%' ?></td>
-            <td><?php echo $productivecalls.'%' ?></td>
+
+			<!-- Nosale percent -->
+			<?php if ($nosalepersens > 10) { ?>
+			  <td class="min"><?php echo $nosalepersens. '%' ?></td>
+			<?php } else { ?>
+			  <td><?php echo $nosalepersens.'%' ?></td>
+			<?php } ?>
+
+	 		<!-- Productive call -->
+			<?php if ($productivecalls < 85 ) { ?>
+			  <td class="min"><?php echo $productivecalls.'%'; ?></td>
+			<?php } else { ?>
+			  <td><?php echo $productivecalls.'%'; ?></td>
+			<?php } ?>
+		
             <td><?php echo "Rp " .$totalsales ?></td>
         </tr>
     </tbody>

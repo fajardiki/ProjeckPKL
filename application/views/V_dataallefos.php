@@ -12,6 +12,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Date Update</th>
+      <th scope="col">File Name</th>
       <th scope="col">Journey Date</th>
       <th scope="col">Route Name</th>
       <th scope="col">Salesman Name</th> 
@@ -32,13 +33,14 @@
   </thead>
     <?php 
       $no = $this->uri->segment('3') + 1;
-      foreach ($dataefos as $e) { ?>
+      foreach ($data as $e) { ?>
     <tbody>
       <tr>
         <td><?php echo $e['Date_Update']; ?></td>
+        <td><?php echo $e['name_upload']; ?></td>
         <td><?php echo $e['Journey_Date']; ?></td>
-        <td><?php echo $e['District_Code']; ?></td>
-        <td><?php echo $e['Emp_Code']; ?></td> 
+        <td><?php echo $e['District']; ?></td>
+        <td><?php echo $e['Salesman']; ?></td> 
         <td><?php echo $e['Planned']; ?></td>
         <td><?php echo $e['Visited']; ?></td>
         <td><?php echo $e['Un_planed']; ?></td>

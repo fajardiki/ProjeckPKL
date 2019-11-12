@@ -885,20 +885,51 @@
     </tr>
   </thead>
 <?php if (!empty($summary)) { ?>
-  <?php foreach ($summary as $sm) { ?>
+  <?php foreach ($summary as $sm) { 
+    $days = $sm['Day'];
+    $planneds = number_format($sm['Planned']);
+    $unplanneds = number_format($sm['Un_planed']);
+    $visiteds = number_format($sm['Visited']);
+    $stattimes = $sm['Start_Time'];
+    $endtimes = $sm['End_Time'];
+    $nosales = number_format($sm['Nosale']);
+    $pjpcomplys = intval($sm['pjp_comply']);
+    $nosalepersens = intval($sm['NosalePersen']);
+    $productivecalls = intval($sm['Productive_Call']);
+    $totalsales = number_format($sm['Total_Sale'],2,',','.');
+  ?>
   <tbody>
     <tr>
-      <td><?php echo $sm['Day'] ?></td>
-      <td><?php echo  number_format($sm['Planned']) ?></td>
-      <td><?php echo  number_format($sm['Un_planed']) ?></td>
-      <td><?php echo  number_format($sm['Visited']) ?></td>
-      <td><?php echo $sm['Start_Time'] ?></td>
-      <td><?php echo $sm['End_Time'] ?></td>
-      <td><?php echo  number_format($sm['Nosale']) ?></td>
-      <td><?php echo intval($sm['pjp_comply']).'%' ?></td>
-      <td><?php echo intval($sm['NosalePersen']).'%' ?></td>
-      <td><?php echo intval($sm['Productive_Call']).'%' ?></td>
-      <td><?php echo "Rp " . number_format($sm['Total_Sale'],2,',','.') ?></td>
+      <td><?php echo $days ?></td>
+      <td><?php echo $planneds ?></td>
+      <td><?php echo $unplanneds ?></td>
+      <td><?php echo $visiteds ?></td>
+      <td><?php echo $stattimes ?></td>
+      <td><?php echo $endtimes ?></td>
+      <td><?php echo $nosales ?></td>
+                
+      <!-- Pjp comply -->
+      <?php if ($pjpcomplys < 95) { ?>
+        <td class="min"><?php echo $pjpcomplys. '%' ?></td>
+      <?php } else { ?>
+        <td><?php echo $pjpcomplys. '%' ?></td>
+      <?php } ?>
+
+      <!-- Nosale percent -->
+      <?php if ($nosalepersens > 10) { ?>
+        <td class="min"><?php echo $nosalepersens. '%' ?></td>
+      <?php } else { ?>
+        <td><?php echo $nosalepersens.'%' ?></td>
+      <?php } ?>
+
+      <!-- Productive call -->
+      <?php if ($productivecalls < 85 ) { ?>
+        <td class="min"><?php echo $productivecalls.'%'; ?></td>
+      <?php } else { ?>
+        <td><?php echo $productivecalls.'%'; ?></td>
+      <?php } ?>
+
+      <td><?php echo "Rp " .$totalsales ?></td>
     </tr>
   </tbody>
   <?php } ?>
@@ -1442,7 +1473,7 @@
                   <?php foreach ($timemarket1 as $tm1) {
                     $day1[] = $tm1['Day'];
                     $timeinmarket1[] = intval($tm1['TimeInMarket']);
-                    $spent1[] = intval($tm['Spent']);
+                    $spent1[] = intval($tm1['Spent']);
                     $timeperoutlet1[] = intval($tm1['TimePerOutlet']);
                   } ?>
 
