@@ -10,12 +10,12 @@ class M_magelang extends CI_Model {
 	}
 
 	public function selectplanemagelang() {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 2 AND WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) GROUP BY DAYNAME(Journey_Date)");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 2 AND WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) GROUP BY DAYNAME(Journey_Date)");
  			return $hsl->result_array();
 	}
 
 	public function selectplanemagelangwk($th,$wk) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 2 AND YEAR(Journey_Date ) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) as month, DAYNAME(Journey_Date) AS Day, SUM(Planned) AS Planned, SUM(Productive) As Productive, SUM(Nosale) AS Nosale FROM m_efos WHERE id_conces = 2 AND YEAR(Journey_Date ) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
  			return $hsl->result_array();
 	}
 
@@ -35,13 +35,13 @@ class M_magelang extends CI_Model {
 	}
 
 	public function selecttimemagelang() {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(End_Time-Start_Time)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 AND WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) GROUP BY DAYNAME(Journey_Date)");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(End_Time-Start_Time)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 AND WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) GROUP BY DAYNAME(Journey_Date)");
 
  			return $hsl->result_array();
 	}
 
 	public function selecttimemagelangwk($th,$wk) {
-		$hsl = $this->db->query("SELECT WEEK(Journey_Date) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(End_Time-Start_Time)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 AND YEAR(Journey_Date ) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
+		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) as month, DAYNAME(Journey_Date) AS Day, avg(TIME_TO_SEC(End_Time-Start_Time)) as TimeInMarket, avg(TIME_TO_SEC(Spent)) as Spent, avg(TIME_TO_SEC(Time_Per_Outlet)) as TimePerOutlet FROM m_efos WHERE id_conces = 2 AND YEAR(Journey_Date ) = $th AND WEEK(Journey_Date,1) = $wk GROUP BY DAYNAME(Journey_Date)");
 
  			return $hsl->result_array();
 	}
@@ -80,12 +80,12 @@ class M_magelang extends CI_Model {
 
 	// Summary
 	public function selectsummarymagelang() {
-		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, MONTH(Journey_Date) AS Month, WEEK(Journey_Date) AS Week, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) AND a.id_conces = 2 GROUP BY a.Emp_Code DESC");
+		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, MONTH(Journey_Date) AS Month, WEEK(Journey_Date,1) AS Week, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = WEEK(CURDATE()) AND YEAR(Journey_Date) = YEAR(CURDATE()) AND a.id_conces = 2 GROUP BY a.Emp_Code DESC");
  		return $hsl->result_array();
 	}
 
 	public function selectsummarymagelangwk($th,$wk) {
-		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, MONTH(Journey_Date) AS Month, WEEK(Journey_Date) AS Week, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = '$wk' AND year(Journey_Date) = '$th' AND a.id_conces = 2 GROUP BY a.Emp_Code DESC");
+		$hsl = $this->db->query("SELECT Salesman, YEAR(Journey_Date) AS Year, MONTH(Journey_Date) AS Month, WEEK(Journey_Date,1) AS Week, SUM(Planned) AS Planned, SUM(Un_planed) AS Un_planed, SUM(Visited) AS Visited, TIME_FORMAT(SEC_TO_TIME(avg(hour(Start_Time) * 3600 + (minute(Start_Time) * 60) + second(Start_Time))),'%H:%i:%s') as Start_Time, TIME_FORMAT(SEC_TO_TIME(avg(hour(End_Time) * 3600 + (minute(End_Time) * 60) + second(End_Time))),'%H:%i:%s') as End_Time, SUM(Nosale) as Nosale, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call, SUM(Total_Sale) as Total_Sale FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE WEEK(Journey_Date,1) = '$wk' AND year(Journey_Date) = '$th' AND a.id_conces = 2 GROUP BY a.Emp_Code DESC");
  		return $hsl->result_array();
 	}
 
