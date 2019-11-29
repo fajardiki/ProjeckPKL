@@ -10,6 +10,7 @@ class C_bantul extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_bantul');
 		$this->load->model('M_user');
+		$this->load->model('M_diagram');
 	}
 
 	public function index() {
@@ -26,13 +27,23 @@ class C_bantul extends CI_Controller {
 				redirect('C_klaten');
 			} else {
 				$week = $this->input->post('tanggal');
-				if (empty($week)) {
+				$empcode = $this->uri->segment(3);
+				$jd = $this->uri->segment(4);
+
+				if (empty($week) AND empty($empcode) AND empty($jd)) {
 					$data = array(
 						'plane' => $this->M_bantul->selectplanebantul(),
 						'timemarket' => $this->M_bantul->selecttimebantul(),
 						'pjpcomply' => $this->M_bantul->selectpjpbantul(),
 						'summary' => $this->M_bantul->selectsummarybantul()
 			 		);
+					$this->load->view('Bantul/V_bantul',$data);
+				} elseif (isset($empcode) AND isset($jd)) {
+					$data = array(
+						'info' => $this->M_diagram->infosales($empcode,$jd),
+						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
+						'summary' => $this->M_bantul->selectsummarybantulwk(substr($jd, 0,4), date("W", strtotime($jd)))
+				 	);
 					$this->load->view('Bantul/V_bantul',$data);
 				} else {
 					$th = substr($week, 0,4);

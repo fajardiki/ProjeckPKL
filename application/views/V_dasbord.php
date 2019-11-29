@@ -1,3 +1,5 @@
+
+
 <?php $nama = $this->session->userdata('user'); ?>
 
 <!-- Navbar -->
@@ -315,120 +317,18 @@
       </tr>
     </tbody>
   <?php } else { ?>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
+    
   <?php } ?>
   </table>
 </section>
 
-<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
-  <h1 class="lead">Planned - Produktive - Nosale</h1>
-</div>
-
 <!-- Grafik Planed -->
     <?php if (empty($plane)) { ?>
-      <div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
-      <script>
-        Highcharts.chart('shadow1', {
-          title: {
-              text: ''
-          },
-          chart: {
-             backgroundColor: ''
-          },
-          xAxis: {
-              categories: ['1', '2', '3', '4'],
-              title: {
-                text: ''
-            }
-          },
-          credits: {
-              enabled: false
-          },
-          plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.0f}'
-                }
-            }
-          },
-          labels: {
-              items: [{
-                  style: {
-                      left: '50px',
-                      top: '18px',
-                      color: ( // theme
-                          Highcharts.defaultOptions.title.style &&
-                          Highcharts.defaultOptions.title.style.color
-                      ) || 'black'
-                  }
-              }]
-          },
-          series: [{
-              color: '#52b251',
-              type: 'column',
-              name: 'Planned',
-              data: [5, 5, 5, 5,]
-          }, {
-              type: 'column',
-              name: 'Productive',
-              data: [5, 5, 5, 5]
-          }, {
-              type: 'spline',
-              name: 'Nosale',
-              data: [3, 3, 3, 3],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
-              }
-          }]
-      });
-
-      </script>
 
     <?php } else { ?>
+      <div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">Planned - Produktive - Nosale</h1>
+      </div>
 
       <?php foreach ($plane as $p) {
         $conces[] = $p['Conces'];
@@ -486,24 +386,24 @@
               }
           },
           series: [{
-              color: '#66ff33',
+              color: '',
               type: 'column',
               name: 'Planned',
               data: <?php echo json_encode($planed); ?>
           }, {
-              color: '#00ffff',
+              color: '',
               type: 'column',
               name: 'Productive',
               data: <?php echo json_encode($productive); ?>
           }, {
-              color: '#FF0000',
+              color: '',
               type: 'spline',
               name: 'Nosale',
               data: <?php echo json_encode($nosale); ?>,
               marker: {
                   lineWidth: 2,
                   lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
+                  fillColor: ''
               }
           }]
       });
@@ -512,70 +412,16 @@
 
     <!-- Akhir Grafik Planed -->
 
-<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
-  <h1 class="lead">TimeInMarket - Spent - TimePerOutlet</h1>
-</div>
+
 
 <!-- Grafik Time -->
     <?php if (empty($timemarket)) { ?>
-      <div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
-      <script>
-        Highcharts.chart('shadow2', {
-        chart: {
-              backgroundColor: ''
-          },
-          title: {
-              text: ''
-          },
-          xAxis: {
-              categories: ['1', '2', '3', '4'],
-              title: {
-                text: ''
-            }
-          },
-          yAxis: {
-            title: {
-                text: ''
-            }
-          },
-          credits: {
-              enabled: false
-          },
-          labels: {
-              items: [{
-                  style: {
-                      left: '50px',
-                      top: '18px',
-                      color: ( // theme
-                          Highcharts.defaultOptions.title.style &&
-                          Highcharts.defaultOptions.title.style.color
-                      ) || 'black'
-                  }
-              }]
-          },
-          series: [{
-              type: 'column',
-              name: 'TimeInMarket',
-              data: [5, 5, 5, 5]
-          }, {
-              type: 'column',
-              name: 'Spent',
-              data: [5, 5, 5, 5]
-          }, {
-              type: 'spline',
-              name: 'TimePerOutlet',
-              data: [3, 3, 3, 3],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
-              }
-          }]
-      });
-
-      </script>
 
     <?php } else { ?>
+
+      <div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">TimeInMarket - Spent - TimePerOutlet</h1>
+      </div>
 
       <?php foreach ($timemarket as $tm) {
         $conces1[] = $tm['Conces'];
@@ -643,24 +489,24 @@
               }]
           },
           series: [{
-              color: '#ff1a75',
+              color: '',
               type: 'column',
               name: 'Time In Market',
               data: <?php echo json_encode($timeinmarket); ?>
           }, {
-              color: '#ffe640',
+              color: '',
               type: 'column',
               name: 'Spent',
               data: <?php echo json_encode($spent); ?>
           }, {
-              color: '#990033',
+              color: '',
               type: 'spline',
               name: 'Time Per Outlet',
               data: <?php echo json_encode($timeperoutlet); ?>,
               marker: {
                   lineWidth: 2,
                   lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
+                  fillColor: ''
               }
           }]
       });
@@ -676,79 +522,14 @@
     <?php } ?>
     <!-- Akhir Grafik Time -->
 
-<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
-  <h1 class="lead">PJP Comply - Geomatch - Productive Call</h1>
-</div>
-
 <!-- Grafik PJP COMPLY -->
     <?php if (empty($pjpcomply)) { ?>
-      <div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
-      <script>
-        Highcharts.chart('shadow3', {
-
-          title: {
-              text: ''
-          },
-          chart: {
-             backgroundColor: ''
-          },
-          xAxis: {
-              categories: ['1', '2', '3', '4'],
-              title: {
-                text: ''
-            }
-          },
-          yAxis: {
-            title: {
-                text: ''
-            }
-          },
-          credits: {
-              enabled: false
-          },
-            plotOptions: {
-                series: {
-                    borderWidth: 0,
-                    dataLabels: {
-                        enabled: true,
-                        format: '{point.y:.1f}%'
-                    }
-                }
-            },
-          labels: {
-              items: [{
-                  style: {
-                      left: '50px',
-                      top: '18px',
-                      color: ( // theme
-                          Highcharts.defaultOptions.title.style &&
-                          Highcharts.defaultOptions.title.style.color
-                      ) || 'black'
-                  }
-              }]
-          },
-          series: [{
-              type: 'column',
-              name: 'PJP_Comply',
-              data: [5, 5, 5, 5]
-          }, {
-              type: 'column',
-              name: 'Geomatch',
-              data: [5, 5, 5, 5]
-          }, {
-              type: 'spline',
-              name: 'Productive_call',
-              data: [3, 3, 3, 3],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
-              }
-          }]
-      });
-
-      </script>
+      
     <?php } else { ?>
+      <div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
+        <h1 class="lead">PJP Comply - Geomatch - Productive Call</h1>
+      </div>
+
       <?php foreach ($pjpcomply as $pjp) {
         $conces2[] = $pjp['Conces'];
         $pjpcom[] = intval($pjp['PJP_COMPLY']);
@@ -815,24 +596,24 @@
               }
           },
           series: [{
-              color: '#ff4d4d',
+              color: '',
               type: 'column',
               name: 'PJP_Comply',
               data: <?php echo json_encode($pjpcom); ?>
           }, {
-              color: '#00d6cc',
+              color: '',
               type: 'column',
               name: 'Geomatch',
               data: <?php echo json_encode($geomath); ?>
           }, {
-              color: '#00ff00',
+              color: '',
               type: 'spline',
               name: 'Productive_call',
               data: <?php echo json_encode($productive_call); ?>,
               marker: {
                   lineWidth: 2,
                   lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: '#ff0000'
+                  fillColor: ''
               }
           }]
       });

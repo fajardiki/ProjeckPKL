@@ -36,7 +36,7 @@
             backgroundColor: ''
         },
         title: {
-            text: 'Diagram TimeInMarket - Spent - TimePerOutlet'
+            text: ''
         },
         xAxis: {
             categories: <?php echo json_encode($week); ?>,

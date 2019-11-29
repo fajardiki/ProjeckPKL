@@ -7,6 +7,7 @@ class C_magelang extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_magelang');
+		$this->load->model('M_diagram');
 	}
 
 	public function index() {
@@ -23,13 +24,23 @@ class C_magelang extends CI_Controller {
 				redirect('C_klaten');
 			} else {
 				$week = $this->input->post('tanggal');
-				if (empty($week)) {
+				$empcode = $this->uri->segment(3);
+				$jd = $this->uri->segment(4);
+
+				if (empty($week) AND empty($empcode) AND empty($jd)) {
 					$data = array(
 						'plane' => $this->M_magelang->selectplanemagelang(),
 						'timemarket' => $this->M_magelang->selecttimemagelang(),
 						'pjpcomply' => $this->M_magelang->selectpjpmagelang(),
 						'summary' => $this->M_magelang->selectsummarymagelang()
 			 		);
+					$this->load->view('Magelang/V_magelang',$data);
+				} elseif (isset($empcode) AND isset($jd)) {
+					$data = array(
+						'info' => $this->M_diagram->infosales($empcode,$jd),
+						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
+						'summary' => $this->M_magelang->selectsummarymagelangwk(substr($jd, 0,4), date("W", strtotime($jd)))
+				 	);
 					$this->load->view('Magelang/V_magelang',$data);
 				} else {
 					$th = substr($week, 0,4);

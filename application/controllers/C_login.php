@@ -63,22 +63,12 @@ class C_login extends CI_Controller {
 							$ses = $this->session->set_userdata($dt);
 							redirect('C_dasbord');
 						} else {
-							$ceksuser = $this->M_user->login_suser($username, $password);
-							if (!empty($ceksuser)) {
-								$dt= array(
-									'username' => $username,
-									'password' => $password,
-									'user' => $this->M_user->selectonesuser($username, $password)
-								);
-								$ses = $this->session->set_userdata($dt);
-								redirect('C_dasbord');
-							} else {
-								$data = array(
-									'statuspesan' => 'gagal',
-									'isipesan' => 'Login Gagal'
-								);
-								$this->load->view('V_login',$data);
-							}
+							$data = array(
+								'statuspesan' => 'gagal',
+								'isipesan' => 'Login Gagal'
+							);
+							$this->load->view('V_login',$data);
+							
 						}
 						
 					}

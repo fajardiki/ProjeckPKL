@@ -78,7 +78,11 @@ class C_dasbord extends CI_Controller {
 				$data = array(
 					'plane' => $this->M_admin->selectallplane(),
 					'timemarket' => $this->M_admin->selectalltime(),
-					'pjpcomply' => $this->M_admin->selectallpjp()
+					'pjpcomply' => $this->M_admin->selectallpjp(),
+					'summaryj' => $this->M_admin->selectsummaryconcesjogja(),
+					'summarym' => $this->M_admin->selectsummaryconcesmagelang(),
+					'summaryb' => $this->M_admin->selectsummaryconcesbantul(),
+					'summaryk' => $this->M_admin->selectsummaryconcesklaten()
 				);
 				$this->load->view('V_dasbord',$data);
 			} elseif ($nama[0]['status']=='Supervisor') {
@@ -453,6 +457,15 @@ class C_dasbord extends CI_Controller {
 			$this->M_efos->deleteupload($idfile);
 
 			redirect('C_dasbord/editdataefos');
+		}
+	}
+
+	public function ranking() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+
+			$this->load->view('V_ranking');
 		}
 	}
 

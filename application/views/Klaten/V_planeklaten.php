@@ -29,7 +29,7 @@
     <script type="text/javascript">
     Highcharts.chart('grafik_plane', {
         title: {
-            text: 'Diagram Plane'
+            text: ''
         },
         chart: {
              backgroundColor: ''

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>SISALESMAN ANDRAWINA DMM</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css' ?>">
 	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/fontawesome.css' ?>">
@@ -103,7 +103,7 @@
 				        </div>
 				</li>
 				<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DISTRICT</a>
+				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DISTRIK</a>
 				    	<div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
 				        <a class="dropdown-item" href="<?php echo base_url().'C_jogja/updatedistrict'; ?>" style="color: #ffffff">Andrawina Jogja</a>
 				        <a class="dropdown-item" href="<?php echo base_url().'C_magelang/updatedistrict'; ?>" style="color: #ffffff">Andrawina Magelang</a>
@@ -112,9 +112,9 @@
 				        </div>
 				</li>
 				<li class="nav-item dropdown"> 
-				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">IMPORT</a>
+				    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DATA</a>
 				        <div class="dropdown-menu bg-dark mt-2" aria-labelledby="navbarDropdownMenuLink">
-				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Import Efos</a>
+				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/importexcel'; ?>" style="color: #ffffff">Impor Efos</a>
 				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/dataefos'; ?>" style="color: #ffffff">Data Efos</a>
 				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/editdataefos'; ?>" style="color: #ffffff">Hapus Data Efos</a>
 				        </div>
@@ -124,7 +124,7 @@
 			    <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">  	
 			    </a>
 			    <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 			    </div>
 			</ul>
 		</div> 
@@ -145,6 +145,9 @@
 		            <a class="nav-link" href="<?php echo base_url().'C_dasbord'; ?>">BERANDA</a>
 		        </li>
 		        <li class="nav-item"> 
+		            <a class="nav-link" href="<?php echo base_url().'C_dasbord/ranking'; ?>">RANKING</a>
+		        </li>
+		        <li class="nav-item"> 
 		            <a class="nav-link" href="<?php echo base_url().'C_dasbord/efos'; ?>">EFOS</a>
 		        </li>
 		    </ul>
@@ -152,7 +155,7 @@
 		       	<span class="navbar-text"></span li class="nav-item dropdown">
 				    <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 				        <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-				        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+				        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 				        </div>
 			</ul>
 		</div> 
@@ -204,7 +207,7 @@
 			<ul class="navbar-nav">
 			    <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></a>
 			    <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 			    </div>
 			</ul>
 		</div> 
@@ -270,7 +273,7 @@
 			<ul class="navbar-nav">
 			    <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></a>
 			    <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+			        <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 			    </div>
 			</ul>
 		</div> 
@@ -339,7 +342,7 @@
 				<a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">
 				</a>
 				<div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-				    <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+				    <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 				</div>
 			</ul>
 		</div> 
@@ -392,7 +395,7 @@
 			<ul class="navbar-nav">
 				<a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></a>
 				<div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdownMenuLink">
-				    <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">LOG OUT</a>
+				    <a class="dropdown-item" href="<?php echo base_url().'C_logout/logoutadmin'; ?>" style="color: #ffffff">KELUAR</a>
 				</div>
 			</ul>
 		</div> 

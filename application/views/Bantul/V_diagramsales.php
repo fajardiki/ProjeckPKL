@@ -19,74 +19,14 @@
 			</div>
 		</div>
 
-		<!-- Grafik Planed -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
-        </div>
-		
+		<!-- Grafik Planed -->		
 		<?php if (empty($plane)) { ?>
-			<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
-			<script>
-				Highcharts.chart('shadow1', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-		        plotOptions: {
-		            series: {
-		                borderWidth: 0,
-		                dataLabels: {
-		                    enabled: true,
-		                    format: '{point.y:.1f}'
-		                }
-		            }
-		        },
-			    credits: {
-			        enabled: false
-			    },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'Planned',
-			        data: [5, 5, 5, 5,]
-			    }, {
-			        type: 'column',
-			        name: 'Productive',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'Nosale',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
-
-			</script>
 
 		<?php } else { ?>
+
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
+	        </div>
 
 			<?php foreach ($plane as $p) {
 				$month[] = $p['month'];
@@ -171,68 +111,18 @@
 			});
 			</script>
 		<?php } ?>
-
 		<!-- Akhir Grafik Planed -->
 
 		<!-- Grafik Time -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
-        </div>
+		
 		
 		<?php if (empty($timemarket)) { ?>
-			<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
-			<script>
-				Highcharts.chart('shadow2', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-		        credits: {
-			        enabled: false
-			    },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'TimeInMarket',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'column',
-			        name: 'Spent',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'TimePerOutlet',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
-
-			</script>
 
 		<?php } else { ?>
+
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
+	        </div>
 
 			<?php foreach ($timemarket as $tm) {
 				$month1[] = $tm['month'];
@@ -335,77 +225,12 @@
 		<!-- Akhir Grafik Time -->
 
 		<!-- Grafik PJP COMPLY -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
-        </div>
-
 		<?php if (empty($pjpcomply)) { ?>
-			<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
-			<script>
-				Highcharts.chart('shadow3', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-			    yAxis: {
-			        title: {
-				        text: ''
-				    }
-			    },
-		        plotOptions: {
-		            series: {
-		                borderWidth: 0,
-		                dataLabels: {
-		                    enabled: true,
-		                    format: '{point.y:.1f}%'
-		                }
-		            }
-		        },
-		        credits: {
-			        enabled: false
-			    },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'PJP_Comply',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'column',
-			        name: 'Geomatch',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'Productive_call',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
 
-			</script>
 		<?php } else { ?>
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
+	        </div>
 			<?php foreach ($pjpcomply as $pjp) {
 				$month2[] = $pjp['month'];
 				$pjpcom[] = intval($pjp['PJP_COMPLY']);
