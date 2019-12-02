@@ -119,6 +119,9 @@
 				        <a class="dropdown-item" href="<?php echo base_url().'C_dasbord/editdataefos'; ?>" style="color: #ffffff">Hapus Data Efos</a>
 				        </div>
 				</li>
+				<li class="nav-item">
+		            <a class="nav-link" href="<?php echo base_url().'C_dasbord/user'; ?>">USER</a>
+		        </li>
 			</ul>
 			<ul class="navbar-nav">
 			    <a class="nav-link fas fa-sign-out-alt" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;">  	

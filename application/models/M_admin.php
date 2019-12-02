@@ -120,5 +120,34 @@
 		}
 
 		// Sales
+
+		// User
+		public function user()	{
+			$hsl = $this->db->query("SELECT * FROM user a LEFT JOIN m_conces b ON a.id_conces = b.id_conces LEFT JOIN status c ON a.status = c.id_status ORDER BY b.id_conces");
+ 			return $hsl->result_array();
+		}
+
+		public function hapususer($iduser)	{
+			$query = $this->db->query("DELETE FROM user WHERE id_user='$iduser'");
+			return $query;
+		}
+
+		public function selectoneuser($iduser) {
+			$periksa = $this->db->query("SELECT * FROM user a LEFT JOIN status b ON a.status = b.id_status LEFT JOIN m_conces c ON a.id_conces = c.id_conces WHERE id_user = '$iduser'");
+			return $periksa->result_array();
+		}
+
+		public function cekuser($iduser) {
+			$periksa = $this->db->query("SELECT * FROM user WHERE id_user = '$iduser'");
+			return $periksa;
+		}
+
+		public function updateuser($iduser, $nama, $status, $username, $password, $conces)	{
+			$hsl = $this->db->query("UPDATE user SET nama_user = '$nama', status = '$status', username = '$username', password = '$password', id_conces = '$conces' WHERE id_user = '$iduser'");
+		}
+
+		public function saveuser($iduser,$nama,$status,$username,$password,$conces)	{
+			$query = $this->db->query("INSERT INTO user VALUES ('$iduser','$nama','$status','$username','$password','$conces')");
+		}
 	}
 ?>

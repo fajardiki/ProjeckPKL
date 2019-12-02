@@ -5,35 +5,25 @@
 class M_user extends CI_Model {
 	
 	public function login_seles($username, $password) {
-		$periksa = $this->db->get_where('m_selesman',array('username'=>$username, 'password'=>$password));
+		$periksa = $this->db->query("SELECT * FROM m_selesman a LEFT JOIN status b ON a.status = b.id_status WHERE username='$username' AND password='$password'");
 		return $periksa->result_array();
 	}
 
 	public function login_user($username, $password) {
-		$periksa = $this->db->get_where('user',array('username'=>$username, 'password'=>$password));
+		$periksa = $this->db->query("SELECT * FROM user a LEFT JOIN status b ON a.status = b.id_status WHERE username='$username' AND password='$password'");
 		return $periksa->result_array();
 
-	}
-
-	public function login_suser($username, $password) {
-		$periksa = $this->db->get_where('superuser',array('username'=>$username, 'password'=>$password));
-		return $periksa->result_array();
 	}
 
 	// Select user
 	public function selectoneuser($username, $password) {
-			$hsl = $this->db->query("SELECT * FROM user WHERE username='$username' AND password='$password'");
+			$hsl = $this->db->query("SELECT * FROM user a LEFT JOIN status b ON a.status = b.id_status WHERE username='$username' AND password='$password'");
 			return $hsl->result_array();
 		}
 
 	// Beranda
 	public function selectoneseles($username, $password) {
-		$hsl = $this->db->query("SELECT * FROM m_selesman WHERE username='$username' AND password='$password'");
-		return $hsl->result_array();
-	}
-
-	public function selectonesuser($username, $password) {
-		$hsl = $this->db->query("SELECT * FROM superuser WHERE username='$username' AND password='$password'");
+		$hsl = $this->db->query("SELECT * FROM m_selesman a LEFT JOIN status b ON a.status = b.id_status WHERE username='$username' AND password='$password'");
 		return $hsl->result_array();
 	}
 
@@ -280,6 +270,18 @@ class M_user extends CI_Model {
  		return $hsl->result_array();
  	}
  	// Summary
+
+ 	// Ranked salesman
+
+ 	public function ranked($conces) {
+ 		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) AS Week, Salesman, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call FROM m_efos a RIGHT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE b.id_conces = $conces AND WEEK(Journey_Date,1) = (SELECT WEEK(MAX(Journey_Date),1) FROM m_efos) GROUP BY salesman ORDER BY Productive_Call DESC");
+ 		return $hsl->result_array();
+ 	}
+
+ 	public function salesmaxjd($empcode) {
+ 		return $this->db->query("SELECT MAX(Journey_Date) AS jd FROM m_efos WHERE Emp_Code='$empcode'")->result_array();
+ 	}
+
 }
 
 ?>

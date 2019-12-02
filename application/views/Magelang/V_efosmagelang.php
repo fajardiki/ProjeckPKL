@@ -17,10 +17,14 @@
   </div>
 </form>
 
+<section class="mb-2" align="right">
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();'><i class="fa fa-print"></i> Print Efos</a>
+</section>
+
 <section style="overflow-x: scroll; margin-bottom: 10%;">
 	<section id="printArea">
 	    <section id="head" hidden="true">
-	      <h2 class="h2" align="center">Efos Klaten Bulan <?php echo $efosall[0]['month']; ?></h2>
+	      <h2 class="h2" align="center">Efos Magelang Bulan <?php echo $efosall[0]['month']; ?></h2>
 	      <h3 class="h3" align="center">Tahun <?php echo $efosall[0]['year']; ?></h3>
 	    </section>
 		<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
@@ -117,7 +121,7 @@
   function printDiv()  {
     var head = document.getElementById('head');
     var foot = document.getElementById('foot');
-      var divToPrint=document.getElementById('printArea');
+    var divToPrint=document.getElementById('printArea');
 
       var newWin=window.open('','Print-Window');
 

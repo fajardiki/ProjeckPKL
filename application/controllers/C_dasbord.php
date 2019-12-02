@@ -9,6 +9,7 @@ class C_dasbord extends CI_Controller {
 		$this->load->model('M_admin');
 		$this->load->model('M_user');
 		$this->load->model('M_efos');
+		$this->load->model('M_diagram');
 		$this->load->library('pagination');
 	}
 	
@@ -460,12 +461,131 @@ class C_dasbord extends CI_Controller {
 		}
 	}
 
+	// Ranking
+
 	public function ranking() {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
+			$user = $this->session->userdata('user');
+			$empcode = $user[0]['Emp_Code'];
+			$jd = $this->M_user->salesmaxjd($empcode);
 
-			$this->load->view('V_ranking');
+			$data['rank'] = $this->M_user->ranked($user[0]['id_conces']);
+			$data['info'] = $this->M_diagram->infosales($empcode,$jd[0]['jd']);
+			$data['infoplush'] = $this->M_diagram->infosalesplush($empcode,$jd[0]['jd']);
+			$this->load->view('V_ranking',$data);
+		}
+	}
+
+	// CRUD USER
+
+	public function user() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$data['adduser'] = $this->M_admin->user();
+			$this->load->view('V_user',$data);
+		}
+	}
+
+	public function hapususer() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$iduser = $this->uri->segment(3);
+			$this->M_admin->hapususer($iduser);
+			redirect('C_dasbord/user');
+		}
+	}
+
+	public function updateuser(){
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$iduser = $this->uri->segment(3);
+			$btn = $this->input->post('update');
+
+			if (isset($iduser)) {
+				$data = array(
+					'upuser' => $this->M_admin->selectoneuser($iduser)
+				);
+				$this->load->view('V_updateuser',$data);
+			} elseif (isset($btn)) {
+				$iduser = $this->input->post("iduser");
+				$nama = $this->input->post("nama");
+				$status = $this->input->post("status");
+				$username = $this->input->post("username");
+				$password = $this->input->post("password");
+				$conces = $this->input->post("conces");
+
+				$this->M_admin->updateuser($iduser, $nama, $status, $username, $password, $conces);
+				redirect('C_dasbord/user');
+			} else {
+				redirect('C_dasbord/user');
+			}
+		}
+	}
+
+	public function tambahuser() {
+		if (!$this->session->userdata('username')) {
+			redirect('C_login');
+		} else {
+			$btn = $this->input->post('save');
+			if (!isset($btn)) {
+				$this->load->view('V_saveuser');
+			} else {
+				$iduser = $this->input->post("iduser");
+				$nama = $this->input->post("nama");
+				$status = $this->input->post("status");
+				$username = $this->input->post("username");
+				$password = $this->input->post("password");
+				$conces = $this->input->post("conces");
+				
+				if (empty($iduser)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Id user tidak boleh kosong'
+					);
+					$this->load->view('V_saveuser', $data);
+				} elseif (empty($nama)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Nama tidak boleh kosong'
+					);
+					$this->load->view('V_saveuser', $data);
+				} elseif (empty($status)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Status tidak boleh kosong'
+					);
+					$this->load->view('V_saveuser', $data);
+				} elseif (empty($username)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Username tidak boleh kosong'
+					);
+					$this->load->view('V_saveuser', $data);
+				} elseif (empty($password)) {
+					$data = array(
+						'statuspesan' => 'gagal',
+						'isipesan' => 'Password tidak boleh kosong'
+					);
+					$this->load->view('V_saveuser', $data);
+				} else {
+					$cek = $this->M_admin->cekuser($iduser);
+					if ($cek->num_rows() > 0) {
+						$data = array(
+							'statuspesan' => 'gagal',
+							'isipesan' => 'Id user yang anda inputkan sudah ada, silahkan input dengan Emp_Code yang berbeda'
+						);
+						$this->load->view('V_saveuser', $data);
+					}  else {
+						$this->M_admin->saveuser($iduser,$nama,$status,$username,$password,$conces);
+						redirect('C_dasbord/user');
+					}
+				}
+			}
 		}
 	}
 

@@ -43,10 +43,10 @@
             <input type="text" class="form-control" name="nama" value="" autocomplete="off">
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" hidden="true">
           <label for="status" class="col-sm-2 col-form-label">Status</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control" class="form-control" name="status" value="sales" autocomplete="off">
+            <input type="text" readonly class="form-control" class="form-control" name="status" value="6" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
@@ -66,6 +66,9 @@
           <div class="col-sm-10">
             <select class="form-control mb-1" id="conces" name="conces">
               <option value="4">Klaten</option>
+              <option value="1">Jogja</option>
+              <option value="3">Bantul</option>
+              <option value="2">Magelang</option>
             </select>
           </div>
         </div>

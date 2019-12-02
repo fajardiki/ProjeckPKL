@@ -1,7 +1,6 @@
 
 
 <?php $nama = $this->session->userdata('user'); ?>
-
 <!-- Navbar -->
 <?php $this->load->view('V_navbar'); ?>
 <!-- Akhir -->
@@ -39,287 +38,299 @@
     <?php } ?>                
   </div>
 
+<section class="mb-2" align="right">
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();'><i class="fa fa-print"></i> Print Summary</a>
+</section>
+
 <section style="overflow-x: scroll; height: 350px;">
-  <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 9px; margin: auto;">
-    <thead class="thead-dark">  
-      <tr>
-        <th scope="col">CONCESSIONAIRE</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <th><?php echo $smj['Month'] ?></th>
-        <?php } ?>
-      </tr>
-    </thead>
-    <?php if (!empty($summaryj) && !empty($summarym) && !empty($summaryb) && !empty($summaryk)) { ?>
-    <tbody>
-    <!-- Jogja -->
-      <tr>
-        <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smj['Conces'] ?></th>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo number_format($smj['Planned']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo number_format($smj['Un_planed']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo number_format($smj['Visited']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo $smj['Start_Time'] ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo $smj['End_Time'] ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo number_format($smj['Nosale']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo intval($smj['pjp_comply']).'%' ?></td>
-        <?php } ?> 
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo intval($smj['NosalePersen']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo intval($smj['Productive_Call']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
-        <?php foreach ($summaryj as $smj) { ?>
-          <td><?php echo "Rp " . number_format($smj['Total_Sale'],2,',','.') ?></td>
-        <?php } ?>
-      </tr>
+  <section id="printArea">
+      <section id="head" hidden="true">
+        <h2 class="h2" align="center">Summary Tahun <?php echo $summaryj[0]['Year']; ?></h2>
+      </section>
+      <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 9px; margin: auto;">
+        <thead class="thead-dark">  
+          <tr>
+            <th scope="col">CONCESSIONAIRE</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <th><?php echo $smj['Month'] ?></th>
+            <?php } ?>
+          </tr>
+        </thead>
+        <?php if (!empty($summaryj) && !empty($summarym) && !empty($summaryb) && !empty($summaryk)) { ?>
+        <tbody>
+        <!-- Jogja -->
+          <tr>
+            <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smj['Conces'] ?></th>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo number_format($smj['Planned']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo number_format($smj['Un_planed']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo number_format($smj['Visited']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo $smj['Start_Time'] ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo $smj['End_Time'] ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo number_format($smj['Nosale']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo intval($smj['pjp_comply']).'%' ?></td>
+            <?php } ?> 
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo intval($smj['NosalePersen']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo intval($smj['Productive_Call']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
+            <?php foreach ($summaryj as $smj) { ?>
+              <td><?php echo "Rp " . number_format($smj['Total_Sale'],2,',','.') ?></td>
+            <?php } ?>
+          </tr>
 
-    <!-- Magelang -->
-      <tr>
-        <?php foreach ($summarym as $smm) {} ?>
-          <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smm['Conces'] ?></th>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo number_format($smm['Planned']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo number_format($smm['Un_planed']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo number_format($smm['Visited']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo $smm['Start_Time'] ?></td>
-        <?php } ?>
+        <!-- Magelang -->
+          <tr>
+            <?php foreach ($summarym as $smm) {} ?>
+              <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smm['Conces'] ?></th>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo number_format($smm['Planned']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo number_format($smm['Un_planed']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo number_format($smm['Visited']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo $smm['Start_Time'] ?></td>
+            <?php } ?>
+            
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo $smm['End_Time'] ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo number_format($smm['Nosale']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo intval($smm['pjp_comply']).'%' ?></td>
+            <?php } ?> 
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo intval($smm['NosalePersen']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo intval($smm['Productive_Call']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
+            <?php foreach ($summarym as $smm) { ?>
+              <td><?php echo "Rp " . number_format($smm['Total_Sale'],2,',','.') ?></td>
+            <?php } ?>
+          </tr>
+
+        <!-- Bantul -->
+          <tr>
+            <?php foreach ($summaryb as $smb) { }?>
+              <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smb['Conces'] ?></th>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo number_format($smb['Planned']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo number_format($smb['Un_planed']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo number_format($smb['Visited']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo $smb['Start_Time'] ?></td>
+            <?php } ?>
+                    
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo $smb['End_Time'] ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo number_format($smb['Nosale']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo intval($smb['pjp_comply']).'%' ?></td>
+            <?php } ?> 
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo intval($smb['NosalePersen']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo intval($smb['Productive_Call']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
+            <?php foreach ($summaryb as $smb) { ?>
+              <td><?php echo "Rp " . number_format($smb['Total_Sale'],2,',','.') ?></td>
+            <?php } ?>
+          </tr>
+
+        <!-- Klaten -->
+          <tr>
+            <?php foreach ($summaryk as $smk) { }?>
+              <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smk['Conces'] ?></th>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo number_format($smk['Planned']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo number_format($smk['Un_planed']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo number_format($smk['Visited']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo $smk['Start_Time'] ?></td>
+            <?php } ?>  
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo $smm['End_Time'] ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo number_format($smk['Nosale']) ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo intval($smk['pjp_comply']).'%' ?></td>
+            <?php } ?> 
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo intval($smk['NosalePersen']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo intval($smk['Productive_Call']).'%' ?></td>
+            <?php } ?>
+          </tr>
+          <tr>
+            <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
+            <?php foreach ($summaryk as $smk) { ?>
+              <td><?php echo "Rp " . number_format($smk['Total_Sale'],2,',','.') ?></td>
+            <?php } ?>
+          </tr>
+        </tbody>
+      <?php } else { ?>
         
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo $smm['End_Time'] ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo number_format($smm['Nosale']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo intval($smm['pjp_comply']).'%' ?></td>
-        <?php } ?> 
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo intval($smm['NosalePersen']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo intval($smm['Productive_Call']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
-        <?php foreach ($summarym as $smm) { ?>
-          <td><?php echo "Rp " . number_format($smm['Total_Sale'],2,',','.') ?></td>
-        <?php } ?>
-      </tr>
-
-    <!-- Bantul -->
-      <tr>
-        <?php foreach ($summaryb as $smb) { }?>
-          <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smb['Conces'] ?></th>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo number_format($smb['Planned']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo number_format($smb['Un_planed']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo number_format($smb['Visited']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo $smb['Start_Time'] ?></td>
-        <?php } ?>
-                
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo $smb['End_Time'] ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo number_format($smb['Nosale']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo intval($smb['pjp_comply']).'%' ?></td>
-        <?php } ?> 
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo intval($smb['NosalePersen']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo intval($smb['Productive_Call']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
-        <?php foreach ($summaryb as $smb) { ?>
-          <td><?php echo "Rp " . number_format($smb['Total_Sale'],2,',','.') ?></td>
-        <?php } ?>
-      </tr>
-
-    <!-- Klaten -->
-      <tr>
-        <?php foreach ($summaryk as $smk) { }?>
-          <th class="bg-danger" style="color: #fff;" colspan="13"><?php echo $smk['Conces'] ?></th>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Planned</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo number_format($smk['Planned']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Un-planed</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo number_format($smk['Un_planed']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Visited</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo number_format($smk['Visited']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Start Time</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo $smk['Start_Time'] ?></td>
-        <?php } ?>  
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">End Time</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo $smm['End_Time'] ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Nosale</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo number_format($smk['Nosale']) ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo intval($smk['pjp_comply']).'%' ?></td>
-        <?php } ?> 
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo intval($smk['NosalePersen']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo intval($smk['Productive_Call']).'%' ?></td>
-        <?php } ?>
-      </tr>
-      <tr>
-        <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
-        <?php foreach ($summaryk as $smk) { ?>
-          <td><?php echo "Rp " . number_format($smk['Total_Sale'],2,',','.') ?></td>
-        <?php } ?>
-      </tr>
-    </tbody>
-  <?php } else { ?>
-    
-  <?php } ?>
-  </table>
+      <?php } ?>
+      </table>
+      <section id="foot" hidden="true">
+        <p>* Warna <span id="merah"><i>merah</i></span> berarti target tidak tercapai</p>
+      </section>
+  </section>
 </section>
 
 <!-- Grafik Planed -->
@@ -1624,6 +1635,25 @@
   <?php } ?>
 
 <!-- Akhir Content -->
+
+<script>
+  function printDiv()  {
+    var head = document.getElementById('head');
+    var foot = document.getElementById('foot');
+      var divToPrint=document.getElementById('printArea');
+
+      var newWin=window.open('','Print-Window');
+
+      newWin.document.open();
+
+      newWin.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+
+      newWin.document.close();
+
+      setTimeout(function(){newWin.close();},10);
+  }
+
+ </script>
 
 <!-- Footer -->
 <?php $this->load->view('V_footer'); ?>

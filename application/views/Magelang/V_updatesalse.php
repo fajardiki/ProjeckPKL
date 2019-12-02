@@ -21,7 +21,7 @@
         <div class="form-group row">
           <label for="empcode" class="col-sm-2 col-form-label">Emp_Code</label>
           <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" name="empcode" value="<?php echo $sales[0]['Emp_Code'] ?>">
+            <input type="text" readonly class="form-control" name="empcode" value="<?php echo $sales[0]['Emp_Code'] ?>">
           </div>
         </div>
         <div class="form-group row">
@@ -30,10 +30,10 @@
             <input type="text" class="form-control" name="nama" value="<?php echo $sales[0]['Salesman'] ?>">
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" hidden="true">
           <label for="status" class="col-sm-2 col-form-label">Status</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="status" value="<?php echo $sales[0]['Status'] ?>">
+            <input type="text" readonly class="form-control" name="status" value="<?php echo $sales[0]['Status'] ?>">
           </div>
         </div>
         <div class="form-group row">
@@ -53,6 +53,9 @@
         	<div class="col-sm-10">
         		<select class="form-control mb-1" id="conces" name="conces">
 			        <option value="2">Magelang</option>
+              <option value="4">Klaten</option>
+              <option value="1">Jogja</option>
+              <option value="3">Bantul</option>
 			      </select>
         	</div>
         </div>
