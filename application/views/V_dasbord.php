@@ -650,6 +650,10 @@
 
 <!-- Summry -->
 
+<section class="mb-2" align="right">
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printSal()'><i class="fa fa-print"></i> Print Summary</a>
+</section>
+
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
     <?php if (!empty($summary)) { ?>
       <?php foreach ($summary as $s) {} ?>
@@ -660,115 +664,85 @@
 </div>
 
 <section style="overflow-x: scroll; height: 300px; margin-bottom: 2px;">
-<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
-  <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
-    <tr>
-      <th scope="col">Tanggal</th>
-      <th scope="col">Planned</th>
-      <th scope="col">Un-planed</th>
-      <th scope="col">Visited</th>
-      <th scope="col">Start Time</th>
-      <th scope="col">End Time</th>
-      <th scope="col">Nosale</th>
-      <th scope="col">PJP-Comply</th>
-      <th scope="col">No-Sale</th>
-      <th scope="col">Productive-Call</th>
-      <th scope="col">Total Penjualan</th>  
-    </tr>
-  </thead>
-<?php if (!empty($summary)) { ?>
-  <?php foreach ($summary as $sm) { 
-    $days = $sm['Day'];
-    $planneds = number_format($sm['Planned']);
-    $unplanneds = number_format($sm['Un_planed']);
-    $visiteds = number_format($sm['Visited']);
-    $stattimes = $sm['Start_Time'];
-    $endtimes = $sm['End_Time'];
-    $nosales = number_format($sm['Nosale']);
-    $pjpcomplys = intval($sm['pjp_comply']);
-    $nosalepersens = intval($sm['NosalePersen']);
-    $productivecalls = intval($sm['Productive_Call']);
-    $totalsales = number_format($sm['Total_Sale'],2,',','.');
-  ?>
-  <tbody>
-    <tr>
-      <td><?php echo $days ?></td>
-      <td><?php echo $planneds ?></td>
-      <td><?php echo $unplanneds ?></td>
-      <td><?php echo $visiteds ?></td>
-      <td><?php echo $stattimes ?></td>
-      <td><?php echo $endtimes ?></td>
-      <td><?php echo $nosales ?></td>
-                
-      <!-- Pjp comply -->
-      <?php if ($pjpcomplys < 95) { ?>
-        <td class="min"><?php echo $pjpcomplys. '%' ?></td>
-      <?php } else { ?>
-        <td><?php echo $pjpcomplys. '%' ?></td>
-      <?php } ?>
+  <section id="printArea2">
+    <section id="head2" hidden="true">
+      <h2 class="h2" align="center">Summary Minggu <?php echo $summary[0]['Week']; ?></h2>
+      <h3 class="h3" align="center">Tahun <?php echo $summary[0]['Year']; ?></h3>
+      <h5 class="h5" align="left">Nama : <?php echo $nama[0]['Salesman']; ?></h5>
+    </section>
+    <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+      <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
+        <tr>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Planned</th>
+          <th scope="col">Un-planed</th>
+          <th scope="col">Visited</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">Nosale</th>
+          <th scope="col">PJP-Comply</th>
+          <th scope="col">No-Sale</th>
+          <th scope="col">Productive-Call</th>
+          <th scope="col">Total Penjualan</th>  
+        </tr>
+      </thead>
+    <?php if (!empty($summary)) { ?>
+      <?php foreach ($summary as $sm) { 
+        $days = $sm['Day'];
+        $planneds = number_format($sm['Planned']);
+        $unplanneds = number_format($sm['Un_planed']);
+        $visiteds = number_format($sm['Visited']);
+        $stattimes = $sm['Start_Time'];
+        $endtimes = $sm['End_Time'];
+        $nosales = number_format($sm['Nosale']);
+        $pjpcomplys = intval($sm['pjp_comply']);
+        $nosalepersens = intval($sm['NosalePersen']);
+        $productivecalls = intval($sm['Productive_Call']);
+        $totalsales = number_format($sm['Total_Sale'],2,',','.');
+      ?>
+      <tbody>
+        <tr>
+          <td><?php echo $days ?></td>
+          <td><?php echo $planneds ?></td>
+          <td><?php echo $unplanneds ?></td>
+          <td><?php echo $visiteds ?></td>
+          <td><?php echo $stattimes ?></td>
+          <td><?php echo $endtimes ?></td>
+          <td><?php echo $nosales ?></td>
+                    
+          <!-- Pjp comply -->
+          <?php if ($pjpcomplys < 95) { ?>
+            <td class="min"><?php echo $pjpcomplys. '%' ?></td>
+          <?php } else { ?>
+            <td><?php echo $pjpcomplys. '%' ?></td>
+          <?php } ?>
 
-      <!-- Nosale percent -->
-      <?php if ($nosalepersens > 10) { ?>
-        <td class="min"><?php echo $nosalepersens. '%' ?></td>
-      <?php } else { ?>
-        <td><?php echo $nosalepersens.'%' ?></td>
-      <?php } ?>
+          <!-- Nosale percent -->
+          <?php if ($nosalepersens > 10) { ?>
+            <td class="min"><?php echo $nosalepersens. '%' ?></td>
+          <?php } else { ?>
+            <td><?php echo $nosalepersens.'%' ?></td>
+          <?php } ?>
 
-      <!-- Productive call -->
-      <?php if ($productivecalls < 85 ) { ?>
-        <td class="min"><?php echo $productivecalls.'%'; ?></td>
-      <?php } else { ?>
-        <td><?php echo $productivecalls.'%'; ?></td>
-      <?php } ?>
+          <!-- Productive call -->
+          <?php if ($productivecalls < 85 ) { ?>
+            <td class="min"><?php echo $productivecalls.'%'; ?></td>
+          <?php } else { ?>
+            <td><?php echo $productivecalls.'%'; ?></td>
+          <?php } ?>
 
-      <td><?php echo "Rp " .$totalsales ?></td>
-    </tr>
-  </tbody>
-  <?php } ?>
-<?php } else { ?>
-  <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    </tbody>
-  <?php } ?>
-</table>
+          <td><?php echo "Rp " .$totalsales ?></td>
+        </tr>
+      </tbody>
+      <?php } ?>
+    <?php } else { ?>
+
+    <?php } ?>
+    </table>
+    <section id="foot2" hidden="true">
+      <p class="foot2">* Warna <span id="merah"><i>merah</i></span> berarti target tidak tercapai</p>
+    </section>
+  </section>
 </section>
 
 <!-- Plane -->
@@ -1651,6 +1625,22 @@
       newWin.document.close();
 
       setTimeout(function(){newWin.close();},10);
+  }
+
+  function printSal()  {
+    var head2 = document.getElementById('head2');
+    var foot2 = document.getElementById('foot2');
+      var divToPrint2=document.getElementById('printArea2');
+
+      var newWin2=window.open('','Print-Window');
+
+      newWin2.document.open();
+
+      newWin2.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} .h5, .foot2 {margin-left: 20px;}</style></head><body onload="window.print()">'+head2.innerHTML+divToPrint2.innerHTML+foot2.innerHTML+'</body></html>');
+
+      newWin2.document.close();
+
+      setTimeout(function(){newWin2.close();},10);
   }
 
  </script>

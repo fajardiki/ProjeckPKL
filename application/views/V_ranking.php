@@ -12,14 +12,6 @@
 	} else{
 
 	}?>
-
-	<!-- <?php if (isset($rankplane)) {
-		// Plan productive
-		$this->load->view('Diagram/V_diagramrankplaneproductive');
-	} else {
-		# code...
-	}
-	 ?> -->
 </section>
 
 <section>
@@ -29,7 +21,7 @@
     } else {
 		// Diagram
     	$this->load->view('Diagram/V_diagramproductive');
-    	
+
     	// Diagram
     	$this->load->view('Diagram/V_diagramnosale');
     	
