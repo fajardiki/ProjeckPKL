@@ -29,7 +29,7 @@
 </section>
 
 <!-- Summary -->
-<section style="overflow-x: scroll; height: 350px;">
+<section class="tableFixHead" style="height: 350px;">
     <section id="printArea">
       <section id="head" style="margin-bottom: 25px" hidden="true">
         <div class="row">
@@ -135,21 +135,21 @@
 
     } else {
     	$this->load->view('Diagram/V_diagramplaneconces');
-	} ?>
+  	} ?>
 
-	<!-- Time -->
+  	<!-- Time -->
     <?php if (empty($timemarket)) { 
 
     } else { 
-    	$this->load->view('Diagram/V_diagramtimeconces');
+      	$this->load->view('Diagram/V_diagramtimeconces');
     } ?>
 
-	<!-- PJP Comply -->
-	<?php if (empty($pjpcomply)) { 
+  	<!-- PJP Comply -->
+  	<?php if (empty($pjpcomply)) { 
 
-	} else { 
-		$this->load->view('Diagram/V_diagrampjpconces');
-	} ?>
+  	} else { 
+  		$this->load->view('Diagram/V_diagrampjpconces');
+  	} ?>
 	<!-- Akhir PJP Comply -->
 
 <!-- Akhir Content-->
@@ -160,14 +160,16 @@
     } else {
     	$this->load->view('Informasi/V_informasi');
 
+      // Diagram
+      $this->load->view('Diagram/V_diagramproductive');
+      
     	// Diagram
     	$this->load->view('Diagram/V_diagramnosale');
     	
     	// // Diagram
     	$this->load->view('Diagram/V_diagramunvisite');
 
-    	// // Diagram
-    	$this->load->view('Diagram/V_diagramproductive');
+    	
     } ?>
    <!-- End -->	
 

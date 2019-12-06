@@ -41,15 +41,6 @@
 <section class="mb-2" align="right">
   <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();' style="min-width: 100%; width: 100%;"><i class="fa fa-print"></i></a>
 </section>
-<style>
-  .tableFixHead          { overflow-y: auto; height: 100px; }
-  .tableFixHead thead th { position: sticky; top: 0; }
-
-  /* Just common table stuff. Really. */
-  table  { border-collapse: collapse; width: 100%; }
-  th, td { padding: 8px 16px; }
-  th     { background:#eee; }
-</style>
 <section class="tableFixHead" style="height: 400px;">
   <section id="printArea">
       <section id="head" style="margin-bottom: 50px;" hidden="true">
@@ -158,18 +149,34 @@
             <?php } ?> 
           </tr>
 
+          <!-- Nosale -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-            <?php foreach ($summaryj as $smj) { ?>
-              <td><?php echo intval($smj['NosalePersen']).'%' ?></td>
+            <?php foreach ($summaryj as $smj) { 
+              $nosalepersenj = intval($smj['NosalePersen']);
+            ?>
+              <?php if ($nosalepersenj > 10) { ?>
+                <td class="min"><?php echo $nosalepersenj. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $nosalepersenj.'%' ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
+          <!-- Productive Call -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-            <?php foreach ($summaryj as $smj) { ?>
-              <td><?php echo intval($smj['Productive_Call']).'%' ?></td>
+            <?php foreach ($summaryj as $smj) { 
+              $productivecallj = intval($smj['Productive_Call']);
+            ?>
+              <?php if ($productivecallj < 85 ) { ?>
+                <td class="min"><?php echo $productivecallj.'%'; ?></td>
+              <?php } else { ?>
+                <td><?php echo $productivecallj.'%'; ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryj as $smj) { ?>
@@ -219,24 +226,49 @@
               <td><?php echo number_format($smm['Nosale']) ?></td>
             <?php } ?>
           </tr>
+
+          <!-- PJP Comply -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-            <?php foreach ($summarym as $smm) { ?>
-              <td><?php echo intval($smm['pjp_comply']).'%' ?></td>
+            <?php foreach ($summarym as $smm) { 
+              $pjpcomplym = intval($smm['pjp_comply']);
+            ?>
+              <?php if ($pjpcomplym < 95) { ?>
+                <td class="min"><?php echo $pjpcomplym. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $pjpcomplym. '%' ?></td>
+              <?php } ?>
             <?php } ?> 
           </tr>
+
+          <!-- Nosale -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-            <?php foreach ($summarym as $smm) { ?>
-              <td><?php echo intval($smm['NosalePersen']).'%' ?></td>
+            <?php foreach ($summarym as $smm) { 
+              $nosalepersenm = intval($smm['NosalePersen']);
+            ?>
+              <?php if ($nosalepersenm > 10) { ?>
+                <td class="min"><?php echo $nosalepersenm. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $nosalepersenm.'%' ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
+          <!-- Productive Call -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-            <?php foreach ($summarym as $smm) { ?>
-              <td><?php echo intval($smm['Productive_Call']).'%' ?></td>
+            <?php foreach ($summarym as $smm) { 
+              $productivecallm = intval($smm['Productive_Call']);
+            ?>
+              <?php if ($productivecallm < 85 ) { ?>
+                <td class="min"><?php echo $productivecallm.'%'; ?></td>
+              <?php } else { ?>
+                <td><?php echo $productivecallm.'%'; ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summarym as $smm) { ?>
@@ -286,24 +318,49 @@
               <td><?php echo number_format($smb['Nosale']) ?></td>
             <?php } ?>
           </tr>
+
+          <!-- PJP Comply -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-            <?php foreach ($summaryb as $smb) { ?>
-              <td><?php echo intval($smb['pjp_comply']).'%' ?></td>
+            <?php foreach ($summaryb as $smb) { 
+              $pjpcomplyb = intval($smj['pjp_comply']);
+            ?>
+              <?php if ($pjpcomplyb < 95) { ?>
+                <td class="min"><?php echo $pjpcomplyb. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $pjpcomplyb. '%' ?></td>
+              <?php } ?>
             <?php } ?> 
           </tr>
+
+          <!-- Nosale -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-            <?php foreach ($summaryb as $smb) { ?>
-              <td><?php echo intval($smb['NosalePersen']).'%' ?></td>
+            <?php foreach ($summaryb as $smb) { 
+              $nosalepersenb = intval($smb['NosalePersen']);
+            ?>
+              <?php if ($nosalepersenb > 10) { ?>
+                <td class="min"><?php echo $nosalepersenb. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $nosalepersenb.'%' ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
+          <!-- Productive Call -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-            <?php foreach ($summaryb as $smb) { ?>
-              <td><?php echo intval($smb['Productive_Call']).'%' ?></td>
+            <?php foreach ($summaryb as $smb) { 
+              $productivecallb = intval($smb['Productive_Call']);
+            ?>
+              <?php if ($productivecallb < 85 ) { ?>
+                <td class="min"><?php echo $productivecallb.'%'; ?></td>
+              <?php } else { ?>
+                <td><?php echo $productivecallb.'%'; ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryb as $smb) { ?>
@@ -352,24 +409,49 @@
               <td><?php echo number_format($smk['Nosale']) ?></td>
             <?php } ?>
           </tr>
+
+          <!-- PJP Comply -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-            <?php foreach ($summaryk as $smk) { ?>
-              <td><?php echo intval($smk['pjp_comply']).'%' ?></td>
+            <?php foreach ($summaryk as $smk) { 
+              $pjpcomplyk = intval($smk['pjp_comply']);
+            ?>
+              <?php if ($pjpcomplyk < 95) { ?>
+                <td class="min"><?php echo $pjpcomplyk. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $pjpcomplyk. '%' ?></td>
+              <?php } ?>
             <?php } ?> 
           </tr>
+
+          <!-- Nosale -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
-            <?php foreach ($summaryk as $smk) { ?>
-              <td><?php echo intval($smk['NosalePersen']).'%' ?></td>
+            <?php foreach ($summaryk as $smk) { 
+              $nosalepersenk = intval($smk['NosalePersen']);
+            ?>
+              <?php if ($nosalepersenk > 10) { ?>
+                <td class="min"><?php echo $nosalepersenk. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $nosalepersenk.'%' ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
+          <!-- Productive Call -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Productive-Call</th>
-            <?php foreach ($summaryk as $smk) { ?>
-              <td><?php echo intval($smk['Productive_Call']).'%' ?></td>
+            <?php foreach ($summaryk as $smk) { 
+              $productivecallk = intval($smk['Productive_Call']);
+            ?>
+              <?php if ($productivecallk < 85 ) { ?>
+                <td class="min"><?php echo $productivecallk.'%'; ?></td>
+              <?php } else { ?>
+                <td><?php echo $productivecallk.'%'; ?></td>
+              <?php } ?>
             <?php } ?>
           </tr>
+
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryk as $smk) { ?>

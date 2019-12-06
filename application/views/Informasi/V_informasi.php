@@ -94,7 +94,6 @@
         $days = $ip['Day'];
         $namas = $ip['Salesman'];
         $districts = $ip['District'];
-        $productives[] = intval($ip['Productive']);
         $Unvisiteds[] = intval($ip['Unvisited']);
         $nosales[] = intval($ip['Nosale']);
     ?>
@@ -114,10 +113,6 @@
         <tr> 
             <td>Outlet tidak dikunjungi tertinggi</td>
             <td><?php echo max($Unvisiteds); ?> Outlet</td>
-        </tr>
-        <tr> 
-            <td>Productive terkecil</td>
-            <td><?php echo min($productives); ?> Oulet</td>
         </tr>
     </table>
     

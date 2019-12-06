@@ -29,7 +29,7 @@
 </section>
 
 <!-- Summary -->
-<section style="overflow-y: scroll; height: 350px;">
+<section class="tableFixHead" style="height: 350px;">
   <section id="printArea">
     <section id="head" style="margin-bottom: 25px" hidden="true">
       <div class="row">
