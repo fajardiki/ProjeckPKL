@@ -48,7 +48,7 @@
 
 	<script src="<?php echo base_url().'assets/js/highcharts.js'?>"></script>
 	<script src="<?php echo base_url().'assets/js/series-label.js'?>"></script>
-	<script src="<?php echo base_url().'assets/js/exporting.js'?>"></script>
+	<!-- <script src="<?php echo base_url().'assets/js/exporting.js'?>"></script> -->
 	<script src="<?php echo base_url().'assets/js/jquery.min.js' ?>"></script>
 	<script src="<?php echo base_url().'assets/fontawesome/js/fontawesome.min.js' ?>"></script>
 </head>

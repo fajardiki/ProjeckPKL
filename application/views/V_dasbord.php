@@ -39,15 +39,60 @@
   </div>
 
 <section class="mb-2" align="right">
-  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();'><i class="fa fa-print"></i> Print Summary</a>
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();' style="min-width: 100%; width: 100%;"><i class="fa fa-print"></i></a>
 </section>
+<style>
+  .tableFixHead          { overflow-y: auto; height: 100px; }
+  .tableFixHead thead th { position: sticky; top: 0; }
 
-<section style="overflow-x: scroll; height: 350px;">
+  /* Just common table stuff. Really. */
+  table  { border-collapse: collapse; width: 100%; }
+  th, td { padding: 8px 16px; }
+  th     { background:#eee; }
+</style>
+<section class="tableFixHead" style="height: 400px;">
   <section id="printArea">
-      <section id="head" hidden="true">
-        <h2 class="h2" align="center">Summary Tahun <?php echo $summaryj[0]['Year']; ?></h2>
+      <section id="head" style="margin-bottom: 50px;" hidden="true">
+        <div class="row">
+          <div class="col-sm-2 left" align="center">
+            <img style="width: 160px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
+          </div>
+          <div class="col-sm-8 center" align="center">
+            <br>
+            <?php if ($nama[0]['id_conces'] == '1'): ?>
+              <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+              <h3>EFOS Concess Jogja</h3>
+            <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+              <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+              <h3>EFOS Concess Magelang</h3>
+            <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+              <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+              <h3>EFOS Concess Bantul</h3>
+            <?php elseif ($nama[0]['id_conces'] == '4'): ?>
+              <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+              <h3>EFOS Concess Klaten</h3>
+            <?php else: ?>
+              <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+              <h3>EFOS GROUP <?php echo $summaryj[0]['Year']; ?></h3>
+            <?php endif ?>
+          </div>
+          <div class="col-sm-2 right" align="center">
+            <?php if ($nama[0]['id_conces'] == '1'): ?>
+              <img style="width: 100px;" src="<?php echo base_url().'assets/img/CONCESSSLEMAN.png' ?>">
+            <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+              <img style="width: 175px;" src="<?php echo base_url().'assets/img/CONCESSMAGELANG.png' ?>">
+            <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+              <img style="width: 118px;" src="<?php echo base_url().'assets/img/CONCESSBANTUL.png' ?>">
+            <?php elseif ($nama[0]['id_conces'] == '4'): ?>
+              <img style="width: 114px;" src="<?php echo base_url().'assets/img/CONCESSKLATEN.png' ?>">
+            <?php else: ?>
+              <img style="width: 200px;" src="<?php echo base_url().'assets/img/ADMGROUP.png' ?>">
+            <?php endif ?>
+          </div>
+        </div>
+        <hr style="width: 100%; height: 1px;">
       </section>
-      <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 9px; margin: auto;">
+      <table class="table table-bordered" style="max-width: 100%; width: 100%; height: auto; font-size: 9px; margin: auto;">
         <thead class="thead-dark">  
           <tr>
             <th scope="col">CONCESSIONAIRE</th>
@@ -98,12 +143,21 @@
               <td><?php echo number_format($smj['Nosale']) ?></td>
             <?php } ?>
           </tr>
+
+          <!-- PJP Comply -->
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">PJP-Comply</th>
-            <?php foreach ($summaryj as $smj) { ?>
-              <td><?php echo intval($smj['pjp_comply']).'%' ?></td>
+            <?php foreach ($summaryj as $smj) { 
+              $pjpcomplyj = intval($smj['pjp_comply']);
+            ?>
+              <?php if ($pjpcomplyj < 95) { ?>
+                <td class="min"><?php echo $pjpcomplyj. '%' ?></td>
+              <?php } else { ?>
+                <td><?php echo $pjpcomplyj. '%' ?></td>
+              <?php } ?>
             <?php } ?> 
           </tr>
+
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">No-Sale</th>
             <?php foreach ($summaryj as $smj) { ?>
@@ -119,7 +173,7 @@
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryj as $smj) { ?>
-              <td><?php echo "Rp " . number_format($smj['Total_Sale'],2,',','.') ?></td>
+              <td><?php echo "Rp " . number_format($smj['Total_Sale'],0,',','.') ?></td>
             <?php } ?>
           </tr>
 
@@ -186,7 +240,7 @@
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summarym as $smm) { ?>
-              <td><?php echo "Rp " . number_format($smm['Total_Sale'],2,',','.') ?></td>
+              <td><?php echo "Rp " . number_format($smm['Total_Sale'],0,',','.') ?></td>
             <?php } ?>
           </tr>
 
@@ -253,7 +307,7 @@
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryb as $smb) { ?>
-              <td><?php echo "Rp " . number_format($smb['Total_Sale'],2,',','.') ?></td>
+              <td><?php echo "Rp " . number_format($smb['Total_Sale'],0,',','.') ?></td>
             <?php } ?>
           </tr>
 
@@ -319,7 +373,7 @@
           <tr>
             <th scope="col" class="bg-dark" style="color: #fff;">Total Penjualan</th> 
             <?php foreach ($summaryk as $smk) { ?>
-              <td><?php echo "Rp " . number_format($smk['Total_Sale'],2,',','.') ?></td>
+              <td><?php echo "Rp " . number_format($smk['Total_Sale'],0,',','.') ?></td>
             <?php } ?>
           </tr>
         </tbody>
@@ -633,6 +687,11 @@
     <!-- Akhir Grafik PJP COMPLY -->
 
 <!-- Akhir admin -->
+
+
+
+
+
 <!-- Sales -->
 <?php } elseif ($nama[0]['status']=='sales') { ?>
 
@@ -651,7 +710,7 @@
 <!-- Summry -->
 
 <section class="mb-2" align="right">
-  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printSal()'><i class="fa fa-print"></i> Print Summary</a>
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printSal()'><i class="fa fa-print"></i></a>
 </section>
 
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
@@ -662,15 +721,67 @@
       <h1 class="lead">Summary ...</h1>
     <?php } ?>                
 </div>
-
 <section style="overflow-x: scroll; height: 300px; margin-bottom: 2px;">
   <section id="printArea2">
-    <section id="head2" hidden="true">
-      <h2 class="h2" align="center">Summary Minggu <?php echo $summary[0]['Week']; ?></h2>
-      <h3 class="h3" align="center">Tahun <?php echo $summary[0]['Year']; ?></h3>
-      <h5 class="h5" align="left">Nama : <?php echo $nama[0]['Salesman']; ?></h5>
+    <section id="head2" style="margin-bottom: 25px" hidden="true">
+      <div class="row">
+        <div class="col-sm-2 left" align="center">
+          <img style="width: 160px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
+        </div>
+        <div class="col-sm-8 center" align="center">
+          <br>
+          <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h3>EFOS Concess Jogja</h3>
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h3>EFOS Concess Magelang</h3>
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h3>EFOS Concess Bantul</h3>
+          <?php else: ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h3>EFOS Concess Klaten</h3>
+          <?php endif ?>
+        </div>
+        <div class="col-sm-2 right" align="center">
+          <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <img style="width: 100px;" src="<?php echo base_url().'assets/img/CONCESSJOGJA.png' ?>">
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <img style="width: 175px;" src="<?php echo base_url().'assets/img/CONCESSMAGELANG.png' ?>">
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <img style="width: 118px;" src="<?php echo base_url().'assets/img/CONCESSBANTUL.png' ?>">
+          <?php else: ?>
+            <img style="width: 114px;" src="<?php echo base_url().'assets/img/CONCESSKLATEN.png' ?>">
+          <?php endif ?>
+        </div>
+      </div>
+      <hr style="width: 100%; height: 1px;">
     </section>
-    <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+    <section id="namasales" hidden="true">
+        <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <section align="center">
+              <h3>Summary Jogja</h3>
+            </section>
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <section align="center">
+              <h3>Summary Magelang</h3>
+            </section>
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <section align="center">
+              <h3>Summary Bantul</h3>
+            </section>
+          <?php else: ?>
+            <section align="center">
+              <h3>Summary Klaten</h3>
+            </section>
+          <?php endif ?>
+          <hr style="width: 200px; height: 1px;">
+        <?php if (!empty($summary)): ?>
+          <p align="left" style="margin-bottom: 0;">NAMA : <?php echo $nama[0]['Salesman']; ?> | MINGGU : <?php echo $summary[0]['Week']; ?> | TAHUN : <?php echo $summary[0]['Year']; ?></p>
+        <?php endif ?>
+    </section>
+    <table class="table table-bordered" style="max-width: 100%; width: 100%; height: auto; font-size: 11px; margin: auto;">
       <thead class="thead-dark" align="center" style="padding: 0; margin: 0;">  
         <tr>
           <th scope="col">Tanggal</th>
@@ -1620,7 +1731,7 @@
 
       newWin.document.open();
 
-      newWin.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:50px;} .right {position: absolute; right: 0; top: 0; margin-right: 50px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
 
       newWin.document.close();
 
@@ -1629,6 +1740,7 @@
 
   function printSal()  {
     var head2 = document.getElementById('head2');
+    var namasales = document.getElementById('namasales');
     var foot2 = document.getElementById('foot2');
       var divToPrint2=document.getElementById('printArea2');
 
@@ -1636,7 +1748,7 @@
 
       newWin2.document.open();
 
-      newWin2.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} .h5, .foot2 {margin-left: 20px;}</style></head><body onload="window.print()">'+head2.innerHTML+divToPrint2.innerHTML+foot2.innerHTML+'</body></html>');
+      newWin2.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:10px;} .right {position: absolute; right: 0; top: 0; margin-right: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head2.innerHTML+namasales.innerHTML+divToPrint2.innerHTML+foot2.innerHTML+'</body></html>');
 
       newWin2.document.close();
 

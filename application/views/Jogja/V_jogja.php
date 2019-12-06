@@ -25,17 +25,34 @@
 </form>
 
 <section class="mb-2" align="right">
-  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();'><i class="fa fa-print"></i> Print Summary</a>
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();' style="min-width: 100%; width: 100%;"><i class="fa fa-print"></i></a>
 </section>
 
 <!-- Summary -->
 <section style="overflow-y: scroll; height: 350px;">
   <section id="printArea">
-      <section id="head" hidden="true">
-        <h2 class="h2" align="center">Summary Jogja Minggu ke <?php echo $summary[0]['Week']; ?></h2>
-        <h3 class="h3" align="center">Bulan <?php echo $summary[0]['Month']; ?> Tahun <?php echo $summary[0]['Year']; ?></h3>
+    <section id="head" style="margin-bottom: 25px" hidden="true">
+      <div class="row">
+        <div class="col-sm-2 left" align="center">
+          <img style="width: 130px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
+        </div>
+        <div class="col-sm-8 center" align="center">
+          <br>
+          <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+          <h4>Jl. Munggur RT.08 RW.04 Bantulan Sidoarum Lodean Sleman</h4>
+        </div>
+        <div class="col-sm-2 right" align="center">
+          <img style="width: 100px;" src="<?php echo base_url().'assets/img/CONCESSJOGJA.png' ?>">
+        </div>
+      </div>
+    </section>
+    <section id="namasales" hidden="true">
+      <section align="center">
+        <h3>Summary Jogja <?php echo $summary[0]['Year']; ?></h3>
       </section>
-  		<table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+      <hr style="width: 150px; height: 1px;">
+    </section>
+  		<table class="table table-bordered" style="max-width: 100%; width: 100%; height: auto; font-size: 11px; margin: auto;">
             <thead class="thead-dark" align="center">  
               <tr>
                 <th scope="col">Salesman</th>
@@ -66,7 +83,7 @@
         				$pjpcomplys = intval($sm['pjp_comply']);
         				$nosalepersens = intval($sm['NosalePersen']);
         				$productivecalls = intval($sm['Productive_Call']);
-        				$totalsales = number_format($sm['Total_Sale'],2,',','.');
+        				$totalsales = number_format($sm['Total_Sale'],0,',','.');
               ?>
               <tbody>
                 <tr>
@@ -159,6 +176,7 @@
 <script>
   function printDiv()  {
     var head = document.getElementById('head');
+    var namasales = document.getElementById('namasales');
     var foot = document.getElementById('foot');
     var divToPrint=document.getElementById('printArea');
 
@@ -166,7 +184,7 @@
 
       newWin.document.open();
 
-      newWin.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+      newWin.document.write('<html><head><style> #merah {color:#CC0033} .left {position: absolute; top: 0; left: 0; margin-left:50px; margin-top: 20px;} .right {position: absolute; right: 0; top: 0; margin-right: 50px;} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+"<hr>"+namasales.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
 
       newWin.document.close();
 

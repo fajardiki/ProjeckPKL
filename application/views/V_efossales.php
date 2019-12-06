@@ -25,12 +25,64 @@
 
 <section style="overflow-x: scroll; margin-bottom: 10%;">	
   <section id="printArea2">
-    <section id="head2" hidden="true">
-      <h2 class="h2" align="center">EFOS Minggu <?php echo $efossales[0]['Week']; ?></h2>
-      <h3 class="h3" align="center">Tahun <?php echo $efossales[0]['Year']; ?></h3>
-      <h5 class="h5" align="left">Nama : <?php echo $nama[0]['Salesman']; ?></h5>
+    <section id="head2" style="margin-bottom: 25px" hidden="true">
+      <div class="row">
+        <div class="col-sm-2 left" align="center">
+          <img style="width: 160px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
+        </div>
+        <div class="col-sm-8 center" align="center">
+          <br>
+          <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h4>Jl. Munggur RT.08 RW.04 Bantulan Sidoarum Lodean Sleman</h4>
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h4>Jl. Soekarno Hatta Nampik Bumirejo Mungkit Magelang 56512.</h4>
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h4>Jl. Parangtritis Timbulharjo Sewon Bantul Jogjakarta 55186</h4>
+          <?php else: ?>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h4>Desa Kurung Baru, Ceper Klaten 57465 </h4>
+          <?php endif ?>
+        </div>
+        <div class="col-sm-2 right" align="center">
+          <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <img style="width: 100px;" src="<?php echo base_url().'assets/img/CONCESSJOGJA.png' ?>">
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <img style="width: 175px;" src="<?php echo base_url().'assets/img/CONCESSMAGELANG.png' ?>">
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <img style="width: 118px;" src="<?php echo base_url().'assets/img/CONCESSBANTUL.png' ?>">
+          <?php else: ?>
+            <img style="width: 114px;" src="<?php echo base_url().'assets/img/CONCESSKLATEN.png' ?>">
+          <?php endif ?>
+        </div>
+      </div>
     </section>
-    <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+    <section id="namasales" hidden="true">
+          <?php if ($nama[0]['id_conces'] == '1'): ?>
+            <section align="center">
+              <h3>Efos Jogja</h3>
+            </section>
+          <?php elseif ($nama[0]['id_conces'] == '2'): ?>
+            <section align="center">
+              <h3>Efos Magelang</h3>
+            </section>
+          <?php elseif ($nama[0]['id_conces'] == '3'): ?>
+            <section align="center">
+              <h3>Efos Bantul</h3>
+            </section>
+          <?php else: ?>
+            <section align="center">
+              <h3>Efos Klaten</h3>
+            </section>
+          <?php endif ?>
+          <hr style="width: 150px; height: 1px;">
+      <?php if (!empty($efossales)): ?>
+        <p align="left" style="margin-bottom: 0">NAMA : <?php echo $nama[0]['Salesman']; ?> | MINGGU : <?php echo $efossales[0]['Week']; ?> | TAHUN : <?php echo $efossales[0]['Year']; ?></p>
+      <?php endif ?>
+    </section>
+    <table class="table table-bordered" style="max-width: 100%; width: 100%; height: auto; font-size: 11px; margin: auto;">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Week</th>
@@ -122,15 +174,16 @@
 
 <script>
   function printSal()  {
-    var head2 = document.getElementById('head2');
-    var foot2 = document.getElementById('foot2');
+      var head2 = document.getElementById('head2');
+      var namasales = document.getElementById('namasales');
+      var foot2 = document.getElementById('foot2');
       var divToPrint2=document.getElementById('printArea2');
 
       var newWin2=window.open('','Print-Window');
 
       newWin2.document.open();
 
-      newWin2.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} </style></head><body onload="window.print()">'+head2.innerHTML+divToPrint2.innerHTML+foot2.innerHTML+'</body></html>');
+      newWin2.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:50px;} .right {position: absolute; right: 0; top: 0; margin-right: 50px;} #merah {color:#CC0033} #head {padding: 0; margin: 0; margin-bottom: 30px;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} </style> </head><body onload="window.print()">'+head2.innerHTML+"<hr>"+namasales.innerHTML+divToPrint2.innerHTML+foot2.innerHTML+'</body></html>');
 
       newWin2.document.close();
 

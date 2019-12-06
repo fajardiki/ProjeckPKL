@@ -25,17 +25,34 @@
 </form>
 
 <section class="mb-2" align="right">
-  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();'><i class="fa fa-print"></i> Print Summary</a>
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printDiv();' style="min-width: 100%; width: 100%;"><i class="fa fa-print"></i></a>
 </section>
 
 <!-- Summary -->
 <section style="overflow-x: scroll; height: 350px;">
     <section id="printArea">
-      <section id="head" hidden="true">
-        <h2 class="h2" align="center">Summary Magelang Minggu ke <?php echo $summary[0]['Week']; ?></h2>
-        <h3 class="h3" align="center">Bulan <?php echo $summary[0]['Month']; ?> Tahun <?php echo $summary[0]['Year']; ?></h3>
+      <section id="head" style="margin-bottom: 25px" hidden="true">
+        <div class="row">
+          <div class="col-sm-2 left" align="center">
+            <img style="width: 130px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
+          </div>
+          <div class="col-sm-8 center" align="center">
+            <br>
+            <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
+            <h4>Jl. Soekarno Hatta Nampik Bumirejo Mungkit Magelang 56512.</h4>
+          </div>
+          <div class="col-sm-2 right" align="center">
+            <img style="width: 160px;" src="<?php echo base_url().'assets/img/CONCESSMAGELANG.png' ?>">
+          </div>
+        </div>
       </section>
-        <table class="table table-bordered" style="max-width: 100%; height: auto; font-size: 11px; margin: auto;">
+      <section id="namasales" hidden="true">
+        <section align="center">
+          <h3>Summary Magelang <?php echo $summary[0]['Year']; ?></h3>
+        </section>
+        <hr style="width: 150px; height: 1px;">
+      </section>
+        <table class="table table-bordered" style="max-width: 100%; width: 100%; height: auto; font-size: 11px; margin: auto;">
             <thead class="thead-dark" align="center">  
                 <tr>
                     <th scope="col">Salesman</th>
@@ -54,20 +71,20 @@
            	<?php if (!empty($summary)) { ?>
            	    <?php foreach ($summary as $sm) { 
            	    	$jd = $sm['Journey_Date'];
-                    $week = $sm['Week'];
-                    $empcode = $sm['Emp_Code']; 
+                  $week = $sm['Week'];
+                  $empcode = $sm['Emp_Code']; 
         	   	    $saless = $sm['Salesman'];
-        			$planneds = number_format($sm['Planned']);
-        			$unplanneds = number_format($sm['Un_planed']);
-        			$visiteds = number_format($sm['Visited']);
-        			$stattimes = $sm['Start_Time'];
-        			$endtimes = $sm['End_Time'];
-        			$nosales = number_format($sm['Nosale']);
-        			$pjpcomplys = intval($sm['pjp_comply']);
-        			$nosalepersens = intval($sm['NosalePersen']);
-        			$productivecalls = intval($sm['Productive_Call']);
-        			$totalsales = number_format($sm['Total_Sale'],2,',','.');
-           	?>
+            			$planneds = number_format($sm['Planned']);
+            			$unplanneds = number_format($sm['Un_planed']);
+            			$visiteds = number_format($sm['Visited']);
+            			$stattimes = $sm['Start_Time'];
+            			$endtimes = $sm['End_Time'];
+            			$nosales = number_format($sm['Nosale']);
+            			$pjpcomplys = intval($sm['pjp_comply']);
+            			$nosalepersens = intval($sm['NosalePersen']);
+            			$productivecalls = intval($sm['Productive_Call']);
+            			$totalsales = number_format($sm['Total_Sale'],0,',','.');
+               	?>
            	<tbody>
                 <tr>
                 	<td><a class="sales" href="<?php echo base_url().'C_magelang/index/'.$empcode.'/'.$jd ?>"><?php echo $saless ?></a></td>
@@ -164,7 +181,7 @@
 
       newWin.document.open();
 
-      newWin.document.write('<html><head><style> #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:10px; margin-top: 10px;} .right {position: absolute; right: 0; top: 0; margin-right: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {border-collapse: collapse;} table, th, td {  border: 1px solid black;} hr {height:1px;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+"<hr>"+namasales.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
 
       newWin.document.close();
 
