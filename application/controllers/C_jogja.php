@@ -7,6 +7,7 @@ class C_jogja extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_jogja');
+		$this->load->model('M_user');
 		$this->load->model('M_diagram');
 	}
 
@@ -38,9 +39,9 @@ class C_jogja extends CI_Controller {
 					$this->load->view('Jogja/V_jogja',$data);
 				} elseif (isset($empcode) AND isset($jd)) {
 					$data = array(
-						'info' => $this->M_diagram->infosales($empcode,$jd),
+						// 'info' => $this->M_diagram->infosales($empcode,$jd),
 						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
-						'summary' => $this->M_jogja->selectsummaryjogjawk(substr($jd, 0,4), date("W", strtotime($jd)))
+						'summary' => $this->M_jogja->selectsummaryjogjabln($jd)
 				 	);
 					$this->load->view('Jogja/V_jogja',$data);
 				} else {
@@ -105,9 +106,11 @@ class C_jogja extends CI_Controller {
 						'sales' => $this->M_jogja->digsales($id),
 						'plane' => $this->M_jogja->selectonefost($id),
 						'timemarket' => $this->M_jogja->selectonetime($id),
-						'pjpcomply' => $this->M_jogja->selectonepjp($id)
+						'pjpcomply' => $this->M_jogja->selectonepjp($id),
+						'back' => 'C_jogja/updatesales',
+						'judul' => 'Jogja'
 					);
-					$this->load->view('Jogja/V_diagramsales',$data);
+					$this->load->view('Diagram/V_diagramsales',$data);
 				}
 			}
 		}
@@ -131,7 +134,8 @@ class C_jogja extends CI_Controller {
 					redirect('C_klaten/updatesales');
 				} else {
 					$data = array(
-						'updatesales' => $this->M_jogja->selectupdateseles()
+						'updatesales' => $this->M_jogja->selectupdateseles(),
+						'rank' => $this->M_user->ranked('1')
 					);
 
 					$this->load->view('Jogja/V_upsales_jogja',$data);

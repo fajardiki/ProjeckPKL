@@ -10,7 +10,7 @@
 		<table class="table table-bordered" style="text-align: center;">
 		  <thead>
 		    <tr>
-		      <th scope="col">#</th>
+		      <th scope="col">No</th>
 		      <th scope="col">District Code</th>
 		      <th scope="col">District</th>
 		      <th scope="col">Conces</th>

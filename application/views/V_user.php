@@ -9,23 +9,6 @@
     <h1 class="lead" style="padding: 10px;">USER</h1>
 </div>
 
-	<div class="row">
-		<div class="col-sm-12">
-			<?php
-		        if (isset($statuspesan)) {
-		          if ($statuspesan != "sukses") {
-		      ?>   
-		          <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
-		      <?php
-		        } else {
-		      ?>
-		          <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
-		      <?php
-		          }
-		        }
-		      ?>
-		</div>
-	</div>
 	<section style="overflow-x: scroll; margin-bottom: 30px;">
 		<table class="table table-bordered">
 		  <thead>

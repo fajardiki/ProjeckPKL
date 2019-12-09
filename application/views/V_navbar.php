@@ -38,7 +38,7 @@
 			z-index: 3;
 		}
 
-		.tableFixHead          { overflow-y: auto; height: 100px; }
+		.tableFixHead          { overflow-y: auto; height: 300px; }
 		.tableFixHead thead th { position: sticky; top: 0; }
 
 		/* Just common table stuff. Really. */
@@ -60,7 +60,7 @@
 	<script src="<?php echo base_url().'assets/js/jquery.min.js' ?>"></script>
 	<script src="<?php echo base_url().'assets/fontawesome/js/fontawesome.min.js' ?>"></script>
 </head>
-<body style="font-family: cambria; height: 100%; background-color: #D3D3D3">
+<body style="font-family: cambria; height: 100%; background-color: #f2f2f2">
 
 <div class="container-fluid"> 
 

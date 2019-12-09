@@ -14,10 +14,28 @@
 		<hr style="border: 1px solid; width: 20vw; margin-top: 0px; margin-bottom: 30px;">
   	</div>
   </div>
+
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <form action="<?php echo base_url().'C_dasbord/tambahuser' ?>" method="post">
+        <div class="row">
+          <div class="col-sm-12">
+            <?php
+                  if (isset($statuspesan)) {
+                    if ($statuspesan != "sukses") {
+                ?>   
+                    <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
+                <?php
+                  } else {
+                ?>
+                    <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
+                <?php
+                    }
+                  }
+                ?>
+          </div>
+        </div>
         <div class="form-group row">
           <label for="empcode" class="col-sm-2 col-form-label">Id_User</label>
           <div class="col-sm-10">

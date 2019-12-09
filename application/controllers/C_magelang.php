@@ -7,6 +7,7 @@ class C_magelang extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_magelang');
+		$this->load->model('M_user');
 		$this->load->model('M_diagram');
 	}
 
@@ -37,9 +38,9 @@ class C_magelang extends CI_Controller {
 					$this->load->view('Magelang/V_magelang',$data);
 				} elseif (isset($empcode) AND isset($jd)) {
 					$data = array(
-						'info' => $this->M_diagram->infosales($empcode,$jd),
+						// 'info' => $this->M_diagram->infosales($empcode,$jd),
 						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
-						'summary' => $this->M_magelang->selectsummarymagelangwk(substr($jd, 0,4), date("W", strtotime($jd)))
+						'summary' => $this->M_magelang->selectsummarymagelangbln($jd)
 				 	);
 					$this->load->view('Magelang/V_magelang',$data);
 				} else {
@@ -104,9 +105,11 @@ class C_magelang extends CI_Controller {
 						'sales' => $this->M_magelang->digsales($id),
 						'plane' => $this->M_magelang->selectonefost($id),
 						'timemarket' => $this->M_magelang->selectonetime($id),
-						'pjpcomply' => $this->M_magelang->selectonepjp($id)
+						'pjpcomply' => $this->M_magelang->selectonepjp($id),
+						'back' => 'C_magelang/updatesales',
+						'judul' => 'Magelang'
 					);
-					$this->load->view('Magelang/V_diagramsales',$data);
+					$this->load->view('Diagram/V_diagramsales',$data);
 				}
 			}
 		}
@@ -128,7 +131,8 @@ class C_magelang extends CI_Controller {
 					redirect('C_klaten/updatesales');
 				} else {
 					$data = array(
-						'updatesales' => $this->M_magelang->selectupdateseles()
+						'updatesales' => $this->M_magelang->selectupdateseles(),
+						'rank' => $this->M_user->ranked('2')
 					);
 
 					$this->load->view('Magelang/V_upsales_magelang',$data);

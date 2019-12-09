@@ -15,6 +15,23 @@
   	</div>
   </div>
   <div class="row">
+    <div class="col-sm-12">
+      <?php
+            if (isset($statuspesan)) {
+              if ($statuspesan != "sukses") {
+          ?>   
+              <div class="alert alert-danger" role="alert"><?php echo $isipesan ?></div>
+          <?php
+            } else {
+          ?>
+              <div class="alert alert-success" role="alert"><?php echo $isipesan ?></div>
+          <?php
+              }
+            }
+          ?>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <form action="<?php echo base_url().'C_dasbord/updateuser' ?>" method="post">

@@ -5,13 +5,14 @@
         $month = $i['Month'];
         $day[] = $i['Day'];
         $Planned[] = intval($i['Planned']);
-        $productive[] = intval($i['Productive']);
+        $Unplanned[] = intval($i['Unplanned']);
+        $Visited[] = intval($i['Visited']);
     } 
     ?>
-    <div id="productive" style="min-width: 310px; height: 400px; margin: 50px auto"></div>
+    <div id="unplane" style="min-width: 310px; height: 400px; margin: 50px auto"></div>
 
     <script>
-      Highcharts.chart('productive', {
+      Highcharts.chart('unplane', {
             chart: {
                 type: 'spline',
                 scrollablePlotArea: {
@@ -23,11 +24,11 @@
                 backgroundColor: ''
             },
             title: {
-                text: 'Hari productive salesman',
+                text: 'Hari Visited & Un Planned salesman',
                 align: 'center'
             },
             subtitle: {
-                text: 'Rata - rata productive salesman di bulan <?php echo $month; ?>',
+                text: 'Rata - rata visited dan Un planned salesman di bulan <?php echo $month; ?>',
                 align: 'center'
             },
             xAxis: {
@@ -54,14 +55,19 @@
                  enabled: false
             },
             series: [{
-                color: '#00ff00',
-                name: 'Productive',
-                data: <?php echo json_encode($productive); ?>
+                color: '#ff0066',
+                name: 'Visited',
+                data: <?php echo json_encode($Visited); ?>
 
             },{
                 color: '#00ffff',
                 name: 'Planned',
                 data: <?php echo json_encode($Planned); ?>
+
+            },{
+                color: '#9933ff',
+                name: 'Un Planned',
+                data: <?php echo json_encode($Unplanned); ?>
 
             }],
             navigation: {

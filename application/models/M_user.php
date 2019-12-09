@@ -274,7 +274,12 @@ class M_user extends CI_Model {
  	// Ranked salesman
 
  	public function ranked($conces) {
- 		$hsl = $this->db->query("SELECT WEEK(Journey_Date,1) AS Week, Salesman, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call FROM m_efos a RIGHT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE b.id_conces = $conces AND WEEK(Journey_Date,1) = (SELECT WEEK(MAX(Journey_Date),1) FROM m_efos) GROUP BY salesman ORDER BY Productive_Call DESC");
+ 		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) AS Month, Salesman, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call FROM m_efos a RIGHT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE b.id_conces = $conces AND MONTH(Journey_Date) = (SELECT MONTH(MAX(Journey_Date)) FROM m_efos) GROUP BY salesman ORDER BY Productive_Call DESC");
+ 		return $hsl->result_array();
+ 	}
+
+ 	public function rankedbln($conces,$bln) {
+ 		$hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) AS Month, Salesman, AVG(((Visited-Un_planed)/Planned)*100) as pjp_comply, AVG((Nosale/Visited)*100) as NosalePersen, AVG(((Productive)/(Planned+Un_planed))*100) AS Productive_Call FROM m_efos a RIGHT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code WHERE b.id_conces = $conces AND MONTH(Journey_Date) = $bln GROUP BY salesman ORDER BY Productive_Call DESC");
  		return $hsl->result_array();
  	}
 

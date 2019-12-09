@@ -15,8 +15,21 @@ class M_diagram extends CI_Model {
                 WHEN 5 THEN 'Kamis'
                 WHEN 6 THEN 'Jumat'
                 WHEN 7 THEN 'Sabtu'
-          END as Day, Salesman, District, AVG(Nosale) as Nosale, AVG(Visited) as Visited, AVG((Planned) - (Visited-Un_planed)) as Unvisited, AVG(Productive) as Productive, AVG(Planned) as Planned FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE a.Emp_Code = '$empcode' AND MONTH(Journey_Date) = MONTH('$jd') GROUP BY DAYNAME(Journey_Date) ORDER BY DAYOFWEEK(Journey_Date)");
+          END as Day, Salesman, District, AVG(Nosale) as Nosale, AVG(Visited) as Visited, AVG(Un_planed) AS Unplanned, AVG((Planned) - (Visited-Un_planed)) as Unvisited, AVG(Productive) as Productive, AVG(Planned) as Planned FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE a.Emp_Code = '$empcode' AND MONTH(Journey_Date) = MONTH('$jd') GROUP BY DAYNAME(Journey_Date) ORDER BY DAYOFWEEK(Journey_Date)");
  		return $hsl->result_array();
 	}
+
+    public function infosalesplushmore($empcode,$jd) {
+        $hsl = $this->db->query("SELECT MONTHNAME(Journey_Date) as Month, CASE DAYOFWEEK(Journey_Date)
+                WHEN 1 THEN 'Minggu'
+                WHEN 2 THEN 'Senin'
+                WHEN 3 THEN 'Selasa'
+                WHEN 4 THEN 'Rabu'
+                WHEN 5 THEN 'Kamis'
+                WHEN 6 THEN 'Jumat'
+                WHEN 7 THEN 'Sabtu'
+          END as Day, Salesman, District, AVG(Nosale) as Nosale, AVG(Visited) as Visited, AVG(Un_planed) AS Unplanned, AVG((Planned) - (Visited-Un_planed)) as Unvisited, AVG(Productive) as Productive, AVG(Planned) as Planned FROM m_efos a LEFT JOIN m_selesman b ON a.Emp_Code = b.Emp_Code LEFT JOIN m_ruote c ON a.District_Code = c.District_Code WHERE a.Emp_Code = '$empcode' AND MONTH(Journey_Date) = $jd GROUP BY DAYNAME(Journey_Date) ORDER BY DAYOFWEEK(Journey_Date)");
+        return $hsl->result_array();
+    }
 }
 ?>

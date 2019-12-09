@@ -40,9 +40,9 @@ class C_bantul extends CI_Controller {
 					$this->load->view('Bantul/V_bantul',$data);
 				} elseif (isset($empcode) AND isset($jd)) {
 					$data = array(
-						'info' => $this->M_diagram->infosales($empcode,$jd),
+						// 'info' => $this->M_diagram->infosales($empcode,$jd),
 						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
-						'summary' => $this->M_bantul->selectsummarybantulwk(substr($jd, 0,4), date("W", strtotime($jd)))
+						'summary' => $this->M_bantul->selectsummarybantulbln($jd)
 				 	);
 					$this->load->view('Bantul/V_bantul',$data);
 				} else {
@@ -106,9 +106,11 @@ class C_bantul extends CI_Controller {
 						'sales' => $this->M_bantul->digsales($id),
 						'plane' => $this->M_bantul->selectonefost($id),
 						'timemarket' => $this->M_bantul->selectonetime($id),
-						'pjpcomply' => $this->M_bantul->selectonepjp($id)
+						'pjpcomply' => $this->M_bantul->selectonepjp($id),
+						'back' => 'C_bantul/updatesales',
+						'judul' => 'Bantul'
 					);
-					$this->load->view('Bantul/V_diagramsales',$data);
+					$this->load->view('Diagram/V_diagramsales',$data);
 				}
 			}
 		}
@@ -131,7 +133,8 @@ class C_bantul extends CI_Controller {
 					redirect('C_klaten/updatesales');
 				} else {
 					$data = array(
-						'updatesales' => $this->M_bantul->selectupdateseles()
+						'updatesales' => $this->M_bantul->selectupdateseles(),
+						'rank' => $this->M_user->ranked('3')
 					);
 
 					$this->load->view('Bantul/V_upsales_bantul',$data);

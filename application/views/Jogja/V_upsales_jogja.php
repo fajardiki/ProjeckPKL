@@ -25,7 +25,15 @@
 		</div>
 	</div>
 
-	<section style="overflow-x: scroll; margin-bottom: 30px;">
+	<?php if (isset($rank) AND !empty($rank)) {
+		// Productive Call
+		$this->load->view('Diagram/V_diagramranked');
+		
+	} else{
+
+	}?>
+
+	<section style="overflow-x: scroll; margin-bottom: 30px; margin-top: 30px;">
 		<table class="table table-bordered" style="text-align: center;">
 		  <thead>
 		    <tr>

@@ -7,7 +7,7 @@
         $Unvisited[] = intval($i['Unvisited']);
     } 
     ?>
-    <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <div id="container2" style="min-width: 310px; height: 400px; margin: 50px auto"></div>
 
     <script>
       Highcharts.chart('container2', {

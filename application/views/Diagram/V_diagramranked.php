@@ -1,24 +1,30 @@
 		<?php $user = $this->session->userdata('user'); ?>
-		<div class="jumbotron jumbotron-fluid mt-2" style="margin: 0; padding: 0; text-align: center;">
-	        <h1 class="lead">RANKING <?php echo $user[0]['Salesman'] ?></h1>
-	        <h3 class="lead">Minggu ke <?php echo $rank[0]['Week']; ?></h3>
+		<div class="jumbotron jumbotron-fluid mt-0" style="margin: 0; padding: 0; text-align: center;">
+			<?php if (isset($user[0]['Salesman']) AND !empty($user[0]['Salesman'])): ?>
+				<h1 class="lead"><?php echo $user[0]['Salesman'] ?></h1>
+			<?php endif ?>
+	        
+	        <h3 class="lead">Ranking <?php echo $rank[0]['Month']; ?></h3>
 	    </div>
 
 		<?php foreach ($rank as $r) {
-			$week = $r['Week'];
+			$Month = $r['Month'];
 			$sales[] = $r['Salesman'];
 			$productivecall[] = intval($r['Productive_Call']);
 		} ?>
 
-		<?php var_dump($r['Productive_Call']); ?>
 
-
-		<div id="ranked" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div id="ranked" style="min-width: 310px; height: 400px; margin: 50px auto;"></div>
 
 		<script>
 			Highcharts.chart('ranked', {
 			    chart: {
-			        type: 'bar'
+			        type: 'bar',
+
+			        width: null,
+			        height: null,
+
+			        backgroundColor: ''
 			    },
 			    title: {
 			        text: ''
@@ -69,7 +75,7 @@
 			        enabled: false
 			    },
 			    series: [{
-			        name: 'Year 1800',
+			        name: '',
 			        colorByPoint: true,
 			        data: <?php echo json_encode($productivecall); ?>
 			    }]

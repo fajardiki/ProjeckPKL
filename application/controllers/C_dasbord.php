@@ -467,14 +467,27 @@ class C_dasbord extends CI_Controller {
 		if (!$this->session->userdata('username')) {
 			redirect('C_login');
 		} else {
-			$user = $this->session->userdata('user');
-			$empcode = $user[0]['Emp_Code'];
-			$jd = $this->M_user->salesmaxjd($empcode);
+			$tanggal = $this->input->post('tanggal');
 
-			$data['rank'] = $this->M_user->ranked($user[0]['id_conces']);
-			$data['info'] = $this->M_diagram->infosales($empcode,$jd[0]['jd']);
-			$data['infoplush'] = $this->M_diagram->infosalesplush($empcode,$jd[0]['jd']);
-			$this->load->view('V_ranking',$data);
+			if (empty($tanggal)) {
+				$user = $this->session->userdata('user');
+				$empcode = $user[0]['Emp_Code'];
+				$jd = $this->M_user->salesmaxjd($empcode);
+
+				$data['rank'] = $this->M_user->ranked($user[0]['id_conces']);
+				$data['infoplush'] = $this->M_diagram->infosalesplush($empcode,$jd[0]['jd']);
+				$this->load->view('V_ranking',$data);
+			} else {
+				$bln = substr($tanggal, 5,6);
+				$user = $this->session->userdata('user');
+				$empcode = $user[0]['Emp_Code'];
+				$jd = $this->M_user->salesmaxjd($empcode);
+
+				$data['rank'] = $this->M_user->rankedbln($user[0]['id_conces'],$bln);
+				$data['infoplush'] = $this->M_diagram->infosalesplushmore($empcode,$bln);
+				$this->load->view('V_ranking',$data);
+			}
+			
 		}
 	}
 

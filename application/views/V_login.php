@@ -9,16 +9,20 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css' ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/style.css'; ?>">
 
+    <link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/fontawesome.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/solid.css' ?>">
     
   </head>
   <body style="font-family: cambria;">
 <!-- <img src="<?php echo base_url().'assets/img/allusesr.JPG' ?>" style="position: absolute; width: 550px;"> -->
  <div class="container form">
     <div class="row">
-    <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
       <div class="col-sm-4" id="form_login">
-        <h2 class="login_text">SISALESMAN</h2>
-        <hr style="background-color: #000; height: 1px; margin-top: 0;">
+        <img class="rounded mx-auto d-block" style="width: 100px; text-align: center;" src="<?php echo base_url().'assets/img/user.png' ?>">
+        <h3 class="login_text">Sistem Informasi</h3>
+        <h3 class="login_text">Salesman</h3>
+        <br>
         <?php
           if (isset($statuspesan)) {
             if ($statuspesan != "sukses") {
@@ -39,7 +43,7 @@
           <div class="form-group">
             <input type="password" class="form-control" id="inputpassword" placeholder="Password" name="password" autocomplete="off">
           </div>
-          <button type="submit" class="btn btn-danger" id="btn_login" name="btnlogin">Masuk</button>
+          <button type="submit" class="btn btn-danger float-right" id="btn_login" name="btnlogin">Login</button>
         </form>
       </div>
     </div>

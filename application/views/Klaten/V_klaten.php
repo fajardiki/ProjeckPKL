@@ -11,7 +11,11 @@
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
     <?php if (!empty($summary)) { ?>
       <?php foreach ($summary as $s) {} ?>
-        <h1 class="lead">Summary week <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></h1>
+        <?php if (isset($s['Week'])): ?>
+          <h1 class="lead">Summary Week <?php echo $s['Week']; ?>, <?php echo $s['Year']; ?></h1>
+        <?php else: ?>
+          <h1 class="lead">Summary Mount <?php echo $s['Month']; ?>, <?php echo $s['Year']; ?></h1>
+        <?php endif ?>
     <?php } else { ?>
       <h1 class="lead">Summary..</h1>
     <?php } ?>                  
@@ -37,9 +41,9 @@
               <img style="width: 130px;" src="<?php echo base_url().'assets/img/Walls_Logo.svg.png' ?>">
             </div>
             <div class="col-sm-8 center" align="center">
-              <br>
               <h3>PT. Andrawina Darma Manunggal Mulya Yogyakarta</h3>
               <h4>Desa Kurung Baru, Ceper Klaten 57465 </h4>
+              <h4> Telp 0272-552567, Fax 0272-551128 | Email: admmklaten@yahoo.co.id</h4>
             </div>
             <div class="col-sm-2 right" align="center">
               <img style="width: 110px;" src="<?php echo base_url().'assets/img/CONCESSKLATEN.png' ?>">
@@ -71,7 +75,6 @@
             <?php if (!empty($summary)) { ?>
                <?php foreach ($summary as $sm) { 
                	$jd = $sm['Journey_Date'];
-                $week = $sm['Week'];
                 $empcode = $sm['Emp_Code']; 
                 $saless = $sm['Salesman'];
             		$planneds = number_format($sm['Planned']);
@@ -157,13 +160,16 @@
 <!-- Akhir Content -->
 
 <!-- Informasi -->
-    <?php if (!isset($info)) {
+    <?php if (!isset($infoplush)) {
     	
     } else {
     	$this->load->view('Informasi/V_informasi');
 
       // Diagram
       $this->load->view('Diagram/V_diagramproductive');
+
+      // // Diagram
+      $this->load->view('Diagram/V_diagramunplane');
       
     	// Diagram
     	$this->load->view('Diagram/V_diagramnosale');
@@ -186,7 +192,7 @@
 
       newWin.document.open();
 
-      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:10px; margin-top: 20px;} .right {position: absolute; right: 0; top: 0; margin-right: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} hr {height:1px;}</style></head><body onload="window.print()">'+head.innerHTML+"<hr>"+namasales.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:10px; margin-top: 20px;} .right {position: absolute; right: 0; top: 0; margin-right: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .sales {color: #000;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;} hr {height: 2px; margin-top:10px;} h3,h4 {margin:10px;} h3 {margin-top:40px;}</style></head><body onload="window.print()">'+head.innerHTML+"<hr>"+namasales.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
 
       newWin.document.close();
 

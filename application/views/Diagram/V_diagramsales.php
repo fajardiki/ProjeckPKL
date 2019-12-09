@@ -4,91 +4,32 @@
 	<title></title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css' ?>">
-
+	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/fontawesome.css' ?>">
+	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/brands.css' ?>">
+	<link rel="stylesheet" href="<?php echo base_url().'assets/fontawesome/css/solid.css' ?>">
 
 	<script src="<?php echo base_url().'assets/js/highcharts.js'?>"></script>
 	<script src="<?php echo base_url().'assets/js/series-label.js'?>"></script>
-	<script src="<?php echo base_url().'assets/js/exporting.js'?>"></script>
+	<<!-- script src="<?php echo base_url().'assets/js/exporting.js'?>"></script>  -->
 </head>
 <body style="font-family: cambria; height: 100%; background-color: #D3D3D3">
-	<div class="container-fluid">
+	<div id="printArea" class="container-fluid">
 		<div class="row">
 			<div class="col" align="center" style="margin: 15px; padding: 15px; background-color: #cccccc;">
 				<h3><?php echo $sales[0]['Salesman']; ?></h3>
-				<h6>Jogja</h6>
+				<h6><?php echo $judul; ?></h6>
 			</div>
 		</div>
 
-		<!-- Grafik Planed -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
-        </div>
-		
+		<!-- Grafik Planed -->		
 		<?php if (empty($plane)) { ?>
-			<div id="shadow1" style="min-width: 310px; height: 400px; margin: 0 auto; margin-top: 20px;" ></div>
-			<script>
-				Highcharts.chart('shadow1', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-		        plotOptions: {
-		            series: {
-		                borderWidth: 0,
-		                dataLabels: {
-		                    enabled: true,
-		                    format: '{point.y:.1f}'
-		                }
-		            }
-		        },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-		        credits: {
-			        enabled: false
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'Planned',
-			        data: [5, 5, 5, 5,]
-			    }, {
-			        type: 'column',
-			        name: 'Productive',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'Nosale',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
-
-			</script>
 
 		<?php } else { ?>
+
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram Planned - Produktive - Nosale</h1>
+	        </div>
 
 			<?php foreach ($plane as $p) {
 				$month[] = $p['month'];
@@ -105,6 +46,18 @@
 				chart: {
 			        backgroundColor: ''
 			    },
+			    responsive: {
+				  rules: [{
+				    condition: {
+				      maxWidth: 100
+				    },
+				    chartOptions: {
+				      legend: {
+				        enabled: false
+				      }
+				    }
+				  }]
+				},
 			    title: {
 			        text: ''
 			    },
@@ -148,7 +101,7 @@
 			            borderWidth: 0,
 			            dataLabels: {
 			                enabled: true,
-			                format: '{point.y:.1f}'
+			                format: '{point.y:.0f}'
 			            }
 			        }
 		    	},
@@ -173,68 +126,18 @@
 			});
 			</script>
 		<?php } ?>
-
 		<!-- Akhir Grafik Planed -->
 
 		<!-- Grafik Time -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
-        </div>
- 
+		
+		
 		<?php if (empty($timemarket)) { ?>
-			<div id="shadow2" style="min-width: 310px; height: 400px; margin-top: 50px; "></div>
-			<script>
-				Highcharts.chart('shadow2', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-		        credits: {
-			        enabled: false
-			    },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'TimeInMarket',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'column',
-			        name: 'Spent',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'TimePerOutlet',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
-
-			</script>
 
 		<?php } else { ?>
+
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram TimeInMarket - Spent - TimePerOutlet</h1>
+	        </div>
 
 			<?php foreach ($timemarket as $tm) {
 				$month1[] = $tm['month'];
@@ -248,6 +151,9 @@
 
 			<script>
 				Highcharts.chart('graft2', {
+				chart: {
+			        backgroundColor: ''
+			    },
 				time: {
 			        timezone: 'Asia/Jakarta'
 			    },
@@ -334,77 +240,12 @@
 		<!-- Akhir Grafik Time -->
 
 		<!-- Grafik PJP COMPLY -->
-		<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
-            <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
-        </div>
-	
 		<?php if (empty($pjpcomply)) { ?>
-			<div id="shadow3" style="min-width: 310px; height: 400px; margin-top: 50px;"></div>
-			<script>
-				Highcharts.chart('shadow3', {
-				chart: {
-			        backgroundColor: ''
-			    },
-			    title: {
-			        text: ''
-			    },
-			    xAxis: {
-			        categories: ['1', '2', '3', '4'],
-			        title: {
-				        text: 'Week'
-				    }
-			    },
-			    yAxis: {
-			        title: {
-				        text: ''
-				    }
-			    },
-		        plotOptions: {
-		            series: {
-		                borderWidth: 0,
-		                dataLabels: {
-		                    enabled: true,
-		                    format: '{point.y:.1f}%'
-		                }
-		            }
-		        },
-		        credits: {
-			        enabled: false
-			    },
-			    labels: {
-			        items: [{
-			            style: {
-			                left: '50px',
-			                top: '18px',
-			                color: ( // theme
-			                    Highcharts.defaultOptions.title.style &&
-			                    Highcharts.defaultOptions.title.style.color
-			                ) || 'black'
-			            }
-			        }]
-			    },
-			    series: [{
-			        type: 'column',
-			        name: 'PJP_Comply',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'column',
-			        name: 'Geomatch',
-			        data: [5, 5, 5, 5]
-			    }, {
-			        type: 'spline',
-			        name: 'Productive_call',
-			        data: [3, 3, 3, 3],
-			        marker: {
-			            lineWidth: 2,
-			            lineColor: Highcharts.getOptions().colors[3],
-			            fillColor: 'white'
-			        }
-			    }]
-			});
 
-			</script>
 		<?php } else { ?>
+			<div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
+	            <h1 class="lead">Diagram PJP Comply - Geomatch - Productive Call</h1>
+	        </div>
 			<?php foreach ($pjpcomply as $pjp) {
 				$month2[] = $pjp['month'];
 				$pjpcom[] = intval($pjp['PJP_COMPLY']);
@@ -439,7 +280,7 @@
 		                borderWidth: 0,
 		                dataLabels: {
 		                    enabled: true,
-		                    format: '{point.y:.1f}%'
+		                    format: '{point.y:.0f}%'
 		                }
 		            }
 		        },
@@ -463,7 +304,7 @@
 			            borderWidth: 0,
 			            dataLabels: {
 			                enabled: true,
-			                format: '{point.y:.1f}%'
+			                format: '{point.y:.0f}%'
 			            }
 			        }
 		    	},
@@ -488,13 +329,37 @@
 			});
 			</script>
 		<?php } ?>
-		<div class="form-group row">
-	        <div class="col-sm-12">
-	          <a type="submit" class="btn btn-block btn-danger" href="<?php echo base_url().'C_jogja/updatesales' ?>">Kembali</a>
-	        </div>
-	    </div>
 		<!-- Akhir Grafik PJP COMPLY -->
 	</div>
+	<div class="container-fluid">
+		<div class="form-group row">
+	        <div class="col-sm-12">
+	          <a onclick="printDiv()" type="submit" class="btn btn-block btn-danger"><i class="fa fa-print"></i></a>
+	        </div>
+	    </div>
+		<div class="form-group row">
+	        <div class="col-sm-12">
+	          <a type="submit" class="btn btn-block btn-danger" href="<?php echo base_url().$back ?>">Kembali</a>
+	        </div>
+	    </div>
+	</div>
+
+<script>
+	function printDiv()  {
+	  	var divToPrint=document.getElementById('printArea');
+
+	  	var newWin=window.open('','Print-Window');
+
+	  	newWin.document.open();
+
+	  	newWin.document.write('<html><head><style> #graft1, #graft2, #graft3 {min-width: 100%; max-width:200%; width: 200%; margin: 0 auto; padding-bottom: 500px; height: 500px;} .left {position: absolute; top: 0; left: 0; margin-left:10px; margin-top: 20px;} .right {position: absolute; right: 0; top: 0; margin-right: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .thead-dark {background-color: #000;color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} hr {height:1px;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+
+	  	newWin.document.close();
+
+	  	setTimeout(function(){newWin.close();},10);
+	}
+
+ </script>
 
 <script src="<?php echo base_url().'assets/js/jquery-3.2.1.slim.min.js' ?>" ></script>
 <script src="<?php echo base_url().'assets/js/popper.min.js' ?>" ></script>

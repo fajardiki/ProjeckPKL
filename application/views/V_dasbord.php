@@ -77,7 +77,7 @@
             <?php elseif ($nama[0]['id_conces'] == '4'): ?>
               <img style="width: 114px;" src="<?php echo base_url().'assets/img/CONCESSKLATEN.png' ?>">
             <?php else: ?>
-              <img style="width: 200px;" src="<?php echo base_url().'assets/img/ADMGROUP.png' ?>">
+              <img style="width: 200px;" src="<?php echo base_url().'assets/img/ADMMGROUP.png' ?>">
             <?php endif ?>
           </div>
         </div>
@@ -792,7 +792,7 @@
 <!-- Summry -->
 
 <section class="mb-2" align="right">
-  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printSal()'><i class="fa fa-print"></i></a>
+  <a class="btn btn-danger" id="cetak" id='btn' value='Print' onclick='printSal()' style="min-width: 100%; width: 100%;"><i class="fa fa-print"></i></a>
 </section>
 
 <div class="jumbotron jumbotron-fluid" style="margin: 0; padding: 0; text-align: center;">
@@ -1813,7 +1813,7 @@
 
       newWin.document.open();
 
-      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:50px;} .right {position: absolute; right: 0; top: 0; margin-right: 50px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
+      newWin.document.write('<html><head><style> .left {position: absolute; top: 0; left: 0; margin-left:50px;} .right {position: absolute; right: 0; top: 0; margin-right: 50px; margin-top: 10px;} #merah {color:#CC0033} #head {padding: 0; margin: 0;} body {font-family: cambria;} .bg-dark {background-color: #2e2828;color: #fff;} .bg-danger {background-color: #cf4740;color: #fff;} .thead-dark {background-color: #2e2828; color: #fff;} .min {background-color: #CC0033;color: #fff;} table {  border-collapse: collapse;} table, th, td {  border: 1px solid black;} th, td {  padding: 15px;  text-align: left;}</style></head><body onload="window.print()">'+head.innerHTML+divToPrint.innerHTML+foot.innerHTML+'</body></html>');
 
       newWin.document.close();
 

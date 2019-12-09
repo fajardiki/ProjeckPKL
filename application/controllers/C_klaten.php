@@ -7,6 +7,7 @@ class C_klaten extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('M_klaten');
+		$this->load->model('M_user');
 		$this->load->model('M_diagram');
 	}
 
@@ -37,9 +38,9 @@ class C_klaten extends CI_Controller {
 					$this->load->view('Klaten/V_klaten',$data);
 				} elseif (isset($empcode) AND isset($jd)) {
 					$data = array(
-						'info' => $this->M_diagram->infosales($empcode,$jd),
+						// 'info' => $this->M_diagram->infosales($empcode,$jd),
 						'infoplush' => $this->M_diagram->infosalesplush($empcode,$jd),
-						'summary' => $this->M_klaten->selectsummaryklatenwk(substr($jd, 0,4), date("W", strtotime($jd)))
+						'summary' => $this->M_klaten->selectsummaryklatenbln($jd)
 				 	);
 					$this->load->view('Klaten/V_klaten',$data);
 				} else {
@@ -105,9 +106,11 @@ class C_klaten extends CI_Controller {
 						'sales' => $this->M_klaten->digsales($id),
 						'plane' => $this->M_klaten->selectonefost($id),
 						'timemarket' => $this->M_klaten->selectonetime($id),
-						'pjpcomply' => $this->M_klaten->selectonepjp($id)
+						'pjpcomply' => $this->M_klaten->selectonepjp($id),
+						'back' => 'C_klaten/updatesales',
+						'judul' => 'Klaten'
 					);
-					$this->load->view('Klaten/V_diagramsales',$data);
+					$this->load->view('Diagram/V_diagramsales',$data);
 				}
 			}
 		}
@@ -130,7 +133,8 @@ class C_klaten extends CI_Controller {
 					redirect('C_bantul/updatesales');
 				} else {
 					$data = array(
-						'updatesales' => $this->M_klaten->selectupdateseles()
+						'updatesales' => $this->M_klaten->selectupdateseles(),
+						'rank' => $this->M_user->ranked('4')
 					);
 
 					$this->load->view('Klaten/V_upsales_klaten',$data);
